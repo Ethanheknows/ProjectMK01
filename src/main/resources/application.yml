@@ -1,32 +1,26 @@
 #server port
-server: 
-  port: 9091
+server:
+    port: 9091
 
 #spring setting
 spring:
-  output:
-    ansi:
-      enabled: always
-  datasource:
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-    url:  jdbc:oracle:thin:@localhost:1521:xe
-    username: TIS
-    password: 1234
+    output:
+        ansi:
+            enabled: always
+    datasource:
+        driver-class-name: oracle.jdbc.driver.OracleDriver
+        url: jdbc:oracle:thin:@localhost:1521:xe
+        username: TIS
+        password: 1234
+# logging:
+#   level:
+#     root: INFO
+#     '[com.mk01.ProjectMK01]': DEBUG
 
-logging:
-  level:
-    root: INFO
-    '[com.mk01.ProjectMK01]': DEBUG
+# mybatis:
+#   mapper-locations: classpath:mapper/sqlmapper/**/*.xml
+#   config-location: classpath:mapper/config/config.xml
 
-  
+# file:
+#   path:  C:/ProjectMK01/upload/
 
-mybatis:
-  mapper-locations: classpath:mapper/sqlmapper/**/*.xml
-  config-location: classpath:mapper/config/config.xml
-
-#나는 세팅 모든게 다 세팅
-
-file:
-  path:  C:/ProjectMK01/upload/
-  
-    

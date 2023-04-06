@@ -1,206 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-                xmlns:th="http://www.thymeleaf.org"
-                xmlns="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>replyboard</title>
+<html
+    lang="en"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.thymeleaf.org"
+>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MK10</title>
+        <!-- CSS -->
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/css/bootstrap.css" />
+        <link rel="stylesheet" href="/css/layout.css" />
+        <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
 
-  
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-  <link rel="stylesheet" href="/css/bootstrap.css">
-  <link rel="stylesheet" href="/css/layout.css">
-  <script type="text/javascript" src="/js/jquery-3.6.4.min.js"></script>
-  <script src="/js/bootstrap.bundle.min.js"></script>
-  
-  
+        <!-- JS -->
+        <script type="text/javascript" src="/js/jquery-3.6.4.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/swiper-bundle.min.js"></script>
+    </head>
+    <body>
+        <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom myHeader"
+        >
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a
+                    href="/"
+                    class="d-inline-flex link-body-emphasis text-decoration-none"
+                >
+                    <svg
+                        class="bi"
+                        width="40"
+                        height="32"
+                        role="img"
+                        aria-label="Bootstrap"
+                    >
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+            </div>
 
-  <!-- include summernote css/js-->
-  <link href="/summernote/summernote-lite.css" rel="stylesheet">
-  <script src="/summernote/summernote-lite.js"></script>
+            <ul
+                class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"
+            >
+                <li>
+                    <a href="#" class="nav-link px-2 link-secondary">Home</a>
+                </li>
+            </ul>
 
+            <div class="col-md-3 text-end">
+                <button type="button" class="btn btn-outline-primary me-2">
+                    Login
+                </button>
+                <button type="button" class="btn btn-primary">Sign-up</button>
+            </div>
+        </header>
 
-</head>
-<body>
-  <header class="p-3 bg-dark text-white">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          JJANG'S MEDIA LAB
-        </a>
+        <main id="main">
+            <div
+                class="container"
+                id="contents"
+                layout:fragment="contents"
+            ></div>
+        </main>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/" class="nav-link px-2 text-white">ABOUT</a></li>
-          <li><a href="/board/list" class="nav-link px-2 text-secondary">BOARD</a></li>
-          <li><a  class="nav-link px-2 text-white">FAQ</a></li>
-        </ul>
+        <!-- <script>
+            const header = document.querySelector(".myHeader");
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-        </form>
-
-        <div class="text-end" th:if="${session.board==null}">
-          <a href="/login/signup" type="button" class="btn btn-outline-light me-2">Sign-up</a>
-          <a href="/login/login" type="button" class="btn btn-warning">Login</a>
-        </div>
-        <div class="text-end" th:unless="${session.board==null}">
-          
-          <a href="#" type="button" class="btnInfo">
-            <span><img src="#" alt="" th:src="@{|/upload/${session.board.renameFilePath}}"></span>
-            <span th:text="${session.board.username}">name</span>
-            </a>
-          <a href="/login/logout" type="button" class="btn btn-warning">logout</a>
-
-
-        </div>
-
-      </div>
-    </div>
-  </header>
-  
-  <main id="main">
-    <div class="container" id="contents" layout:fragment="contents">
-      <h2>BOARD</h2>
-    </div>
-  </main>
-  <div class="container">
-    <footer class="py-3 my-4">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">ABOUT</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">BOARD</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQ</a></li>
-      </ul>
-      <p class="text-center text-muted">© 2021 Company, Inc</p>
-    </footer>
-  </div>
-  <div class="modal fade" tabindex="-1" id="memoModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p th:text="${msg}">Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer text-center">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="modal fade" tabindex="-1" id="deleteModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">삭제하시겠습니까?</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="password" class="form-label">PASSWORD</label>
-            <input type="password" class="form-control" id="password" placeholder="password" name="password">
-          </div>
-        </div>
-        <div class="modal-footer text-center">
-          <button type="button" class="btn btn-primary" id="btnDeleteConfirm" data-bs-dismiss="modal">CONFIRM</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
-          
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <script th:inline="javascript">
-    /*<![CDATA[*/
-      const msg = /*[[${msg}]]*/;
-      const param = /*[[${param}]]*/;
-      const no = /*[[${param.no}]]*/;
-      const session = /*[[${session}]]*/;
-      console.log(session);
-      
-      const memoModal = new bootstrap.Modal("#memoModal");
-      const deleteModal = new bootstrap.Modal("#deleteModal");
-      
-      if(msg){
-        memoModal.show();
-      }
-      $("#btnDeleteAjax").on("click",function(e){
-        //e.preventDefault();
-        deleteModal.show();
-        return false;
-      });
-
-
-      $("#btnDeleteConfirm").on("click",function(e){
-        console.log("uuuu");
-        $.ajax({
-          url:"/board/deleteAjaxProcess",
-          data:{"no":no,"password":$("#password").val()},
-          type:"POST",
-          success:function(response){
-            console.log(response);
-            if(response.msg==="ok") {
-              setTimeout(function(){
-                location.href="/board/list";  
-              },500)
-            } else {
-              location.reload();
-            }
-          },
-        })
-      });
-
-      $(".btnInfo").on("click",function(){
-        console.log("uuuu");       
-        deleteModal.show();
-        const pw = session.board.userpw;
-        console.log(pw);
-        $("#deleteModal .modal-title").text("비밀번호를 입력해 주세요.");
-        $("#btnDeleteConfirm").on("click",function(e){
-          if($("#password").val()==pw){
-            
-            location.href="/login/info";
-          } else {
-            history.back();
-          }
-        })
-      });
-
-      $('#summernote').summernote({
-        tabsize: 2,
-        height: 300,
-      
-      });
-      /*]]>*/
-      
-   
-  </script>
- 
-</body>
-
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-window.onload = function(){
-    document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
-        //카카오 지도 발생
-        new daum.Postcode({
-            oncomplete: function(data) { //선택시 입력값 세팅
-              document.getElementById("address_kakao").value = data.address; // 주소 넣기
-              document.getElementById("inputCity").value = data.sigungu; // 
-              document.getElementById("inputState").value = data.sido; // 
-              document.querySelector("input[name=userad2]").focus(); //상세입력 포커싱
-            }
-        }).open();
-    });
-}
-</script>
-
-
+            window.addEventListener("scroll", function (e) {
+                console.log(window.scrollY);
+                if (window.scrollY > 0) {
+                    myHeader.classList.add("on");
+                } else {
+                    myHeader.classList.remove("on");
+                }
+            });
+        </script> -->
+    </body>
 </html>
