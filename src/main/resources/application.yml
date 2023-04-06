@@ -1,0 +1,32 @@
+#server port
+server: 
+  port: 9091
+
+#spring setting
+spring:
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url:  jdbc:oracle:thin:@localhost:1521:xe
+    username: ikkyujang
+    password: 1234
+
+logging:
+  level:
+    root: INFO
+    '[com.jjang051.replyboard03]': DEBUG
+
+  
+
+mybatis:
+  mapper-locations: classpath:mapper/sqlmapper/**/*.xml
+  config-location: classpath:mapper/config/config.xml
+
+#나는 세팅 모든게 다 세팅
+
+file:
+  path:  C:/replyboard03/upload/
+  
+    
