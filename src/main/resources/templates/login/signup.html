@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+                xmlns:th="http://www.thymeleaf.org" 
+                xmlns="http://www.thymeleaf.org"
+                layout:decorate="~{/layout/layout.html}">
+                
+<head>
+  <title>REPLYBOARD</title>
+</head>
+<body>
+  <div layout:fragment="contents">
+    <h2>SIGN-UP</h2>
+
+    <form class="row g-3" action="/login/signProcess" method="post" th:object="${loginBoardDto}" enctype="multipart/form-data" >
+
+
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >name</label>
+          <input type="text" class="form-control" id="username" th:field="*{username}" 
+          th:class="${#fields.hasErrors('username')}? 'form-control errorTxt' : 'form-control'" >
+          <p th:if="${#fields.hasErrors('username')}" th:errorclass="errorTxt" th:errors="*{username}"></p>
+        </div>
+        
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >age</label>
+          <input type="number" class="form-control" id="userage" th:field="*{userage}"   min="1" max="100"
+          th:class="${#fields.hasErrors('userage')}? 'form-control errorTxt' : 'form-control'" >
+          <p th:if="${#fields.hasErrors('userage')}" th:errorclass="errorTxt" th:errors="*{userage}"></p>
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >ID</label>
+          <input type="text" class="form-control" id="userid" th:field="*{userid}"   min="1" max="100"
+          th:class="${#fields.hasErrors('userid')}? 'form-control errorTxt' : 'form-control'" >
+          <p th:if="${#fields.hasErrors('userid')}" th:errorclass="errorTxt" th:errors="*{userid}"></p>
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword4" th:field="*{userpw}"  >
+          <p th:if="${#fields.hasErrors('userpw')}" th:errorclass="errorTxt" th:errors="*{userpw}"></p>
+          
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >Email</label>
+          <input type="text" class="form-control" id="useremail" th:field="*{useremail}" 
+          th:class="${#fields.hasErrors('useremail')}? 'form-control errorTxt' : 'form-control'" >
+          <p th:if="${#fields.hasErrors('useremail')}" th:errors="*{useremail}"></p>
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" id="address_kakao" th:field="*{userad}" placeholder="1234 Main St" readonly>
+          
+          <p th:if="${#fields.hasErrors('userad')}" th:errorclass="errorTxt" th:errors="*{userad}"></p>
+
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Address 2</label>
+          <input type="text" class="form-control" id="userad2" name="userad2" placeholder="Apartment, studio, or floor">
+
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">City</label>
+          <input type="text" class="form-control" id="inputCity" th:field="*{usercity}">
+          <p th:if="${#fields.hasErrors('usercity')}" th:errorclass="errorTxt" th:errors="*{usercity}"></p>
+
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <input type="text" class="form-control" id="inputState" th:field="*{userstate}">
+          <p th:if="${#fields.hasErrors('userstate')}" th:errorclass="errorTxt" th:errors="*{userstate}"></p>
+
+
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="userzipcode"  th:field="*{userzipcode}" 
+          >
+          <p th:if="${#fields.hasErrors('userzipcode')}" th:errorclass="errorTxt"  th:errors="*{userzipcode}"></p>
+
+        </div>
+
+
+
+        <div class="mt-2">
+          <input class="form-control" type="file" id="formFile" name="originalFile">
+        </div>
+       
+        <div>
+          
+          
+
+
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+      <!-- <script>
+        $(".btn").on("click",function(){
+
+          if($(".form-control").val()==""){
+            return false;
+          }
+        })
+      </script> -->
+  </div>
+</body>
+
+</html>

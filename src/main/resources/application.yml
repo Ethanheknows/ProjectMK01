@@ -12,15 +12,16 @@ spring:
         url: jdbc:oracle:thin:@localhost:1521:xe
         username: TIS
         password: 1234
-# logging:
-#   level:
-#     root: INFO
-#     '[com.mk01.ProjectMK01]': DEBUG
+        
+logging:
+  level:
+    root: INFO
+    '[com.mk01.ProjectMK01]': DEBUG
 
-# mybatis:
-#   mapper-locations: classpath:mapper/sqlmapper/**/*.xml
-#   config-location: classpath:mapper/config/config.xml
+mybatis:
+  mapper-locations: classpath:mapper/sqlmapper/**/*.xml
+  config-location: classpath:mapper/config/config.xml
 
-# file:
-#   path:  C:/ProjectMK01/upload/
+file:
+  path:  C:/ProjectMK01/upload/
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+                xmlns:th="http://www.thymeleaf.org" 
+                xmlns="http://www.thymeleaf.org"
+                layout:decorate="~{/layout/layout.html}">
+<head>
+  <title>REPLYBOARD</title>
+</head>
+<body>
+  <div layout:fragment="contents">
+    <h2>SIGN-UP</h2>
+
+    <div class="row g-3" action="/login/signProcess" method="post" th:object="${loginBoardDto}" >
+
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >name</label>
+          <p type="text" class="form-control" id="username" th:text="${session.board.username}" >asd</p>
+        </div>
+        
+
+
+
+
+
+        
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >age</label>
+          
+          <p type="text" class="form-control" id="userage" th:text="${session.board.userage}" >asd</p>
+
+          
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >ID</label>
+        
+          <p type="text" class="form-control" id="userid" th:text="${session.board.userid}" >asd</p>
+
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <p type="text" class="form-control" id="userpw" th:text="${session.board.userpw}" >asd</p>
+
+          
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >Email</label>
+          <p type="text" class="form-control" id="useremail" th:text="${session.board.useremail}" >asd</p>
+
+     
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Address</label>
+
+          <p type="text" class="form-control" id="userad" th:text="${session.board.userad}" >asd</p>
+
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Address 2</label>
+          <p type="text" class="form-control" id="userad2" th:text="${session.board.userad2}" >asd</p>
+          
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">City</label>
+          <p type="text" class="form-control" id="userad2" th:text="${session.board.usercity}" >asd</p>
+
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <p type="text" class="form-control" id="userstate" th:text="${session.board.userstate}" >asd</p>
+
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <p type="text" class="form-control" id="userzipcode" th:text="${session.board.userzipcode}" >asd</p>
+
+
+        </div>
+
+
+        <div class="col-12">
+          <a href="/login/modify" class="btn btn-primary">MODIFY</a>
+          <a href="/login/delete" class="btn btn-warning">DELETE</a>
+          <a href="/login/main" class="btn btn-secondary">CANCEL</a>
+        </div>
+    </div>
+  </div>
+</body>
+
+</html>
