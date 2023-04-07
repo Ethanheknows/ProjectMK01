@@ -11,7 +11,11 @@ a<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MK10</title>
 
-    <link rel="shortcut icon" href="/css/favicon/favicon.ico" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="/images/favicon/favicon.ico"
+      type="image/x-icon"
+    />
     <!-- CSS -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -132,7 +136,7 @@ a<!DOCTYPE html>
 
         const memoModal = new bootstrap.Modal("#memoModal");
         const deleteModal = new bootstrap.Modal("#deleteModal");
-        
+
         if(msg){
           memoModal.show();
         }
@@ -189,7 +193,7 @@ a<!DOCTYPE html>
 
               return false;
             }
-           
+
             $.ajax({
               url : "/nickNameCheck",
                   type : "post",
@@ -202,10 +206,10 @@ a<!DOCTYPE html>
                             $('#nickName_div').html('<a">이미 사용중인 닉네임입니다.</a>:')
                         }
                       }
-            }) 
+            })
           })
 
-       
+
 
           $(".id_confirm").on("focusout",function(){
             var id=$("#userId").val();
@@ -231,7 +235,7 @@ a<!DOCTYPE html>
                             $('#id_div').html('<a">이미 사용중이거나 탈퇴한 ID입니다.</a>:')
                         }
                       }
-            }) 
+            })
           })
 
 
@@ -246,8 +250,8 @@ a<!DOCTYPE html>
 
             }else{
               $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
-             
-              
+
+
             }
 
             if(id==''||id.length==0){
@@ -256,25 +260,25 @@ a<!DOCTYPE html>
             }else{
               $('#userPw_div').html('<a" id="pw_null">비밀번호 입력이 완료되었습니다.</a>:')
 
-          
+
               return false
             }
-          
-            
+
+
           })
 
           $(".userPwCheck_confirm").on("focusout",function(){
             var pwchk=$("#userPwCheck").val();
             var pw=$("#userPw").val();
 
-            
-            
+
+
             if(pw!= pwchk){
               $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>:')
             }else{
               $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
-               
-              
+
+
             }
               if(pwchk==''||pwchk.length==0){
                 $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호를 입력해 주세요.</a>:')
@@ -283,34 +287,34 @@ a<!DOCTYPE html>
               }else{
                 $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호 입력이 완료되었습니다.</a>:')
               return false
-                
-  
+
+
               }
 
 
 
-            
+
           })
-          
+
           $(".email_confirm").on("focusout",function(){
             var userEmail=$("#userEmail").val();
 
             reg_email = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 
-            if(!reg_email.test(userEmail)) {                            
+            if(!reg_email.test(userEmail)) {
               $('#email_div').html('<a" id="email_null">이메일 양식을 지켜서 입력해 주세요.</a>')
             }else{
                 const element = document.getElementById("email_null");
                 element.remove(); // Removes the div with the 'div-02' id
-            }   
-            
+            }
+
             if(userEmail==''||userEmail.length==0){
               $('#email_div').html('<a" id="email_null">이메일을 입력해 주세요.</a>')
             }else{
               const element = document.getElementById("email_null");
               element.remove(); // Removes the div with the 'div-02' id
             }
-            
+
           })
 
 
@@ -325,7 +329,7 @@ a<!DOCTYPE html>
 
 
 
-          
+
         $('#summernote').summernote({
           tabsize: 2,
           height: 300,
