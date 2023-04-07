@@ -172,6 +172,24 @@
                 ["Focm"],
                 null
             );
+            function dragStart(e) {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+
+                if (e.target === textBox) {
+                    isDragging = true;
+                }
+            }
+            const rangeSlider = document.getElementById("range-slider");
+
+            rangeSlider.addEventListener("input", () => {
+                const value = rangeSlider.value;
+                const x =
+                    0.15 * canvas.width + (canvas.width * 0.7 * value) / 100;
+                const y = 0.45 * canvas.height + 21 * t;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillText("Hello, world!", x, y);
+            });
         </script>
     </body>
 </html>

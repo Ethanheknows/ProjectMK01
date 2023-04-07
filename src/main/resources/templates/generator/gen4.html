@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>gen4</title>
+    </head>
+    <body>
+        <h1>Meme Generator</h1>
+        <input type="file" id="fileInput" />
+        <br /><br />
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <br /><br />
+        <label for="topRange">Top Position:</label>
+        <input
+            type="range"
+            id="topRange"
+            min="0"
+            max="500"
+            step="1"
+            value="0"
+        />
+        <br /><br />
+        <label for="leftRange">Left Position:</label>
+        <input
+            type="range"
+            id="leftRange"
+            min="0"
+            max="500"
+            step="1"
+            value="0"
+        />
+        <br /><br />
+        <label for="txtBox">Text:</label>
+        <input type="text" id="txtBox" />
+        <br /><br />
+        <label for="fontSizeRange">Font Size:</label>
+        <input
+            type="range"
+            id="fontSizeRange"
+            min="1"
+            max="72"
+            step="1"
+            value="36"
+        />
+        <br /><br />
+        <label for="fontColor">Font Color:</label>
+        <input type="color" id="fontColor" value="#ffffff" />
+        <br /><br />
+        <label for="fontFamilySelect">Font Family:</label>
+        <select id="fontFamilySelect">
+            <option value="sans-serif">Sans-serif</option>
+            <option value="serif">Serif</option>
+            <option value="monospace">Monospace</option>
+        </select>
+        <br /><br />
+        <button id="generateBtn">Generate Meme</button>
+        <br /><br />
+        <a id="downloadLink" download="meme.png" href="#" style="display: none"
+            >Download Meme</a
+        >
+        <script>
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            const fileInput = document.getElementById("fileInput");
+            const topRange = document.getElementById("topRange");
+            const leftRange = document.getElementById("leftRange");
+            const txtBox = document.getElementById("txtBox");
+            const generateBtn = document.getElementById("generateBtn");
+            const downloadLink = document.getElementById("downloadLink");
+
+            let img = null;
+
+            function redraw() {
+                if (img !== null) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle =
+                        document.getElementById("colorPicker").value;
+                    ctx.font =
+                        document.getElementById("fontFamily").value +
+                        " " +
+                        document.getElementById("fontSize").value +
+                        "px sans-serif";
+                    ctx.textAlign = "center";
+                    ctx.fillText(
+                        txtBox.value,
+                        canvas.width / 2 + parseInt(leftRange.value),
+                        parseInt(topRange.value) +
+                            parseInt(document.getElementById("fontSize").value)
+                    );
+                    downloadLink.href = canvas.toDataURL();
+                    downloadLink.style.display = "block";
+                }
+            }
+
+            fileInput.addEventListener("change", () => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    img = new Image();
+                    img.onload = () => {
+                        let ratio = img.width / img.height;
+                        if (ratio > 1) {
+                            canvas.width = 500;
+                            canvas.height = 500 / ratio;
+                        } else {
+                            canvas.width = 500 * ratio;
+                            canvas.height = 500;
+                        }
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    };
+                    img.src = reader.result;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            });
+
+            txtBox.addEventListener("input", redraw);
+
+            topRange.addEventListener("input", redraw);
+
+            leftRange.addEventListener("input", redraw);
+
+            const colorPicker = document.getElementById("colorPicker");
+            colorPicker.addEventListener("input", redraw);
+
+            const fontFamily = document.getElementById("fontFamily");
+            fontFamily.addEventListener("change", redraw);
+
+            const fontSize = document.getElementById("fontSize");
+            fontSize.addEventListener("input", redraw);
+
+            generateBtn.addEventListener("click", () => {
+                redraw();
+            });
+        </script>
+    </body>
+</html>
