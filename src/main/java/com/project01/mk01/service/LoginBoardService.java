@@ -6,4 +6,9 @@ public interface LoginBoardService {
 
     public LoginBoardDto searchBoard(LoginBoardDto loginBoardDto);
 
+    public int signup(LoginBoardDto loginBoardDto);
+
+    public int idCheck(LoginBoardDto loginBoardDto);
+
+    public int nickNameCheck(LoginBoardDto loginBoardDto);
 }
