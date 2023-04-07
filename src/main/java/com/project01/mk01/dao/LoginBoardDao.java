@@ -9,4 +9,9 @@ public interface LoginBoardDao {
 
     LoginBoardDto searchBoard(LoginBoardDto loginBoardDto);
 
+    int signup(LoginBoardDto loginBoardDto);
+
+    int idCheck(LoginBoardDto loginBoardDto);
+
+    int nickNameCheck(LoginBoardDto loginBoardDto);
 }

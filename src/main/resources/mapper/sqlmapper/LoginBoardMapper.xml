@@ -9,7 +9,33 @@
         select * from signup where userid = #{userId} and  userpw = #{userPw}
         
     </select>
+    <select id="idCheck" resultType="Integer" parameterType="LoginBoardDto" >
+
+      SELECT COUNT(*) FROM signup where userid=#{userId}
+        
+    </select>
+
+    <select id="nickNameCheck" resultType="Integer" parameterType="LoginBoardDto" >
+
+      SELECT COUNT(*) FROM signup where nickname=#{nickName}
+        
+    </select>
+
+    <insert id="signup" parameterType="LoginBoardDto" >
+
+      INSERT INTO signup VALUES (
+      signup_SEQ.NEXTVAL,
+        #{nickName},
+        #{userId},
+        #{userPw},
+        #{userEmail}
+      
+            )
+
+      
+    </insert>
+
+
 
     
-
 </mapper>

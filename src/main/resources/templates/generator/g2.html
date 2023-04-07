@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Meme Generator</title>
+    </head>
+    <body>
+        <h1>Meme Generator</h1>
+        <input type="file" id="fileInput" />
+        <br /><br />
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <br /><br />
+        <label for="topRange">Top Position:</label>
+        <input
+            type="range"
+            id="topRange"
+            min="0"
+            max="500"
+            step="1"
+            value="0"
+        />
+        <br /><br />
+        <label for="leftRange">Left Position:</label>
+        <input
+            type="range"
+            id="leftRange"
+            min="0"
+            max="500"
+            step="1"
+            value="0"
+        />
+        <br /><br />
+        <label for="txtBox">Text:</label>
+        <input type="text" id="txtBox" />
+        <br /><br />
+        <button id="generateBtn">Generate Meme</button>
+        <br /><br />
+        <a id="downloadLink" download="meme.png" href="#" style="display: none"
+            >Download Meme</a
+        >
+        <script>
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            const fileInput = document.getElementById("fileInput");
+            const topRange = document.getElementById("topRange");
+            const leftRange = document.getElementById("leftRange");
+            const txtBox = document.getElementById("txtBox");
+            const generateBtn = document.getElementById("generateBtn");
+            const downloadLink = document.getElementById("downloadLink");
+
+            let img = null;
+
+            fileInput.addEventListener("change", () => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    img = new Image();
+                    img.onload = () => {
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    };
+                    img.src = reader.result;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            });
+
+            generateBtn.addEventListener("click", () => {
+                if (img !== null) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = "#ffffff";
+                    ctx.font = "bold 36px sans-serif";
+                    ctx.textAlign = "center";
+                    ctx.fillText(
+                        txtBox.value,
+                        canvas.width / 2 + parseInt(leftRange.value),
+                        parseInt(topRange.value) + 36
+                    );
+                    downloadLink.href = canvas.toDataURL();
+                    downloadLink.style.display = "block";
+                }
+            });
+        </script>
+    </body>
+</html>
