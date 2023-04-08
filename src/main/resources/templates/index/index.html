@@ -1,84 +1,100 @@
 <!DOCTYPE html>
 <html
-    lang="en"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns="http://www.thymeleaf.org"
-    layout:decorate="~{/layout/layout.html}"
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.thymeleaf.org"
+  layout:decorate="~{/layout/layout.html}"
 >
-    <head>
-        <title>MK01</title>
-    </head>
-    <body>
-        <div layout:fragment="contents">
-            <div class="tag">
-                <h1>태그이름</h1>
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="/images/ex1.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/ex2.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/ex3.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/ex4.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/ex5.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/ex1.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/ex2.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/ex3.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/ex4.jpg" alt="" />
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            <div class="tag">
-                <h1>gif</h1>
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="/images/gif/ex1.gif" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/gif/ex2.gif" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/gif/ex3.gif" alt="" />
-                        </div>
-                        
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
-                <!-- 이안에 내용 -->
+  <head>
+    <title>MK01</title>
+  </head>
+  <body>
+    <div layout:fragment="contents">
+      <div class="tag">
+        <h1>태그이름</h1>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex1.jpg" alt="" /></a>
             </div>
-
-            <script>
-                const swiper = new Swiper(".swiper", {
-                    // autoHeight: true,
-                    slidesPerView: 5,
-                    centeredSlides: true,
-
-                    spaceBetween: 30,
-                    pagination: {
-                        el: ".swiper-pagination",
-                        clickable: true,
-                    },
-                });
-            </script>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex2.jpg" alt="" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex3.jpg" alt="" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex4.jpg" alt="" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex5.jpg" alt="" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex6.jpg" alt="" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex1.jpg" alt="" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex2.jpg" alt="" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex3.jpg" alt="" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex4.jpg" alt="" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex5.jpg" alt="" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/ex6.jpg" alt="" /></a>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
-    </body>
+        <div class="tag">
+          <h1>gif</h1>
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href=""><img src="/images/gif/ex1.gif" alt="" /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href=""><img src="/images/gif/ex2.gif" alt="" /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href=""><img src="/images/gif/ex3.gif" alt="" /></a>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+
+          <!-- 이안에 내용 -->
+        </div>
+
+        <script>
+          const swiper = new Swiper(".swiper", {
+            // autoHeight: true,
+            slidesPerView: 6,
+            centeredSlides: true,
+
+            spaceBetween: 10,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+          });
+          //모달
+          const myModal = document.getElementById("myModal");
+          const myInput = document.getElementById("myInput");
+
+          myModal.addEventListener("shown.bs.modal", () => {
+            myInput.focus();
+          });
+        </script>
+      </div>
+    </div>
+  </body>
 </html>

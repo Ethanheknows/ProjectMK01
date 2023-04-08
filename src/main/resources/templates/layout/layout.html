@@ -10,25 +10,19 @@ a<!DOCTYPE html>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MK10</title>
+    <!-- favicon -->
 
-    <link
-      rel="shortcut icon"
-      href="/images/favicon/favicon.ico"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
     <!-- CSS -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="/css/bootstrap.css" />
     <link rel="stylesheet" href="/css/layout.css" />
     <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
-
     <!-- JS -->
     <script type="text/javascript" src="/js/jquery-3.6.4.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/swiper-bundle.min.js"></script>
+    <script src="/js/gsap/gsap.min.js"></script>
   </head>
   <body>
     <header
@@ -36,13 +30,13 @@ a<!DOCTYPE html>
     >
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li>
-          <a href="#" class="nav-link px-2 link-secondary">Home</a>
+          <a href="/" class="nav-link px-2 link-secondary">Home</a>
         </li>
       </ul>
 
       <div class="col-md-3 text-end">
         <a href="/login" class="btn btn-outline-primary me-2"> Login </a>
-        <button type="button" class="btn btn-primary">Sign-up</button>
+        <a href="/signup" class="btn btn-primary">Sign-up</a>
       </div>
     </header>
 
@@ -55,24 +49,13 @@ a<!DOCTYPE html>
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Modal title</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <p th:text="${msg}">Modal body text goes here.</p>
           </div>
           <div class="modal-footer text-center">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
           </div>
         </div>
@@ -84,43 +67,17 @@ a<!DOCTYPE html>
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">삭제하시겠습니까?</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="mb-3">
               <label for="password" class="form-label">PASSWORD</label>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                placeholder="password"
-                name="password"
-              />
+              <input type="password" class="form-control" id="password" placeholder="password" name="password" />
             </div>
           </div>
           <div class="modal-footer text-center">
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="btnDeleteConfirm"
-              data-bs-dismiss="modal"
-            >
-              CONFIRM
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              CLOSE
-            </button>
-
-            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            <button type="button" class="btn btn-primary" id="btnDeleteConfirm" data-bs-dismiss="modal">CONFIRM</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
           </div>
         </div>
       </div>

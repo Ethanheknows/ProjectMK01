@@ -7,7 +7,7 @@
   layout:decorate="~{/layout/layout.html}"
 >
   <head>
-    <title>REPLYBOARD</title>
+    <title>Login</title>
   </head>
   <body>
     <div layout:fragment="contents">
@@ -16,36 +16,19 @@
           <!-- <img class="mb-4" src="/images/Coca-Cola_logo.svg" alt="" width="72" height="57"> -->
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-          <div class="form-floating">
-            <input
-              type="text"
-              class="form-control"
-              id="userId"
-              placeholder="ID"
-              name="userId"
-            />
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="userId" placeholder="ID" name="userId" />
             <label for="floatingInput">ID</label>
           </div>
-          <div class="form-floating">
-            <input
-              type="password"
-              class="form-control"
-              id="userPw"
-              placeholder="Password"
-              name="userPw"
-            />
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="userPw" placeholder="Password" name="userPw" />
             <label for="floatingPassword">Password</label>
           </div>
 
           <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me" /> Remember me
-            </label>
+            <label> <input type="checkbox" value="remember-me" /> Remember me </label>
           </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">
-            Sign in
-          </button>
-          <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
         </form>
       </div>
     </div>
