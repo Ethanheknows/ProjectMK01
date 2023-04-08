@@ -14,44 +14,7 @@
       <div class="tag">
         <h1>태그이름</h1>
         <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex1.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex2.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex3.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex4.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex5.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex6.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex1.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex2.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex3.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex4.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex5.jpg" alt="" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/ex6.jpg" alt="" /></a>
-            </div>
-          </div>
+          <div class="swiper-wrapper tag1"></div>
           <div class="swiper-pagination"></div>
         </div>
       </div>
@@ -59,42 +22,35 @@
       <div class="tag">
         <h1>GIF</h1>
         <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href=""><img src="/images/gif/ex1.gif" alt="" id="gif" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/gif/ex2.gif" alt="" id="gif" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/gif/ex3.gif" alt="" id="gif" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/gif/ex1.gif" alt="" id="gif" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/gif/ex2.gif" alt="" id="gif" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/gif/ex3.gif" alt="" id="gif" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/gif/ex1.gif" alt="" id="gif" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/gif/ex2.gif" alt="" id="gif" /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href=""><img src="/images/gif/ex3.gif" alt="" id="gif" /></a>
-            </div>
-          </div>
+          <div class="swiper-wrapper tag2"></div>
           <div class="swiper-pagination"></div>
         </div>
       </div>
 
       <script>
+        // const tag1 = document.querySelector(".tag1");
+        $(function () {
+          for (i = 1; i < 7; i++) {
+            // prettier-ignored
+            $(".tag1").append(
+              `<div class="swiper-slide"><a href=""><img src="/images/ex` + i + `.jpg" alt="" /></a></div>`
+            );
+          }
+        }); // 태그 1에 대한 컨텐츠 for문
+
+        $(function () {
+          for (i = 1; i < 9; i++) {
+            // prettier-ignored
+            $(".tag2").append(
+              `<div class="swiper-slide"><a href=""><img src="/images/gif/ex` + i + `.gif" alt="" /></a></div>`
+            );
+          }
+        }); // 태그 2에 대한 컨텐츠 for문
+
         const swiper = new Swiper(".swiper", {
           // autoHeight: true,
+          observer: true,
+          observeParents: true, // 이 두줄 있어야지 스와이프 내부 For문 돌아감  %중요
           slidesPerView: 6,
           centeredSlides: true,
 
@@ -104,13 +60,10 @@
             clickable: true,
           },
         });
-        //모달
-        const myModal = document.getElementById("myModal");
-        const myInput = document.getElementById("myInput");
 
-        myModal.addEventListener("shown.bs.modal", () => {
-          myInput.focus();
-        });
+        // swiper.update();
+
+        // 모달
       </script>
 
       <!-- 이안에 내용 -->

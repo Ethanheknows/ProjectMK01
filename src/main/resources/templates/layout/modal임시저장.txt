@@ -1,0 +1,225 @@
+<div class="modal fade" tabindex="-1" id="deleteModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">삭제하시겠습니까?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="password" class="form-label">PASSWORD</label>
+              <input type="password" class="form-control" id="password" placeholder="password" name="password" />
+            </div>
+          </div>
+          <div class="modal-footer text-center">
+            <button type="button" class="btn btn-primary" id="btnDeleteConfirm" data-bs-dismiss="modal">CONFIRM</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+        const msg = /*[[${msg}]]*/;
+        const param = /*[[${param}]]*/;
+        const no = /*[[${param.no}]]*/;
+        const session = /*[[${session}]]*/;
+
+        const memoModal = new bootstrap.Modal("#memoModal");
+        const deleteModal = new bootstrap.Modal("#deleteModal");
+
+        if(msg){
+          memoModal.show();
+        }
+        $("#btnDeleteAjax").on("click",function(e){
+          //e.preventDefault();
+          deleteModal.show();
+          return false;
+        });
+
+
+        $("#btnDeleteConfirm").on("click",function(e){
+          console.log("uuuu");
+          $.ajax({
+            url:"/board/deleteAjaxProcess",
+            data:{"no":no,"password":$("#password").val()},
+            type:"POST",
+            success:function(response){
+              console.log(response);
+              if(response.msg==="ok") {
+                setTimeout(function(){
+                  location.href="/board/list";
+                },500)
+              } else {
+                location.reload();
+              }
+            },
+          })
+        });
+
+        $(".btnInfo").on("click",function(){
+          console.log("uuuu");
+          deleteModal.show();
+          const pw = session.board.userpw;
+          console.log(pw);
+          $("#deleteModal .modal-title").text("비밀번호를 입력해 주세요.");
+          $("#btnDeleteConfirm").on("click",function(e){
+            if($("#password").val()==pw){
+
+              location.href="/login/info";
+            } else {
+              history.back();
+            }
+          })
+        });
+
+
+
+        $(document).ready(function(){
+          $(".nickName_confirm").on("focusout",function(){
+            var id=$("#nickName").val();
+
+            if(id==''||id.length==0){
+              $('#nickName_div').html('<a">닉네임을 입력해 주세요.</a>:')
+
+              return false;
+            }
+
+            $.ajax({
+              url : "/nickNameCheck",
+                  type : "post",
+                  dataType : "json",
+                  data : {"nickName" : $("#nickName").val()},
+                  success : function(data){
+                          if(data == 0){
+                            $('#nickName_div').html('<a">사용가능한 닉네임입니다.</a>:')
+                          }else{
+                            $('#nickName_div').html('<a">이미 사용중인 닉네임입니다.</a>:')
+                        }
+                      }
+            })
+          })
+
+
+
+          $(".id_confirm").on("focusout",function(){
+            var id=$("#userId").val();
+
+            if(id==''||id.length==0){
+              $('#id_div').html('<a">아이디를 입력해 주세요.</a>:')
+              return false;
+            }
+            if(id.length<5){
+              $('#id_div').html('<a">아이디를 5글자 이상 입력해 주세요.</a>:')
+
+              return false;
+            }
+            $.ajax({
+              url : "/idCheck",
+                  type : "post",
+                  dataType : "json",
+                  data : {"userId" : $("#userId").val()},
+                  success : function(data){
+                          if(data == 0){
+                            $('#id_div').html('<a">사용가능한 ID입니다.</a>:')
+                          }else{
+                            $('#id_div').html('<a">이미 사용중이거나 탈퇴한 ID입니다.</a>:')
+                        }
+                      }
+            })
+          })
+
+
+
+          $(".userPw_confirm").on("focusout",function(){
+            var pwchk=$("#userPwCheck").val();
+            var id=$("#userPw").val();
+
+
+            if(id!= pwchk){
+              $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>:')
+
+            }else{
+              $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
+
+
+            }
+
+            if(id==''||id.length==0){
+              $('#userPw_div').html('<a" id="pw_null">비밀번호를 입력해 주세요.</a>:')
+              return false;
+            }else{
+              $('#userPw_div').html('<a" id="pw_null">비밀번호 입력이 완료되었습니다.</a>:')
+
+
+              return false
+            }
+
+
+          })
+
+          $(".userPwCheck_confirm").on("focusout",function(){
+            var pwchk=$("#userPwCheck").val();
+            var pw=$("#userPw").val();
+
+
+
+            if(pw!= pwchk){
+              $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>:')
+            }else{
+              $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
+
+
+            }
+              if(pwchk==''||pwchk.length==0){
+                $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호를 입력해 주세요.</a>:')
+              return false
+
+              }else{
+                $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호 입력이 완료되었습니다.</a>:')
+              return false
+
+
+              }
+
+
+
+
+          })
+
+          $(".email_confirm").on("focusout",function(){
+            var userEmail=$("#userEmail").val();
+
+            reg_email = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+            if(!reg_email.test(userEmail)) {
+              $('#email_div').html('<a" id="email_null">이메일 양식을 지켜서 입력해 주세요.</a>')
+            }else{
+                const element = document.getElementById("email_null");
+                element.remove(); // Removes the div with the 'div-02' id
+            }
+
+            if(userEmail==''||userEmail.length==0){
+              $('#email_div').html('<a" id="email_null">이메일을 입력해 주세요.</a>')
+            }else{
+              const element = document.getElementById("email_null");
+              element.remove(); // Removes the div with the 'div-02' id
+            }
+
+          })
+
+
+
+
+        })
+
+
+
+
+
+
+
+
+
+        /*]]>*/
+    </script>

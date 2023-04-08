@@ -82,14 +82,12 @@ a<!DOCTYPE html>
         </div>
       </div>
     </div>
-
     <script th:inline="javascript">
       /*<![CDATA[*/
         const msg = /*[[${msg}]]*/;
         const param = /*[[${param}]]*/;
         const no = /*[[${param.no}]]*/;
         const session = /*[[${session}]]*/;
-        console.log(session);
 
         const memoModal = new bootstrap.Modal("#memoModal");
         const deleteModal = new bootstrap.Modal("#deleteModal");
@@ -287,11 +285,6 @@ a<!DOCTYPE html>
 
 
 
-        $('#summernote').summernote({
-          tabsize: 2,
-          height: 300,
-
-        });
         /*]]>*/
     </script>
   </body>
