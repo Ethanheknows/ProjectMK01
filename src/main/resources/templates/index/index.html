@@ -11,11 +11,12 @@
   </head>
   <body>
     <div layout:fragment="contents">
-      <div class="tag">
+      <div class="category">
         <h1>태그이름</h1>
         <div class="swiper mySwiper">
           <div class="swiper-wrapper tag1"></div>
-          <div class="swiper-pagination"></div>
+          <div><a href="" id="tag"></a></div>
+          <!-- <div class="swiper-pagination"></div> -->
         </div>
       </div>
 
@@ -23,7 +24,7 @@
         <h1>GIF</h1>
         <div class="swiper mySwiper">
           <div class="swiper-wrapper tag2"></div>
-          <div class="swiper-pagination"></div>
+          <!-- <div class="swiper-pagination"></div> -->
         </div>
       </div>
 
@@ -31,8 +32,8 @@
         // const tag1 = document.querySelector(".tag1");
         $(function () {
           for (i = 1; i < 7; i++) {
-            // prettier-ignored
             $(".tag1").append(
+              // prettier-ignored
               `<div class="swiper-slide"><a href=""><img src="/images/ex` + i + `.jpg" alt="" /></a></div>`
             );
           }
@@ -40,8 +41,8 @@
 
         $(function () {
           for (i = 1; i < 9; i++) {
-            // prettier-ignored
             $(".tag2").append(
+              // prettier-ignored
               `<div class="swiper-slide"><a href=""><img src="/images/gif/ex` + i + `.gif" alt="" /></a></div>`
             );
           }
@@ -54,11 +55,14 @@
           slidesPerView: 6,
           centeredSlides: true,
 
-          spaceBetween: 10,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
+          // spaceBetween: 10,
+          // pagination: {
+          //   el: ".swiper-pagination",
+          //   clickable: true,
+          //   renderBullet: function (index, className) {
+          //     return '<span class="' + className + '">' + (index + 1) + "</span>";
+          //   },
+          // },
         });
 
         // swiper.update();

@@ -1,27 +1,46 @@
 .swiper {
   width: 100%;
-  height: 350px;
+  height: 400px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  // .swiper-pagination-bullet {
+  //   width: 20px;
+  //   height: 20px;
+  //   text-align: center;
+  //   line-height: 20px;
+  //   font-size: 12px;
+  //   color: #000;
+  //   opacity: 1;
+  //   background: rgba(0, 0, 0, 0.2);
+  // }
+
+  // .swiper-pagination-bullet-active {
+  //   color: #fff;
+  //   background: #007aff;
+  // }
   .swiper-slide {
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 300px;
+
     &:hover {
       position: relative;
       z-index: 9;
+
       a {
         img {
           width: 350px;
           height: 350px;
           z-index: 9;
+          // object-fit: contain;
         }
       }
     }
+
     a {
       img {
         position: relative;
