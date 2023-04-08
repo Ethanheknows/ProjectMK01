@@ -54,47 +54,66 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
-        <div class="tag">
-          <h1>gif</h1>
-          <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href=""><img src="/images/gif/ex1.gif" alt="" /></a>
-              </div>
-              <div class="swiper-slide">
-                <a href=""><img src="/images/gif/ex2.gif" alt="" /></a>
-              </div>
-              <div class="swiper-slide">
-                <a href=""><img src="/images/gif/ex3.gif" alt="" /></a>
-              </div>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-
-          <!-- 이안에 내용 -->
-        </div>
-
-        <script>
-          const swiper = new Swiper(".swiper", {
-            // autoHeight: true,
-            slidesPerView: 6,
-            centeredSlides: true,
-
-            spaceBetween: 10,
-            pagination: {
-              el: ".swiper-pagination",
-              clickable: true,
-            },
-          });
-          //모달
-          const myModal = document.getElementById("myModal");
-          const myInput = document.getElementById("myInput");
-
-          myModal.addEventListener("shown.bs.modal", () => {
-            myInput.focus();
-          });
-        </script>
       </div>
+
+      <div class="tag">
+        <h1>GIF</h1>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href=""><img src="/images/gif/ex1.gif" alt="" id="gif" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/gif/ex2.gif" alt="" id="gif" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/gif/ex3.gif" alt="" id="gif" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/gif/ex1.gif" alt="" id="gif" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/gif/ex2.gif" alt="" id="gif" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/gif/ex3.gif" alt="" id="gif" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/gif/ex1.gif" alt="" id="gif" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/gif/ex2.gif" alt="" id="gif" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a href=""><img src="/images/gif/ex3.gif" alt="" id="gif" /></a>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+      <script>
+        const swiper = new Swiper(".swiper", {
+          // autoHeight: true,
+          slidesPerView: 6,
+          centeredSlides: true,
+
+          spaceBetween: 10,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+        });
+        //모달
+        const myModal = document.getElementById("myModal");
+        const myInput = document.getElementById("myInput");
+
+        myModal.addEventListener("shown.bs.modal", () => {
+          myInput.focus();
+        });
+      </script>
+
+      <!-- 이안에 내용 -->
     </div>
   </body>
 </html>

@@ -13,10 +13,14 @@
   align-items: center;
   width: 300px;
 }
-.swiper .swiper-slide a :hover {
+.swiper .swiper-slide:hover {
+  position: relative;
+  z-index: 9;
+}
+.swiper .swiper-slide:hover a img {
   width: 350px;
   height: 350px;
-  z-index: 3;
+  z-index: 9;
 }
 .swiper .swiper-slide a img {
   position: relative;
