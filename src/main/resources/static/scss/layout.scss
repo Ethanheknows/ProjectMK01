@@ -36,18 +36,34 @@
           width: 350px;
           height: 350px;
           z-index: 9;
-          // object-fit: contain;
+          &:hover {
+            animation: keep-size 0.5s forwards;
+            animation-delay: 2s;
+            animation-timing-function: ease;
+          }
         }
       }
     }
-
+    @keyframes keep-size {
+      from {
+        width: 350px;
+        height: 350px;
+        opacity: 0%;
+      }
+      to {
+        width: 700px;
+        height: 350px;
+        object-fit: contain;
+        opacity: 100%;
+      }
+    }
     a {
       img {
         position: relative;
         width: 300px;
         height: 300px;
         object-fit: cover;
-        transition: all 0.25s ease;
+        transition: width 0.25s ease, height 0.25s ease;
       }
     }
   }
