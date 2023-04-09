@@ -2,12 +2,11 @@
 <html>
   <head>
     <title>gen5</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"
-    />
+    <!-- 레이아웃에 나중에 이식해야함 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css" />
 
     <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+    <!-- 레이아웃에 나중에 이식해야함 -->
   </head>
   <body>
     <h1>gen5</h1>
@@ -25,14 +24,7 @@
     <input type="text" id="txtBox" />
     <br /><br />
     <label for="fontSizeRange">Font Size:</label>
-    <input
-      type="range"
-      id="fontSizeRange"
-      min="14"
-      max="72"
-      step="1"
-      value="36"
-    />
+    <input type="range" id="fontSizeRange" min="14" max="72" step="1" value="36" />
     <br /><br />
     <label for="fontColor">Font Color:</label>
     <input type="text" id="fontColor" value="#ffffff" data-coloris />
@@ -54,9 +46,7 @@
     </select>
     <br /><br />
 
-    <a id="downloadLink" download="meme.png" href="#" style="display: none"
-      >Download Meme</a
-    >
+    <a id="downloadLink" download="meme.png" href="#" style="display: none">Download Meme</a>
     <script>
       const canvas = document.querySelector("#canvas");
       const ctx = canvas.getContext("2d");
@@ -143,18 +133,9 @@
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
           ctx.fillStyle = fontColorPicked;
           // prettier-ignored
-          ctx.font =
-            fontWeight.value +
-            " " +
-            +fontSizeRange.value +
-            "px " +
-            fontFamilySelect.value;
+          ctx.font = fontWeight.value + " " + +fontSizeRange.value + "px " + fontFamilySelect.value;
           ctx.textAlign = "center";
-          ctx.fillText(
-            txtBox.value,
-            canvas.width / 2 + parseInt(leftRange.value),
-            parseInt(topRange.value) + 36
-          );
+          ctx.fillText(txtBox.value, canvas.width / 2 + parseInt(leftRange.value), parseInt(topRange.value) + 36);
           downloadLink.href = canvas.toDataURL();
           downloadLink.style.display = "block";
         }
