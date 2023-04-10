@@ -12,4 +12,8 @@ public class MainController {
         return "/index/index";
     }
 
+    @GetMapping("/gen")
+    public String generator() {
+        return "/generator/gen6";
+    }
 }
