@@ -39,9 +39,11 @@ public class LoginController {
         if (board != null) {
             HttpSession session = request.getSession();
             redirectAttributes.addFlashAttribute("msg", "로그인에 성공했습니다.");
+            redirectAttributes.addFlashAttribute("title", "로그인 성공.");
             session.setAttribute("board", board);
             return "redirect:/";
         } else {
+            redirectAttributes.addFlashAttribute("title", "로그인 실패.");
             redirectAttributes.addFlashAttribute("msg", "로그인에 실패했습니다.");
 
             return "redirect:/login";

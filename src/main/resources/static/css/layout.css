@@ -17,10 +17,12 @@
   position: relative;
   z-index: 9;
 }
+.swiper .swiper-slide:hover a {
+  z-index: 9;
+}
 .swiper .swiper-slide:hover a img {
   width: 350px;
   height: 350px;
-  z-index: 9;
 }
 .swiper .swiper-slide:hover a img:hover {
   animation: keep-size 0.5s forwards;
