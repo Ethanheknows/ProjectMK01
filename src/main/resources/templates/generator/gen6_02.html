@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>gen6_02</title>
+        <!-- 레이아웃에 나중에 이식해야함 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css" />
+
+        <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+        <!-- 레이아웃에 나중에 이식해야함 -->
+    </head>
+    <body>
+        <h1>gen6_02</h1>
+        <input type="file" id="fileInput" />
+        <br /><br />
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <br /><br />
+        <label for="topRange">Top Position:</label>
+        <input type="range" id="topRange" min="0" max="500" step="1" value="0" />
+        <br /><br />
+        <label for="leftRange">Left Position:</label>
+        <input type="range" id="leftRange" min="0" max="500" step="1" value="0" />
+        <br /><br />
+        <label for="txtBox">Text:</label>
+        <input type="text" id="txtBox" />
+        <br /><br />
+        <label for="topRange2">Top Position:</label>
+        <input type="range" id="topRange2" min="0" max="500" step="1" value="0" />
+        <br /><br />
+        <label for="leftRange2">Left Position:</label>
+        <input type="range" id="leftRange2" min="0" max="500" step="1" value="0" />
+        <label for="txtBox2">Text2:</label>
+        <input type="text" id="txtBox2" />
+        <br /><br />
+        <label for="fontSizeRange">Font Size:</label>
+        <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
+        <br /><br />
+        <label for="fontColor">Font Color:</label>
+        <input type="text" id="fontColor" value="#ffffff" data-coloris />
+
+        <br /><br />
+        <label for="fontWeight">Font Weight:</label>
+        <select id="fontWeight">
+            <option value="bold">Bold</option>
+            <option value="italic">Italic</option>
+        </select>
+        <br /><br />
+        <label for="fontFamilySelect">Font Family:</label>
+        <select id="fontFamilySelect">
+            <option value="sans-serif">Sans-serif</option>
+            <option value="serif">Serif</option>
+            <option value="monospace">Monospace</option>
+            <option value="cursive">Cursive</option>
+            <option value="fantasy">Fantasy</option>
+        </select>
+        <br /><br />
+
+        <a id="downloadLinkPNG" download="meme.png" href="#" style="display: none">Download Meme by PNG</a>
+        <a id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">Download Meme by JPG</a>
+        <script>
+            const canvas = document.querySelector("#canvas");
+            const ctx = canvas.getContext("2d");
+            const fileInput = document.querySelector("#fileInput");
+            const topRange = document.querySelector("#topRange");
+            const leftRange = document.querySelector("#leftRange");
+            const txtBox = document.querySelector("#txtBox");
+            const topRange2 = document.querySelector("#topRange2");
+            const leftRange2 = document.querySelector("#leftRange2");
+            const txtBox2 = document.querySelector("#txtBox2");
+            const downloadLinkPNG = document.querySelector("#downloadLinkPNG");
+            const downloadLinkJPG = document.querySelector("#downloadLinkJPG");
+            const fontSizeRange = document.querySelector("#fontSizeRange");
+            const fontWeight = document.querySelector("#fontWeight");
+            const fontFamilySelect = document.querySelector("#fontFamilySelect");
+            const colorPicker = document.querySelector("#fontColor");
+            let img = null;
+            let fontColorPicked = "#ffffff";
+            //위는 원본
+            let isDragging = false;
+            let dragStart = { x: 0, y: 0 };
+            let isDraggingBox1 = false;
+            let isDraggingBox2 = false;
+
+            function onMouseDown(event) {
+                const x = event.clientX - canvas.offsetLeft;
+                const y = event.clientY - canvas.offsetTop;
+
+                if (
+                    x > leftRange.value &&
+                    x < leftRange.value + ctx.measureText(txtBox.value).width &&
+                    y > topRange.value &&
+                    y < topRange.value + parseInt(fontSizeRange.value)
+                ) {
+                    isDragging = true;
+                    dragStart = { x: x, y: y };
+                } else if (
+                    x > leftRange2.value &&
+                    x < leftRange2.value + ctx.measureText(txtBox2.value).width &&
+                    y > topRange2.value &&
+                    y < topRange2.value + parseInt(fontSizeRange.value)
+                ) {
+                    isDragging = true;
+                    dragStart = { x: x, y: y };
+                }
+            }
+
+            function onMouseMove(event) {
+                if (isDragging) {
+                    const dx = event.clientX - dragStart.x;
+                    const dy = event.clientY - dragStart.y;
+                    leftRange.value = parseInt(leftRange.value) + dx;
+                    topRange.value = parseInt(topRange.value) + dy;
+                    drawCanvas();
+                    dragStart = { x: event.clientX, y: event.clientY };
+                } else if (isDraggingBox1) {
+                    const dx = event.clientX - dragStart.x;
+                    const dy = event.clientY - dragStart.y;
+                    leftRange.value = parseInt(leftRange.value) + dx;
+                    topRange.value = parseInt(topRange.value) + dy;
+                    drawCanvas();
+                    dragStart = { x: event.clientX, y: event.clientY };
+                } else if (isDraggingBox2) {
+                    const dx = event.clientX - dragStart.x;
+                    const dy = event.clientY - dragStart.y;
+                    leftRange2.value = parseInt(leftRange2.value) + dx;
+                    topRange2.value = parseInt(topRange2.value) + dy;
+                    drawCanvas();
+                    dragStart = { x: event.clientX, y: event.clientY };
+                }
+            }
+
+            // txtBox2 mouseup 이벤트 추가
+            txtBox2.addEventListener("mouseup", (event) => {
+                isDraggingBox2 = false;
+            });
+            function onMouseUp(event) {
+                isDragging = false;
+            }
+            // txtBox mousedown 이벤트 추가
+            txtBox.addEventListener("mousedown", (event) => {
+                isDraggingBox1 = true;
+                dragStart = { x: event.clientX, y: event.clientY };
+            });
+
+            // txtBox2 mousedown 이벤트 추가
+            txtBox2.addEventListener("mousedown", (event) => {
+                isDraggingBox2 = true;
+                dragStart = { x: event.clientX, y: event.clientY };
+            });
+
+            canvas.addEventListener("mousedown", onMouseDown);
+            canvas.addEventListener("mousemove", onMouseMove);
+            canvas.addEventListener("mouseup", onMouseUp);
+
+            // 아래 코드는 이미지를 규격에 맞게 조절해줌
+            fileInput.addEventListener("change", () => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    img = new Image();
+                    img.onload = () => {
+                        let ratio = img.width / img.height;
+                        if (ratio > 1) {
+                            canvas.width = 500;
+                            canvas.height = 500 / ratio;
+                        } else {
+                            canvas.width = 500 * ratio;
+                            canvas.height = 500;
+                        }
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                        drawCanvas();
+                    };
+                    img.src = reader.result;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            });
+            //컬러 픽커의 함수
+            colorPicker.addEventListener("input", () => {
+                fontColorPicked = colorPicker.value;
+                // drawCanvas();
+            });
+
+            //직접 그리는 부분
+            function drawCanvas() {
+                if (img === null) return;
+
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                // const width = ctx.measureText(txtBox.value.lenght * 1.5).width;
+                // ctx.fillStyle = "#f50";
+                // ctx.fillRect(leftRange.value, topRange.value, width, 36);
+
+                ctx.fillStyle = fontColorPicked;
+                ctx.font = fontWeight.value + " " + fontSizeRange.value + "px " + fontFamilySelect.value;
+                ctx.textAlign = "start";
+                ctx.fillText(
+                    txtBox.value,
+                    parseInt(leftRange.value),
+                    parseInt(topRange.value) + parseInt(fontSizeRange.value)
+                );
+                ctx.fillText(
+                    txtBox2.value,
+                    parseInt(leftRange2.value),
+                    parseInt(topRange2.value) + parseInt(fontSizeRange.value)
+                );
+                downloadLinkPNG.href = canvas.toDataURL();
+                downloadLinkPNG.style.display = "block";
+                downloadLinkJPG.href = canvas.toDataURL();
+                downloadLinkJPG.style.display = "block";
+                topRange.max = canvas.height - parseInt(fontSizeRange.value);
+                leftRange.max = canvas.width - ctx.measureText(txtBox.value).width;
+            }
+
+            // function drawtext() {
+
+            // }
+
+            txtBox.addEventListener("input", drawCanvas);
+            topRange.addEventListener("input", drawCanvas);
+            leftRange.addEventListener("input", drawCanvas);
+
+            topRange2.addEventListener("input", drawCanvas);
+            leftRange2.addEventListener("input", drawCanvas);
+            txtBox2.addEventListener("input", drawCanvas);
+
+            colorPicker.addEventListener("input", drawCanvas);
+            fontWeight.addEventListener("input", drawCanvas);
+            fontSizeRange.addEventListener("input", drawCanvas);
+            fontFamilySelect.addEventListener("input", drawCanvas);
+
+            // Coloris({
+            //     parent: ".demo",
+            //     theme: "default",
+            //     themeMode: "light",
+            //     margin: 2,
+            //     alpha: true,
+            //     format: "hex",
+            //     clearButton: true,
+            //     clearLabel: "Clear",
+            //     swatches: [
+            //         "#264653",
+            //         "#2a9d8f",
+            //         "#e9c46a",
+            //         "rgb(244,162,97)",
+            //         "#e76f51",
+            //         "#d62828",
+            //         "navy",
+            //         "#07b",
+            //         "#0096c7",
+            //         "#00b4d880",
+            //         "rgba(0,119,182,0.8)",
+            //     ],
+            //     inline: false,
+            //     defaultColor: "#000000",
+            // });
+        </script>
+    </body>
+</html>
