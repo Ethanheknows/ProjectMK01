@@ -20,6 +20,10 @@
         <label for="leftRange">Left Position:</label>
         <input type="range" id="leftRange" min="0" max="500" step="1" value="0" />
         <br /><br />
+        <label for="rotateRange">rotate Position:</label>
+        <input type="range" id="rotateRange" min="-180" max="180" step="1" value="0" />
+        <button id="deg90">Rotate 90°</button>
+        <br /><br />
         <label for="txtBox">Text:</label>
         <input type="text" id="txtBox" />
         <br /><br />
@@ -51,7 +55,7 @@
         <script>
             const canvas = document.querySelector("#canvas");
             const ctx = canvas.getContext("2d");
-
+            const rotateRange = document.querySelector("#rotateRange")
             const fileInput = document.querySelector("#fileInput");
             const topRange = document.querySelector("#topRange");
             const leftRange = document.querySelector("#leftRange");
@@ -61,6 +65,9 @@
             const fontSizeRange = document.querySelector("#fontSizeRange");
             const fontWeight = document.querySelector("#fontWeight");
             const fontFamilySelect = document.querySelector("#fontFamilySelect");
+           
+  
+
             let colorPicker = document.querySelector("#fontColor");
             let img = null;
             let isDragging = false;
@@ -151,32 +158,41 @@
             canvas.addEventListener("mouseup", (event) => {
                 isDragging = false;
             });
-
             function drawCanvas() {
-                if (img !== null) {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    ctx.fillStyle = fontColorPicked;
-                    // prettier-ignored
-                    ctx.font = fontWeight.value + " " + +fontSizeRange.value + "px " + fontFamilySelect.value;
-                    ctx.textAlign = "start";
-                    ctx.fillText(
-                        txtBox.value,
-                        parseInt(leftRange.value),
-                        parseInt(topRange.value) + parseInt(fontSizeRange.value)
-                    );
-                    downloadLinkPNG.href = canvas.toDataURL();
-                    downloadLinkPNG.style.display = "block";
-                    downloadLinkJPG.href = canvas.toDataURL();
-                    downloadLinkJPG.style.display = "block";
-                    topRange.max = canvas.height - parseInt(fontSizeRange.value);
-                    leftRange.max = canvas.width - ctx.measureText(txtBox.value).width;
+            if (img !== null) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = fontColorPicked;
+                // prettier-ignored
+                ctx.font = fontWeight.value + " " + +fontSizeRange.value + "px " + fontFamilySelect.value;
+                let textWidth = ctx.measureText(txtBox.value).width; // get the width of the text
+                let textHeight = parseInt(fontSizeRange.value); // get the height of the text
+                let centerX = parseInt(leftRange.value) + textWidth / 2; // calculate the x coordinate of the centroid
+                let centerY = parseInt(topRange.value) + textHeight / 2; // calculate the y coordinate of the centroid
+                 ctx.save(); // save the current canvas state
+                ctx.textAlign = "start";
+                ctx.translate(centerX, centerY); // move the origin to the centroid
+                ctx.rotate(parseInt(rotateRange.value) * Math.PI / 180); // rotate the canvas
+                ctx.fillText(
+                txtBox.value,
+                -textWidth / 2, // x position is now centered on the origin
+                textHeight / 2 // y position is now centered on the origin
+                );
+                ctx.restore(); // restore the canvas state
+                downloadLinkPNG.href = canvas.toDataURL();
+                downloadLinkPNG.style.display = "block";
+                downloadLinkJPG.href = canvas.toDataURL();
+                downloadLinkJPG.style.display = "block";
+                topRange.max = canvas.height - parseInt(fontSizeRange.value);
+                leftRange.max = canvas.width - textWidth;
 
-                    console.log(ctx.measureText(txtBox.value).height);
-                    console.log(canvas.width);
+         
                 }
-            }
+            } 
 
+
+            
+            rotateRange.addEventListener("input", drawCanvas, false);
             txtBox.addEventListener("input", drawCanvas, false);
             topRange.addEventListener("input", drawCanvas, false);
             leftRange.addEventListener("input", drawCanvas, false);
