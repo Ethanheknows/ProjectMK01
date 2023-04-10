@@ -134,10 +134,17 @@
           ctx.fillStyle = fontColorPicked;
           // prettier-ignored
           ctx.font = fontWeight.value + " " + +fontSizeRange.value + "px " + fontFamilySelect.value;
-          ctx.textAlign = "center";
-          ctx.fillText(txtBox.value, canvas.width / 2 + parseInt(leftRange.value), parseInt(topRange.value) + 36);
+          ctx.textAlign = "start";
+          ctx.fillText(txtBox.value, parseInt(leftRange.value), parseInt(topRange.value) + parseInt(fontSizeRange.value));
           downloadLink.href = canvas.toDataURL();
           downloadLink.style.display = "block";
+          topRange.max = canvas.height - parseInt(fontSizeRange.value);
+          leftRange.max = canvas.width - ctx.measureText(txtBox.value).width;
+          
+          console.log(ctx.measureText(txtBox.value).height);
+          console.log(canvas.width);
+
+
         }
       }
 
