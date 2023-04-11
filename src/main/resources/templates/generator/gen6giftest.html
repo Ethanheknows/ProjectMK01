@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>gen6</title>
+        <title>gen6TESTTESTEST</title>
         <!-- 레이아웃에 나중에 이식해야함 -->
-        <link rel="stylesheet" href="/css/coloris.css" />
-        <script src="/js/coloris.js"></script>
-        <script src="/js/jquery-3.6.4.min.js"></script>
+        <!-- <link rel="stylesheet" href="../../static/css/test.css" /> -->
+        <script src="../../static/js/coloris.js"></script>
+        <script src="../../static/js/jquery-3.6.4.min.js"></script>
+        <link rel="stylesheet" href="../../static/css/coloris.css" />
+
         <!-- 레이아웃에 나중에 이식해야함 -->
     </head>
     <body>
-        <h1>gen6</h1>
+        <h1>gen6TESTTESTEST</h1>
         <input type="file" id="fileInput" />
         <br /><br />
         <canvas id="canvas" width="500" height="500"></canvas>
@@ -33,6 +35,18 @@
         <label for="txtBox">Text:</label>
         <input type="text" id="txtBox" />
         <br /><br />
+
+        <div class="options">
+            <label>
+                <input type="radio" name="borderToggle" value="on" checked />
+                Text Border On
+            </label>
+            <label>
+                <input type="radio" name="borderToggle" value="off" />
+                Text Border Off
+            </label>
+        </div>
+
         <label for="fontSizeRange">Font Size:</label>
         <input type="range" id="fontSizeRange" min="14" max="72" step="1" value="36" />
         <br /><br />
@@ -76,7 +90,7 @@
             let img = null;
             let isDragging = false;
             let dragStart = { x: 0, y: 0 };
-            //컬러픽커
+
             Coloris({
                 parent: ".demo",
                 theme: "default",
@@ -102,7 +116,7 @@
                 inline: false,
                 defaultColor: "#000000",
             });
-            //canvas에 그림 불러올때 비율에 맞게 불러오는 기능
+
             fileInput.addEventListener("change", () => {
                 const reader = new FileReader();
                 reader.onload = () => {
@@ -123,7 +137,6 @@
                 reader.readAsDataURL(fileInput.files[0]);
             });
 
-            //컬러 픽커의 바뀐 컬러값 realtime으로 바뀌게 만들기
             let defaultColor = "#ffffff";
             let fontColorPicked = defaultColor;
 
@@ -143,7 +156,7 @@
                 },
                 false
             );
-            // drag 기능
+
             canvas.addEventListener("mousedown", (event) => {
                 isDragging = true;
                 dragStart = { x: event.clientX, y: event.clientY };
@@ -163,8 +176,6 @@
             canvas.addEventListener("mouseup", (event) => {
                 isDragging = false;
             });
-
-            // realtime 으로 text 입력하기
             function drawCanvas() {
                 if (img !== null) {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -176,7 +187,16 @@
                     let textHeight = parseInt(fontSizeRange.value); // get the height of the text
                     let centerX = parseInt(leftRange.value) + textWidth / 2; // calculate the x coordinate of the centroid
                     let centerY = parseInt(topRange.value) + textHeight / 2; // calculate the y coordinate of the centroid
+                    // 글자 테두리
+
                     ctx.save(); // save the current canvas state
+                    ctx.strokeStyle = fontColorPicked;
+                    ctx.strokeRect(
+                        centerX - textWidth / 2 - 5,
+                        centerY - textHeight / 2 - 5,
+                        textWidth + 10,
+                        textHeight + 10
+                    );
                     ctx.textAlign = "start";
                     ctx.translate(centerX, centerY); // move the origin to the centroid
                     ctx.rotate((parseInt(rotateRange.value) * Math.PI) / 180); // rotate the canvas
@@ -185,6 +205,7 @@
                         -textWidth / 2, // x position is now centered on the origin
                         textHeight / 2 // y position is now centered on the origin
                     );
+
                     ctx.restore(); // restore the canvas state
                     downloadLinkPNG.href = canvas.toDataURL();
                     downloadLinkPNG.style.display = "block";
