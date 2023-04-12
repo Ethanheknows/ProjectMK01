@@ -11,7 +11,8 @@
           IMAGES_SEQ.NEXTVAL,
           #{title},
           #{tag},
-          #{original}
+          #{original},
+          SYSDATE
           
         )
       </insert>
