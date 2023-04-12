@@ -1,0 +1,29 @@
+
+          
+
+
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.thymeleaf.org"
+    layout:decorate="~{/layout/layout.html}"
+>
+    <head>
+        <title>MK01</title>
+    </head>
+<body>
+    <div layout:fragment="contents">
+        
+        <tbody>
+            <tr th:each="item : ${allImages}" class="text-center">
+                <td th:text="${itemStat.count}">1</td>
+                <td th:text="${item.no}">1</td>
+                <td th:text="${item.original}">1</td>
+                <td><img th:src="@{|/upload/${item.original}|}" class="card-img-top" alt="..."></td>
+            </tr>
+    </tbody>
+  </div>
+</body>
+</html>

@@ -34,16 +34,47 @@ a<!DOCTYPE html>
         </li>
       </ul>
 
-      <div class="col-md-3 text-end">
+
+
+      <div class="col-md-3 text-end" th:if="${session.board == null}">
         <a href="/login" class="btn btn-outline-primary me-2"> Login </a>
         <a href="/signup" class="btn btn-primary">Sign-up</a>
       </div>
+
+      <div class="col-md-3 text-end" th:unless="${session.board == null}">
+        <a href="/info" class="btnInfo" >
+            <span th:text="${session.board.nickName}">nickName</span>
+            <!-- <span> -->
+              <!-- <img src="/images/fjkdjs.jpg" alt="" th:src="${session.loggedMember.renameFilePath}" /> -->
+              <!-- <img src="/images/fjkdjs.jpg" alt="" th:src="@{|/upload/${session.board.renameFilePath}|}" /> -->
+            <!-- </span> -->
+        </a>
+        <a href="/logout">로그아웃</a>
+      </div>
+
+
+
+
+
     </header>
 
     <main id="main">
       <div layout:fragment="contents"></div>
     </main>
     <!-- 이미지 클릭한 다음 나오는 모달 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="modal fade" id="imgModal" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
         <div class="modal-content">
@@ -121,6 +152,21 @@ a<!DOCTYPE html>
         const imgModal = new bootstrap.Modal("#imgModal")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $(document).on('click','#clickedImg',function(e){
           e.preventDefault();
           console.log("이미지 클릭중===============")
@@ -162,28 +208,28 @@ a<!DOCTYPE html>
           })
         });
 
-        $(".btnInfo").on("click",function(){
-          console.log("uuuu");
-          deleteModal.show();
-          const pw = session.board.userpw;
-          console.log(pw);
-          $("#deleteModal .modal-title").text("비밀번호를 입력해 주세요.");
-          $("#btnDeleteConfirm").on("click",function(e){
-            if($("#password").val()==pw){
-
-              location.href="/login/info";
-            } else {
-              history.back();
-            }
-          })
-        });
+       // $(".btnInfo").on("click",function(){
+       //   console.log("uuuu");
+       //   deleteModal.show();
+       //   const pw = session.board.userPw;
+       //   console.log(pw);
+       //   $("#deleteModal .modal-title").text("비밀번호를 입력해 주세요.");
+       //   $("#btnDeleteConfirm").on("click",function(e){
+       //     if($("#password").val()==pw){
+//
+       //       location.href="/info";
+       //     } else {
+       //       history.back();
+       //     }
+       //   })
+       // });
 
 
 
         $(document).ready(function(){
           $(".nickName_confirm").on("focusout",function(){
             var id=$("#nickName").val();
-
+            
             if(id==''||id.length==0){
               $('#nickName_div').html('<a">닉네임을 입력해 주세요.</a>:')
 
@@ -191,7 +237,7 @@ a<!DOCTYPE html>
             }
 
             $.ajax({
-              url : "/nickNameCheck",
+              url : "/nickNameCheck" ,
                   type : "post",
                   dataType : "json",
                   data : {"nickName" : $("#nickName").val()},
@@ -199,11 +245,43 @@ a<!DOCTYPE html>
                           if(data == 0){
                             $('#nickName_div').html('<a">사용가능한 닉네임입니다.</a>:')
                           }else{
+
                             $('#nickName_div').html('<a">이미 사용중인 닉네임입니다.</a>:')
                         }
                       }
             })
           })
+          $(".nickName_modify").on("focusout",function(){
+            var id=$("#nickName").val();
+            
+            if(id==''||id.length==0){
+              $('#nickName_div').html('<a">닉네임을 입력해 주세요.</a>:')
+
+              return false;
+            }
+
+            $.ajax({
+              url : "/nickNameCheck" ,
+                  type : "post",
+                  dataType : "json",
+                  data : {"nickName" : $("#nickName").val()},
+                  success : function(data){
+                          if(data == 0 ){
+                            $('#nickName_div').html('<a">사용가능한 닉네임입니다.</a>:')
+                          }else if(id == session.board.nickName){
+                            console.log(session.board.nickName)
+
+                            $('#nickName_div').html('<a">기존 사용하고 있는 닉네임입니다.</a>:')
+                        }
+                          else{
+                            console.log(session.board.nickName)
+
+                            $('#nickName_div').html('<a">이미 사용중인 닉네임입니다.</a>:')
+                        }
+                      }
+            })
+          })
+
 
 
 
@@ -225,9 +303,46 @@ a<!DOCTYPE html>
                   dataType : "json",
                   data : {"userId" : $("#userId").val()},
                   success : function(data){
-                          if(data == 0){
+                          if(data == 0 ){
                             $('#id_div').html('<a">사용가능한 ID입니다.</a>:')
                           }else{
+                            $('#id_div').html('<a">이미 사용중이거나 탈퇴한 ID입니다.</a>:')
+                        }
+                      }
+            })
+          })
+
+
+
+
+          $(".id_modify").on("focusout",function(){
+            var id=$("#userId").val();
+
+            if(id==''||id.length==0){
+              $('#id_div').html('<a">아이디를 입력해 주세요.</a>:')
+              return false;
+            }
+            if(id.length<5){
+              $('#id_div').html('<a">아이디를 5글자 이상 입력해 주세요.</a>:')
+
+              return false;
+            }
+            $.ajax({
+              url : "/idCheck",
+                  type : "post",
+                  dataType : "json",
+                  data : {"userId" : $("#userId").val()},
+                  success : function(data){
+                          if(data == 0 ){
+                            $('#id_div').html('<a">사용가능한 ID입니다.</a>:')
+                            console.log(session.board.userId)
+                            console.log(id)
+
+                          }else if(id == session.board.userId){
+                            console.log(session.board.userId)
+
+                            $('#id_div').html('<a">기존 사용하고 있는 아이디입니다.</a>:')
+                        }else{
                             $('#id_div').html('<a">이미 사용중이거나 탈퇴한 ID입니다.</a>:')
                         }
                       }
@@ -271,6 +386,8 @@ a<!DOCTYPE html>
 
             if(pw!= pwchk){
               $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>:')
+              return false
+
             }else{
               $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
 
@@ -318,15 +435,8 @@ a<!DOCTYPE html>
 
         })
 
-
-
-
-
-
-
-
-
         /*]]>*/
+        
     </script>
   </body>
 </html>

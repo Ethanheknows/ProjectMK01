@@ -1,6 +1,7 @@
 package com.project01.mk01.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -41,6 +42,7 @@ public class LoginController {
             redirectAttributes.addFlashAttribute("msg", "로그인에 성공했습니다.");
             redirectAttributes.addFlashAttribute("title", "로그인 성공.");
             session.setAttribute("board", board);
+            log.info("session=================" + session);
             return "redirect:/";
         } else {
             redirectAttributes.addFlashAttribute("title", "로그인 실패.");
@@ -93,6 +95,28 @@ public class LoginController {
         log.info("result=====" + result);
 
         return result;
+    }
+
+    @GetMapping("/info")
+    public String info() {
+        return "/login/info";
+    }
+
+    @GetMapping("/modify")
+    public String modify() {
+        return "/login/modify";
+    }
+
+    @GetMapping("/logout")
+    public String logout(
+            HttpServletRequest request,
+            RedirectAttributes redirectAttributes,
+            HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        // session.invalidate();
+        session.removeAttribute("board");
+        redirectAttributes.addFlashAttribute("msg", "로그아웃되었습니다.");
+        return "redirect:/";
     }
 
     // @ResponseBody

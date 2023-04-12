@@ -6,5 +6,6 @@
   <typeAliases>
     <!-- <typeAlias alias="ReplyBoardDto" type="com.mk01.ProjectMK01.dto.ReplyBoardDto" /> -->
     <typeAlias alias="LoginBoardDto" type="com.project01.mk01.dto.LoginBoardDto" />
+    <typeAlias alias="ImageDto" type="com.project01.mk01.dto.ImageDto" />
   </typeAliases>
 </configuration>

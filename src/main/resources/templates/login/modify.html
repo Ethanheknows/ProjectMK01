@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+                xmlns:th="http://www.thymeleaf.org" 
+                xmlns="http://www.thymeleaf.org"
+                layout:decorate="~{/layout/layout.html}">
+                
+<head>
+  <title>REPLYBOARD</title>
+</head>
+<body>
+  <div layout:fragment="contents">
+    <h2>MODIFY</h2>
+
+    <form class="mt-5" action="/modifyProcess" method="post" th:object="${loginBoardDto}" enctype="multipart/form-data" >
+
+
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >NickName</label>
+          <input type="text" class="form-control nickName_modify" id="nickName" name="nickName" th:value="${session.board.nickName}"    
+          >
+          <div id="nickName_div"></div>
+
+          <!-- <p th:if="${#fields.hasErrors('nickName')}" th:errorclass="errorTxt" th:errors="*{nickName}"></p> -->
+        </div>
+     
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >ID</label>
+          <input type="text" class="form-control id_modify" id="userId" name="userId" th:value="${session.board.userId}" >
+          <div id="id_div"></div>
+          <!-- <p th:if="${#fields.hasErrors('userId')}" th:errorclass="errorTxt" th:errors="*{userId}"></p>
+          <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button> -->
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control userPw_confirm" id="userPw" name="userPw" th:value="${session.board.userPw}">
+          <div id="userPw_div"></div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password Check</label>
+          <input type="password" class="form-control userPwCheck_confirm" id="userPwCheck" name="userPwCheck" th:value="${session.board.userPwCheck}"  >
+          <div id="userPwCheck_div"></div>
+        </div>
+
+
+
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >Email</label>
+          <input type="text" class="form-control email_confirm" id="userEmail" name="userEmail" th:value="${session.board.userEmail}" >
+          <div id="email_div"></div>
+
+        </div>
+   
+        <div>
+          
+          
+
+
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+          <a href="/info" class="btn btn-secondary">CANCEL</a>
+
+        </div>
+      </form>
+
+  </div>
+</body>
+
+</html>
