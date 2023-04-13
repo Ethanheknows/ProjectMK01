@@ -219,7 +219,7 @@
                 fontColorPicked2 = colorPicker2.value;
                 // drawCanvas();
             });
-            
+
             function drawCanvas() {
                 if (img === null) return;
 
@@ -227,6 +227,8 @@
 
                 ctx.fillStyle = fontColorPicked;
                 ctx.font = fontWeight.value + " " + fontSizeRange.value + "px " + fontFamilySelect.value;
+                ctx.font = fontWeight2.value + " " + fontSizeRange2.value + "px " + fontFamilySelect2.value;
+
                 ctx.textAlign = "start";
                 drawText(ctx, txtBox.value, parseInt(leftRange.value), parseInt(topRange.value), parseInt(rotateRange.value), fontColorPicked, fontWeight.value, fontSizeRange.value, fontFamilySelect.value);
                 drawText(ctx, txtBox2.value, parseInt(leftRange2.value), parseInt(topRange2.value), parseInt(rotateRange2.value), fontColorPicked2, fontWeight2.value, fontSizeRange2.value, fontFamilySelect2.value);
