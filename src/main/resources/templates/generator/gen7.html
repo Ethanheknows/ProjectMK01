@@ -79,23 +79,18 @@
             let isDraggingBox2 = false;
             let dragStart = { x: 0, y: 0 };
 
+            const box1Radius = 10;
+            const box2Radius = 10;
+
             function onMouseDown(event) {
                 const x = event.clientX - canvas.offsetLeft;
                 const y = event.clientY - canvas.offsetTop;
 
-                if (
-                    x > leftRange.value &&
-                    x < leftRange.value + ctx.measureText(txtBox.value).width &&
-                    y > topRange.value &&
-                    y < topRange.value + parseInt(fontSizeRange.value)
-                ) {
+                if (Math.sqrt(Math.pow(x - leftRange.value, 2) + Math.pow(y - topRange.value, 2)) <= box1Radius) {
                     isDraggingBox1 = true;
                     dragStart = { x: x, y: y };
                 } else if (
-                    x > leftRange2.value &&
-                    x < leftRange2.value + ctx.measureText(txtBox2.value).width &&
-                    y > topRange2.value &&
-                    y < topRange2.value + parseInt(fontSizeRange.value)
+                    Math.sqrt(Math.pow(x - leftRange2.value, 2) + Math.pow(y - topRange2.value, 2)) <= box2Radius
                 ) {
                     isDraggingBox2 = true;
                     dragStart = { x: x, y: y };
@@ -103,20 +98,23 @@
             }
 
             function onMouseMove(event) {
+                const x = event.clientX - canvas.offsetLeft;
+                const y = event.clientY - canvas.offsetTop;
+
                 if (isDraggingBox1) {
-                    const dx = event.clientX - dragStart.x;
-                    const dy = event.clientY - dragStart.y;
+                    const dx = x - dragStart.x;
+                    const dy = y - dragStart.y;
                     leftRange.value = parseInt(leftRange.value) + dx;
                     topRange.value = parseInt(topRange.value) + dy;
                     drawCanvas();
-                    dragStart = { x: event.clientX, y: event.clientY };
+                    dragStart = { x: x, y: y };
                 } else if (isDraggingBox2) {
-                    const dx = event.clientX - dragStart.x;
-                    const dy = event.clientY - dragStart.y;
+                    const dx = x - dragStart.x;
+                    const dy = y - dragStart.y;
                     leftRange2.value = parseInt(leftRange2.value) + dx;
                     topRange2.value = parseInt(topRange2.value) + dy;
                     drawCanvas();
-                    dragStart = { x: event.clientX, y: event.clientY };
+                    dragStart = { x: x, y: y };
                 }
             }
 
@@ -173,12 +171,24 @@
                     parseInt(leftRange2.value),
                     parseInt(topRange2.value) + parseInt(fontSizeRange.value)
                 );
+
+                // Draw circles around txtBox and txtBox2
+                ctx.strokeStyle = "red";
+                ctx.beginPath();
+                ctx.arc(parseInt(leftRange.value), parseInt(topRange.value), box1Radius, 0, 2 * Math.PI);
+                ctx.stroke();
+
+                ctx.strokeStyle = "blue";
+                ctx.beginPath();
+                ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
+                ctx.stroke();
+
                 downloadLinkPNG.href = canvas.toDataURL();
                 downloadLinkPNG.style.display = "block";
                 downloadLinkJPG.href = canvas.toDataURL();
                 downloadLinkJPG.style.display = "block";
                 topRange.max = canvas.height - parseInt(fontSizeRange.value);
-                leftRange.max = canvas.width - ctx.measureText(txtBox.value).width;
+                leftRange.max = canvas.width;
             }
 
             txtBox.addEventListener("input", drawCanvas);
