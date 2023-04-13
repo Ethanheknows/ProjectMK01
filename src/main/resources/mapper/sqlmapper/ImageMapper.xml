@@ -26,4 +26,24 @@
 
       </select>
     
+    <insert id="insertGalleryJpg" parameterType="ImageDto">
+        INSERT INTO IMAGES VALUES (
+          IMAGES_SEQ.NEXTVAL,
+          #{title},
+          #{tag},
+          #{original},
+          SYSDATE
+          
+        )
+      </insert>
+
+
+
+      <select id="getAllimagesJpg" resultType="ImageDto">
+
+        SELECT * FROM IMAGES 
+
+
+      </select>
+    
 </mapper>

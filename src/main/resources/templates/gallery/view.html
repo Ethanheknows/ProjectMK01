@@ -1,7 +1,5 @@
 
           
-
-
 <!DOCTYPE html>
 <html
     lang="en"
@@ -16,14 +14,18 @@
 <body>
     <div layout:fragment="contents">
         
-        <tbody>
-            <tr th:each="item : ${allImages}" class="text-center">
-                <td th:text="${itemStat.count}">1</td>
-                <td th:text="${item.no}">1</td>
-                <td th:text="${item.original}">1</td>
-                <td><img th:src="@{|/upload/${item.original}|}" class="card-img-top" alt="..."></td>
-            </tr>
-    </tbody>
+        <tr th:each="item : ${allImages}" class="text-center">            
+            <div class="swiper-slide">
+                <a href="" id="clickedImg">
+                    <!-- <div th:if="${item.original.equals('KakaoTalk_20230407_190208239.jpg')}"> -->
+                        <img th:src="@{|/upload/${item.original}|}" class="card-img-top image" alt="...">
+                    <!-- </div> -->
+                </a>
+            </div>          
+        </tr>
+
+
+
   </div>
 </body>
 </html>

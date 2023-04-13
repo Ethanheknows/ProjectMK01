@@ -24,15 +24,23 @@ public class ImageServiceImpl implements ImageService {
 
     @Value("${file.path}")
     private String uploadFoler;
+    private String uploadPathjpg;
 
     @Override
     public int insertGallery(ImageDto imageDto) {
 
-        // form에서 전달된 파일이름
         String originalFile = imageDto.getFile().getOriginalFilename();
-        // 중복방지용 이름
+        // if(originalFile.contains("jpg")){
+
+        // }
+        // else{
+
+        // }
 
         Path imgFilePath = Paths.get(uploadFoler + originalFile);
+
+        log.info(imgFilePath);
+        log.info(uploadFoler);
 
         imageDto.setOriginal(originalFile);
 

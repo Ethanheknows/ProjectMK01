@@ -10,10 +10,15 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Value("${file.path}")
     private String uploadPath;
+    private String uploadPathjpg;
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/upload/**")
+                .addResourceHandler("/upload/png/**")
                 .addResourceLocations("file:///" + uploadPath);
+
+        registry
+                .addResourceHandler("/upload/jpg/**")
+                .addResourceLocations("file:///" + uploadPathjpg);
     }
 }

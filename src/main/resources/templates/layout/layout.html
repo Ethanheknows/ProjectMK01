@@ -25,16 +25,12 @@ a<!DOCTYPE html>
     <script src="/js/gsap/gsap.min.js"></script>
   </head>
   <body>
-    <header
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom myHeader"
-    >
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom myHeader">
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li>
           <a href="/" class="nav-link px-2 link-secondary">Home</a>
         </li>
       </ul>
-
-
 
       <div class="col-md-3 text-end" th:if="${session.board == null}">
         <a href="/login" class="btn btn-outline-primary me-2"> Login </a>
@@ -42,39 +38,26 @@ a<!DOCTYPE html>
       </div>
 
       <div class="col-md-3 text-end" th:unless="${session.board == null}">
-        <a href="/info" class="btnInfo" >
-            <span th:text="${session.board.nickName}">nickName</span>
-            <!-- <span> -->
-              <!-- <img src="/images/fjkdjs.jpg" alt="" th:src="${session.loggedMember.renameFilePath}" /> -->
-              <!-- <img src="/images/fjkdjs.jpg" alt="" th:src="@{|/upload/${session.board.renameFilePath}|}" /> -->
-            <!-- </span> -->
-        </a>
-        <a href="/logout">로그아웃</a>
+        <!-- <div class="col-md-3 text-end" th:if="${session.board.nickName} == manager and ${session.board.userId} == manager"> -->
+          <a href="/info" class="btnInfo" >
+            <span th:text="${session.board.nickName}">nickName</span>  
+          </a>
+          <a href="/logout">로그아웃</a>
+          <a href="/insert" th:if="${session.board.nickName.equals('manager')}">이미지 관리</a>
       </div>
-
-
-
-
-
     </header>
-
     <main id="main">
       <div layout:fragment="contents"></div>
     </main>
+
+
+
+
+
+
+
+
     <!-- 이미지 클릭한 다음 나오는 모달 -->
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="modal fade" id="imgModal" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
         <div class="modal-content">
@@ -85,7 +68,8 @@ a<!DOCTYPE html>
           <div class="modal-body">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-md-4"><img src="/images/sample.jpg" alt="" /></div>
+                <div id="modal-image" class="col-md-4">
+                </div>
                 <div class="col-md-4 ms-auto">
                   <p>클릭한 이미지 어디까지 되는지 테스트 해보는중</p>
                   <a href="/gen">generator 링크</a>
@@ -100,6 +84,9 @@ a<!DOCTYPE html>
         </div>
       </div>
     </div>
+
+
+
 
     <div class="modal fade" tabindex="-1" id="memoModal">
       <div class="modal-dialog">
@@ -147,28 +134,20 @@ a<!DOCTYPE html>
         const no = /*[[${param.no}]]*/;
         const session = /*[[${session}]]*/;
 
+
         const memoModal = new bootstrap.Modal("#memoModal");
         const deleteModal = new bootstrap.Modal("#deleteModal");
         const imgModal = new bootstrap.Modal("#imgModal")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         $(document).on('click','#clickedImg',function(e){
+
+          var src = $(this).find("img").attr("src");
+          console.log(src);
+          
+          $('#modal-image').html(`<img src="`+src+`" alt=""/>`)
+          
           e.preventDefault();
+
           console.log("이미지 클릭중===============")
           imgModal.show();
          });
@@ -184,6 +163,7 @@ a<!DOCTYPE html>
           memoModal.show();
         }
         $("#btnDeleteAjax").on("click",function(e){
+          
           //e.preventDefault();
           deleteModal.show();
           return false;

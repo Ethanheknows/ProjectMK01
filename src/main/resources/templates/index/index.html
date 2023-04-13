@@ -9,6 +9,7 @@
     <head>
         <title>MK01</title>
     </head>
+
     <body>
         <div layout:fragment="contents">
             <div class="category">
@@ -20,14 +21,33 @@
                 </div>
             </div>
 
+
+            
             <div class="tag">
                 <h1>GIF</h1>
                 <div class="swiper mySwiper">
-                    <div class="swiper-wrapper tag2"></div>
+                    <div class="swiper-wrapper tag2">
+                    <tr th:each="item : ${allImages}" class="text-center">            
+                            <div class="swiper-slide">
+                                <a href="" id="clickedImg">
+                                    <img id="image" th:src="@{|/upload/${item.original}|}" class="card-img-top image" alt="...">
+                                </a>
+                            </div>          
+                        </tr>
+                    </div>
                     <!-- <div class="swiper-pagination"></div> -->
                 </div>
             </div>
-          
+
+            
+
+
+
+
+
+
+
+
             <script>
                 // const tag1 = document.querySelector(".tag1");
                 $(function () {
@@ -39,18 +59,28 @@
                                 `.jpg" alt="" /></a></div>`
                         );
                     }
-                }); // 태그 1에 대한 컨텐츠 for문
+                });
 
-                $(function () {
-                    for (i = 1; i < 9; i++) {
-                        $(".tag2").append(
-                            // prettier-ignored
-                            `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/images/gif/ex` +
-                                i + 
-                                `.gif" alt="" /></a></div>`
-                        );
-                    }
-                }); // 태그 2에 대한 컨텐츠 for문
+
+                
+
+                // 태그 1에 대한 컨텐츠 for문
+             //   $(function () {
+             //       for (i = 1; i < 9; i++) {
+             //           $(".tag2").append(
+             //               // prettier-ignored
+             //               
+             //               `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/images/gif/ex` +
+             //                   i + 
+             //                   `.gif" alt="" /></a></div>`
+             //           );
+             //       }
+//
+//
+//
+//
+//
+             //   }); // 태그 2에 대한 컨텐츠 for문
 
                 const swiper = new Swiper(".swiper", {
                     // autoHeight: true,
