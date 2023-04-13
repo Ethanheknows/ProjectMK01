@@ -24,20 +24,20 @@ public class ImageServiceImpl implements ImageService {
 
     @Value("${file.path}")
     private String uploadFoler;
-    private String uploadPathjpg;
 
     @Override
     public int insertGallery(ImageDto imageDto) {
 
         String originalFile = imageDto.getFile().getOriginalFilename();
-        // if(originalFile.contains("jpg")){
-
-        // }
-        // else{
-
-        // }
-
         Path imgFilePath = Paths.get(uploadFoler + originalFile);
+
+        if (originalFile.contains(".gif")) {
+            imgFilePath = Paths.get(uploadFoler + "gif/" + originalFile);
+
+        } else {
+            imgFilePath = Paths.get(uploadFoler + "jpg/" + originalFile);
+
+        }
 
         log.info(imgFilePath);
         log.info(uploadFoler);

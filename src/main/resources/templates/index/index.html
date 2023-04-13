@@ -12,14 +12,27 @@
 
     <body>
         <div layout:fragment="contents">
+          
             <div class="category">
                 <h1>태그이름</h1>
                 <div class="swiper mySwiper">
-                    <div class="swiper-wrapper tag1"></div>
-                    <div><a href="" id="tag"></a></div>
-                    <!-- <div class="swiper-pagination"></div> -->
+                    <div class="swiper-wrapper tag1">
+                        <tr th:each="item : ${allImages}" class="text-center">            
+                            <div class="swiper-slide" th:if="${!item.original.contains('gif')}">
+                                <a href="" id="clickedImg">
+                                        <img id="image" th:src="@{|/upload/jpg/${item.original}|}" class="card-img-top image" alt="...">
+                                </a>
+                            </div>          
+                        </tr>
+                    </div>
                 </div>
             </div>
+
+
+
+
+
+
 
 
             
@@ -27,10 +40,10 @@
                 <h1>GIF</h1>
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper tag2">
-                    <tr th:each="item : ${allImages}" class="text-center">            
-                            <div class="swiper-slide">
+                        <tr th:each="item : ${allImages}" class="text-center">            
+                            <div class="swiper-slide" th:if="${item.original.contains('gif')}">
                                 <a href="" id="clickedImg">
-                                    <img id="image" th:src="@{|/upload/${item.original}|}" class="card-img-top image" alt="...">
+                                        <img id="image" th:src="@{|/upload/gif/${item.original}|}" class="card-img-top image" alt="...">
                                 </a>
                             </div>          
                         </tr>
@@ -50,16 +63,16 @@
 
             <script>
                 // const tag1 = document.querySelector(".tag1");
-                $(function () {
-                    for (i = 1; i < 7; i++) {
-                        $(".tag1").append(
-                            // prettier-ignored
-                            `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/images/ex` +
-                                i +
-                                `.jpg" alt="" /></a></div>`
-                        );
-                    }
-                });
+              //  $(function () {
+              //      for (i = 1; i < 7; i++) {
+              //          $(".tag1").append(
+              //              // prettier-ignored
+              //              `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/images/ex` +
+              //                  i +
+              //                  `.jpg" alt="" /></a></div>`
+              //          );
+              //      }
+              //  });
 
 
                 
