@@ -12,7 +12,7 @@
 
     <body>
         <div layout:fragment="contents">
-            <div class="continer">
+            <div class="container">
                 <h1>gen7</h1>
                 <input type="file" id="fileInput" />
 
@@ -319,7 +319,7 @@
                             fontSizeRange.value,
                             fontFamilySelect.value
                         );
-                        
+
                         drawText(
                             ctx,
                             txtBox2.value,
@@ -359,7 +359,6 @@
                         ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
                         ctx.stroke();
 
-
                         downloadLinkPNG.href = canvas.toDataURL();
                         downloadLinkPNG.style.display = "block";
                         downloadLinkJPG.href = canvas.toDataURL();
@@ -388,7 +387,7 @@
                     fontWeight.addEventListener("input", drawCanvas);
                     fontSizeRange.addEventListener("input", drawCanvas);
                     fontFamilySelect.addEventListener("input", drawCanvas);
-                    
+
                     txtBox2.addEventListener("input", drawCanvas);
                     topRange2.addEventListener("input", drawCanvas);
                     leftRange2.addEventListener("input", drawCanvas);
@@ -397,7 +396,7 @@
                     fontWeight2.addEventListener("input", drawCanvas);
                     fontSizeRange2.addEventListener("input", drawCanvas);
                     fontFamilySelect2.addEventListener("input", drawCanvas);
-                    
+
                     txtBox3.addEventListener("input", drawCanvas);
                     topRange3.addEventListener("input", drawCanvas);
                     leftRange3.addEventListener("input", drawCanvas);
@@ -406,8 +405,6 @@
                     fontWeight3.addEventListener("input", drawCanvas);
                     fontSizeRange3.addEventListener("input", drawCanvas);
                     fontFamilySelect3.addEventListener("input", drawCanvas);
-
-
 
                     Coloris({
                         parent: ".demo",
