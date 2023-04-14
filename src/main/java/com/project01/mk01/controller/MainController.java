@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.project01.mk01.dto.ImageDto;
 import com.project01.mk01.service.ImageService;
 
-import groovy.util.logging.Slf4j;
 import lombok.extern.log4j.Log4j2;
 
 @Controller
@@ -47,6 +46,6 @@ public class MainController {
 
     @GetMapping("/gen")
     public String generator() {
-        return "/generator/gen6";
+        return "/generator/gen7";
     }
 }
