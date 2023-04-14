@@ -73,6 +73,7 @@ body .topWrap {
 }
 body .topWrap .canvasWrap {
   border: 1px solid white;
+  transition: all 0.25s ease;
 }
 body .genCon {
   border: 1px solid white;
@@ -97,17 +98,20 @@ body .download {
 body .download .download_title {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 body .download .download_title h2 {
   margin-left: 10px;
 }
 body .download .btnDown {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100px;
   height: 50px;
+}
+body .download .btnDown a {
+  margin: 10px 5px;
 }
 
 .modal.fade#imgModal {
