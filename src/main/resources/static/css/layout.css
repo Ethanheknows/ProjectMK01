@@ -66,6 +66,14 @@ body h1 {
   font-weight: 700;
   font-size: 75px;
 }
+body .topWrap {
+  display: flex;
+  justify-content: center;
+  padding: 30px 30px;
+}
+body .topWrap .canvasWrap {
+  border: 1px solid white;
+}
 body .genCon {
   border: 1px solid white;
   width: 1000px;
@@ -81,6 +89,25 @@ body .genCon .ranges {
 }
 body .genCon .txtCon {
   display: flex;
+}
+body .download {
+  margin-left: 40px;
+  display: inline;
+}
+body .download .download_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .download .download_title h2 {
+  margin-left: 10px;
+}
+body .download .btnDown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 50px;
 }
 
 .modal.fade#imgModal {
@@ -121,7 +148,7 @@ body .genCon .txtCon {
 }
 .swiper .swiper-slide:hover a img:hover {
   animation: keep-size 0.5s forwards;
-  animation-delay: 2s;
+  animation-delay: 1.5s;
   animation-timing-function: ease;
 }
 @keyframes keep-size {

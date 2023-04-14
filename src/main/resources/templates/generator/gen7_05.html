@@ -12,147 +12,171 @@
 
   <body>
     <div layout:fragment="contents">
-      <div class="container">
-        <h1>gen7</h1>
-        <input type="file" id="fileInput" />
-
-        <canvas id="canvas" width="500" height="500"></canvas>
-        <div class="genCon mb-3">
-          <div class="ranges">
-            <label for="topRange">Top Position:</label>
-            <input type="range" id="topRange" min="0" max="500" step="1" value="30" />
-            <label for="leftRange">Left Position:</label>
-            <input type="range" id="leftRange" min="0" max="500" step="1" value="30" />
-            <label for="rotateRange">Rotate Position:</label>
-            <input type="range" id="rotateRange" min="-180" max="180" step="30" value="0" list="values" />
-            <datalist id="values">
-              <option value="-180" label="-180">-180deg</option>
-              <option value="-90" label="-90">-90deg</option>
-              <option value="0" label="0">0deg</option>
-              <option value="90" label="90">90deg</option>
-              <option value="180" label="180">180deg</option>
-            </datalist>
+      <div class="container genWrap">
+        <div class="consWrap">
+          <h1>gen7</h1>
+          <input type="file" id="fileInput" />
+          <div class="topWrap">
+            <div class="canvasWrap">
+              <canvas id="canvas" width="500" height="500"></canvas>
+            </div>
+            <div class="download mt-2 mb-2">
+              <div class="download_title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                  </svg>
+                  </svg>
+                  <h2>Download</h2>
+              </div>
+              <div class="btnDown">
+                <a class="btn btn-primary" id="downloadLinkPNG" download="meme.png" href="#" style="display: none"
+                  >.PNG</a
+                >
+                <a class="btn btn-primary" id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none"
+                  >.JPG</a
+                >
+              </div>
+            </div>
           </div>
 
-          <label for="txtBox">Text:</label>
-          <textarea name="" id="txtBox" cols="50" rows="1"></textarea>
-          <div class="txtCon">
-            <label for="fontSizeRange">Font Size:</label>
-            <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
+          <div class="genCon mb-3">
+            <div class="ranges">
+              <label for="topRange">Top Position:</label>
+              <input type="range" id="topRange" min="0" max="500" step="1" value="30" />
+              <label for="leftRange">Left Position:</label>
+              <input type="range" id="leftRange" min="0" max="500" step="1" value="30" />
+              <label for="rotateRange">Rotate Position:</label>
+              <input type="range" id="rotateRange" min="-180" max="180" step="30" value="0" list="values1" />
+              <datalist id="values1">
+                <option value="-180" label="-180">-180deg</option>
+                <option value="-90" label="-90">-90deg</option>
+                <option value="0" label="0">0deg</option>
+                <option value="90" label="90">90deg</option>
+                <option value="180" label="180">180deg</option>
+              </datalist>
+            </div>
+            <div class="txtBoxDiv">
+              <label for="txtBox">Text:</label>
+              <textarea id="txtBox" cols="50" rows="1"></textarea>
+            </div>
+            <div class="txtCon">
+              <label for="fontSizeRange">Font Size:</label>
+              <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
 
-            <label for="fontColor">Font Color:</label>
-            <input type="text" id="fontColor" value="#ffffff" data-coloris />
+              <label for="fontColor">Font Color:</label>
+              <input type="text" id="fontColor" value="#ffffff" data-coloris />
 
-            <label for="fontWeight">Font Weight:</label>
-            <select id="fontWeight">
-              <option value="bold">Bold</option>
-              <option value="italic">Italic</option>
-            </select>
+              <label for="fontWeight">Font Weight:</label>
+              <select id="fontWeight">
+                <option value="bold">Bold</option>
+                <option value="italic">Italic</option>
+              </select>
 
-            <label for="fontFamilySelect">Font Family:</label>
-            <select id="fontFamilySelect">
-              <option value="sans-serif">Sans-serif</option>
-              <option value="serif">Serif</option>
-              <option value="monospace">Monospace</option>
-              <option value="cursive">Cursive</option>
-              <option value="fantasy">Fantasy</option>
-            </select>
+              <label for="fontFamilySelect">Font Family:</label>
+              <select id="fontFamilySelect">
+                <option value="sans-serif">Sans-serif</option>
+                <option value="serif">Serif</option>
+                <option value="monospace">Monospace</option>
+                <option value="cursive">Cursive</option>
+                <option value="fantasy">Fantasy</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="genCon mb-3">
+            <div class="ranges">
+              <label for="topRange2">Top Position:</label>
+              <input type="range" id="topRange2" min="0" max="500" step="1" value="50" />
+              <div>
+                <label for="leftRange2">Left Position:</label>
+                <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" />
+              </div>
+
+              <label for="rotateRange2">Rotate Position:</label>
+              <input type="range" id="rotateRange2" min="-180" max="180" step="30" value="0" list="values2" />
+              <datalist id="values2">
+                <option value="-180" label="-180">-180deg</option>
+                <option value="-90" label="-90">-90deg</option>
+                <option value="0" label="0">0deg</option>
+                <option value="90" label="90">90deg</option>
+                <option value="180" label="180">180deg</option>
+              </datalist>
+            </div>
+            <div class="txtBoxDiv">
+              <label for="txtBox2">Text2:</label>
+              <textarea id="txtBox2" cols="50" rows="1"></textarea>
+            </div>
+            <div class="txtCon">
+              <label for="fontSizeRange2">Font Size:</label>
+              <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" />
+
+              <label for="fontColor2">Font Color:</label>
+              <input type="text" id="fontColor2" value="#ffffff" data-coloris />
+
+              <label for="fontWeight2">Font Weight:</label>
+              <select id="fontWeight2">
+                <option value="bold">Bold</option>
+                <option value="italic">Italic</option>
+              </select>
+
+              <label for="fontFamilySelect2">Font Family:</label>
+              <select id="fontFamilySelect2">
+                <option value="sans-serif">Sans-serif</option>
+                <option value="serif">Serif</option>
+                <option value="monospace">Monospace</option>
+                <option value="cursive">Cursive</option>
+                <option value="fantasy">Fantasy</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="genCon mb-3">
+            <div class="ranges">
+              <label for="topRange3">Top Position:</label>
+              <input type="range" id="topRange3" min="0" max="500" step="1" value="70" />
+
+              <label for="leftRange3">Left Position:</label>
+              <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" />
+
+              <label for="rotateRange3">Rotate Position:</label>
+              <input type="range" id="rotateRange3" min="-180" max="180" step="30" value="0" list="values3" />
+              <datalist id="values3">
+                <option value="-180" label="-180">-180deg</option>
+                <option value="-90" label="-90">-90deg</option>
+                <option value="0" label="0">0deg</option>
+                <option value="90" label="90">90deg</option>
+                <option value="180" label="180">180deg</option>
+              </datalist>
+            </div>
+            <div class="txtBoxDiv">
+              <label for="txtBox3">Text3:</label>
+              <textarea id="txtBox3" cols="50" rows="1"></textarea>
+            </div>
+            <div class="txtCon">
+              <label for="fontSizeRange3">Font Size:</label>
+              <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" />
+
+              <label for="fontColor3">Font Color:</label>
+              <input type="text" id="fontColor3" value="#ffffff" data-coloris />
+
+              <label for="fontWeight3">Font Weight:</label>
+              <select id="fontWeight3">
+                <option value="bold">Bold</option>
+                <option value="italic">Italic</option>
+              </select>
+
+              <label for="fontFamilySelect3">Font Family:</label>
+              <select id="fontFamilySelect3">
+                <option value="sans-serif">Sans-serif</option>
+                <option value="serif">Serif</option>
+                <option value="monospace">Monospace</option>
+                <option value="cursive">Cursive</option>
+                <option value="fantasy">Fantasy</option>
+              </select>
+            </div>
           </div>
         </div>
 
-        <div class="genCon mb-3">
-          <div class="ranges">
-            <label for="topRange2">Top Position:</label>
-            <input type="range" id="topRange2" min="0" max="500" step="1" value="50" />
-
-            <label for="leftRange2">Left Position:</label>
-            <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" />
-
-            <label for="rotateRange2">Rotate Position:</label>
-            <input type="range" id="rotateRange2" min="-180" max="180" step="30" value="0" list="values" />
-            <datalist id="values">
-              <option value="-180" label="-180">-180deg</option>
-              <option value="-90" label="-90">-90deg</option>
-              <option value="0" label="0">0deg</option>
-              <option value="90" label="90">90deg</option>
-              <option value="180" label="180">180deg</option>
-            </datalist>
-          </div>
-
-          <label for="txtBox2">Text2:</label>
-          <textarea name="" id="txtBox2" cols="50" rows="1"></textarea>
-
-          <div class="txtCon">
-            <label for="fontSizeRange2">Font Size:</label>
-            <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" />
-
-            <label for="fontColor2">Font Color:</label>
-            <input type="text" id="fontColor2" value="#ffffff" data-coloris />
-
-            <label for="fontWeight2">Font Weight:</label>
-            <select id="fontWeight2">
-              <option value="bold">Bold</option>
-              <option value="italic">Italic</option>
-            </select>
-
-            <label for="fontFamilySelect2">Font Family:</label>
-            <select id="fontFamilySelect2">
-              <option value="sans-serif">Sans-serif</option>
-              <option value="serif">Serif</option>
-              <option value="monospace">Monospace</option>
-              <option value="cursive">Cursive</option>
-              <option value="fantasy">Fantasy</option>
-            </select>
-          </div>
-        </div>
-        <div class="genCon mb-3">
-          <div class="ranges">
-            <label for="topRange3">Top Position:</label>
-            <input type="range" id="topRange3" min="0" max="500" step="1" value="70" />
-
-            <label for="leftRange3">Left Position:</label>
-            <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" />
-
-            <label for="rotateRange3">Rotate Position:</label>
-            <input type="range" id="rotateRange3" min="-180" max="180" step="30" value="0" list="values" />
-            <datalist id="values">
-              <option value="-180" label="-180">-180deg</option>
-              <option value="-90" label="-90">-90deg</option>
-              <option value="0" label="0">0deg</option>
-              <option value="90" label="90">90deg</option>
-              <option value="180" label="180">180deg</option>
-            </datalist>
-          </div>
-
-          <label for="txtBox3">Text3:</label>
-          <textarea name="" id="txtBox3" cols="50" rows="1"></textarea>
-
-          <div class="txtCon">
-            <label for="fontSizeRange3">Font Size:</label>
-            <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" />
-
-            <label for="fontColor3">Font Color:</label>
-            <input type="text" id="fontColor3" value="#ffffff" data-coloris />
-
-            <label for="fontWeight3">Font Weight:</label>
-            <select id="fontWeight3">
-              <option value="bold">Bold</option>
-              <option value="italic">Italic</option>
-            </select>
-
-            <label for="fontFamilySelec3t">Font Family:</label>
-            <select id="fontFamilySelect3">
-              <option value="sans-serif">Sans-serif</option>
-              <option value="serif">Serif</option>
-              <option value="monospace">Monospace</option>
-              <option value="cursive">Cursive</option>
-              <option value="fantasy">Fantasy</option>
-            </select>
-          </div>
-        </div>
-
-        <a id="downloadLinkPNG" download="meme.png" href="#" style="display: none">Download Meme by PNG</a>
-        <a id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">Download Meme by JPG</a>
         <script>
           const canvas = document.querySelector("#canvas");
           const ctx = canvas.getContext("2d");
@@ -254,31 +278,32 @@
 
           canvas.addEventListener("mousedown", onMouseDown);
           canvas.addEventListener("mousemove", onMouseMove);
-
           canvas.addEventListener("mouseup", onMouseUp);
 
           fileInput.addEventListener("change", () => {
-            const reader = new FileReader();
-            reader.onload = () => {
-              img = new Image();
-              img.onload = () => {
-                let ratio = img.width / img.height;
-                if (ratio > 1) {
-                  canvas.width = 500;
-                  canvas.height = 500 / ratio;
-                } else {
-                  canvas.width = 500 * ratio;
-                  canvas.height = 500;
-                }
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-                drawCanvas();
+            if (fileInput.files && fileInput.files[0]) {
+              const reader = new FileReader();
+              reader.onload = () => {
+                img = new Image();
+                img.onload = () => {
+                  let ratio = img.width / img.height;
+                  if (ratio > 1) {
+                    canvas.width = 500;
+                    canvas.height = 500 / ratio;
+                  } else {
+                    canvas.width = 500 * ratio;
+                    canvas.height = 500;
+                  }
+                  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                  downloadLinkPNG.style.display = "block";
+                  downloadLinkJPG.style.display = "block";
+                  drawCanvas();
+                };
+                img.src = reader.result;
               };
-              img.src = reader.result;
-            };
-            reader.readAsDataURL(fileInput.files[0]);
+              reader.readAsDataURL(fileInput.files[0]);
+            }
           });
-
           colorPicker.addEventListener("input", () => {
             fontColorPicked = colorPicker.value;
           });
@@ -289,7 +314,25 @@
             fontColorPicked3 = colorPicker3.value;
           });
 
-          function drawCanvas() {
+          function drawAnchors() {
+            // Draw circles around txtBox and txtBox2  :: Anchor
+            ctx.strokeStyle = "red";
+            ctx.beginPath();
+            ctx.arc(parseInt(leftRange.value), parseInt(topRange.value), box1Radius, 0, 2 * Math.PI);
+            ctx.stroke();
+
+            ctx.strokeStyle = "blue";
+            ctx.beginPath();
+            ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
+            ctx.stroke();
+
+            ctx.strokeStyle = "green";
+            ctx.beginPath();
+            ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
+            ctx.stroke();
+          }
+
+          function drawCanvas(showAnchors = true) {
             if (img === null) return;
 
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -334,29 +377,19 @@
               fontSizeRange3.value,
               fontFamilySelect3.value
             );
+            if (showAnchors) {
+              drawAnchors();
+            }
 
-            // Draw circles around txtBox and txtBox2  :: Anchor
-            ctx.strokeStyle = "red";
-            ctx.beginPath();
-            ctx.arc(parseInt(leftRange.value), parseInt(topRange.value), box1Radius, 0, 2 * Math.PI);
-            ctx.stroke();
-
-            ctx.strokeStyle = "blue";
-            ctx.beginPath();
-            ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
-            ctx.stroke();
-
-            ctx.strokeStyle = "green";
-            ctx.beginPath();
-            ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
-            ctx.stroke();
-
-            downloadLinkPNG.href = canvas.toDataURL();
-            downloadLinkPNG.style.display = "block";
-            downloadLinkJPG.href = canvas.toDataURL();
-            downloadLinkJPG.style.display = "block";
             topRange.max = canvas.height - parseInt(fontSizeRange.value);
             leftRange.max = canvas.width;
+          }
+
+          function downloadImage() {
+            drawCanvas(false);
+            downloadLinkPNG.href = canvas.toDataURL();
+            downloadLinkJPG.href = canvas.toDataURL();
+            drawCanvas(true);
           }
 
           function drawText(ctx, text, x, y, rotate, fontColor, fontWeight, fontSize, fontFamily) {

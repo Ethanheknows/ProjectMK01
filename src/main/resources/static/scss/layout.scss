@@ -14,6 +14,14 @@ body {
   }
 
   //gen 부분 css
+  .topWrap {
+    display: flex;
+    justify-content: center;
+    padding: 30px 30px;
+    .canvasWrap {
+      border: 1px solid white;
+    }
+  }
   .genCon {
     textarea {
       resize: none;
@@ -28,6 +36,27 @@ body {
     }
     .txtCon {
       display: flex;
+    }
+  }
+  .download {
+    margin-left: 40px;
+    display: inline;
+
+    .download_title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h2 {
+        margin-left: 10px;
+      }
+    }
+
+    .btnDown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 50px;
     }
   }
 }
@@ -95,7 +124,7 @@ body {
           height: 350px;
           &:hover {
             animation: keep-size 0.5s forwards;
-            animation-delay: 2s;
+            animation-delay: 1.5s;
             animation-timing-function: ease;
           }
         }
