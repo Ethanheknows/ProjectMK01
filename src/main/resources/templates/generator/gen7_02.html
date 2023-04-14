@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>gen7testtest</title>
+    </head>
+    <link rel="stylesheet" href="../../static/css/coloris.css" />
+    <script src="../../static/js/coloris.js"></script>
+    <script src="../../static/js/jquery-3.6.4.min.js"></script>
+    <body>
+        <h1>gen7testtest</h1>
+        <input type="file" id="fileInput" />
+        <br /><br />
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <br /><br />
+        <label for="topRange">Top Position:</label>
+        <input type="range" id="topRange" min="0" max="500" step="1" value="0" />
+        <br /><br />
+        <label for="leftRange">Left Position:</label>
+        <input type="range" id="leftRange" min="0" max="500" step="1" value="0" />
+        <br /><br />
+        <label for="txtBox">Text:</label>
+        <input type="text" id="txtBox" />
+        <button id="addTextBox">추가</button>
+
+        <br /><br />
+        <label for="topRange2">Top Position:</label>
+        <input type="range" id="topRange2" min="0" max="500" step="1" value="0" />
+        <br /><br />
+        <label for="leftRange2">Left Position:</label>
+        <input type="range" id="leftRange2" min="0" max="500" step="1" value="0" />
+        <label for="txtBox2">Text2:</label>
+        <input type="text" id="txtBox2" />
+        <br /><br />
+        <label for="fontSizeRange">Font Size:</label>
+        <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
+        <br /><br />
+        <label for="fontColor">Font Color:</label>
+        <input type="text" id="fontColor" value="#ffffff" data-coloris />
+
+        <br /><br />
+        <label for="fontWeight">Font Weight:</label>
+        <select id="fontWeight">
+            <option value="bold">Bold</option>
+            <option value="italic">Italic</option>
+        </select>
+        <br /><br />
+        <label for="fontFamilySelect">Font Family:</label>
+        <select id="fontFamilySelect">
+            <option value="sans-serif">Sans-serif</option>
+            <option value="serif">Serif</option>
+            <option value="monospace">Monospace</option>
+            <option value="cursive">Cursive</option>
+            <option value="fantasy">Fantasy</option>
+        </select>
+        <br /><br />
+
+        <a id="downloadLinkPNG" download="meme.png" href="#" style="display: none">Download Meme by PNG</a>
+        <a id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">Download Meme by JPG</a>
+        <script>
+            const canvas = document.querySelector("#canvas");
+            const ctx = canvas.getContext("2d");
+            const fileInput = document.querySelector("#fileInput");
+            const topRange = document.querySelector("#topRange");
+            const leftRange = document.querySelector("#leftRange");
+            const txtBox = document.querySelector("#txtBox");
+            const topRange2 = document.querySelector("#topRange2");
+            const leftRange2 = document.querySelector("#leftRange2");
+            const txtBox2 = document.querySelector("#txtBox2");
+            const downloadLinkPNG = document.querySelector("#downloadLinkPNG");
+            const downloadLinkJPG = document.querySelector("#downloadLinkJPG");
+            const fontSizeRange = document.querySelector("#fontSizeRange");
+            const fontWeight = document.querySelector("#fontWeight");
+            const fontFamilySelect = document.querySelector("#fontFamilySelect");
+            const colorPicker = document.querySelector("#fontColor");
+            let img = null;
+            let fontColorPicked = "#ffffff";
+
+            let isDraggingBox1 = false;
+            let isDraggingBox2 = false;
+            let dragStart = { x: 0, y: 0 };
+
+            const box1Radius = 10;
+            const box2Radius = 10;
+
+            const addTextBoxButton = document.querySelector("#addTextBox");
+
+            const textBoxes = [
+                {
+                    topRange: topRange,
+                    leftRange: leftRange,
+                    txtBox: txtBox,
+                    color: "red",
+                    isDragging: false,
+                },
+                {
+                    topRange: topRange2,
+                    leftRange: leftRange2,
+                    txtBox: txtBox2,
+                    color: "blue",
+                    isDragging: false,
+                },
+            ];
+
+            addTextBoxButton.addEventListener("click", () => {
+                const newTopRange = document.createElement("input");
+                newTopRange.type = "range";
+                newTopRange.min = "0";
+                newTopRange.max = "500";
+                newTopRange.value = "0";
+
+                const newLeftRange = document.createElement("input");
+                newLeftRange.type = "range";
+                newLeftRange.min = "0";
+                newLeftRange.max = "500";
+                newLeftRange.value = "0";
+
+                const newTxtBox = document.createElement("input");
+                newTxtBox.type = "text";
+                newTxtBox.value = "Text " + (textBoxes.length + 1);
+
+                textBoxes.push({
+                    topRange: newTopRange,
+                    leftRange: newLeftRange,
+                    txtBox: newTxtBox,
+                    color: getRandomColor(),
+                    isDragging: false,
+                });
+                drawCanvas();
+
+                newTopRange.addEventListener("input", drawCanvas);
+                newLeftRange.addEventListener("input", drawCanvas);
+                newTxtBox.addEventListener("input", drawCanvas);
+            });
+
+            function getRandomColor() {
+                const letters = "0123456789ABCDEF";
+                let color = "#";
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+            //drag 부분.
+            function onMouseDown(event) {
+                const x = event.clientX - canvas.offsetLeft;
+                const y = event.clientY - canvas.offsetTop;
+
+                if (x >= 0 && x <= canvas.width && y >= 0 && y <= canvas.height) {
+                    textBoxes.forEach((textBox) => {
+                        const boxRadius = 10;
+                        if (
+                            Math.sqrt(
+                                Math.pow(x - textBox.leftRange.value, 2) + Math.pow(y - textBox.topRange.value, 2)
+                            ) <= boxRadius
+                        ) {
+                            textBox.isDragging = true;
+                            dragStart = { x: x, y: y };
+                        }
+                    });
+                }
+            }
+
+            function onMouseMove(event) {
+                const x = event.clientX - canvas.offsetLeft;
+                const y = event.clientY - canvas.offsetTop;
+
+                textBoxes.forEach((textBox) => {
+                    if (textBox.isDragging) {
+                        const dx = x - dragStart.x;
+                        const dy = y - dragStart.y;
+                        textBox.leftRange.value = parseInt(textBox.leftRange.value) + dx;
+                        textBox.topRange.value = parseInt(textBox.topRange.value) + dy;
+                        drawCanvas();
+                        dragStart = { x: x, y: y };
+                    }
+                });
+            }
+
+            function onMouseUp(event) {
+                textBoxes.forEach((textBox) => {
+                    textBox.isDragging = false;
+                });
+            }
+
+            fileInput.addEventListener("change", () => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    img = new Image();
+                    img.onload = () => {
+                        let ratio = img.width / img.height;
+                        if (ratio > 1) {
+                            canvas.width = 500;
+                            canvas.height = 500 / ratio;
+                        } else {
+                            canvas.width = 500 * ratio;
+                            canvas.height = 500;
+                        }
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                        drawCanvas();
+                    };
+                    img.src = reader.result;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            });
+
+            colorPicker.addEventListener("input", () => {
+                fontColorPicked = colorPicker.value;
+            });
+
+            function drawCanvas() {
+                if (img === null) return;
+
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                textBoxes.forEach((textBox) => {
+                    ctx.fillStyle = fontColorPicked;
+                    ctx.font = fontWeight.value + " " + fontSizeRange.value + "px " + fontFamilySelect.value;
+                    ctx.textAlign = "start";
+                    ctx.fillText(
+                        textBox.txtBox.value,
+                        parseInt(textBox.leftRange.value),
+                        parseInt(textBox.topRange.value) + parseInt(fontSizeRange.value)
+                    );
+
+                    // Draw circles around textBox
+                    ctx.strokeStyle = textBox.color;
+                    ctx.beginPath();
+                    ctx.arc(parseInt(textBox.leftRange.value), parseInt(textBox.topRange.value), 10, 0, 2 * Math.PI);
+                    ctx.stroke();
+                });
+
+                downloadLinkPNG.href = canvas.toDataURL();
+                downloadLinkPNG.style.display = "block";
+                downloadLinkJPG.href = canvas.toDataURL();
+                downloadLinkJPG.style.display = "block";
+                topRange.max = canvas.height - parseInt(fontSizeRange.value);
+                leftRange.max = canvas.width;
+            }
+
+            txtBox.addEventListener("input", drawCanvas);
+            topRange.addEventListener("input", drawCanvas);
+            leftRange.addEventListener("input", drawCanvas);
+
+            topRange2.addEventListener("input", drawCanvas);
+            leftRange2.addEventListener("input", drawCanvas);
+            txtBox2.addEventListener("input", drawCanvas);
+
+            colorPicker.addEventListener("input", drawCanvas);
+            fontWeight.addEventListener("input", drawCanvas);
+            fontSizeRange.addEventListener("input", drawCanvas);
+            fontFamilySelect.addEventListener("input", () => {
+                const draggingStates = textBoxes.map((textBox) => textBox.isDragging);
+                drawCanvas();
+                textBoxes.forEach((textBox, index) => {
+                    textBox.isDragging = draggingStates[index];
+                });
+            });
+            canvas.addEventListener("mousedown", onMouseDown);
+            canvas.addEventListener("mousemove", onMouseMove);
+            canvas.addEventListener("mouseup", onMouseUp);
+        </script>
+    </body>
+</html>

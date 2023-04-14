@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>gen6_02TESTESTEST</title>
-        <!-- 레이아웃에 나중에 이식해야함 -->
-        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css" />
-
-        <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script> -->
-        <!-- 레이아웃에 나중에 이식해야함 -->
+        <title>gen7</title>
+        <link rel="stylesheet" href="../../static/css/coloris.css" />
+        <script src="../../static/js/coloris.js"></script>
+        <script src="../../static/js/jquery-3.6.4.min.js"></script>
     </head>
     <body>
-        <h1>gen6_02TESTESTEST</h1>
+        <h1>gen7</h1>
         <input type="file" id="fileInput" />
         <br /><br />
         <canvas id="canvas" width="500" height="500"></canvas>
@@ -54,14 +52,14 @@
             <option value="fantasy">Fantasy</option>
         </select>
         <br /><br />
-        <hr>
+        <hr />
 
         <label for="topRange2">Top Position:</label>
         <input type="range" id="topRange2" min="0" max="500" step="1" value="0" />
         <br /><br />
         <label for="leftRange2">Left Position:</label>
         <input type="range" id="leftRange2" min="0" max="500" step="1" value="0" />
-        <br><br>
+        <br /><br />
         <label for="rotateRange2">Rotate Position:</label>
         <input type="range" id="rotateRange2" min="-180" max="180" step="30" value="0" list="values" />
         <datalist id="values">
@@ -103,7 +101,7 @@
             const canvas = document.querySelector("#canvas");
             const ctx = canvas.getContext("2d");
             const fileInput = document.querySelector("#fileInput");
-            
+
             const txtBox = document.querySelector("#txtBox");
             const topRange = document.querySelector("#topRange");
             const leftRange = document.querySelector("#leftRange");
@@ -127,7 +125,6 @@
             let img = null;
             let fontColorPicked = "#ffffff";
             let fontColorPicked2 = "#ffffff";
-
 
             let isDraggingBox1 = false;
             let isDraggingBox2 = false;
@@ -180,15 +177,7 @@
             canvas.addEventListener("mousedown", onMouseDown);
             canvas.addEventListener("mousemove", onMouseMove);
 
-
-
             canvas.addEventListener("mouseup", onMouseUp);
-
-
-
-
-
-
 
             fileInput.addEventListener("change", () => {
                 const reader = new FileReader();
@@ -230,10 +219,28 @@
                 ctx.font = fontWeight2.value + " " + fontSizeRange2.value + "px " + fontFamilySelect2.value;
 
                 ctx.textAlign = "start";
-                drawText(ctx, txtBox.value, parseInt(leftRange.value), parseInt(topRange.value), parseInt(rotateRange.value), fontColorPicked, fontWeight.value, fontSizeRange.value, fontFamilySelect.value);
-                drawText(ctx, txtBox2.value, parseInt(leftRange2.value), parseInt(topRange2.value), parseInt(rotateRange2.value), fontColorPicked2, fontWeight2.value, fontSizeRange2.value, fontFamilySelect2.value);
-
-             
+                drawText(
+                    ctx,
+                    txtBox.value,
+                    parseInt(leftRange.value),
+                    parseInt(topRange.value),
+                    parseInt(rotateRange.value),
+                    fontColorPicked,
+                    fontWeight.value,
+                    fontSizeRange.value,
+                    fontFamilySelect.value
+                );
+                drawText(
+                    ctx,
+                    txtBox2.value,
+                    parseInt(leftRange2.value),
+                    parseInt(topRange2.value),
+                    parseInt(rotateRange2.value),
+                    fontColorPicked2,
+                    fontWeight2.value,
+                    fontSizeRange2.value,
+                    fontFamilySelect2.value
+                );
 
                 // Draw circles around txtBox and txtBox2
                 ctx.strokeStyle = "red";
@@ -264,21 +271,15 @@
                 ctx.rotate((rotate * Math.PI) / 180);
                 ctx.fillStyle = fontColor;
                 ctx.font = fontWeight + " " + fontSize + "px " + fontFamily;
-                ctx.fillText(
-                    text,
-                    -textWidth / 2,
-                    textHeight / 2
-                );
+                ctx.fillText(text, -textWidth / 2, textHeight / 2);
                 ctx.restore();
             }
-
-
 
             txtBox.addEventListener("input", drawCanvas);
             topRange.addEventListener("input", drawCanvas);
             leftRange.addEventListener("input", drawCanvas);
             rotateRange.addEventListener("input", drawCanvas);
-            
+
             topRange2.addEventListener("input", drawCanvas);
             leftRange2.addEventListener("input", drawCanvas);
             rotateRange2.addEventListener("input", drawCanvas);
@@ -293,6 +294,32 @@
             fontWeight2.addEventListener("input", drawCanvas);
             fontSizeRange2.addEventListener("input", drawCanvas);
             fontFamilySelect2.addEventListener("input", drawCanvas);
+
+            Coloris({
+                parent: ".demo",
+                theme: "default",
+                themeMode: "light",
+                margin: 2,
+                alpha: true,
+                format: "hex",
+                clearButton: true,
+                clearLabel: "Clear",
+                swatches: [
+                    "#000000",
+                    "#ffffff",
+                    "#cccccc",
+                    "#ff0000",
+                    "#ffee00",
+                    "#22ff00",
+                    "#00ffe5",
+                    "#0000ff",
+                    "#9500ff",
+                    "#4ced82",
+                    "#f01d7c",
+                ],
+                inline: false,
+                defaultColor: "#000000",
+            });
         </script>
     </body>
 </html>

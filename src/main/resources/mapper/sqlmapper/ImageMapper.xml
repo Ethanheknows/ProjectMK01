@@ -21,7 +21,7 @@
 
       <select id="getAllimages" resultType="ImageDto">
 
-        SELECT * FROM IMAGES 
+        SELECT * FROM IMAGES ORDER BY NO DESC
 
 
       </select>
