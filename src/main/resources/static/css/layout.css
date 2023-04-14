@@ -1,8 +1,72 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Sohne";
+  font-style: normal;
+  font-weight: 200;
+  src: url(/font/TestSöhne-Extraleicht.otf) format("opentype");
+}
+@font-face {
+  font-family: "Sohne";
+  font-style: normal;
+  font-weight: 300;
+  src: url(/font/TestSöhne-Leicht.otf) format("opentype");
+}
+@font-face {
+  font-family: "Sohne";
+  font-style: normal;
+  font-weight: 300;
+  src: url(/font/TestSöhne-Leicht.otf) format("opentype");
+}
+@font-face {
+  font-family: "Sohne";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/TestSöhne-Buch.otf) format("opentype");
+}
+@font-face {
+  font-family: "Sohne";
+  font-style: normal;
+  font-weight: 500;
+  src: url(/font/TestSöhne-Kräftig.otf) format("opentype");
+}
+@font-face {
+  font-family: "Sohne";
+  font-style: normal;
+  font-weight: 600;
+  src: url(/font/TestSöhne-Halbfett.otf) format("opentype");
+}
+@font-face {
+  font-family: "Sohne";
+  font-style: normal;
+  font-weight: 700;
+  src: url(/font/TestSöhne-Dreiviertelfett.otf) format("opentype");
+}
+@font-face {
+  font-family: "Sohne";
+  font-style: normal;
+  font-weight: 800;
+  src: url(/font/TestSöhne-Fett.otf) format("opentype");
+}
+@font-face {
+  font-family: "Sohne";
+  font-style: normal;
+  font-weight: 900;
+  src: url(/font/TestSöhne-Extrafett.otf) format("opentype");
+}
 body {
+  font-family: "Sohne", sans-serif;
+  font-weight: 300;
   background-color: black;
-  color: rgb(0, 255, 106);
+  color: rgb(81, 218, 76);
+}
+body h1 {
+  font-weight: 700;
+  font-size: 75px;
 }
 
+.modal.fade#imgModal {
+  color: black;
+}
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #modal-image img {
   width: 700px;
   -o-object-fit: contain;
