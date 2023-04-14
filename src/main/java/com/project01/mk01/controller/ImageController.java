@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Size;
 
 import lombok.extern.log4j.Log4j2;
@@ -62,9 +63,17 @@ public class ImageController {
     }
 
     @GetMapping("/insert")
-    public String insert() {
+    public String insert(HttpServletRequest request) {
         log.info("aaaaaaaaaaaaaaaaaaaaaaaaa");
-        return "/gallery/insert";
+        String old_url = request.getHeader("referer");
+        if (old_url.equals("http://localhost:9091/")) {
+            log.info(" 글쓰기 폼 ======> " + old_url);
+            return "/gallery/insert";
+        } else {
+            return "/";
+
+        }
+
     }
 
     @PostMapping("/insertProcess")

@@ -12,10 +12,10 @@
     
     <body>
         <div layout:fragment="contents">
-            <a id="clickTag" th:text="ALL" th:value="all"></a>
+            <a id="clickTag" th:text="ALL" th:value="all" style="cursor:pointer;" ></a>
 
             <tr th:each="item : ${tags}" class="text-center">            
-                <a id="clickTag" th:text="${item}" th:value="${item}"></a>
+                <a id="clickTag" th:text="${item}" th:value="${item}" style="cursor:pointer;"></a>
             </tr>
     
 
