@@ -1,325 +1,341 @@
 <!DOCTYPE html>
-<html>
+<html
+    lang="en"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.thymeleaf.org"
+    layout:decorate="~{/layout/layout.html}"
+>
     <head>
         <title>gen7</title>
-        <link rel="stylesheet" href="../../static/css/coloris.css" />
-        <script src="../../static/js/coloris.js"></script>
-        <script src="../../static/js/jquery-3.6.4.min.js"></script>
     </head>
+
     <body>
-        <h1>gen7</h1>
-        <input type="file" id="fileInput" />
-        <br /><br />
-        <canvas id="canvas" width="500" height="500"></canvas>
-        <br /><br />
-        <label for="topRange">Top Position:</label>
-        <input type="range" id="topRange" min="0" max="500" step="1" value="0" />
-        <br /><br />
-        <label for="leftRange">Left Position:</label>
-        <input type="range" id="leftRange" min="0" max="500" step="1" value="0" />
-        <br /><br />
-        <label for="rotateRange">Rotate Position:</label>
-        <input type="range" id="rotateRange" min="-180" max="180" step="30" value="0" list="values" />
-        <datalist id="values">
-            <option value="-180" label="-180">-180deg</option>
-            <option value="-90" label="-90">-90deg</option>
-            <option value="0" label="0">0deg</option>
-            <option value="90" label="90">90deg</option>
-            <option value="180" label="180">180deg</option>
-        </datalist>
-        <br /><br />
-        <label for="txtBox">Text:</label>
-        <input type="text" id="txtBox" />
-        <br /><br />
-        <label for="fontSizeRange">Font Size:</label>
-        <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
-        <br /><br />
-        <label for="fontColor">Font Color:</label>
-        <input type="text" id="fontColor" value="#ffffff" data-coloris />
-        <br /><br />
-        <label for="fontWeight">Font Weight:</label>
-        <select id="fontWeight">
-            <option value="bold">Bold</option>
-            <option value="italic">Italic</option>
-        </select>
-        <br /><br />
-        <label for="fontFamilySelect">Font Family:</label>
-        <select id="fontFamilySelect">
-            <option value="sans-serif">Sans-serif</option>
-            <option value="serif">Serif</option>
-            <option value="monospace">Monospace</option>
-            <option value="cursive">Cursive</option>
-            <option value="fantasy">Fantasy</option>
-        </select>
-        <br /><br />
-        <hr />
+        <div layout:fragment="contents">
+            <div class="continer">
+                <h1>gen7</h1>
+                <input type="file" id="fileInput" />
 
-        <label for="topRange2">Top Position:</label>
-        <input type="range" id="topRange2" min="0" max="500" step="1" value="0" />
-        <br /><br />
-        <label for="leftRange2">Left Position:</label>
-        <input type="range" id="leftRange2" min="0" max="500" step="1" value="0" />
-        <br /><br />
-        <label for="rotateRange2">Rotate Position:</label>
-        <input type="range" id="rotateRange2" min="-180" max="180" step="30" value="0" list="values" />
-        <datalist id="values">
-            <option value="-180" label="-180">-180deg</option>
-            <option value="-90" label="-90">-90deg</option>
-            <option value="0" label="0">0deg</option>
-            <option value="90" label="90">90deg</option>
-            <option value="180" label="180">180deg</option>
-        </datalist>
-        <br /><br />
-        <label for="txtBox2">Text2:</label>
-        <input type="text" id="txtBox2" />
-        <br /><br />
-        <label for="fontSizeRange2">Font Size:</label>
-        <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" />
-        <br /><br />
-        <label for="fontColor2">Font Color:</label>
-        <input type="text" id="fontColor2" value="#ffffff" data-coloris />
-        <br /><br />
-        <label for="fontWeight2">Font Weight:</label>
-        <select id="fontWeight2">
-            <option value="bold">Bold</option>
-            <option value="italic">Italic</option>
-        </select>
-        <br /><br />
-        <label for="fontFamilySelect2">Font Family:</label>
-        <select id="fontFamilySelect2">
-            <option value="sans-serif">Sans-serif</option>
-            <option value="serif">Serif</option>
-            <option value="monospace">Monospace</option>
-            <option value="cursive">Cursive</option>
-            <option value="fantasy">Fantasy</option>
-        </select>
-        <br /><br />
+                <canvas id="canvas" width="500" height="500"></canvas>
+                <div class="genCon mb-3">
+                    <div class="ranges">
+                        <label for="topRange">Top Position:</label>
+                        <input type="range" id="topRange" min="0" max="500" step="1" value="30" />
+                        <label for="leftRange">Left Position:</label>
+                        <input type="range" id="leftRange" min="0" max="500" step="1" value="30" />
+                        <label for="rotateRange">Rotate Position:</label>
+                        <input type="range" id="rotateRange" min="-180" max="180" step="30" value="0" list="values" />
+                        <datalist id="values">
+                            <option value="-180" label="-180">-180deg</option>
+                            <option value="-90" label="-90">-90deg</option>
+                            <option value="0" label="0">0deg</option>
+                            <option value="90" label="90">90deg</option>
+                            <option value="180" label="180">180deg</option>
+                        </datalist>
+                    </div>
 
-        <a id="downloadLinkPNG" download="meme.png" href="#" style="display: none">Download Meme by PNG</a>
-        <a id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">Download Meme by JPG</a>
-        <script>
-            const canvas = document.querySelector("#canvas");
-            const ctx = canvas.getContext("2d");
-            const fileInput = document.querySelector("#fileInput");
+                    <label for="txtBox">Text:</label>
+                    <textarea name="" id="txtBox" cols="50" rows="1"></textarea>
+                    <div class="txtCon">
+                        <label for="fontSizeRange">Font Size:</label>
+                        <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
 
-            const txtBox = document.querySelector("#txtBox");
-            const topRange = document.querySelector("#topRange");
-            const leftRange = document.querySelector("#leftRange");
-            const rotateRange = document.querySelector("#rotateRange");
-            const fontSizeRange = document.querySelector("#fontSizeRange");
-            const fontWeight = document.querySelector("#fontWeight");
-            const fontFamilySelect = document.querySelector("#fontFamilySelect");
-            const colorPicker = document.querySelector("#fontColor");
+                        <label for="fontColor">Font Color:</label>
+                        <input type="text" id="fontColor" value="#ffffff" data-coloris />
 
-            const txtBox2 = document.querySelector("#txtBox2");
-            const topRange2 = document.querySelector("#topRange2");
-            const leftRange2 = document.querySelector("#leftRange2");
-            const rotateRange2 = document.querySelector("#rotateRange2");
-            const fontSizeRange2 = document.querySelector("#fontSizeRange2");
-            const fontWeight2 = document.querySelector("#fontWeight2");
-            const fontFamilySelect2 = document.querySelector("#fontFamilySelect2");
-            const colorPicker2 = document.querySelector("#fontColor2");
+                        <label for="fontWeight">Font Weight:</label>
+                        <select id="fontWeight">
+                            <option value="bold">Bold</option>
+                            <option value="italic">Italic</option>
+                        </select>
 
-            const downloadLinkPNG = document.querySelector("#downloadLinkPNG");
-            const downloadLinkJPG = document.querySelector("#downloadLinkJPG");
-            let img = null;
-            let fontColorPicked = "#ffffff";
-            let fontColorPicked2 = "#ffffff";
+                        <label for="fontFamilySelect">Font Family:</label>
+                        <select id="fontFamilySelect">
+                            <option value="sans-serif">Sans-serif</option>
+                            <option value="serif">Serif</option>
+                            <option value="monospace">Monospace</option>
+                            <option value="cursive">Cursive</option>
+                            <option value="fantasy">Fantasy</option>
+                        </select>
+                    </div>
+                </div>
 
-            let isDraggingBox1 = false;
-            let isDraggingBox2 = false;
-            let dragStart = { x: 0, y: 0 };
+                <div class="genCon">
+                    <div class="ranges">
+                        <label for="topRange2">Top Position:</label>
+                        <input type="range" id="topRange2" min="0" max="500" step="1" value="50" />
 
-            const box1Radius = 10;
-            const box2Radius = 10;
+                        <label for="leftRange2">Left Position:</label>
+                        <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" />
 
-            function onMouseDown(event) {
-                const x = event.clientX - canvas.offsetLeft;
-                const y = event.clientY - canvas.offsetTop;
+                        <label for="rotateRange2">Rotate Position:</label>
+                        <input type="range" id="rotateRange2" min="-180" max="180" step="30" value="0" list="values" />
+                        <datalist id="values">
+                            <option value="-180" label="-180">-180deg</option>
+                            <option value="-90" label="-90">-90deg</option>
+                            <option value="0" label="0">0deg</option>
+                            <option value="90" label="90">90deg</option>
+                            <option value="180" label="180">180deg</option>
+                        </datalist>
+                    </div>
 
-                if (Math.sqrt(Math.pow(x - leftRange.value, 2) + Math.pow(y - topRange.value, 2)) <= box1Radius) {
-                    isDraggingBox1 = true;
-                    dragStart = { x: x, y: y };
-                } else if (
-                    Math.sqrt(Math.pow(x - leftRange2.value, 2) + Math.pow(y - topRange2.value, 2)) <= box2Radius
-                ) {
-                    isDraggingBox2 = true;
-                    dragStart = { x: x, y: y };
-                }
-            }
+                    <label for="txtBox2">Text2:</label>
+                    <textarea name="" id="txtBox2" cols="50" rows="1"></textarea>
 
-            function onMouseMove(event) {
-                const x = event.clientX - canvas.offsetLeft;
-                const y = event.clientY - canvas.offsetTop;
+                    <div class="txtCon">
+                        <label for="fontSizeRange2">Font Size:</label>
+                        <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" />
 
-                if (isDraggingBox1) {
-                    const dx = x - dragStart.x;
-                    const dy = y - dragStart.y;
-                    leftRange.value = parseInt(leftRange.value) + dx;
-                    topRange.value = parseInt(topRange.value) + dy;
-                    drawCanvas();
-                    dragStart = { x: x, y: y };
-                } else if (isDraggingBox2) {
-                    const dx = x - dragStart.x;
-                    const dy = y - dragStart.y;
-                    leftRange2.value = parseInt(leftRange2.value) + dx;
-                    topRange2.value = parseInt(topRange2.value) + dy;
-                    drawCanvas();
-                    dragStart = { x: x, y: y };
-                }
-            }
+                        <label for="fontColor2">Font Color:</label>
+                        <input type="text" id="fontColor2" value="#ffffff" data-coloris />
 
-            function onMouseUp(event) {
-                isDraggingBox1 = false;
-                isDraggingBox2 = false;
-            }
-            
-            canvas.addEventListener("mousedown", onMouseDown);
-            canvas.addEventListener("mousemove", onMouseMove);
+                        <label for="fontWeight2">Font Weight:</label>
+                        <select id="fontWeight2">
+                            <option value="bold">Bold</option>
+                            <option value="italic">Italic</option>
+                        </select>
 
-            canvas.addEventListener("mouseup", onMouseUp);
+                        <label for="fontFamilySelect2">Font Family:</label>
+                        <select id="fontFamilySelect2">
+                            <option value="sans-serif">Sans-serif</option>
+                            <option value="serif">Serif</option>
+                            <option value="monospace">Monospace</option>
+                            <option value="cursive">Cursive</option>
+                            <option value="fantasy">Fantasy</option>
+                        </select>
+                    </div>
+                </div>
 
-            fileInput.addEventListener("change", () => {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    img = new Image();
-                    img.onload = () => {
-                        let ratio = img.width / img.height;
-                        if (ratio > 1) {
-                            canvas.width = 500;
-                            canvas.height = 500 / ratio;
-                        } else {
-                            canvas.width = 500 * ratio;
-                            canvas.height = 500;
+                <a id="downloadLinkPNG" download="meme.png" href="#" style="display: none">Download Meme by PNG</a>
+                <a id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">Download Meme by JPG</a>
+                <script>
+                    const canvas = document.querySelector("#canvas");
+                    const ctx = canvas.getContext("2d");
+                    const fileInput = document.querySelector("#fileInput");
+
+                    const txtBox = document.querySelector("#txtBox");
+                    const topRange = document.querySelector("#topRange");
+                    const leftRange = document.querySelector("#leftRange");
+                    const rotateRange = document.querySelector("#rotateRange");
+                    const fontSizeRange = document.querySelector("#fontSizeRange");
+                    const fontWeight = document.querySelector("#fontWeight");
+                    const fontFamilySelect = document.querySelector("#fontFamilySelect");
+                    const colorPicker = document.querySelector("#fontColor");
+
+                    const txtBox2 = document.querySelector("#txtBox2");
+                    const topRange2 = document.querySelector("#topRange2");
+                    const leftRange2 = document.querySelector("#leftRange2");
+                    const rotateRange2 = document.querySelector("#rotateRange2");
+                    const fontSizeRange2 = document.querySelector("#fontSizeRange2");
+                    const fontWeight2 = document.querySelector("#fontWeight2");
+                    const fontFamilySelect2 = document.querySelector("#fontFamilySelect2");
+                    const colorPicker2 = document.querySelector("#fontColor2");
+
+                    const downloadLinkPNG = document.querySelector("#downloadLinkPNG");
+                    const downloadLinkJPG = document.querySelector("#downloadLinkJPG");
+                    let img = null;
+                    let fontColorPicked = "#ffffff";
+                    let fontColorPicked2 = "#ffffff";
+
+                    let isDraggingBox1 = false;
+                    let isDraggingBox2 = false;
+                    let dragStart = { x: 0, y: 0 };
+
+                    const box1Radius = 10;
+                    const box2Radius = 10;
+
+                    function onMouseDown(event) {
+                        const x = event.clientX - canvas.offsetLeft;
+                        const y = event.clientY - canvas.offsetTop;
+
+                        if (
+                            Math.sqrt(Math.pow(x - leftRange.value, 2) + Math.pow(y - topRange.value, 2)) <= box1Radius
+                        ) {
+                            isDraggingBox1 = true;
+                            dragStart = { x: x, y: y };
+                        } else if (
+                            Math.sqrt(Math.pow(x - leftRange2.value, 2) + Math.pow(y - topRange2.value, 2)) <=
+                            box2Radius
+                        ) {
+                            isDraggingBox2 = true;
+                            dragStart = { x: x, y: y };
                         }
+                    }
+
+                    function onMouseMove(event) {
+                        const x = event.clientX - canvas.offsetLeft;
+                        const y = event.clientY - canvas.offsetTop;
+
+                        if (isDraggingBox1) {
+                            const dx = x - dragStart.x;
+                            const dy = y - dragStart.y;
+                            leftRange.value = parseInt(leftRange.value) + dx;
+                            topRange.value = parseInt(topRange.value) + dy;
+                            drawCanvas();
+                            dragStart = { x: x, y: y };
+                        } else if (isDraggingBox2) {
+                            const dx = x - dragStart.x;
+                            const dy = y - dragStart.y;
+                            leftRange2.value = parseInt(leftRange2.value) + dx;
+                            topRange2.value = parseInt(topRange2.value) + dy;
+                            drawCanvas();
+                            dragStart = { x: x, y: y };
+                        }
+                    }
+
+                    function onMouseUp(event) {
+                        isDraggingBox1 = false;
+                        isDraggingBox2 = false;
+                    }
+
+                    canvas.addEventListener("mousedown", onMouseDown);
+                    canvas.addEventListener("mousemove", onMouseMove);
+
+                    canvas.addEventListener("mouseup", onMouseUp);
+
+                    fileInput.addEventListener("change", () => {
+                        const reader = new FileReader();
+                        reader.onload = () => {
+                            img = new Image();
+                            img.onload = () => {
+                                let ratio = img.width / img.height;
+                                if (ratio > 1) {
+                                    canvas.width = 500;
+                                    canvas.height = 500 / ratio;
+                                } else {
+                                    canvas.width = 500 * ratio;
+                                    canvas.height = 500;
+                                }
+                                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                                drawCanvas();
+                            };
+                            img.src = reader.result;
+                        };
+                        reader.readAsDataURL(fileInput.files[0]);
+                    });
+
+                    colorPicker.addEventListener("input", () => {
+                        fontColorPicked = colorPicker.value;
+                    });
+                    colorPicker2.addEventListener("input", () => {
+                        fontColorPicked2 = colorPicker2.value;
+                        // drawCanvas();
+                    });
+
+                    function drawCanvas() {
+                        if (img === null) return;
+
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-                        drawCanvas();
-                    };
-                    img.src = reader.result;
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            });
+                        ctx.fillStyle = fontColorPicked;
+                        ctx.font = fontWeight.value + " " + fontSizeRange.value + "px " + fontFamilySelect.value;
+                        ctx.font = fontWeight2.value + " " + fontSizeRange2.value + "px " + fontFamilySelect2.value;
 
-            colorPicker.addEventListener("input", () => {
-                fontColorPicked = colorPicker.value;
-            });
-            colorPicker2.addEventListener("input", () => {
-                fontColorPicked2 = colorPicker2.value;
-                // drawCanvas();
-            });
+                        ctx.textAlign = "start";
+                        drawText(
+                            ctx,
+                            txtBox.value,
+                            parseInt(leftRange.value),
+                            parseInt(topRange.value),
+                            parseInt(rotateRange.value),
+                            fontColorPicked,
+                            fontWeight.value,
+                            fontSizeRange.value,
+                            fontFamilySelect.value
+                        );
+                        drawText(
+                            ctx,
+                            txtBox2.value,
+                            parseInt(leftRange2.value),
+                            parseInt(topRange2.value),
+                            parseInt(rotateRange2.value),
+                            fontColorPicked2,
+                            fontWeight2.value,
+                            fontSizeRange2.value,
+                            fontFamilySelect2.value
+                        );
 
-            function drawCanvas() {
-                if (img === null) return;
+                        // Draw circles around txtBox and txtBox2
+                        ctx.strokeStyle = "red";
+                        ctx.beginPath();
+                        ctx.arc(parseInt(leftRange.value), parseInt(topRange.value), box1Radius, 0, 2 * Math.PI);
+                        ctx.stroke();
 
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        ctx.strokeStyle = "blue";
+                        ctx.beginPath();
+                        ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
+                        ctx.stroke();
 
-                ctx.fillStyle = fontColorPicked;
-                ctx.font = fontWeight.value + " " + fontSizeRange.value + "px " + fontFamilySelect.value;
-                ctx.font = fontWeight2.value + " " + fontSizeRange2.value + "px " + fontFamilySelect2.value;
+                        downloadLinkPNG.href = canvas.toDataURL();
+                        downloadLinkPNG.style.display = "block";
+                        downloadLinkJPG.href = canvas.toDataURL();
+                        downloadLinkJPG.style.display = "block";
+                        topRange.max = canvas.height - parseInt(fontSizeRange.value);
+                        leftRange.max = canvas.width;
+                    }
 
-                ctx.textAlign = "start";
-                drawText(
-                    ctx,
-                    txtBox.value,
-                    parseInt(leftRange.value),
-                    parseInt(topRange.value),
-                    parseInt(rotateRange.value),
-                    fontColorPicked,
-                    fontWeight.value,
-                    fontSizeRange.value,
-                    fontFamilySelect.value
-                );
-                drawText(
-                    ctx,
-                    txtBox2.value,
-                    parseInt(leftRange2.value),
-                    parseInt(topRange2.value),
-                    parseInt(rotateRange2.value),
-                    fontColorPicked2,
-                    fontWeight2.value,
-                    fontSizeRange2.value,
-                    fontFamilySelect2.value
-                );
+                    function drawText(ctx, text, x, y, rotate, fontColor, fontWeight, fontSize, fontFamily) {
+                        let textWidth = ctx.measureText(text).width;
+                        let textHeight = parseInt(fontSize);
+                        let centerX = x + textWidth / 2;
+                        let centerY = y + textHeight / 2;
+                        ctx.save();
+                        ctx.translate(centerX, centerY);
+                        ctx.rotate((rotate * Math.PI) / 180);
+                        ctx.fillStyle = fontColor;
+                        ctx.font = fontWeight + " " + fontSize + "px " + fontFamily;
+                        ctx.fillText(text, -textWidth / 2, textHeight / 2);
+                        ctx.restore();
+                    }
 
-                // Draw circles around txtBox and txtBox2
-                ctx.strokeStyle = "red";
-                ctx.beginPath();
-                ctx.arc(parseInt(leftRange.value), parseInt(topRange.value), box1Radius, 0, 2 * Math.PI);
-                ctx.stroke();
+                    txtBox.addEventListener("input", drawCanvas);
+                    topRange.addEventListener("input", drawCanvas);
+                    leftRange.addEventListener("input", drawCanvas);
+                    rotateRange.addEventListener("input", drawCanvas);
 
-                ctx.strokeStyle = "blue";
-                ctx.beginPath();
-                ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
-                ctx.stroke();
+                    topRange2.addEventListener("input", drawCanvas);
+                    leftRange2.addEventListener("input", drawCanvas);
+                    rotateRange2.addEventListener("input", drawCanvas);
+                    txtBox2.addEventListener("input", drawCanvas);
 
-                downloadLinkPNG.href = canvas.toDataURL();
-                downloadLinkPNG.style.display = "block";
-                downloadLinkJPG.href = canvas.toDataURL();
-                downloadLinkJPG.style.display = "block";
-                topRange.max = canvas.height - parseInt(fontSizeRange.value);
-                leftRange.max = canvas.width;
-            }
+                    colorPicker.addEventListener("input", drawCanvas);
+                    fontWeight.addEventListener("input", drawCanvas);
+                    fontSizeRange.addEventListener("input", drawCanvas);
+                    fontFamilySelect.addEventListener("input", drawCanvas);
 
-            function drawText(ctx, text, x, y, rotate, fontColor, fontWeight, fontSize, fontFamily) {
-                let textWidth = ctx.measureText(text).width;
-                let textHeight = parseInt(fontSize);
-                let centerX = x + textWidth / 2;
-                let centerY = y + textHeight / 2;
-                ctx.save();
-                ctx.translate(centerX, centerY);
-                ctx.rotate((rotate * Math.PI) / 180);
-                ctx.fillStyle = fontColor;
-                ctx.font = fontWeight + " " + fontSize + "px " + fontFamily;
-                ctx.fillText(text, -textWidth / 2, textHeight / 2);
-                ctx.restore();
-            }
+                    colorPicker2.addEventListener("input", drawCanvas);
+                    fontWeight2.addEventListener("input", drawCanvas);
+                    fontSizeRange2.addEventListener("input", drawCanvas);
+                    fontFamilySelect2.addEventListener("input", drawCanvas);
 
-            txtBox.addEventListener("input", drawCanvas);
-            topRange.addEventListener("input", drawCanvas);
-            leftRange.addEventListener("input", drawCanvas);
-            rotateRange.addEventListener("input", drawCanvas);
-
-            topRange2.addEventListener("input", drawCanvas);
-            leftRange2.addEventListener("input", drawCanvas);
-            rotateRange2.addEventListener("input", drawCanvas);
-            txtBox2.addEventListener("input", drawCanvas);
-
-            colorPicker.addEventListener("input", drawCanvas);
-            fontWeight.addEventListener("input", drawCanvas);
-            fontSizeRange.addEventListener("input", drawCanvas);
-            fontFamilySelect.addEventListener("input", drawCanvas);
-
-            colorPicker2.addEventListener("input", drawCanvas);
-            fontWeight2.addEventListener("input", drawCanvas);
-            fontSizeRange2.addEventListener("input", drawCanvas);
-            fontFamilySelect2.addEventListener("input", drawCanvas);
-
-            Coloris({
-                parent: ".demo",
-                theme: "default",
-                themeMode: "light",
-                margin: 2,
-                alpha: true,
-                format: "hex",
-                clearButton: true,
-                clearLabel: "Clear",
-                swatches: [
-                    "#000000",
-                    "#ffffff",
-                    "#cccccc",
-                    "#ff0000",
-                    "#ffee00",
-                    "#22ff00",
-                    "#00ffe5",
-                    "#0000ff",
-                    "#9500ff",
-                    "#4ced82",
-                    "#f01d7c",
-                ],
-                inline: false,
-                defaultColor: "#000000",
-            });
-        </script>
+                    Coloris({
+                        parent: ".demo",
+                        theme: "default",
+                        themeMode: "light",
+                        margin: 2,
+                        alpha: true,
+                        format: "hex",
+                        clearButton: true,
+                        clearLabel: "Clear",
+                        swatches: [
+                            "#000000",
+                            "#ffffff",
+                            "#cccccc",
+                            "#ff0000",
+                            "#ffee00",
+                            "#22ff00",
+                            "#00ffe5",
+                            "#0000ff",
+                            "#9500ff",
+                            "#4ced82",
+                            "#f01d7c",
+                        ],
+                        inline: false,
+                        defaultColor: "#000000",
+                    });
+                </script>
+            </div>
+        </div>
     </body>
 </html>

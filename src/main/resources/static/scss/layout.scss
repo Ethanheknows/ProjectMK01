@@ -5,9 +5,28 @@ body {
     font-weight: 300;
     background-color: black;
     color: rgb(81, 218, 76);
+    .header {
+        border-bottom: none;
+    }
     h1 {
         font-weight: 700;
         font-size: 75px;
+    }
+    .genCon {
+        textarea {
+            resize: none;
+        }
+        border: 1px solid white;
+        width: 1000px;
+        height: 100px;
+        justify-content: space-between;
+        align-items: center;
+        .ranges {
+            display: flex;
+        }
+        .txtCon {
+            display: flex;
+        }
     }
 }
 
