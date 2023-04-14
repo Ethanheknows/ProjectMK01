@@ -66,7 +66,7 @@ public class ImageController {
     public String insert(HttpServletRequest request) {
         log.info("aaaaaaaaaaaaaaaaaaaaaaaaa");
         String old_url = request.getHeader("referer");
-        if (old_url.equals("http://localhost:9091/")) {
+        if (!old_url.equals("null")) {
             log.info(" 글쓰기 폼 ======> " + old_url);
             return "/gallery/insert";
         } else {
