@@ -5,31 +5,33 @@
   xmlns:th="http://www.thymeleaf.org"
   xmlns="http://www.thymeleaf.org"
 >
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MK01</title>
-  <!-- favicon -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MK01</title>
+    <!-- favicon -->
 
-  <link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
-  <!-- CSS -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/bootstrap.css" />
-  <link rel="stylesheet" href="/css/layout.css" />
-  <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="/css/coloris.css" />
-  <!-- JS -->
-  <script type="text/javascript" src="/js/jquery-3.6.4.min.js"></script>
-  <script src="/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/swiper-bundle.min.js"></script>
-  <script src="/js/gsap/gsap.min.js"></script>
-  <script src="/js/coloris.js"></script>
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/css/coloris.css" />
+    <!-- JS -->
+    <script type="text/javascript" src="/js/jquery-3.6.4.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/swiper-bundle.min.js"></script>
+    <script src="/js/gsap/gsap.min.js"></script>
+    <script src="/js/coloris.js"></script>
 
-  <!-- font -->
-</head>
+    <!-- font -->
+  </head>
   <body>
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom myHeader">
+    <header
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom myHeader"
+    >
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li>
           <a href="/" class="nav-link px-2 link-secondary">Home</a>
@@ -43,17 +45,16 @@
 
       <div class="col-md-3 text-end" th:unless="${session.board == null}">
         <!-- <div class="col-md-3 text-end" th:if="${session.board.nickName} == manager and ${session.board.userId} == manager"> -->
-          <a href="/info" class="btnInfo" >
-            <span th:text="${session.board.nickName}">nickName</span>  
-          </a>
-          <a href="/logout">로그아웃</a>
-          <a href="/insert" th:if="${session.board.nickName.equals('manager')}">이미지 관리</a>
+        <a href="/info" class="btnInfo">
+          <span th:text="${session.board.nickName}">nickName</span>
+        </a>
+        <a href="/logout">로그아웃</a>
+        <a href="/insert" th:if="${session.board.nickName.equals('manager')}">이미지 관리</a>
       </div>
     </header>
     <main id="main">
       <div layout:fragment="contents"></div>
     </main>
-
 
     <!-- 이미지 클릭한 다음 나오는 모달 -->
     <div class="modal fade" id="imgModal" tabindex="-1">
@@ -66,8 +67,7 @@
           <div class="modal-body">
             <div class="container-fluid">
               <div class="row">
-                <div id="modal-image" class="col-md-4">
-                </div>
+                <div id="modal-image" class="col-md-4"></div>
                 <div class="col-md-4 ms-auto">
                   <p>클릭한 이미지 어디까지 되는지 테스트 해보는중</p>
                   <a href="/gen">generator 링크</a>
@@ -82,9 +82,6 @@
         </div>
       </div>
     </div>
-
-
-
 
     <div class="modal fade" tabindex="-1" id="memoModal">
       <div class="modal-dialog">
@@ -125,350 +122,349 @@
       </div>
     </div>
     <script th:inline="javascript">
-      /*<![CDATA[*/
-        const msg = /*[[${msg}]]*/;
-        const title = /*[[${msg}]]*/;
-        const param = /*[[${param}]]*/;
-        const no = /*[[${param.no}]]*/;
-        const session = /*[[${session}]]*/;
-        const allImages = /*[[${allImages}]]*/;
+            /*<![CDATA[*/
+              const msg = /*[[${msg}]]*/;
+              const title = /*[[${msg}]]*/;
+              const param = /*[[${param}]]*/;
+              const no = /*[[${param.no}]]*/;
+              const session = /*[[${session}]]*/;
+              const allImages = /*[[${allImages}]]*/;
 
 
-        const memoModal = new bootstrap.Modal("#memoModal");
-        const deleteModal = new bootstrap.Modal("#deleteModal");
-        const imgModal = new bootstrap.Modal("#imgModal")
+              const memoModal = new bootstrap.Modal("#memoModal");
+              const deleteModal = new bootstrap.Modal("#deleteModal");
+              const imgModal = new bootstrap.Modal("#imgModal")
 
-        $(document).on('click','#clickedImg',function(e){
+              $(document).on('click','#clickedImg',function(e){
 
-          var src = $(this).find("img").attr("src");
-          console.log(src);
-          
-          $('#modal-image').html(`<img src="`+src+`" alt=""/>`)
-          
-          e.preventDefault();
+                var src = $(this).find("img").attr("src");
+                console.log(src);
 
-          console.log("이미지 클릭중===============")
-          imgModal.show();
-         });
+                $('#modal-image').html(`<img src="`+src+`" alt=""/>`)
+
+                e.preventDefault();
+
+                console.log("이미지 클릭중===============")
+                imgModal.show();
+               });
 
 
 
-        $(document).on('click','#clickTag',function(e){
-          var selectTag=$(this).attr("value");
-          $(".swiper-slide").remove();  
-          $('.tag1').html(`<div class="swiper-slide"></div>`)
-             
-          for(i = 0;i<allImages.length;i++){
-            var allTag= allImages[i].tag;
-            if(allTag.includes(selectTag)){
+              $(document).on('click','#clickTag',function(e){
+                var selectTag=$(this).attr("value");
+                $(".swiper-slide").remove();
+                $('.tag1').html(`<div class="swiper-slide"></div>`)
 
-              if(!allImages[i].original.includes("gif")){
-              $(".tag1").append(
-                // prettier-ignored
-                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-                    allImages[i].original +
-                    `" alt="" /></a></div>`
-                    );
-                }else{  
-                  $(".tag2").append(
-                    // prettier-ignored
-                    `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
-                      allImages[i].original +
-                      `" alt="" /></a></div>`
-                      );
-                  }
-                }else if(selectTag=="all"){
-                  if(!allImages[i].original.includes("gif")){
+                for(i = 0;i<allImages.length;i++){
+                  var allTag= allImages[i].tag;
+                  if(allTag.includes(selectTag)){
 
+                    if(!allImages[i].original.includes("gif")){
                     $(".tag1").append(
-                        // prettier-ignored
-                        `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-                            allImages[i].original +
-                            `" alt="" /></a></div>`
-                            );
-                }else{
-                    $(".tag2").append(
-                        // prettier-ignored
-                        `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
+                      // prettier-ignored
+                      `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                          allImages[i].original +
+                          `" alt="" /></a></div>`
+                          );
+                      }else{
+                        $(".tag2").append(
+                          // prettier-ignored
+                          `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
                             allImages[i].original +
                             `" alt="" /></a></div>`
                             );
                         }
+                      }else if(selectTag=="all"){
+                        if(!allImages[i].original.includes("gif")){
+
+                          $(".tag1").append(
+                              // prettier-ignored
+                              `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                                  allImages[i].original +
+                                  `" alt="" /></a></div>`
+                                  );
+                      }else{
+                          $(".tag2").append(
+                              // prettier-ignored
+                              `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
+                                  allImages[i].original +
+                                  `" alt="" /></a></div>`
+                                  );
+                              }
+                      }
+
                 }
-            
-          }
-      
-          
 
 
 
-         });
 
 
-        // $("#clickedImg").on("click",function(e){
-        //   e.preventDefault();
-        //   console.log("이미지 클릭중===============")
-        //   imgModal.show();
-        // });
-
-        if(msg){
-          memoModal.show();
-        }
-        $("#btnDeleteAjax").on("click",function(e){
-          
-          //e.preventDefault();
-          deleteModal.show();
-          return false;
-        });
+               });
 
 
-        $("#btnDeleteConfirm").on("click",function(e){
-          $.ajax({
-            url:"/board/deleteAjaxProcess",
-            data:{"no":no,"password":$("#password").val()},
-            type:"POST",
-            success:function(response){
-              console.log(response);
-              if(response.msg==="ok") {
-                setTimeout(function(){
-                  location.href="/board/list";
-                },500)
-              } else {
-                location.reload();
+              // $("#clickedImg").on("click",function(e){
+              //   e.preventDefault();
+              //   console.log("이미지 클릭중===============")
+              //   imgModal.show();
+              // });
+
+              if(msg){
+                memoModal.show();
               }
-            },
-          })
-        });
+              $("#btnDeleteAjax").on("click",function(e){
 
-       // $(".btnInfo").on("click",function(){
-       //   console.log("uuuu");
-       //   deleteModal.show();
-       //   const pw = session.board.userPw;
-       //   console.log(pw);
-       //   $("#deleteModal .modal-title").text("비밀번호를 입력해 주세요.");
-       //   $("#btnDeleteConfirm").on("click",function(e){
-       //     if($("#password").val()==pw){
-//
-       //       location.href="/info";
-       //     } else {
-       //       history.back();
-       //     }
-       //   })
-       // });
+                //e.preventDefault();
+                deleteModal.show();
+                return false;
+              });
 
 
+              $("#btnDeleteConfirm").on("click",function(e){
+                $.ajax({
+                  url:"/board/deleteAjaxProcess",
+                  data:{"no":no,"password":$("#password").val()},
+                  type:"POST",
+                  success:function(response){
+                    console.log(response);
+                    if(response.msg==="ok") {
+                      setTimeout(function(){
+                        location.href="/board/list";
+                      },500)
+                    } else {
+                      location.reload();
+                    }
+                  },
+                })
+              });
 
-        $(document).ready(function(){
-          $(".nickName_confirm").on("focusout",function(){
-            var id=$("#nickName").val();
-            
-            if(id==''||id.length==0){
-              $('#nickName_div').html('<a">닉네임을 입력해 주세요.</a>:')
-
-              return false;
-            }
-
-            $.ajax({
-              url : "/nickNameCheck" ,
-                  type : "post",
-                  dataType : "json",
-                  data : {"nickName" : $("#nickName").val()},
-                  success : function(data){
-                          if(data == 0){
-                            $('#nickName_div').html('<a">사용가능한 닉네임입니다.</a>:')
-                          }else{
-
-                            $('#nickName_div').html('<a">이미 사용중인 닉네임입니다.</a>:')
-                        }
-                      }
-            })
-          })
-          $(".nickName_modify").on("focusout",function(){
-            var id=$("#nickName").val();
-            
-            if(id==''||id.length==0){
-              $('#nickName_div').html('<a">닉네임을 입력해 주세요.</a>:')
-
-              return false;
-            }
-
-            $.ajax({
-              url : "/nickNameCheck" ,
-                  type : "post",
-                  dataType : "json",
-                  data : {"nickName" : $("#nickName").val()},
-                  success : function(data){
-                          if(data == 0 ){
-                            $('#nickName_div').html('<a">사용가능한   .</a>:')
-                          }else if(id == session.board.nickName){
-                            console.log(session.board.nickName)
-
-                            $('#nickName_div').html('<a">기존 사용하고 있는 닉네임입니다.</a>:')
-                        }
-                          else{
-                            console.log(session.board.nickName)
-
-                            $('#nickName_div').html('<a">이미 사용중인 닉네임입니다.</a>:')
-                        }
-                      }
-            })
-          })
+             // $(".btnInfo").on("click",function(){
+             //   console.log("uuuu");
+             //   deleteModal.show();
+             //   const pw = session.board.userPw;
+             //   console.log(pw);
+             //   $("#deleteModal .modal-title").text("비밀번호를 입력해 주세요.");
+             //   $("#btnDeleteConfirm").on("click",function(e){
+             //     if($("#password").val()==pw){
+      //
+             //       location.href="/info";
+             //     } else {
+             //       history.back();
+             //     }
+             //   })
+             // });
 
 
 
+              $(document).ready(function(){
+                $(".nickName_confirm").on("focusout",function(){
+                  var id=$("#nickName").val();
 
-          $(".id_confirm").on("focusout",function(){
-            var id=$("#userId").val();
+                  if(id==''||id.length==0){
+                    $('#nickName_div').html('<a">닉네임을 입력해 주세요.</a>:')
 
-            if(id==''||id.length==0){
-              $('#id_div').html('<a">아이디를 입력해 주세요.</a>:')
-              return false;
-            }
-            if(id.length<5){
-              $('#id_div').html('<a">아이디를 5글자 이상 입력해 주세요.</a>:')
+                    return false;
+                  }
 
-              return false;
-            }
-            $.ajax({
-              url : "/idCheck",
-                  type : "post",
-                  dataType : "json",
-                  data : {"userId" : $("#userId").val()},
-                  success : function(data){
-                          if(data == 0 ){
-                            $('#id_div').html('<a">사용가능한 ID입니다.</a>:')
-                          }else{
-                            $('#id_div').html('<a">이미 사용중이거나 탈퇴한 ID입니다.</a>:')
-                        }
-                      }
-            })
-          })
+                  $.ajax({
+                    url : "/nickNameCheck" ,
+                        type : "post",
+                        dataType : "json",
+                        data : {"nickName" : $("#nickName").val()},
+                        success : function(data){
+                                if(data == 0){
+                                  $('#nickName_div').html('<a">사용가능한 닉네임입니다.</a>:')
+                                }else{
+
+                                  $('#nickName_div').html('<a">이미 사용중인 닉네임입니다.</a>:')
+                              }
+                            }
+                  })
+                })
+                $(".nickName_modify").on("focusout",function(){
+                  var id=$("#nickName").val();
+
+                  if(id==''||id.length==0){
+                    $('#nickName_div').html('<a">닉네임을 입력해 주세요.</a>:')
+
+                    return false;
+                  }
+
+                  $.ajax({
+                    url : "/nickNameCheck" ,
+                        type : "post",
+                        dataType : "json",
+                        data : {"nickName" : $("#nickName").val()},
+                        success : function(data){
+                                if(data == 0 ){
+                                  $('#nickName_div').html('<a">사용가능한   .</a>:')
+                                }else if(id == session.board.nickName){
+                                  console.log(session.board.nickName)
+
+                                  $('#nickName_div').html('<a">기존 사용하고 있는 닉네임입니다.</a>:')
+                              }
+                                else{
+                                  console.log(session.board.nickName)
+
+                                  $('#nickName_div').html('<a">이미 사용중인 닉네임입니다.</a>:')
+                              }
+                            }
+                  })
+                })
 
 
 
 
-          $(".id_modify").on("focusout",function(){
-            var id=$("#userId").val();
+                $(".id_confirm").on("focusout",function(){
+                  var id=$("#userId").val();
 
-            if(id==''||id.length==0){
-              $('#id_div').html('<a">아이디를 입력해 주세요.</a>:')
-              return false;
-            }
-            if(id.length<5){
-              $('#id_div').html('<a">아이디를 5글자 이상 입력해 주세요.</a>:')
+                  if(id==''||id.length==0){
+                    $('#id_div').html('<a">아이디를 입력해 주세요.</a>:')
+                    return false;
+                  }
+                  if(id.length<5){
+                    $('#id_div').html('<a">아이디를 5글자 이상 입력해 주세요.</a>:')
 
-              return false;
-            }
-            $.ajax({
-              url : "/idCheck",
-                  type : "post",
-                  dataType : "json",
-                  data : {"userId" : $("#userId").val()},
-                  success : function(data){
-                          if(data == 0 ){
-                            $('#id_div').html('<a">사용가능한 ID입니다.</a>:')
-                            console.log(session.board.userId)
-                            console.log(id)
-
-                          }else if(id == session.board.userId){
-                            console.log(session.board.userId)
-
-                            $('#id_div').html('<a">기존 사용하고 있는 아이디입니다.</a>:')
-                        }else{
-                            $('#id_div').html('<a">이미 사용중이거나 탈퇴한 ID입니다.</a>:')
-                        }
-                      }
-            })
-          })
-
-
-
-          $(".userPw_confirm").on("focusout",function(){
-            var pwchk=$("#userPwCheck").val();
-            var id=$("#userPw").val();
-
-
-            if(id!= pwchk){
-              $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>:')
-
-            }else{
-              $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
-
-
-            }
-
-            if(id==''||id.length==0){
-              $('#userPw_div').html('<a" id="pw_null">비밀번호를 입력해 주세요.</a>:')
-              return false;
-            }else{
-              $('#userPw_div').html('<a" id="pw_null">비밀번호 입력이 완료되었습니다.</a>:')
-
-
-              return false
-            }
-
-
-          })
-
-          $(".userPwCheck_confirm").on("focusout",function(){
-            var pwchk=$("#userPwCheck").val();
-            var pw=$("#userPw").val();
-
-
-
-            if(pw!= pwchk){
-              $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>:')
-              return false
-
-            }else{
-              $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
-
-
-            }
-              if(pwchk==''||pwchk.length==0){
-                $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호를 입력해 주세요.</a>:')
-              return false
-
-              }else{
-                $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호 입력이 완료되었습니다.</a>:')
-              return false
-
-
-              }
+                    return false;
+                  }
+                  $.ajax({
+                    url : "/idCheck",
+                        type : "post",
+                        dataType : "json",
+                        data : {"userId" : $("#userId").val()},
+                        success : function(data){
+                                if(data == 0 ){
+                                  $('#id_div').html('<a">사용가능한 ID입니다.</a>:')
+                                }else{
+                                  $('#id_div').html('<a">이미 사용중이거나 탈퇴한 ID입니다.</a>:')
+                              }
+                            }
+                  })
+                })
 
 
 
 
-          })
+                $(".id_modify").on("focusout",function(){
+                  var id=$("#userId").val();
 
-          $(".email_confirm").on("focusout",function(){
-            var userEmail=$("#userEmail").val();
+                  if(id==''||id.length==0){
+                    $('#id_div').html('<a">아이디를 입력해 주세요.</a>:')
+                    return false;
+                  }
+                  if(id.length<5){
+                    $('#id_div').html('<a">아이디를 5글자 이상 입력해 주세요.</a>:')
 
-            reg_email = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+                    return false;
+                  }
+                  $.ajax({
+                    url : "/idCheck",
+                        type : "post",
+                        dataType : "json",
+                        data : {"userId" : $("#userId").val()},
+                        success : function(data){
+                                if(data == 0 ){
+                                  $('#id_div').html('<a">사용가능한 ID입니다.</a>:')
+                                  console.log(session.board.userId)
+                                  console.log(id)
 
-            if(!reg_email.test(userEmail)) {
-              $('#email_div').html('<a" id="email_null">이메일 양식을 지켜서 입력해 주세요.</a>')
-            }else{
-                const element = document.getElementById("email_null");
-                element.remove(); // Removes the div with the 'div-02' id
-            }
+                                }else if(id == session.board.userId){
+                                  console.log(session.board.userId)
 
-            if(userEmail==''||userEmail.length==0){
-              $('#email_div').html('<a" id="email_null">이메일을 입력해 주세요.</a>')
-            }else{
-              const element = document.getElementById("email_null");
-              element.remove(); // Removes the div with the 'div-02' id
-            }
-
-          })
+                                  $('#id_div').html('<a">기존 사용하고 있는 아이디입니다.</a>:')
+                              }else{
+                                  $('#id_div').html('<a">이미 사용중이거나 탈퇴한 ID입니다.</a>:')
+                              }
+                            }
+                  })
+                })
 
 
 
+                $(".userPw_confirm").on("focusout",function(){
+                  var pwchk=$("#userPwCheck").val();
+                  var id=$("#userPw").val();
 
-        })
 
-        /*]]>*/
-        
+                  if(id!= pwchk){
+                    $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>:')
+
+                  }else{
+                    $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
+
+
+                  }
+
+                  if(id==''||id.length==0){
+                    $('#userPw_div').html('<a" id="pw_null">비밀번호를 입력해 주세요.</a>:')
+                    return false;
+                  }else{
+                    $('#userPw_div').html('<a" id="pw_null">비밀번호 입력이 완료되었습니다.</a>:')
+
+
+                    return false
+                  }
+
+
+                })
+
+                $(".userPwCheck_confirm").on("focusout",function(){
+                  var pwchk=$("#userPwCheck").val();
+                  var pw=$("#userPw").val();
+
+
+
+                  if(pw!= pwchk){
+                    $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>:')
+                    return false
+
+                  }else{
+                    $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
+
+
+                  }
+                    if(pwchk==''||pwchk.length==0){
+                      $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호를 입력해 주세요.</a>:')
+                    return false
+
+                    }else{
+                      $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호 입력이 완료되었습니다.</a>:')
+                    return false
+
+
+                    }
+
+
+
+
+                })
+
+                $(".email_confirm").on("focusout",function(){
+                  var userEmail=$("#userEmail").val();
+
+                  reg_email = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+                  if(!reg_email.test(userEmail)) {
+                    $('#email_div').html('<a" id="email_null">이메일 양식을 지켜서 입력해 주세요.</a>')
+                  }else{
+                      const element = document.getElementById("email_null");
+                      element.remove(); // Removes the div with the 'div-02' id
+                  }
+
+                  if(userEmail==''||userEmail.length==0){
+                    $('#email_div').html('<a" id="email_null">이메일을 입력해 주세요.</a>')
+                  }else{
+                    const element = document.getElementById("email_null");
+                    element.remove(); // Removes the div with the 'div-02' id
+                  }
+
+                })
+
+
+
+
+              })
+
+              /*]]>*/
     </script>
   </body>
 </html>

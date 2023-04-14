@@ -69,7 +69,8 @@ public class LoginController {
         } else {
 
             loginBoardService.signup(loginBoardDto);
-            redirectAttributes.addFlashAttribute("msg", "회원가입에 성공했습니다.");
+            redirectAttributes.addFlashAttribute("msg", "회원 가입에 성공했습니다.");
+            redirectAttributes.addFlashAttribute("title", "회원 가입 성공");
             return "redirect:/login";
         }
 
@@ -116,6 +117,7 @@ public class LoginController {
         // session.invalidate();
         session.removeAttribute("board");
         redirectAttributes.addFlashAttribute("msg", "로그아웃되었습니다.");
+        redirectAttributes.addFlashAttribute("title", "로그 아웃 성공");
         return "redirect:/";
     }
 
