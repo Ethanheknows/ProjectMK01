@@ -63,7 +63,7 @@ a<!DOCTYPE html>
                     <div class="modal-body">
                         <div class="container-fluid">
                             <div class="row">
-                                <div id="modal-image" class="col-md-4"></div>
+                                <div class="col-md-4" id="modal-image"></div>
                                 <div class="col-md-4 ms-auto">
                                     <p>클릭한 이미지 어디까지 되는지 테스트 해보는중</p>
                                     <a href="/gen">generator 링크</a>
@@ -141,7 +141,7 @@ a<!DOCTYPE html>
                     $(document).on('click','#clickedImg',function(e){
 
                       var src = $(this).find("img").attr("src");
-                      $('#modal-image').html(`<img src="`+src+`" alt=""/>`)
+                      $('#modal-image').html(`<img src="`+src+`" alt="" />`)
 
                       e.preventDefault();
                       console.log("이미지 클릭중===============")

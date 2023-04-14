@@ -1,16 +1,23 @@
 body {
     background-color: black;
     color: rgb(0, 255, 106);
-    #imgModal {
-        width: 100px !important;
-        #modal-image {
-            width: 700px !important;
-            height: 350px !important;
-            img {
-                width: 700px !important;
-                height: 350px !important;
+}
 
-                object-fit: contain;
+.modal.fade#imgModal {
+    .modal-dialog {
+        .modal-content {
+            .modal-body {
+                .container-fluid {
+                    .row {
+                        #modal-image {
+                            img {
+                                width: 700px;
+                                object-fit: contain;
+                                border-radius: 10px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
