@@ -2,6 +2,19 @@ body {
   background-color: black;
   color: rgb(0, 255, 106);
 }
+body #imgModal {
+  width: 100px !important;
+}
+body #imgModal #modal-image {
+  width: 700px !important;
+  height: 350px !important;
+}
+body #imgModal #modal-image img {
+  width: 700px !important;
+  height: 350px !important;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
 
 .swiper {
   width: 100%;
