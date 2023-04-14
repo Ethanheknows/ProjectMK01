@@ -1,7 +1,14 @@
 package com.project01.mk01.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import javax.validation.constraints.Size;
+
 import lombok.extern.log4j.Log4j2;
+
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,14 +36,28 @@ public class ImageController {
     // return "/gallery/list";
     // }
     @GetMapping("/view")
-    public String view(Model model) {
+    public String view(Model model, Model model2) {
         log.info("allImages===========");
 
         List<ImageDto> allImages = imageService.getAllimages();
-        log.info("allImages===========" + allImages);
-        model.addAttribute("allImages", allImages);
+        List<String> tagList = new ArrayList<>();
+        for (int i = 0; i < allImages.size(); i++) {
+            // log.info(allImages.get(i).getTag());
+            String tag = allImages.get(i).getTag();
+            String[] tags = tag.split(",");
+            log.info(tags);
+            for (int j = 0; j < tags.length; j++) {
+                if (!tagList.contains(tags[j])) {
+                    tagList.add(tags[j]);
+                    log.info(tags[j]);
 
-        log.info("aaaaaaaaaaaaaaaaaaaaaaaaa");
+                }
+            }
+
+        }
+        model.addAttribute("allImages", allImages);
+        model2.addAttribute("tags", tagList);
+
         return "/gallery/view";
     }
 

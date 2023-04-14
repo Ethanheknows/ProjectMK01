@@ -133,6 +133,7 @@ a<!DOCTYPE html>
         const param = /*[[${param}]]*/;
         const no = /*[[${param.no}]]*/;
         const session = /*[[${session}]]*/;
+        const allImages = /*[[${allImages}]]*/;
 
 
         const memoModal = new bootstrap.Modal("#memoModal");
@@ -150,6 +151,59 @@ a<!DOCTYPE html>
 
           console.log("이미지 클릭중===============")
           imgModal.show();
+         });
+
+
+
+        $(document).on('click','#clickTag',function(e){
+          var selectTag=$(this).attr("value");
+          $(".swiper-slide").remove();  
+          $('.tag1').html(`<div class="swiper-slide"></div>`)
+             
+          for(i = 0;i<allImages.length;i++){
+            var allTag= allImages[i].tag;
+            if(allTag.includes(selectTag)){
+
+              if(!allImages[i].original.includes("gif")){
+              $(".tag1").append(
+                // prettier-ignored
+                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                    allImages[i].original +
+                    `" alt="" /></a></div>`
+                    );
+                }else{  
+                  $(".tag2").append(
+                    // prettier-ignored
+                    `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
+                      allImages[i].original +
+                      `" alt="" /></a></div>`
+                      );
+                  }
+                }else if(selectTag=="all"){
+                  if(!allImages[i].original.includes("gif")){
+
+                    $(".tag1").append(
+                        // prettier-ignored
+                        `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                            allImages[i].original +
+                            `" alt="" /></a></div>`
+                            );
+                  }else{
+                    $(".tag2").append(
+                        // prettier-ignored
+                        `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
+                            allImages[i].original +
+                            `" alt="" /></a></div>`
+                            );
+                        }
+                }
+            
+          }
+      
+          
+
+
+
          });
 
 
@@ -247,7 +301,7 @@ a<!DOCTYPE html>
                   data : {"nickName" : $("#nickName").val()},
                   success : function(data){
                           if(data == 0 ){
-                            $('#nickName_div').html('<a">사용가능한 닉네임입니다.</a>:')
+                            $('#nickName_div').html('<a">사용가능한   .</a>:')
                           }else if(id == session.board.nickName){
                             console.log(session.board.nickName)
 

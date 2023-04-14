@@ -1,5 +1,6 @@
 package com.project01.mk01.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,26 @@ public class MainController {
     ImageService imageService;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, Model model2) {
         List<ImageDto> allImages = imageService.getAllimages();
-        log.info("allImages===========" + allImages);
+        List<String> tagList = new ArrayList<>();
+        for (int i = 0; i < allImages.size(); i++) {
+            // log.info(allImages.get(i).getTag());
+            String tag = allImages.get(i).getTag();
+            String[] tags = tag.split(",");
+            log.info(tags);
+            for (int j = 0; j < tags.length; j++) {
+                if (!tagList.contains(tags[j])) {
+                    tagList.add(tags[j]);
+                    log.info(tags[j]);
+
+                }
+            }
+
+        }
+
         model.addAttribute("allImages", allImages);
+        model2.addAttribute("tags", tagList);
 
         return "/index/index";
     }
