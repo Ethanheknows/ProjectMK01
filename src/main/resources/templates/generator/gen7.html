@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                <div class="genCon">
+                <div class="genCon mb-3">
                     <div class="ranges">
                         <label for="topRange2">Top Position:</label>
                         <input type="range" id="topRange2" min="0" max="500" step="1" value="50" />
@@ -105,6 +105,51 @@
                         </select>
                     </div>
                 </div>
+                <div class="genCon mb-3">
+                    <div class="ranges">
+                        <label for="topRange3">Top Position:</label>
+                        <input type="range" id="topRange3" min="0" max="500" step="1" value="70" />
+
+                        <label for="leftRange3">Left Position:</label>
+                        <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" />
+
+                        <label for="rotateRange3">Rotate Position:</label>
+                        <input type="range" id="rotateRange3" min="-180" max="180" step="30" value="0" list="values" />
+                        <datalist id="values">
+                            <option value="-180" label="-180">-180deg</option>
+                            <option value="-90" label="-90">-90deg</option>
+                            <option value="0" label="0">0deg</option>
+                            <option value="90" label="90">90deg</option>
+                            <option value="180" label="180">180deg</option>
+                        </datalist>
+                    </div>
+
+                    <label for="txtBox3">Text:</label>
+                    <textarea name="" id="txtBox3" cols="50" rows="1"></textarea>
+
+                    <div class="txtCon">
+                        <label for="fontSizeRange3">Font Size:</label>
+                        <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" />
+
+                        <label for="fontColor3">Font Color:</label>
+                        <input type="text" id="fontColor3" value="#ffffff" data-coloris />
+
+                        <label for="fontWeight3">Font Weight:</label>
+                        <select id="fontWeight3">
+                            <option value="bold">Bold</option>
+                            <option value="italic">Italic</option>
+                        </select>
+
+                        <label for="fontFamilySelec3t">Font Family:</label>
+                        <select id="fontFamilySelect3">
+                            <option value="sans-serif">Sans-serif</option>
+                            <option value="serif">Serif</option>
+                            <option value="monospace">Monospace</option>
+                            <option value="cursive">Cursive</option>
+                            <option value="fantasy">Fantasy</option>
+                        </select>
+                    </div>
+                </div>
 
                 <a id="downloadLinkPNG" download="meme.png" href="#" style="display: none">Download Meme by PNG</a>
                 <a id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">Download Meme by JPG</a>
@@ -131,18 +176,31 @@
                     const fontFamilySelect2 = document.querySelector("#fontFamilySelect2");
                     const colorPicker2 = document.querySelector("#fontColor2");
 
+                    const txtBox3 = document.querySelector("#txtBox3");
+                    const topRange3 = document.querySelector("#topRange3");
+                    const leftRange3 = document.querySelector("#leftRange3");
+                    const rotateRange3 = document.querySelector("#rotateRange3");
+                    const fontSizeRange3 = document.querySelector("#fontSizeRange3");
+                    const fontWeight3 = document.querySelector("#fontWeight3");
+                    const fontFamilySelect3 = document.querySelector("#fontFamilySelect3");
+                    const colorPicker3 = document.querySelector("#fontColor3");
+
                     const downloadLinkPNG = document.querySelector("#downloadLinkPNG");
                     const downloadLinkJPG = document.querySelector("#downloadLinkJPG");
                     let img = null;
                     let fontColorPicked = "#ffffff";
                     let fontColorPicked2 = "#ffffff";
+                    let fontColorPicked3 = "#ffffff";
 
                     let isDraggingBox1 = false;
                     let isDraggingBox2 = false;
+                    let isDraggingBox3 = false;
+
                     let dragStart = { x: 0, y: 0 };
 
                     const box1Radius = 10;
                     const box2Radius = 10;
+                    const box3Radius = 10;
 
                     function onMouseDown(event) {
                         const x = event.clientX - canvas.offsetLeft;
@@ -158,6 +216,12 @@
                             box2Radius
                         ) {
                             isDraggingBox2 = true;
+                            dragStart = { x: x, y: y };
+                        } else if (
+                            Math.sqrt(Math.pow(x - leftRange3.value, 2) + Math.pow(y - topRange3.value, 2)) <=
+                            box3Radius
+                        ) {
+                            isDraggingBox3 = true;
                             dragStart = { x: x, y: y };
                         }
                     }
@@ -180,12 +244,20 @@
                             topRange2.value = parseInt(topRange2.value) + dy;
                             drawCanvas();
                             dragStart = { x: x, y: y };
+                        } else if (isDraggingBox3) {
+                            const dx = x - dragStart.x;
+                            const dy = y - dragStart.y;
+                            leftRange3.value = parseInt(leftRange3.value) + dx;
+                            topRange3.value = parseInt(topRange3.value) + dy;
+                            drawCanvas();
+                            dragStart = { x: x, y: y };
                         }
                     }
 
                     function onMouseUp(event) {
                         isDraggingBox1 = false;
                         isDraggingBox2 = false;
+                        isDraggingBox3 = false;
                     }
 
                     canvas.addEventListener("mousedown", onMouseDown);
@@ -220,7 +292,9 @@
                     });
                     colorPicker2.addEventListener("input", () => {
                         fontColorPicked2 = colorPicker2.value;
-                        // drawCanvas();
+                    });
+                    colorPicker3.addEventListener("input", () => {
+                        fontColorPicked3 = colorPicker3.value;
                     });
 
                     function drawCanvas() {
@@ -231,6 +305,7 @@
                         ctx.fillStyle = fontColorPicked;
                         ctx.font = fontWeight.value + " " + fontSizeRange.value + "px " + fontFamilySelect.value;
                         ctx.font = fontWeight2.value + " " + fontSizeRange2.value + "px " + fontFamilySelect2.value;
+                        ctx.font = fontWeight3.value + " " + fontSizeRange3.value + "px " + fontFamilySelect3.value;
 
                         ctx.textAlign = "start";
                         drawText(
@@ -244,6 +319,7 @@
                             fontSizeRange.value,
                             fontFamilySelect.value
                         );
+                        
                         drawText(
                             ctx,
                             txtBox2.value,
@@ -254,6 +330,17 @@
                             fontWeight2.value,
                             fontSizeRange2.value,
                             fontFamilySelect2.value
+                        );
+                        drawText(
+                            ctx,
+                            txtBox3.value,
+                            parseInt(leftRange3.value),
+                            parseInt(topRange3.value),
+                            parseInt(rotateRange3.value),
+                            fontColorPicked3,
+                            fontWeight3.value,
+                            fontSizeRange3.value,
+                            fontFamilySelect3.value
                         );
 
                         // Draw circles around txtBox and txtBox2
@@ -267,6 +354,12 @@
                         ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
                         ctx.stroke();
 
+                        ctx.strokeStyle = "green";
+                        ctx.beginPath();
+                        ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
+                        ctx.stroke();
+
+
                         downloadLinkPNG.href = canvas.toDataURL();
                         downloadLinkPNG.style.display = "block";
                         downloadLinkJPG.href = canvas.toDataURL();
@@ -278,14 +371,12 @@
                     function drawText(ctx, text, x, y, rotate, fontColor, fontWeight, fontSize, fontFamily) {
                         let textWidth = ctx.measureText(text).width;
                         let textHeight = parseInt(fontSize);
-                        let centerX = x + textWidth / 2;
-                        let centerY = y + textHeight / 2;
                         ctx.save();
-                        ctx.translate(centerX, centerY);
+                        ctx.translate(x, y);
                         ctx.rotate((rotate * Math.PI) / 180);
                         ctx.fillStyle = fontColor;
                         ctx.font = fontWeight + " " + fontSize + "px " + fontFamily;
-                        ctx.fillText(text, -textWidth / 2, textHeight / 2);
+                        ctx.fillText(text, 0, textHeight);
                         ctx.restore();
                     }
 
@@ -293,21 +384,30 @@
                     topRange.addEventListener("input", drawCanvas);
                     leftRange.addEventListener("input", drawCanvas);
                     rotateRange.addEventListener("input", drawCanvas);
-
-                    topRange2.addEventListener("input", drawCanvas);
-                    leftRange2.addEventListener("input", drawCanvas);
-                    rotateRange2.addEventListener("input", drawCanvas);
-                    txtBox2.addEventListener("input", drawCanvas);
-
                     colorPicker.addEventListener("input", drawCanvas);
                     fontWeight.addEventListener("input", drawCanvas);
                     fontSizeRange.addEventListener("input", drawCanvas);
                     fontFamilySelect.addEventListener("input", drawCanvas);
-
+                    
+                    txtBox2.addEventListener("input", drawCanvas);
+                    topRange2.addEventListener("input", drawCanvas);
+                    leftRange2.addEventListener("input", drawCanvas);
+                    rotateRange2.addEventListener("input", drawCanvas);
                     colorPicker2.addEventListener("input", drawCanvas);
                     fontWeight2.addEventListener("input", drawCanvas);
                     fontSizeRange2.addEventListener("input", drawCanvas);
                     fontFamilySelect2.addEventListener("input", drawCanvas);
+                    
+                    txtBox3.addEventListener("input", drawCanvas);
+                    topRange3.addEventListener("input", drawCanvas);
+                    leftRange3.addEventListener("input", drawCanvas);
+                    rotateRange3.addEventListener("input", drawCanvas);
+                    colorPicker3.addEventListener("input", drawCanvas);
+                    fontWeight3.addEventListener("input", drawCanvas);
+                    fontSizeRange3.addEventListener("input", drawCanvas);
+                    fontFamilySelect3.addEventListener("input", drawCanvas);
+
+
 
                     Coloris({
                         parent: ".demo",
