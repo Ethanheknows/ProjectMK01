@@ -15,7 +15,13 @@
             <div class="container genWrap">
                 <div class="consWrap">
                     <h1>gen7_06TESTESTEST</h1>
-                    <input type="file" id="fileInput" />
+
+                    <div class="input-group mb-3">
+                        <label class="input-group-text btn-secondary" for="fileInput">Customize</label>
+                        <input type="file" class="btn btn-secondary" id="fileInput" />
+                        <input class="upload-name" value="Location" placeholder="Location" />
+                    </div>
+
                     <div class="topWrap">
                         <div class="canvasBtnWarp">
                             <div>
@@ -82,6 +88,32 @@
                                     style="display: none"
                                     >.JPG</a
                                 >
+                            </div>
+                        </div>
+                        <div class="share fs-2 mb-3">
+                            <div class="shareTitle">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="30"
+                                    height="30"
+                                    fill="currentColor"
+                                    class="bi bi-share-fill"
+                                    viewBox="0 0 16 16"
+                                >
+                                    <path
+                                        d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
+                                    ></path>
+                                </svg>
+                                <h2>Share</h2>
+                            </div>
+
+                            <div class="kakaoBtn">
+                                <a id="kakaotalk-sharing-btn" href="javascript:shareMessage()">
+                                    <img
+                                        src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+                                        alt="카카오톡 공유 보내기 버튼"
+                                    />
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -298,10 +330,10 @@
 
                     let dragStart = { x: 0, y: 0 };
 
-                    const box1Radius = 10;
-                    const box2Radius = 10;
-                    const box3Radius = 10;
-
+                    const box1Radius = 15;
+                    const box2Radius = 15;
+                    const box3Radius = 15;
+                    let sharedImageUrl = "";
                     //   $(filterInvert).on("change", function () {
                     //     if (filterInvert.checked) {
                     //       doFilterInvert(100);
@@ -316,6 +348,11 @@
                     //   function doFilterInvert(int) {
                     //     ctx.filter = `invert(` + int + `%)`;
                     //   }
+
+                    $("#fileInput").on("change", function () {
+                        var fileName = $("#fileInput").val();
+                        $(".upload-name").val(fileName);
+                    });
                     // 리셋버튼
                     btnReset.addEventListener("click", function () {
                         txtBox.value = "";
@@ -330,7 +367,7 @@
                         drawCanvas();
                     });
 
-                    //make Anchor
+                    //******  make Anchor
                     function onMouseDown(event) {
                         const rect = canvas.getBoundingClientRect();
                         const x = event.clientX - rect.left;
@@ -345,18 +382,27 @@
                         ) {
                             isDraggingBox1 = true;
                             dragStart = { x: x, y: y };
+                            $("#canvas").css({
+                                cursor: "grabbing",
+                            });
                         } else if (
                             Math.sqrt(Math.pow(x - leftRange2.value, 2) + Math.pow(y - topRange2.value, 2)) <=
                             box2Radius
                         ) {
                             isDraggingBox2 = true;
                             dragStart = { x: x, y: y };
+                            $("#canvas").css({
+                                cursor: "grabbing",
+                            });
                         } else if (
                             Math.sqrt(Math.pow(x - leftRange3.value, 2) + Math.pow(y - topRange3.value, 2)) <=
                             box3Radius
                         ) {
                             isDraggingBox3 = true;
                             dragStart = { x: x, y: y };
+                            $("#canvas").css({
+                                cursor: "grabbing",
+                            });
                         }
                     }
 
@@ -393,6 +439,9 @@
                         isDraggingBox1 = false;
                         isDraggingBox2 = false;
                         isDraggingBox3 = false;
+                        $("#canvas").css({
+                            cursor: "grab",
+                        });
                     }
 
                     canvas.addEventListener("mousedown", onMouseDown);
@@ -416,6 +465,7 @@
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                         downloadLinkPNG.style.display = "block";
                         downloadLinkJPG.style.display = "block";
+                        drawCanvas();
                     };
                     // 파일 불러올때 비율 맞춰주는 메소드
 
@@ -524,13 +574,24 @@
                         leftRange.max = canvas.width;
                     }
 
+                    // function downloadImage() {
+                    //     drawCanvas(false);
+                    //     downloadLinkPNG.href = canvas.toDataURL();
+                    //     downloadLinkJPG.href = canvas.toDataURL();
+                    //     drawCanvas(true);
+                    // }
+
                     function downloadImage() {
                         drawCanvas(false);
-                        downloadLinkPNG.href = canvas.toDataURL();
-                        downloadLinkJPG.href = canvas.toDataURL();
+                        const dataUrlPNG = canvas.toDataURL();
+                        const dataUrlJPG = canvas.toDataURL("image/jpeg");
+                        downloadLinkPNG.href = dataUrlPNG;
+                        downloadLinkJPG.href = dataUrlJPG;
+                        sharedImageUrl = dataUrlPNG; // Update the sharedImageUrl with the PNG data URL
                         drawCanvas(true);
-                    }
 
+                        console.log(sharedImageUrl);
+                    }
                     function drawText(ctx, text, x, y, rotate, fontColor, fontWeight, fontSize, fontFamily) {
                         let textHeight = parseInt(fontSize);
                         ctx.save();
@@ -601,6 +662,43 @@
                         inline: false,
                         defaultColor: "#000000",
                     });
+                    //카카오
+                    function shareMessage() {
+                        Kakao.Share.sendDefault({
+                            objectType: "feed",
+                            content: {
+                                title: "내가 만든 MEME ",
+                                description: "#분노 #동물 #귀여운 #슬픔 #블랙유머 #GIF",
+                                imageUrl: "http://127.0.0.1:9091/" + sharedImageUrl,
+                                link: {
+                                    // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+                                    mobileWebUrl: "http://127.0.0.1:9091",
+                                    webUrl: "http://127.0.0.1:9091",
+                                },
+                            },
+                            social: {
+                                likeCount: 286,
+                                commentCount: 45,
+                                sharedCount: 845,
+                            },
+                            buttons: [
+                                {
+                                    title: "웹으로 보기",
+                                    link: {
+                                        mobileWebUrl: "http://127.0.0.1:9091",
+                                        webUrl: "http://127.0.0.1:9091",
+                                    },
+                                },
+                                {
+                                    title: "앱으로 보기",
+                                    link: {
+                                        mobileWebUrl: "http://127.0.0.1:9091",
+                                        webUrl: "http://127.0.0.1:9091",
+                                    },
+                                },
+                            ],
+                        });
+                    }
                 </script>
             </div>
         </div>

@@ -75,10 +75,24 @@ body main {
   position: relative;
   padding-top: 75px;
 }
+body #canvas {
+  cursor: grab;
+}
+body .input-group-text {
+  cursor: pointer;
+}
+body .input-group input[type=file] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
 body .topWrap {
   display: flex;
   justify-content: center;
-  padding: 30px 30px;
+  padding: 30px 20px;
   /* move */
 }
 body .topWrap .OnOffwrapper {
@@ -135,11 +149,12 @@ body .topWrap .canvasWrap {
 body .genCon {
   display: block;
   justify-content: center;
-  width: 1200px;
+  width: 1100px;
   height: 150px;
   border: 1px solid white;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 body .genCon .anchorColor {
   width: 20px;
@@ -158,7 +173,7 @@ body .genCon .anchor3 {
 }
 body .genCon .txtBoxDiv {
   display: flex;
-  padding: 0 50px;
+  padding: 0 100px;
   justify-content: start;
   align-items: center;
   padding-bottom: 10px;
@@ -168,14 +183,14 @@ body .genCon .txtBoxDiv textarea {
 }
 body .genCon .ranges {
   display: flex;
-  padding: 0 50px;
+  padding: 0 100px;
   justify-content: start;
   align-items: center;
   padding-bottom: 10px;
 }
 body .genCon .txtCon {
   display: flex;
-  padding: 0 50px;
+  padding: 0 100px;
   justify-content: start;
   align-items: center;
   padding-bottom: 10px;
@@ -201,6 +216,31 @@ body .download .btnDown {
 }
 body .download .btnDown a {
   margin: 10px 5px;
+}
+body .share {
+  margin-top: 8px;
+  margin-left: 40px;
+  display: inline;
+}
+body .share .shareTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body .share .shareTitle h2 {
+  margin-left: 10px;
+}
+body .share .kakaoBtn {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  height: 50px;
+}
+body .share .kakaoBtn a {
+  margin: 10px 5px;
+}
+body .share .kakaoBtn a img {
+  height: 40px;
 }
 
 .modal.fade#imgModal {
