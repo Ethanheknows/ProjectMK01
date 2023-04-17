@@ -59,12 +59,21 @@ body {
   background-color: black;
   color: rgb(81, 218, 76);
 }
-body .header {
+body .myHeader {
   border-bottom: none;
+  transition: all 0.25s ease;
+}
+body .myHeader.on {
+  background-color: white;
+  color: black;
 }
 body h1 {
   font-weight: 700;
   font-size: 75px;
+}
+body main {
+  position: relative;
+  padding-top: 75px;
 }
 body .topWrap {
   display: flex;
@@ -129,8 +138,6 @@ body .genCon {
   width: 1200px;
   height: 150px;
   border: 1px solid white;
-  width: 1000px;
-  height: 100px;
   justify-content: space-between;
   align-items: center;
 }
@@ -140,14 +147,38 @@ body .genCon .anchorColor {
   position: relative;
   border-radius: 6px;
 }
-body .genCon textarea {
+body .genCon .anchor1 {
+  background-color: red;
+}
+body .genCon .anchor2 {
+  background-color: blue;
+}
+body .genCon .anchor3 {
+  background-color: green;
+}
+body .genCon .txtBoxDiv {
+  display: flex;
+  padding: 0 50px;
+  justify-content: start;
+  align-items: center;
+  padding-bottom: 10px;
+}
+body .genCon .txtBoxDiv textarea {
   resize: none;
 }
 body .genCon .ranges {
   display: flex;
+  padding: 0 50px;
+  justify-content: start;
+  align-items: center;
+  padding-bottom: 10px;
 }
 body .genCon .txtCon {
   display: flex;
+  padding: 0 50px;
+  justify-content: start;
+  align-items: center;
+  padding-bottom: 10px;
 }
 body .download {
   margin-left: 40px;

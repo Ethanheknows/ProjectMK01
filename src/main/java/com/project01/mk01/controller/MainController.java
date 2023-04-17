@@ -51,7 +51,7 @@ public class MainController {
 
     @GetMapping("/gen")
     public String generator() {
-        return "/generator/gen7_05";
+        return "/generator/gen7_06";
     }
 
 }

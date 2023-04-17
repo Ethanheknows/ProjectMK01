@@ -1,224 +1,257 @@
 @import "font";
 
 body {
-  font-family: "Sohne", sans-serif;
-  font-weight: 300;
-  background-color: black;
-  color: rgb(81, 218, 76);
-  .header {
-    border-bottom: none;
-  }
-  h1 {
-    font-weight: 700;
-    font-size: 75px;
-  }
+    font-family: "Sohne", sans-serif;
+    font-weight: 300;
+    background-color: black;
+    color: rgb(81, 218, 76);
 
-  //gen 부분 css
-  .topWrap {
-    display: flex;
-    justify-content: center;
-    padding: 30px 30px;
+    .myHeader {
+        border-bottom: none;
+        transition: all 0.25s ease;
 
-    .OnOffwrapper {
-      position: relative;
+        &.on {
+            background-color: white;
+            color: black;
+        }
     }
-    .invert {
-      position: absolute;
-      /* hidden */
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
+    h1 {
+        font-weight: 700;
+        font-size: 75px;
     }
-    .switch_label {
-      position: relative;
-      cursor: pointer;
-      display: inline-block;
-      width: 58px;
-      height: 28px;
-      background: #fff;
-      border: 2px solid #daa;
-      border-radius: 20px;
-      transition: 0.2s;
+    main {
+        position: relative;
+        padding-top: 75px;
     }
-    .switch_label:hover {
-      background: #efefef;
-    }
-    .onf_btn {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      display: inline-block;
-      width: 19px;
-      height: 19px;
-      border-radius: 20px;
-      background: #daa;
-      transition: 0.2s;
-    }
-    #invert:checked + .switch_label {
-      background: #c44;
-      border: 2px solid #c44;
-    }
+    //gen 부분 css
+    .topWrap {
+        display: flex;
+        justify-content: center;
+        padding: 30px 30px;
 
-    #invert:checked + .switch_label:hover {
-      background: #e55;
-    }
+        .OnOffwrapper {
+            position: relative;
+        }
+        .invert {
+            position: absolute;
+            /* hidden */
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        .switch_label {
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            width: 58px;
+            height: 28px;
+            background: #fff;
+            border: 2px solid #daa;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+        .switch_label:hover {
+            background: #efefef;
+        }
+        .onf_btn {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            display: inline-block;
+            width: 19px;
+            height: 19px;
+            border-radius: 20px;
+            background: #daa;
+            transition: 0.2s;
+        }
+        #invert:checked + .switch_label {
+            background: #c44;
+            border: 2px solid #c44;
+        }
 
-    /* move */
-    #invert:checked + .switch_label .onf_btn {
-      left: 33px;
-      background: #fff;
-      box-shadow: 1px 2px 3px #00000020;
-    }
+        #invert:checked + .switch_label:hover {
+            background: #e55;
+        }
 
-    .canvasWrap {
-      border: 1px solid white;
-      transition: all 0.25s ease;
-    }
-  }
-  .genCon {
-    display: block;
-    justify-content: center;
-    width: 1200px;
-    height: 150px;
-    .anchorColor {
-      width: 20px;
-      height: 20px;
-      position: relative;
-      border-radius: 6px;
-      // margin-top: 4px;
-    }
-    textarea {
-      resize: none;
-    }
-    border: 1px solid white;
-    width: 1000px;
-    height: 100px;
-    justify-content: space-between;
-    align-items: center;
-    .ranges {
-      display: flex;
-    }
-    .txtCon {
-      display: flex;
-    }
-  }
-  .download {
-    margin-left: 40px;
-    display: inline;
+        /* move */
+        #invert:checked + .switch_label .onf_btn {
+            left: 33px;
+            background: #fff;
+            box-shadow: 1px 2px 3px #00000020;
+        }
 
-    .download_title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      h2 {
-        margin-left: 10px;
-      }
+        .canvasWrap {
+            border: 1px solid white;
+            transition: all 0.25s ease;
+        }
     }
+    .genCon {
+        display: block;
+        justify-content: center;
+        width: 1200px;
+        height: 150px;
+        border: 1px solid white;
+        justify-content: space-between;
+        align-items: center;
+        .anchorColor {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            border-radius: 6px;
+            // margin-top: 4px;
+        }
+        .anchor1 {
+            background-color: red;
+        }
+        .anchor2 {
+            background-color: blue;
+        }
+        .anchor3 {
+            background-color: green;
+        }
+        .txtBoxDiv {
+            display: flex;
+            padding: 0 50px;
+            justify-content: start;
+            align-items: center;
+            padding-bottom: 10px;
+            textarea {
+                resize: none;
+            }
+        }
 
-    .btnDown {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100px;
-      height: 50px;
-      a {
-        margin: 10px 5px;
-      }
+        .ranges {
+            display: flex;
+            padding: 0 50px;
+            justify-content: start;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+        .txtCon {
+            display: flex;
+            padding: 0 50px;
+            justify-content: start;
+            align-items: center;
+            padding-bottom: 10px;
+        }
     }
-  }
+    .download {
+        margin-left: 40px;
+        display: inline;
+
+        .download_title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            h2 {
+                margin-left: 10px;
+            }
+        }
+
+        .btnDown {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100px;
+            height: 50px;
+            a {
+                margin: 10px 5px;
+            }
+        }
+    }
 }
 // 모달
 .modal.fade#imgModal {
-  color: black;
-  .modal-dialog {
-    .modal-content {
-      .modal-body {
-        .container-fluid {
-          .row {
-            #modal-image {
-              img {
-                width: 700px;
-                object-fit: contain;
-                border-radius: 10px;
-              }
+    color: black;
+    .modal-dialog {
+        .modal-content {
+            .modal-body {
+                .container-fluid {
+                    .row {
+                        #modal-image {
+                            img {
+                                width: 700px;
+                                object-fit: contain;
+                                border-radius: 10px;
+                            }
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
 }
 
 //index 부분
 
 .swiper {
-  width: 100%;
-  height: 400px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // .swiper-pagination-bullet {
-  //   width: 20px;
-  //   height: 20px;
-  //   text-align: center;
-  //   line-height: 20px;
-  //   font-size: 12px;
-  //   color: #000;
-  //   opacity: 1;
-  //   background: rgba(0, 0, 0, 0.2);
-  // }
-
-  // .swiper-pagination-bullet-active {
-  //   color: #fff;
-  //   background: #007aff;
-  // }
-  .swiper-slide {
+    width: 100%;
+    height: 400px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    // .swiper-pagination-bullet {
+    //   width: 20px;
+    //   height: 20px;
+    //   text-align: center;
+    //   line-height: 20px;
+    //   font-size: 12px;
+    //   color: #000;
+    //   opacity: 1;
+    //   background: rgba(0, 0, 0, 0.2);
+    // }
 
-    &:hover {
-      position: relative;
-      z-index: 9;
-
-      a {
-        z-index: 9;
-        img {
-          width: 350px;
-          height: 350px;
-          &:hover {
-            animation: keep-size 0.5s forwards;
-            animation-delay: 1.5s;
-            animation-timing-function: ease;
-          }
-        }
-      }
-    }
-    @keyframes keep-size {
-      from {
-        width: 350px;
-        height: 350px;
-        opacity: 0%;
-      }
-      to {
-        width: 700px;
-        height: 350px;
-        object-fit: contain;
-        opacity: 100%;
-      }
-    }
-    a {
-      img {
-        position: relative;
+    // .swiper-pagination-bullet-active {
+    //   color: #fff;
+    //   background: #007aff;
+    // }
+    .swiper-slide {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 300px;
-        border-radius: 10px;
-        height: 300px;
-        object-fit: cover;
-        transition: width 0.25s ease, height 0.25s ease;
-      }
+
+        &:hover {
+            position: relative;
+            z-index: 9;
+
+            a {
+                z-index: 9;
+                img {
+                    width: 350px;
+                    height: 350px;
+                    &:hover {
+                        animation: keep-size 0.5s forwards;
+                        animation-delay: 1.5s;
+                        animation-timing-function: ease;
+                    }
+                }
+            }
+        }
+        @keyframes keep-size {
+            from {
+                width: 350px;
+                height: 350px;
+                opacity: 0%;
+            }
+            to {
+                width: 700px;
+                height: 350px;
+                object-fit: contain;
+                opacity: 100%;
+            }
+        }
+        a {
+            img {
+                position: relative;
+                width: 300px;
+                border-radius: 10px;
+                height: 300px;
+                object-fit: cover;
+                transition: width 0.25s ease, height 0.25s ease;
+            }
+        }
     }
-  }
 }

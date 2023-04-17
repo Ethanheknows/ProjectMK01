@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.thymeleaf.org"
+    layout:decorate="~{/layout/layout.html}"
+>
+    <head>
+        <title>gen7_06TESTESTEST</title>
+    </head>
+
+    <body>
+        <div layout:fragment="contents">
+            <div class="container genWrap">
+                <div class="consWrap">
+                    <h1>gen7_06TESTESTEST</h1>
+                    <input type="file" id="fileInput" />
+                    <div class="topWrap">
+                        <div class="canvasBtnWarp">
+                            <div>
+                                <button type="button" class="btn btn-secondary" id="textReset">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        class="bi bi-arrow-clockwise"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+                                        ></path>
+                                        <path
+                                            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
+                                        ></path>
+                                    </svg>
+                                    reset
+                                </button>
+                            </div>
+                            <div class="OnOffwrapper">
+                                <input type="checkbox" id="invert" />
+                                <label for="invert" class="switch_label">
+                                    <span class="onf_btn"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="canvasWrap">
+                            <canvas id="canvas" width="500" height="500"></canvas>
+                        </div>
+                        <div class="download mt-2 mb-2">
+                            <div class="download_title">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="30"
+                                    height="30"
+                                    fill="currentColor"
+                                    class="bi bi-arrow-down-circle-fill"
+                                    viewBox="0 0 16 16"
+                                >
+                                    <path
+                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+                                    />
+                                </svg>
+                                <h2>Download</h2>
+                            </div>
+                            <div class="btnDown">
+                                <a
+                                    class="btn btn-primary"
+                                    id="downloadLinkPNG"
+                                    download="meme.png"
+                                    href="#"
+                                    style="display: none"
+                                    >.PNG</a
+                                >
+                                <a
+                                    class="btn btn-primary"
+                                    id="downloadLinkJPG"
+                                    download="meme.jpg"
+                                    href="#"
+                                    style="display: none"
+                                    >.JPG</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="genCon">
+                        <div class="anchorColor anchor1"></div>
+                        <div class="ranges">
+                            <label for="topRange">Top Position:</label>
+                            <input type="range" id="topRange" min="0" max="500" step="1" value="30" />
+                            <label for="leftRange">Left Position:</label>
+                            <input type="range" id="leftRange" min="0" max="500" step="1" value="30" />
+                            <label for="rotateRange">Rotate Position:</label>
+                            <input
+                                type="range"
+                                id="rotateRange"
+                                min="-180"
+                                max="180"
+                                step="30"
+                                value="0"
+                                list="values1"
+                            />
+                            <datalist id="values1">
+                                <option value="-180" label="-180">-180deg</option>
+                                <option value="-90" label="-90">-90deg</option>
+                                <option value="0" label="0">0deg</option>
+                                <option value="90" label="90">90deg</option>
+                                <option value="180" label="180">180deg</option>
+                            </datalist>
+                        </div>
+                        <div class="txtBoxDiv">
+                            <label for="txtBox">Text:</label>
+                            <textarea id="txtBox" cols="50" rows="1"></textarea>
+                        </div>
+                        <div class="txtCon">
+                            <label for="fontSizeRange">Font Size:</label>
+                            <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
+
+                            <label for="fontColor">Font Color:</label>
+                            <input type="text" id="fontColor" value="#ffffff" data-coloris />
+
+                            <label for="fontWeight">Font Weight:</label>
+                            <select id="fontWeight">
+                                <option value="bold">Bold</option>
+                                <option value="italic">Italic</option>
+                            </select>
+
+                            <label for="fontFamilySelect">Font Family:</label>
+                            <select id="fontFamilySelect">
+                                <option value="sans-serif">Sans-serif</option>
+                                <option value="serif">Serif</option>
+                                <option value="monospace">Monospace</option>
+                                <option value="cursive">Cursive</option>
+                                <option value="fantasy">Fantasy</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="genCon">
+                        <div class="anchorColor anchor2"></div>
+                        <div class="ranges">
+                            <label for="topRange2">Top Position:</label>
+                            <input type="range" id="topRange2" min="0" max="500" step="1" value="50" />
+                            <div>
+                                <label for="leftRange2">Left Position:</label>
+                                <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" />
+                            </div>
+
+                            <label for="rotateRange2">Rotate Position:</label>
+                            <input
+                                type="range"
+                                id="rotateRange2"
+                                min="-180"
+                                max="180"
+                                step="30"
+                                value="0"
+                                list="values2"
+                            />
+                            <datalist id="values2">
+                                <option value="-180" label="-180">-180deg</option>
+                                <option value="-90" label="-90">-90deg</option>
+                                <option value="0" label="0">0deg</option>
+                                <option value="90" label="90">90deg</option>
+                                <option value="180" label="180">180deg</option>
+                            </datalist>
+                        </div>
+                        <div class="txtBoxDiv">
+                            <label for="txtBox2">Text2:</label>
+                            <textarea id="txtBox2" cols="50" rows="1"></textarea>
+                        </div>
+                        <div class="txtCon">
+                            <label for="fontSizeRange2">Font Size:</label>
+                            <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" />
+
+                            <label for="fontColor2">Font Color:</label>
+                            <input type="text" id="fontColor2" value="#ffffff" data-coloris />
+
+                            <label for="fontWeight2">Font Weight:</label>
+                            <select id="fontWeight2">
+                                <option value="bold">Bold</option>
+                                <option value="italic">Italic</option>
+                            </select>
+
+                            <label for="fontFamilySelect2">Font Family:</label>
+                            <select id="fontFamilySelect2">
+                                <option value="sans-serif">Sans-serif</option>
+                                <option value="serif">Serif</option>
+                                <option value="monospace">Monospace</option>
+                                <option value="cursive">Cursive</option>
+                                <option value="fantasy">Fantasy</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="genCon">
+                        <div class="anchorColor anchor3"></div>
+                        <div class="ranges">
+                            <label for="topRange3">Top Position:</label>
+                            <input type="range" id="topRange3" min="0" max="500" step="1" value="70" />
+
+                            <label for="leftRange3">Left Position:</label>
+                            <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" />
+
+                            <label for="rotateRange3">Rotate Position:</label>
+                            <input
+                                type="range"
+                                id="rotateRange3"
+                                min="-180"
+                                max="180"
+                                step="30"
+                                value="0"
+                                list="values3"
+                            />
+                            <datalist id="values3">
+                                <option value="-180" label="-180">-180deg</option>
+                                <option value="-90" label="-90">-90deg</option>
+                                <option value="0" label="0">0deg</option>
+                                <option value="90" label="90">90deg</option>
+                                <option value="180" label="180">180deg</option>
+                            </datalist>
+                        </div>
+                        <div class="txtBoxDiv">
+                            <label for="txtBox3">Text3:</label>
+                            <textarea id="txtBox3" cols="50" rows="1"></textarea>
+                        </div>
+                        <div class="txtCon">
+                            <label for="fontSizeRange3">Font Size:</label>
+                            <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" />
+
+                            <label for="fontColor3">Font Color:</label>
+                            <input type="text" id="fontColor3" value="#ffffff" data-coloris />
+
+                            <label for="fontWeight3">Font Weight:</label>
+                            <select id="fontWeight3">
+                                <option value="bold">Bold</option>
+                                <option value="italic">Italic</option>
+                            </select>
+
+                            <label for="fontFamilySelect3">Font Family:</label>
+                            <select id="fontFamilySelect3">
+                                <option value="sans-serif">Sans-serif</option>
+                                <option value="serif">Serif</option>
+                                <option value="monospace">Monospace</option>
+                                <option value="cursive">Cursive</option>
+                                <option value="fantasy">Fantasy</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    const canvas = document.querySelector("#canvas");
+                    const ctx = canvas.getContext("2d");
+                    const fileInput = document.querySelector("#fileInput");
+                    const btnReset = document.querySelector("#textReset");
+                    const filterInvert = document.querySelector("#invert");
+
+                    const txtBox = document.querySelector("#txtBox");
+                    const topRange = document.querySelector("#topRange");
+                    const leftRange = document.querySelector("#leftRange");
+                    const rotateRange = document.querySelector("#rotateRange");
+                    const fontSizeRange = document.querySelector("#fontSizeRange");
+                    const fontWeight = document.querySelector("#fontWeight");
+                    const fontFamilySelect = document.querySelector("#fontFamilySelect");
+                    const colorPicker = document.querySelector("#fontColor");
+
+                    const txtBox2 = document.querySelector("#txtBox2");
+                    const topRange2 = document.querySelector("#topRange2");
+                    const leftRange2 = document.querySelector("#leftRange2");
+                    const rotateRange2 = document.querySelector("#rotateRange2");
+                    const fontSizeRange2 = document.querySelector("#fontSizeRange2");
+                    const fontWeight2 = document.querySelector("#fontWeight2");
+                    const fontFamilySelect2 = document.querySelector("#fontFamilySelect2");
+                    const colorPicker2 = document.querySelector("#fontColor2");
+
+                    const txtBox3 = document.querySelector("#txtBox3");
+                    const topRange3 = document.querySelector("#topRange3");
+                    const leftRange3 = document.querySelector("#leftRange3");
+                    const rotateRange3 = document.querySelector("#rotateRange3");
+                    const fontSizeRange3 = document.querySelector("#fontSizeRange3");
+                    const fontWeight3 = document.querySelector("#fontWeight3");
+                    const fontFamilySelect3 = document.querySelector("#fontFamilySelect3");
+                    const colorPicker3 = document.querySelector("#fontColor3");
+
+                    const downloadLinkPNG = document.querySelector("#downloadLinkPNG");
+                    const downloadLinkJPG = document.querySelector("#downloadLinkJPG");
+                    let img = null;
+                    let fontColorPicked = "#ffffff";
+                    let fontColorPicked2 = "#ffffff";
+                    let fontColorPicked3 = "#ffffff";
+
+                    let isDraggingBox1 = false;
+                    let isDraggingBox2 = false;
+                    let isDraggingBox3 = false;
+
+                    let dragStart = { x: 0, y: 0 };
+
+                    const box1Radius = 10;
+                    const box2Radius = 10;
+                    const box3Radius = 10;
+
+                    //   $(filterInvert).on("change", function () {
+                    //     if (filterInvert.checked) {
+                    //       doFilterInvert(100);
+                    //       drawCanvas();
+                    //     } else {
+                    //       doFilterInvert(0);
+                    //       drawCanvas();
+                    //       console.log("꺼짐");
+                    //     }
+                    //   });
+
+                    //   function doFilterInvert(int) {
+                    //     ctx.filter = `invert(` + int + `%)`;
+                    //   }
+                    // 리셋버튼
+                    btnReset.addEventListener("click", function () {
+                        txtBox.value = "";
+                        txtBox2.value = "";
+                        txtBox3.value = "";
+                        colorPicker.value = "#ffffff";
+                        colorPicker2.value = "#ffffff";
+                        colorPicker3.value = "#ffffff";
+                        fontColorPicked = "#ffffff";
+                        fontColorPicked2 = "#ffffff";
+                        fontColorPicked3 = "#ffffff";
+                        drawCanvas();
+                    });
+
+                    //make Anchor
+                    function onMouseDown(event) {
+                        const rect = canvas.getBoundingClientRect();
+                        const x = event.clientX - rect.left;
+                        const y = event.clientY - rect.top;
+                        //맨 상단으로 올려야 오류 안남
+                        // gsap.to(window, 0.3, {
+                        //     scrollTo: 0,
+                        // });
+
+                        if (
+                            Math.sqrt(Math.pow(x - leftRange.value, 2) + Math.pow(y - topRange.value, 2)) <= box1Radius
+                        ) {
+                            isDraggingBox1 = true;
+                            dragStart = { x: x, y: y };
+                        } else if (
+                            Math.sqrt(Math.pow(x - leftRange2.value, 2) + Math.pow(y - topRange2.value, 2)) <=
+                            box2Radius
+                        ) {
+                            isDraggingBox2 = true;
+                            dragStart = { x: x, y: y };
+                        } else if (
+                            Math.sqrt(Math.pow(x - leftRange3.value, 2) + Math.pow(y - topRange3.value, 2)) <=
+                            box3Radius
+                        ) {
+                            isDraggingBox3 = true;
+                            dragStart = { x: x, y: y };
+                        }
+                    }
+
+                    function onMouseMove(event) {
+                        const rect = canvas.getBoundingClientRect();
+                        const x = event.clientX - rect.left;
+                        const y = event.clientY - rect.top;
+
+                        if (isDraggingBox1) {
+                            const dx = x - dragStart.x;
+                            const dy = y - dragStart.y;
+                            leftRange.value = parseInt(leftRange.value) + dx;
+                            topRange.value = parseInt(topRange.value) + dy;
+                            drawCanvas();
+                            dragStart = { x: x, y: y };
+                        } else if (isDraggingBox2) {
+                            const dx = x - dragStart.x;
+                            const dy = y - dragStart.y;
+                            leftRange2.value = parseInt(leftRange2.value) + dx;
+                            topRange2.value = parseInt(topRange2.value) + dy;
+                            drawCanvas();
+                            dragStart = { x: x, y: y };
+                        } else if (isDraggingBox3) {
+                            const dx = x - dragStart.x;
+                            const dy = y - dragStart.y;
+                            leftRange3.value = parseInt(leftRange3.value) + dx;
+                            topRange3.value = parseInt(topRange3.value) + dy;
+                            drawCanvas();
+                            dragStart = { x: x, y: y };
+                        }
+                    }
+
+                    function onMouseUp(event) {
+                        isDraggingBox1 = false;
+                        isDraggingBox2 = false;
+                        isDraggingBox3 = false;
+                    }
+
+                    canvas.addEventListener("mousedown", onMouseDown);
+                    canvas.addEventListener("mousemove", onMouseMove);
+                    canvas.addEventListener("mouseup", onMouseUp);
+                    const { src } = JSON.parse(localStorage.getItem("image-info"));
+                    console.log(src);
+
+                    //generator image 띄우기
+                    img = new Image();
+                    img.src = src;
+                    img.onload = function () {
+                        let ratio = img.width / img.height;
+                        if (ratio > 1) {
+                            canvas.width = 500;
+                            canvas.height = 500 / ratio;
+                        } else {
+                            canvas.width = 500 * ratio;
+                            canvas.height = 500;
+                        }
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        downloadLinkPNG.style.display = "block";
+                        downloadLinkJPG.style.display = "block";
+                    };
+                    // 파일 불러올때 비율 맞춰주는 메소드
+
+                    fileInput.addEventListener("change", () => {
+                        if (fileInput.files && fileInput.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = () => {
+                                img = new Image();
+                                img.onload = () => {
+                                    let ratio = img.width / img.height;
+                                    if (ratio > 1) {
+                                        canvas.width = 500;
+                                        canvas.height = 500 / ratio;
+                                    } else {
+                                        canvas.width = 500 * ratio;
+                                        canvas.height = 500;
+                                    }
+                                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                                    downloadLinkPNG.style.display = "block";
+                                    downloadLinkJPG.style.display = "block";
+                                    drawCanvas();
+                                };
+                                img.src = reader.result;
+                            };
+                            reader.readAsDataURL(fileInput.files[0]);
+                        }
+                    });
+                    colorPicker.addEventListener("input", () => {
+                        fontColorPicked = colorPicker.value;
+                    });
+                    colorPicker2.addEventListener("input", () => {
+                        fontColorPicked2 = colorPicker2.value;
+                    });
+                    colorPicker3.addEventListener("input", () => {
+                        fontColorPicked3 = colorPicker3.value;
+                    });
+
+                    function drawAnchors() {
+                        // Draw circles around txtBox and txtBox2  :: Anchor
+                        ctx.strokeStyle = "red";
+                        ctx.beginPath();
+                        ctx.arc(parseInt(leftRange.value), parseInt(topRange.value), box1Radius, 0, 2 * Math.PI);
+                        ctx.stroke();
+
+                        ctx.strokeStyle = "blue";
+                        ctx.beginPath();
+                        ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
+                        ctx.stroke();
+
+                        ctx.strokeStyle = "green";
+                        ctx.beginPath();
+                        ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
+                        ctx.stroke();
+                    }
+
+                    function drawCanvas(showAnchors = true) {
+                        if (img === null) return;
+
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                        ctx.fillStyle = fontColorPicked;
+                        ctx.font = fontWeight.value + " " + fontSizeRange.value + "px " + fontFamilySelect.value;
+                        ctx.font = fontWeight2.value + " " + fontSizeRange2.value + "px " + fontFamilySelect2.value;
+                        ctx.font = fontWeight3.value + " " + fontSizeRange3.value + "px " + fontFamilySelect3.value;
+
+                        ctx.textAlign = "start";
+                        drawText(
+                            ctx,
+                            txtBox.value,
+                            parseInt(leftRange.value),
+                            parseInt(topRange.value),
+                            parseInt(rotateRange.value),
+                            fontColorPicked,
+                            fontWeight.value,
+                            fontSizeRange.value,
+                            fontFamilySelect.value
+                        );
+
+                        drawText(
+                            ctx,
+                            txtBox2.value,
+                            parseInt(leftRange2.value),
+                            parseInt(topRange2.value),
+                            parseInt(rotateRange2.value),
+                            fontColorPicked2,
+                            fontWeight2.value,
+                            fontSizeRange2.value,
+                            fontFamilySelect2.value
+                        );
+                        drawText(
+                            ctx,
+                            txtBox3.value,
+                            parseInt(leftRange3.value),
+                            parseInt(topRange3.value),
+                            parseInt(rotateRange3.value),
+                            fontColorPicked3,
+                            fontWeight3.value,
+                            fontSizeRange3.value,
+                            fontFamilySelect3.value
+                        );
+                        if (showAnchors) {
+                            drawAnchors();
+                        }
+
+                        topRange.max = canvas.height - parseInt(fontSizeRange.value);
+                        leftRange.max = canvas.width;
+                    }
+
+                    function downloadImage() {
+                        drawCanvas(false);
+                        downloadLinkPNG.href = canvas.toDataURL();
+                        downloadLinkJPG.href = canvas.toDataURL();
+                        drawCanvas(true);
+                    }
+
+                    function drawText(ctx, text, x, y, rotate, fontColor, fontWeight, fontSize, fontFamily) {
+                        let textHeight = parseInt(fontSize);
+                        ctx.save();
+                        ctx.translate(x, y);
+                        ctx.rotate((rotate * Math.PI) / 180);
+                        ctx.fillStyle = fontColor;
+                        ctx.font = fontWeight + " " + fontSize + "px " + fontFamily;
+
+                        // Split the text by newline characters and draw each line separately
+                        const lines = text.split("\n");
+                        for (let i = 0; i < lines.length; i++) {
+                            ctx.fillText(lines[i], 0, textHeight * i);
+                        }
+
+                        ctx.restore();
+                    }
+                    txtBox.addEventListener("input", drawCanvas);
+                    topRange.addEventListener("input", drawCanvas);
+                    leftRange.addEventListener("input", drawCanvas);
+                    rotateRange.addEventListener("input", drawCanvas);
+                    colorPicker.addEventListener("input", drawCanvas);
+                    fontWeight.addEventListener("input", drawCanvas);
+                    fontSizeRange.addEventListener("input", drawCanvas);
+                    fontFamilySelect.addEventListener("input", drawCanvas);
+
+                    txtBox2.addEventListener("input", drawCanvas);
+                    topRange2.addEventListener("input", drawCanvas);
+                    leftRange2.addEventListener("input", drawCanvas);
+                    rotateRange2.addEventListener("input", drawCanvas);
+                    colorPicker2.addEventListener("input", drawCanvas);
+                    fontWeight2.addEventListener("input", drawCanvas);
+                    fontSizeRange2.addEventListener("input", drawCanvas);
+                    fontFamilySelect2.addEventListener("input", drawCanvas);
+
+                    txtBox3.addEventListener("input", drawCanvas);
+                    topRange3.addEventListener("input", drawCanvas);
+                    leftRange3.addEventListener("input", drawCanvas);
+                    rotateRange3.addEventListener("input", drawCanvas);
+                    colorPicker3.addEventListener("input", drawCanvas);
+                    fontWeight3.addEventListener("input", drawCanvas);
+                    fontSizeRange3.addEventListener("input", drawCanvas);
+                    fontFamilySelect3.addEventListener("input", drawCanvas);
+
+                    downloadLinkPNG.addEventListener("click", downloadImage);
+                    downloadLinkJPG.addEventListener("click", downloadImage);
+
+                    Coloris({
+                        theme: "pill",
+                        themeMode: "dark",
+                        margin: 2,
+                        alpha: true,
+                        format: "hex",
+                        clearButton: true,
+                        clearLabel: "Clear",
+                        swatches: [
+                            "#000000",
+                            "#ffffff",
+                            "#cccccc",
+                            "#ff0000",
+                            "#ffee00",
+                            "#22ff00",
+                            "#00ffe5",
+                            "#0000ff",
+                            "#9500ff",
+                            "#4ced82",
+                            "#f01d7c",
+                        ],
+                        inline: false,
+                        defaultColor: "#000000",
+                    });
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
