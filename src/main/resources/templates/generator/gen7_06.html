@@ -19,7 +19,7 @@
                     <div class="input-group mb-3">
                         <label class="input-group-text btn-secondary" for="fileInput">Customize</label>
                         <input type="file" class="btn btn-secondary" id="fileInput" />
-                        <input class="upload-name" value="Location" placeholder="Location" />
+                        <input class="upload-name" value="Location" placeholder="Location" readonly />
                     </div>
 
                     <div class="topWrap">
@@ -146,13 +146,14 @@
                         <div class="txtBoxDiv">
                             <label for="txtBox">Text:</label>
                             <textarea id="txtBox" cols="50" rows="1"></textarea>
+                            <div class="colorisFull">
+                                <label for="fontColor">Font Color:</label>
+                                <input type="text" id="fontColor" value="#ffffff" data-coloris />
+                            </div>
                         </div>
                         <div class="txtCon">
                             <label for="fontSizeRange">Font Size:</label>
                             <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
-
-                            <label for="fontColor">Font Color:</label>
-                            <input type="text" id="fontColor" value="#ffffff" data-coloris />
 
                             <label for="fontWeight">Font Weight:</label>
                             <select id="fontWeight">
@@ -202,13 +203,14 @@
                         <div class="txtBoxDiv">
                             <label for="txtBox2">Text2:</label>
                             <textarea id="txtBox2" cols="50" rows="1"></textarea>
+                            <div class="colorisFull">
+                                <label for="fontColor2">Font Color:</label>
+                                <input type="text" id="fontColor2" value="#ffffff" data-coloris />
+                            </div>
                         </div>
                         <div class="txtCon">
                             <label for="fontSizeRange2">Font Size:</label>
                             <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" />
-
-                            <label for="fontColor2">Font Color:</label>
-                            <input type="text" id="fontColor2" value="#ffffff" data-coloris />
 
                             <label for="fontWeight2">Font Weight:</label>
                             <select id="fontWeight2">
@@ -257,13 +259,14 @@
                         <div class="txtBoxDiv">
                             <label for="txtBox3">Text3:</label>
                             <textarea id="txtBox3" cols="50" rows="1"></textarea>
+                            <div class="colorisFull">
+                                <label for="fontColor3">Font Color:</label>
+                                <input type="text" id="fontColor3" value="#ffffff" data-coloris />
+                            </div>
                         </div>
                         <div class="txtCon">
                             <label for="fontSizeRange3">Font Size:</label>
                             <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" />
-
-                            <label for="fontColor3">Font Color:</label>
-                            <input type="text" id="fontColor3" value="#ffffff" data-coloris />
 
                             <label for="fontWeight3">Font Weight:</label>
                             <select id="fontWeight3">
@@ -669,7 +672,7 @@
                             content: {
                                 title: "내가 만든 MEME ",
                                 description: "#분노 #동물 #귀여운 #슬픔 #블랙유머 #GIF",
-                                imageUrl: "http://127.0.0.1:9091/" + sharedImageUrl,
+                                imageUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
                                 link: {
                                     // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
                                     mobileWebUrl: "http://127.0.0.1:9091",
@@ -685,8 +688,8 @@
                                 {
                                     title: "웹으로 보기",
                                     link: {
-                                        mobileWebUrl: "http://127.0.0.1:9091",
-                                        webUrl: "http://127.0.0.1:9091",
+                                        mobileWebUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
+                                        webUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
                                     },
                                 },
                                 {

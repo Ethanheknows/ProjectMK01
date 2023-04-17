@@ -31,6 +31,9 @@ body {
     .input-group-text {
         cursor: pointer;
     }
+    .upload-name {
+        border-radius: 5px;
+    }
     .input-group input[type="file"] {
         position: absolute;
         width: 0;
@@ -135,6 +138,25 @@ body {
             textarea {
                 resize: none;
             }
+            .colorisFull {
+                .clr-field {
+                    width: 50px;
+                    height: 30px;
+                    border-radius: 5px;
+                    border-radius: 1px solid black;
+                    input {
+                        opacity: 0;
+                        width: 50px;
+                        height: 30px;
+                        border-radius: 5px;
+                        border-radius: 1px solid black;
+                    }
+                    button {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
         }
 
         .ranges {
@@ -192,13 +214,16 @@ body {
         .kakaoBtn {
             display: flex;
             justify-content: space-between;
-            // align-items: center;
+            align-items: center;
             width: 100px;
             height: 50px;
 
             a {
+                width: 100px;
+                height: 50px;
                 margin: 10px 5px;
                 img {
+                    width: 40px;
                     height: 40px;
                 }
             }
