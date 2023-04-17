@@ -85,6 +85,14 @@ body {
             transition: all 0.25s ease;
         }
     }
+
+    #genCon3 {
+        display: none;
+    }
+    
+    #genCon4 {
+        display: none;
+    }
     .genCon {
         display: block;
         justify-content: center;
@@ -108,6 +116,9 @@ body {
         }
         .anchor3 {
             background-color: green;
+        }
+        .anchor4 {
+            background-color: yellow;
         }
         .txtBoxDiv {
             display: flex;
