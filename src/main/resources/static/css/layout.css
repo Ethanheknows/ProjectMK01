@@ -70,17 +70,75 @@ body .topWrap {
   display: flex;
   justify-content: center;
   padding: 30px 30px;
+  /* move */
+}
+body .topWrap .OnOffwrapper {
+  position: relative;
+}
+body .topWrap .invert {
+  position: absolute;
+  /* hidden */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+body .topWrap .switch_label {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  width: 58px;
+  height: 28px;
+  background: #fff;
+  border: 2px solid #daa;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+body .topWrap .switch_label:hover {
+  background: #efefef;
+}
+body .topWrap .onf_btn {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  border-radius: 20px;
+  background: #daa;
+  transition: 0.2s;
+}
+body .topWrap #invert:checked + .switch_label {
+  background: #c44;
+  border: 2px solid #c44;
+}
+body .topWrap #invert:checked + .switch_label:hover {
+  background: #e55;
+}
+body .topWrap #invert:checked + .switch_label .onf_btn {
+  left: 33px;
+  background: #fff;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1254901961);
 }
 body .topWrap .canvasWrap {
   border: 1px solid white;
   transition: all 0.25s ease;
 }
 body .genCon {
+  display: block;
+  justify-content: center;
+  width: 1200px;
+  height: 150px;
   border: 1px solid white;
   width: 1000px;
   height: 100px;
   justify-content: space-between;
   align-items: center;
+}
+body .genCon .anchorColor {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border-radius: 6px;
 }
 body .genCon textarea {
   resize: none;

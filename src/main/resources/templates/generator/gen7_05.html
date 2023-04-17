@@ -17,23 +17,34 @@
           <h1>gen7</h1>
           <input type="file" id="fileInput" />
           <div class="topWrap">
-            <div>
-              <button type="button" class="btn btn-secondary" id="textReset">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-arrow-clockwise"
-                  viewBox="0 0 16 16"
-                >
-                  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"></path>
-                  <path
-                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
-                  ></path>
-                </svg>
-                reset
-              </button>
+            <div class="canvasBtnWarp">
+              <div>
+                <button type="button" class="btn btn-secondary" id="textReset">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-arrow-clockwise"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+                    ></path>
+                    <path
+                      d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
+                    ></path>
+                  </svg>
+                  reset
+                </button>
+              </div>
+              <div class="OnOffwrapper">
+                <input type="checkbox" id="invert" />
+                <label for="invert" class="switch_label">
+                  <span class="onf_btn"></span>
+                </label>
+              </div>
             </div>
             <div class="canvasWrap">
               <canvas id="canvas" width="500" height="500"></canvas>
@@ -66,6 +77,7 @@
           </div>
 
           <div class="genCon mb-3">
+            <div class="anchorColor anchor1"></div>
             <div class="ranges">
               <label for="topRange">Top Position:</label>
               <input type="range" id="topRange" min="0" max="500" step="1" value="30" />
@@ -110,6 +122,7 @@
           </div>
 
           <div class="genCon mb-3">
+            <div class="anchorColor anchor2"></div>
             <div class="ranges">
               <label for="topRange2">Top Position:</label>
               <input type="range" id="topRange2" min="0" max="500" step="1" value="50" />
@@ -157,6 +170,7 @@
           </div>
 
           <div class="genCon mb-3">
+            <div class="anchorColor anchor3"></div>
             <div class="ranges">
               <label for="topRange3">Top Position:</label>
               <input type="range" id="topRange3" min="0" max="500" step="1" value="70" />
@@ -208,6 +222,7 @@
           const ctx = canvas.getContext("2d");
           const fileInput = document.querySelector("#fileInput");
           const btnReset = document.querySelector("#textReset");
+          const filterInvert = document.querySelector("#invert");
 
           const txtBox = document.querySelector("#txtBox");
           const topRange = document.querySelector("#topRange");
@@ -253,6 +268,21 @@
           const box2Radius = 10;
           const box3Radius = 10;
 
+          //   $(filterInvert).on("change", function () {
+          //     if (filterInvert.checked) {
+          //       doFilterInvert(100);
+          //       drawCanvas();
+          //     } else {
+          //       doFilterInvert(0);
+          //       drawCanvas();
+          //       console.log("꺼짐");
+          //     }
+          //   });
+
+          //   function doFilterInvert(int) {
+          //     ctx.filter = `invert(` + int + `%)`;
+          //   }
+          // 리셋버튼
           btnReset.addEventListener("click", function () {
             txtBox.value = "";
             txtBox2.value = "";
@@ -431,18 +461,33 @@
             drawCanvas(true);
           }
 
+          //   function drawText(ctx, text, x, y, rotate, fontColor, fontWeight, fontSize, fontFamily) {
+          //     let textWidth = ctx.measureText(text).width;
+          //     let textHeight = parseInt(fontSize);
+          //     ctx.save();
+          //     ctx.translate(x, y);
+          //     ctx.rotate((rotate * Math.PI) / 180);
+          //     ctx.fillStyle = fontColor;
+          //     ctx.font = fontWeight + " " + fontSize + "px " + fontFamily;
+          //     ctx.fillText(text, 0, textHeight);
+          //     ctx.restore();
+          //   }
           function drawText(ctx, text, x, y, rotate, fontColor, fontWeight, fontSize, fontFamily) {
-            let textWidth = ctx.measureText(text).width;
             let textHeight = parseInt(fontSize);
             ctx.save();
             ctx.translate(x, y);
             ctx.rotate((rotate * Math.PI) / 180);
             ctx.fillStyle = fontColor;
             ctx.font = fontWeight + " " + fontSize + "px " + fontFamily;
-            ctx.fillText(text, 0, textHeight);
+
+            // Split the text by newline characters and draw each line separately
+            const lines = text.split("\n");
+            for (let i = 0; i < lines.length; i++) {
+              ctx.fillText(lines[i], 0, textHeight * i);
+            }
+
             ctx.restore();
           }
-
           txtBox.addEventListener("input", drawCanvas);
           topRange.addEventListener("input", drawCanvas);
           leftRange.addEventListener("input", drawCanvas);
