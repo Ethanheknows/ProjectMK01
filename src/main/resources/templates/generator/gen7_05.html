@@ -15,6 +15,7 @@
       <div class="container genWrap">
         <div class="consWrap">
           <h1>gen7</h1>
+          <!-- 인풋 -->
           <input type="file" id="fileInput" />
           <div class="topWrap">
             <div>
@@ -319,6 +320,21 @@
           canvas.addEventListener("mousemove", onMouseMove);
           canvas.addEventListener("mouseup", onMouseUp);
 
+          const {src} = JSON.parse(localStorage.getItem("image-info"));
+          console.log(src);
+
+
+          img = new Image();
+          img.src = src;
+          img.onload = function(){
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            downloadLinkPNG.style.display = "block";
+            downloadLinkJPG.style.display = "block";
+          }
+        
+        
+          
+          
           fileInput.addEventListener("change", () => {
             if (fileInput.files && fileInput.files[0]) {
               const reader = new FileReader();
@@ -499,6 +515,20 @@
             defaultColor: "#000000",
           });
         </script>
+        
+<!-- <script type="text/javascript">
+  img = new Image();
+  // 새로운 이미지 객체를 만듬
+  img.src = 'https://cdn.pixabay.com/photo/2020/06/05/01/28/compass-5261062_1280.jpg';
+  img.onload = function(){
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    downloadLinkPNG.style.display = "block";
+    downloadLinkJPG.style.display = "block";
+  }
+  // 이미지 URL
+
+
+  </script> -->
       </div>
     </div>
   </body>

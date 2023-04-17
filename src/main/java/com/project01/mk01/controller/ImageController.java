@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project01.mk01.dto.ImageDto;
+import com.project01.mk01.dto.commentBoardDto;
 import com.project01.mk01.service.ImageService;
 
 @Controller
@@ -56,6 +57,7 @@ public class ImageController {
             }
 
         }
+
         model.addAttribute("allImages", allImages);
         model2.addAttribute("tags", tagList);
 

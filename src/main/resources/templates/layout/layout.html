@@ -69,9 +69,25 @@
             <div class="container-fluid">
               <div class="row">
                 <div id="modal-image" class="col-md-4"></div>
+               
                 <div class="col-md-4 ms-auto">
+                  <div style="overflow:scroll; width:320px; height:400px;" id="modal-comments">
+                    <table id="comments"></table>  
+                        <!-- <tr th:each="item : ${allcomments}" class="text-center">
+                          <td class="text-start ps-sm-5">    
+                            <th th:text="${item.no}">1</th>
+                          <span th:if="${item.available == 0 }" th:text="${item.contents}">
+                            아버지를 아버지라 부르지 못하고...
+                          </span>
+                          <span th:unless="${item.available == 0}">삭제 되었습니다.
+                          </span>
+                        </td>
+                        <td th:text="${item.nickName}">홍길동</td>
+                        <td th:text="${item.regDate}">2023.03.25</td>
+                      </tr> -->
+                  </div>
                   <p>클릭한 이미지 어디까지 되는지 테스트 해보는중</p>
-                  <a href="/gen">generator 링크</a>
+                  <a href="/gen" id="generator">generator 링크</a>
                 </div>
               </div>
             </div>
@@ -83,6 +99,7 @@
         </div>
       </div>
     </div>
+
 
     <div class="modal fade" tabindex="-1" id="memoModal">
       <div class="modal-dialog">
@@ -122,6 +139,9 @@
         </div>
       </div>
     </div>
+
+
+
     <script th:inline="javascript">
             /*<![CDATA[*/
               const msg = /*[[${msg}]]*/;
@@ -130,18 +150,53 @@
               const no = /*[[${param.no}]]*/;
               const session = /*[[${session}]]*/;
               const allImages = /*[[${allImages}]]*/;
-
-
+              const allcomments = /*[[${allcomments}]]*/;
+              
               const memoModal = new bootstrap.Modal("#memoModal");
               const deleteModal = new bootstrap.Modal("#deleteModal");
               const imgModal = new bootstrap.Modal("#imgModal")
+             
 
               $(document).on('click','#clickedImg',function(e){
 
                 var src = $(this).find("img").attr("src");
-                console.log(src);
+                var ogsrc=src.split("/")[3]
+                console.log(src.split("/")[3]);
+                
+             
 
                 $('#modal-image').html(`<img src="`+src+`" alt=""/>`)
+                $("#comments-data").remove();
+                $('#comments').html(`<div id="comments-data"></div>`)
+               
+                for(i = 0;i<allcomments.length;i++){
+                  console.log(ogsrc)
+                  
+                  if(allcomments[i].original==ogsrc && allcomments[i].available==0){
+                    console.log(i+"번 삽입");
+                    $('#comments-data').append(`  
+                    <tr>
+                    <td class="text-start ps-sm-5 "">
+                    <td>
+                      `+allcomments[i].contents+`
+                    </td>
+                    </td>
+                    <td>`+allcomments[i].nickName+`</td>
+                    <td>`+allcomments[i].regDate+`</td>
+                    </tr>
+                    `)
+                  }
+                  
+                }
+               
+
+
+
+
+
+
+
+
 
                 e.preventDefault();
 
@@ -218,6 +273,25 @@
                 deleteModal.show();
                 return false;
               });
+
+
+
+              $("#generator").on("click",function(e){
+
+
+
+
+                var src=$("#modal-image").find("img").attr("src");
+                
+                const imageinfo = {
+                        src: src
+                }
+                localStorage.setItem("image-info", JSON.stringify(imageinfo));
+
+                console.log("img======="+src);
+                //e.preventDefault();
+              });
+
 
 
               $("#btnDeleteConfirm").on("click",function(e){

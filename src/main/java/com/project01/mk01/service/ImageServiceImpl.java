@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.project01.mk01.dao.ImageDao;
 import com.project01.mk01.dto.ImageDto;
+import com.project01.mk01.dto.commentBoardDto;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -57,6 +58,13 @@ public class ImageServiceImpl implements ImageService {
     public List<ImageDto> getAllimages() {
 
         List<ImageDto> result = imageDao.getAllimages();
+        return result;
+
+    }
+
+    public List<commentBoardDto> getAllcomment() {
+
+        List<commentBoardDto> result = imageDao.getAllcomment();
         return result;
 
     }

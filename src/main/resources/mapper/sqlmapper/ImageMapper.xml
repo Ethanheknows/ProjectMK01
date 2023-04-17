@@ -25,6 +25,17 @@
 
 
       </select>
-    
-    
+      
+
+      
+      <select id="getAllcomment" resultType="commentBoardDto">
+
+        SELECT * FROM imageboard ORDER BY NO DESC
+
+
+      </select>
+      
+
+
+      
 </mapper>

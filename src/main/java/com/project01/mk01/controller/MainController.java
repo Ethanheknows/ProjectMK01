@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.project01.mk01.dto.ImageDto;
+import com.project01.mk01.dto.commentBoardDto;
 import com.project01.mk01.service.ImageService;
 
 import lombok.extern.log4j.Log4j2;
@@ -20,8 +22,10 @@ public class MainController {
     ImageService imageService;
 
     @GetMapping("/")
-    public String index(Model model, Model model2) {
+    public String index(Model model, Model model2, Model model3) {
         List<ImageDto> allImages = imageService.getAllimages();
+        List<commentBoardDto> allcomments = imageService.getAllcomment();
+
         List<String> tagList = new ArrayList<>();
         for (int i = 0; i < allImages.size(); i++) {
             // log.info(allImages.get(i).getTag());
@@ -38,9 +42,10 @@ public class MainController {
 
         }
 
+        log.info("allcomments===========" + allcomments);
         model.addAttribute("allImages", allImages);
         model2.addAttribute("tags", tagList);
-
+        model3.addAttribute("allcomments", allcomments);
         return "/index/index";
     }
 
