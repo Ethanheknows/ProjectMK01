@@ -28,7 +28,7 @@ public class MainController {
 
         List<String> tagList = new ArrayList<>();
         for (int i = 0; i < allImages.size(); i++) {
-            // log.info(allImages.get(i).getTag());
+            log.info(allImages.get(i).getTag());
             String tag = allImages.get(i).getTag();
             String[] tags = tag.split(",");
             log.info(tags);

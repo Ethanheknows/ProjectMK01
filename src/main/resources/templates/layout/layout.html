@@ -56,6 +56,25 @@
     <main id="main">
       <div layout:fragment="contents"></div>
     </main>
+    <!-- comments modal -->
+    <div class="modal fade"  id="commentsModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Comment</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>이미지에 대한 후기를 남기시겠습니까?</p>
+          </div>
+          <div class="modal-footer">
+            <a herf type="button" class="btn btn-primary">YES</a>
+            <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- 이미지 클릭한 다음 나오는 모달 -->
     <div class="modal fade" id="imgModal" tabindex="-1">
@@ -73,18 +92,7 @@
                 <div class="col-md-4 ms-auto">
                   <div style="overflow:scroll; width:320px; height:400px;" id="modal-comments">
                     <table id="comments"></table>  
-                        <!-- <tr th:each="item : ${allcomments}" class="text-center">
-                          <td class="text-start ps-sm-5">    
-                            <th th:text="${item.no}">1</th>
-                          <span th:if="${item.available == 0 }" th:text="${item.contents}">
-                            아버지를 아버지라 부르지 못하고...
-                          </span>
-                          <span th:unless="${item.available == 0}">삭제 되었습니다.
-                          </span>
-                        </td>
-                        <td th:text="${item.nickName}">홍길동</td>
-                        <td th:text="${item.regDate}">2023.03.25</td>
-                      </tr> -->
+                     
                   </div>
                   <p>클릭한 이미지 어디까지 되는지 테스트 해보는중</p>
                   <a href="/gen" id="generator">generator 링크</a>
@@ -155,6 +163,7 @@
               const memoModal = new bootstrap.Modal("#memoModal");
               const deleteModal = new bootstrap.Modal("#deleteModal");
               const imgModal = new bootstrap.Modal("#imgModal")
+              const commentsModal = new bootstrap.Modal("#commentsModal")
              
 
               $(document).on('click','#clickedImg',function(e){
@@ -282,12 +291,13 @@
 
 
                 var src=$("#modal-image").find("img").attr("src");
-
                 const imageinfo = {
                         src: src
                 }
                 localStorage.setItem("image-info", JSON.stringify(imageinfo));
 
+                console.log("img======="+src);
+                //e.preventDefault();
               });
 
 

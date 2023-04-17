@@ -85,6 +85,12 @@ public class ImageController {
         return "redirect:/";
     }
 
+    @GetMapping("/comment")
+    public String comment() {
+        log.info("dddddddddddddd");
+        return "/gallery/comment";
+    }
+
     // @PostMapping("/getReply/{no}")
     // @ResponseBody
     // public List<ReplyDto> getReply(@PathVariable("no") int no) {
