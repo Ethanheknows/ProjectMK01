@@ -18,12 +18,75 @@ body {
     display: flex;
     justify-content: center;
     padding: 30px 30px;
+
+    .OnOffwrapper {
+      position: relative;
+    }
+    .invert {
+      position: absolute;
+      /* hidden */
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+    .switch_label {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      width: 58px;
+      height: 28px;
+      background: #fff;
+      border: 2px solid #daa;
+      border-radius: 20px;
+      transition: 0.2s;
+    }
+    .switch_label:hover {
+      background: #efefef;
+    }
+    .onf_btn {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      display: inline-block;
+      width: 19px;
+      height: 19px;
+      border-radius: 20px;
+      background: #daa;
+      transition: 0.2s;
+    }
+    #invert:checked + .switch_label {
+      background: #c44;
+      border: 2px solid #c44;
+    }
+
+    #invert:checked + .switch_label:hover {
+      background: #e55;
+    }
+
+    /* move */
+    #invert:checked + .switch_label .onf_btn {
+      left: 33px;
+      background: #fff;
+      box-shadow: 1px 2px 3px #00000020;
+    }
+
     .canvasWrap {
       border: 1px solid white;
       transition: all 0.25s ease;
     }
   }
   .genCon {
+    display: block;
+    justify-content: center;
+    width: 1200px;
+    height: 150px;
+    .anchorColor {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      border-radius: 6px;
+      // margin-top: 4px;
+    }
     textarea {
       resize: none;
     }
