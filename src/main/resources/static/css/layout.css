@@ -3,58 +3,106 @@
   font-family: "Sohne";
   font-style: normal;
   font-weight: 200;
-  src: url(/font/TestSöhne-Extraleicht.otf) format("opentype");
+  src: url(/font/Sohne/TestSöhne-Extraleicht.otf) format("opentype");
 }
 @font-face {
   font-family: "Sohne";
   font-style: normal;
   font-weight: 300;
-  src: url(/font/TestSöhne-Leicht.otf) format("opentype");
-}
-@font-face {
-  font-family: "Sohne";
-  font-style: normal;
-  font-weight: 300;
-  src: url(/font/TestSöhne-Leicht.otf) format("opentype");
+  src: url(/font/Sohne/TestSöhne-Leicht.otf) format("opentype");
 }
 @font-face {
   font-family: "Sohne";
   font-style: normal;
   font-weight: 400;
-  src: url(/font/TestSöhne-Buch.otf) format("opentype");
+  src: url(/font/Sohne/TestSöhne-Buch.otf) format("opentype");
 }
 @font-face {
   font-family: "Sohne";
   font-style: normal;
   font-weight: 500;
-  src: url(/font/TestSöhne-Kräftig.otf) format("opentype");
+  src: url(/font/Sohne/TestSöhne-Kräftig.otf) format("opentype");
 }
 @font-face {
   font-family: "Sohne";
   font-style: normal;
   font-weight: 600;
-  src: url(/font/TestSöhne-Halbfett.otf) format("opentype");
+  src: url(/font/Sohne/TestSöhne-Halbfett.otf) format("opentype");
 }
 @font-face {
   font-family: "Sohne";
   font-style: normal;
   font-weight: 700;
-  src: url(/font/TestSöhne-Dreiviertelfett.otf) format("opentype");
+  src: url(/font/Sohne/TestSöhne-Dreiviertelfett.otf) format("opentype");
 }
 @font-face {
   font-family: "Sohne";
   font-style: normal;
   font-weight: 800;
-  src: url(/font/TestSöhne-Fett.otf) format("opentype");
+  src: url(/font/Sohne/TestSöhne-Fett.otf) format("opentype");
 }
 @font-face {
   font-family: "Sohne";
   font-style: normal;
   font-weight: 900;
-  src: url(/font/TestSöhne-Extrafett.otf) format("opentype");
+  src: url(/font/Sohne/TestSöhne-Extrafett.otf) format("opentype");
+}
+@font-face {
+  font-family: "SCD";
+  font-style: normal;
+  font-weight: 100;
+  src: url(/font/SCDream/SCDream1.otf) format("opentype");
+}
+@font-face {
+  font-family: "SCD";
+  font-style: normal;
+  font-weight: 200;
+  src: url(/font/SCDream/SCDream2.otf) format("opentype");
+}
+@font-face {
+  font-family: "SCD";
+  font-style: normal;
+  font-weight: 300;
+  src: url(/font/SCDream/SCDream3.otf) format("opentype");
+}
+@font-face {
+  font-family: "SCD";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/SCDream/SCDream4.otf) format("opentype");
+}
+@font-face {
+  font-family: "SCD";
+  font-style: normal;
+  font-weight: 500;
+  src: url(/font/SCDream/SCDream5.otf) format("opentype");
+}
+@font-face {
+  font-family: "SCD";
+  font-style: normal;
+  font-weight: 600;
+  src: url(/font/SCDream/SCDream6.otf) format("opentype");
+}
+@font-face {
+  font-family: "SCD";
+  font-style: normal;
+  font-weight: 700;
+  src: url(/font/SCDream/SCDream7.otf) format("opentype");
+}
+@font-face {
+  font-family: "SCD";
+  font-style: normal;
+  font-weight: 800;
+  src: url(/font/SCDream/SCDream8.otf) format("opentype");
+}
+@font-face {
+  font-family: "SCD";
+  font-style: normal;
+  font-weight: 900;
+  src: url(/font/SCDream/SCDream9.otf) format("opentype");
 }
 body {
-  font-family: "Sohne", sans-serif;
+  font-family: "Sohne", "SCD", sans-serif;
   font-weight: 300;
   background-color: black;
   color: rgb(81, 218, 76);
@@ -281,7 +329,8 @@ body .share .kakaoBtn a img {
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #modal-image img {
   width: 700px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 10px;
 }
 
@@ -325,7 +374,8 @@ body .share .kakaoBtn a img {
   to {
     width: 700px;
     height: 350px;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     opacity: 100%;
   }
 }
@@ -334,6 +384,7 @@ body .share .kakaoBtn a img {
   width: 300px;
   border-radius: 10px;
   height: 300px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   transition: width 0.25s ease, height 0.25s ease;
 }
