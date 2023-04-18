@@ -132,6 +132,9 @@ body #invert {
 body #grayscale {
   display: none;
 }
+body #sepia {
+  display: none;
+}
 body .input-group-text {
   cursor: pointer;
 }
@@ -152,6 +155,7 @@ body .topWrap {
   padding: 30px 20px;
   /* move */
   /* move */
+  /* move */
 }
 body .topWrap .OnOffwrapper {
   position: relative;
@@ -170,12 +174,12 @@ body .topWrap .switch_label {
   width: 58px;
   height: 28px;
   background: #fff;
-  border: 2px solid #daa;
+  border: 2px solid rgb(255, 255, 255);
   border-radius: 20px;
   transition: 0.2s;
 }
 body .topWrap .switch_label:hover {
-  background: #efefef;
+  background: #d65858;
 }
 body .topWrap .onf_btn {
   position: absolute;
@@ -185,15 +189,15 @@ body .topWrap .onf_btn {
   width: 19px;
   height: 19px;
   border-radius: 20px;
-  background: #daa;
+  background: rgb(151, 151, 151);
   transition: 0.2s;
 }
 body .topWrap #invert:checked + .switch_label {
-  background: #c44;
-  border: 2px solid #c44;
+  background: rgb(81, 218, 76);
+  border: 2px solid rgb(81, 218, 76);
 }
 body .topWrap #invert:checked + .switch_label:hover {
-  background: #e55;
+  background: rgb(134, 255, 101);
 }
 body .topWrap #invert:checked + .switch_label .onf_btn {
   left: 33px;
@@ -201,13 +205,25 @@ body .topWrap #invert:checked + .switch_label .onf_btn {
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1254901961);
 }
 body .topWrap #grayscale:checked + .switch_label {
-  background: #c44;
-  border: 2px solid #c44;
+  background: rgb(81, 218, 76);
+  border: 2px solid rgb(81, 218, 76);
 }
 body .topWrap #grayscale:checked + .switch_label:hover {
-  background: #e55;
+  background: rgb(134, 255, 101);
 }
 body .topWrap #grayscale:checked + .switch_label .onf_btn {
+  left: 33px;
+  background: #fff;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1254901961);
+}
+body .topWrap #sepia:checked + .switch_label {
+  background: rgb(81, 218, 76);
+  border: 2px solid rgb(81, 218, 76);
+}
+body .topWrap #sepia:checked + .switch_label:hover {
+  background: rgb(134, 255, 101);
+}
+body .topWrap #sepia:checked + .switch_label .onf_btn {
   left: 33px;
   background: #fff;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1254901961);
@@ -255,6 +271,7 @@ body .bottonWrap .genCon .anchor4 {
 body .bottonWrap .genCon .txtBoxDiv {
   display: flex;
   padding: 0 100px;
+  margin-bottom: 5px;
   justify-content: start;
   align-items: center;
   padding-bottom: 10px;

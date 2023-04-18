@@ -34,6 +34,9 @@ body {
     #grayscale {
         display: none;
     }
+    #sepia {
+        display: none;
+    }
     .input-group-text {
         cursor: pointer;
     }
@@ -70,12 +73,12 @@ body {
             width: 58px;
             height: 28px;
             background: #fff;
-            border: 2px solid #daa;
+            border: 2px solid rgb(255, 255, 255);
             border-radius: 20px;
             transition: 0.2s;
         }
         .switch_label:hover {
-            background: #efefef;
+            background: #d65858;
         }
         .onf_btn {
             position: absolute;
@@ -85,16 +88,16 @@ body {
             width: 19px;
             height: 19px;
             border-radius: 20px;
-            background: #daa;
+            background: rgb(151, 151, 151);
             transition: 0.2s;
         }
         #invert:checked + .switch_label {
-            background: #c44;
-            border: 2px solid #c44;
+            background: rgb(81, 218, 76);
+            border: 2px solid rgb(81, 218, 76);
         }
 
         #invert:checked + .switch_label:hover {
-            background: #e55;
+            background: rgb(134, 255, 101);
         }
 
         /* move */
@@ -104,16 +107,31 @@ body {
             box-shadow: 1px 2px 3px #00000020;
         }
         #grayscale:checked + .switch_label {
-            background: #c44;
-            border: 2px solid #c44;
+            background: rgb(81, 218, 76);
+            border: 2px solid rgb(81, 218, 76);
         }
 
         #grayscale:checked + .switch_label:hover {
-            background: #e55;
+            background: rgb(134, 255, 101);
         }
 
         /* move */
         #grayscale:checked + .switch_label .onf_btn {
+            left: 33px;
+            background: #fff;
+            box-shadow: 1px 2px 3px #00000020;
+        }
+        #sepia:checked + .switch_label {
+            background: rgb(81, 218, 76);
+            border: 2px solid rgb(81, 218, 76);
+        }
+
+        #sepia:checked + .switch_label:hover {
+            background: rgb(134, 255, 101);
+        }
+
+        /* move */
+        #sepia:checked + .switch_label .onf_btn {
             left: 33px;
             background: #fff;
             box-shadow: 1px 2px 3px #00000020;
@@ -165,7 +183,7 @@ body {
             .txtBoxDiv {
                 display: flex;
                 padding: 0 100px;
-
+                margin-bottom: 5px;
                 justify-content: start;
                 align-items: center;
                 padding-bottom: 10px;

@@ -45,23 +45,28 @@
                                     reset
                                 </button>
                             </div>
-                            <div class="OnOffwrapper">
-                                <input type="checkbox" id="grayscale" />
-                                <label for="grayscale" class="switch_label">
-                                    <span class="onf_btn"></span>
-                                </label>
-                            </div>
-                            <div class="OnOffwrapper">
-                                <input type="checkbox" id="invert" />
-                                <label for="invert" class="switch_label">
-                                    <span class="onf_btn"></span>
-                                </label>
-                            </div>
-                            <div class="OnOffwrapper">
-                                <input type="checkbox" id="invert" />
-                                <label for="invert" class="switch_label">
-                                    <span class="onf_btn"></span>
-                                </label>
+                            <div class="filterButtons">
+                                <div class="OnOffwrapper">
+                                    <h6>Grayscale</h6>
+                                    <input type="checkbox" id="grayscale" />
+                                    <label for="grayscale" class="switch_label">
+                                        <span class="onf_btn"></span>
+                                    </label>
+                                </div>
+                                <div class="OnOffwrapper">
+                                    <h6>Invert</h6>
+                                    <input type="checkbox" id="invert" />
+                                    <label for="invert" class="switch_label">
+                                        <span class="onf_btn"></span>
+                                    </label>
+                                </div>
+                                <div class="OnOffwrapper">
+                                    <h6>Sepia</h6>
+                                    <input type="checkbox" id="sepia" />
+                                    <label for="sepia" class="switch_label">
+                                        <span class="onf_btn"></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="canvasWrap">
@@ -158,7 +163,7 @@
                             </div>
                             <div class="txtBoxDiv">
                                 <label for="txtBox">Text : </label>
-                                <textarea id="txtBox" cols="50" rows="1"></textarea>
+                                <textarea id="txtBox" cols="30" rows="2"></textarea>
                                 <div class="colorisFull">
                                     <label for="fontColor">Font Color : </label>
                                     <input type="text" id="fontColor" value="#ffffff" data-coloris />
@@ -212,7 +217,7 @@
                             </div>
                             <div class="txtBoxDiv">
                                 <label for="txtBox2">Text2 : </label>
-                                <textarea id="txtBox2" cols="50" rows="1"></textarea>
+                                <textarea id="txtBox2" cols="30" rows="2"></textarea>
                                 <div class="colorisFull">
                                     <label for="fontColor2">Font Color : </label>
                                     <input type="text" id="fontColor2" value="#ffffff" data-coloris />
@@ -264,7 +269,7 @@
                             </div>
                             <div class="txtBoxDiv">
                                 <label for="txtBox3">Text3 : </label>
-                                <textarea id="txtBox3" cols="50" rows="1"></textarea>
+                                <textarea id="txtBox3" cols="30" rows="2"></textarea>
                                 <div class="colorisFull">
                                     <label for="fontColor3">Font Color : </label>
                                     <input type="text" id="fontColor3" value="#ffffff" data-coloris />
@@ -330,6 +335,8 @@
 
                     const filterInvert = document.querySelector("#invert");
                     const filterGrayscale = document.querySelector("#grayscale");
+                    const filterSepia = document.querySelector("#sepia");
+
                     let img = null;
                     let fontColorPicked = "#ffffff";
                     let fontColorPicked2 = "#ffffff";
@@ -347,41 +354,65 @@
                     let sharedImageUrl = "";
 
                     //필터 버튼
-                    filterInvert.addEventListener("change", function () {
-                        if (filterInvert.checked) {
-                            ctx.filter = "invert(100%)";
+                    filterSepia.addEventListener("change", function () {
+                        if (filterSepia.checked) {
+                            ctx.filter = "sepia(100%)";
+                            turnOffOtherFilters(filterSepia, [filterGrayscale]); // 다른 필터 버튼들 중 체크된 것이 있다면 꺼줌
+                            turnOffOtherFilters(filterSepia, [filterInvert]); // 다른 필터 버튼들 중 체크된 것이 있다면 꺼줌
                         } else {
                             ctx.filter = "none";
                         }
                         drawCanvas();
                     });
-                    filterGrayscale.addEventListener("change", function () {
-                        if (filterGrayscale.checked) {
-                            ctx.filter = "grayscale(100%)";
+                    filterInvert.addEventListener("change", function () {
+                        if (filterInvert.checked) {
+                            ctx.filter = "invert(100%)";
+                            turnOffOtherFilters(filterInvert, [filterGrayscale]);
+                            turnOffOtherFilters(filterInvert, [filterSepia]);
                         } else {
                             ctx.filter = "none";
                         }
                         drawCanvas();
                     });
 
-                    $("#fileInput").on("change", function () {
-                        var fileName = $("#fileInput").val();
-                        $(".upload-name").val(fileName);
+                    filterGrayscale.addEventListener("change", function () {
+                        if (filterGrayscale.checked) {
+                            ctx.filter = "grayscale(100%)";
+                            turnOffOtherFilters(filterGrayscale, [filterInvert]);
+                            turnOffOtherFilters(filterGrayscale, [filterSepia]); // 다른 필터 버튼들 중 체크된 것이 있다면 꺼줌
+                        } else {
+                            ctx.filter = "none";
+                        }
+                        drawCanvas();
                     });
+                    function turnOffOtherFilters(checkedButton, filterButtons) {
+                        filterButtons.forEach(function (button) {
+                            if (button !== checkedButton) {
+                                button.checked = false;
+                            }
+                        });
+                    }
+
                     // 리셋버튼
-                    btnReset.addEventListener("click", function () {
+                    function resetForm() {
                         txtBox.value = "";
                         txtBox2.value = "";
                         txtBox3.value = "";
+
                         colorPicker.value = "#ffffff";
                         colorPicker2.value = "#ffffff";
                         colorPicker3.value = "#ffffff";
                         fontColorPicked = "#ffffff";
                         fontColorPicked2 = "#ffffff";
                         fontColorPicked3 = "#ffffff";
-                        drawCanvas();
-                    });
 
+                        filterGrayscale.checked = false;
+                        filterInvert.checked = false;
+                        filterSepia.checked = false;
+                        ctx.filter = "none";
+                        drawCanvas();
+                    }
+                    btnReset.addEventListener("click", resetForm);
                     //******  make Anchor 앵커만들기
                     function onMouseDown(event) {
                         const rect = canvas.getBoundingClientRect();
@@ -465,7 +496,11 @@
 
                     const { src } = JSON.parse(localStorage.getItem("image-info"));
                     console.log(src);
-
+                    // 커스터 마이즈 버튼
+                    $("#fileInput").on("change", function () {
+                        var fileName = $("#fileInput").val();
+                        $(".upload-name").val(fileName);
+                    });
                     //generator image 띄우기
                     img = new Image();
                     img.src = src;
@@ -502,6 +537,7 @@
                                     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                                     downloadLinkPNG.style.display = "block";
                                     downloadLinkJPG.style.display = "block";
+                                    resetForm();
                                     drawCanvas();
                                 };
                                 img.src = reader.result;
