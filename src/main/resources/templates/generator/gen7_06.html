@@ -46,6 +46,18 @@
                                 </button>
                             </div>
                             <div class="OnOffwrapper">
+                                <input type="checkbox" id="grayscale" />
+                                <label for="grayscale" class="switch_label">
+                                    <span class="onf_btn"></span>
+                                </label>
+                            </div>
+                            <div class="OnOffwrapper">
+                                <input type="checkbox" id="invert" />
+                                <label for="invert" class="switch_label">
+                                    <span class="onf_btn"></span>
+                                </label>
+                            </div>
+                            <div class="OnOffwrapper">
                                 <input type="checkbox" id="invert" />
                                 <label for="invert" class="switch_label">
                                     <span class="onf_btn"></span>
@@ -167,6 +179,7 @@
                                     <option value="monospace">Monospace</option>
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
+                                    <option value="SCD">에스코어 Dream</option>
                                 </select>
                             </div>
                         </div>
@@ -220,6 +233,7 @@
                                     <option value="monospace">Monospace</option>
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
+                                    <option value="SCD">에스코어 Dream</option>
                                 </select>
                             </div>
                         </div>
@@ -271,6 +285,7 @@
                                     <option value="monospace">Monospace</option>
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
+                                    <option value="SCD">에스코어 Dream</option>
                                 </select>
                             </div>
                         </div>
@@ -282,7 +297,6 @@
                     const ctx = canvas.getContext("2d");
                     const fileInput = document.querySelector("#fileInput");
                     const btnReset = document.querySelector("#textReset");
-                    const filterInvert = document.querySelector("#invert");
 
                     const txtBox = document.querySelector("#txtBox");
                     const topRange = document.querySelector("#topRange");
@@ -313,6 +327,9 @@
 
                     const downloadLinkPNG = document.querySelector("#downloadLinkPNG");
                     const downloadLinkJPG = document.querySelector("#downloadLinkJPG");
+
+                    const filterInvert = document.querySelector("#invert");
+                    const filterGrayscale = document.querySelector("#grayscale");
                     let img = null;
                     let fontColorPicked = "#ffffff";
                     let fontColorPicked2 = "#ffffff";
@@ -328,20 +345,24 @@
                     const box2Radius = 15;
                     const box3Radius = 15;
                     let sharedImageUrl = "";
-                    //   $(filterInvert).on("change", function () {
-                    //     if (filterInvert.checked) {
-                    //       doFilterInvert(100);
-                    //       drawCanvas();
-                    //     } else {
-                    //       doFilterInvert(0);
-                    //       drawCanvas();
-                    //       console.log("꺼짐");
-                    //     }
-                    //   });
 
-                    //   function doFilterInvert(int) {
-                    //     ctx.filter = `invert(` + int + `%)`;
-                    //   }
+                    //필터 버튼
+                    filterInvert.addEventListener("change", function () {
+                        if (filterInvert.checked) {
+                            ctx.filter = "invert(100%)";
+                        } else {
+                            ctx.filter = "none";
+                        }
+                        drawCanvas();
+                    });
+                    filterGrayscale.addEventListener("change", function () {
+                        if (filterGrayscale.checked) {
+                            ctx.filter = "grayscale(100%)";
+                        } else {
+                            ctx.filter = "none";
+                        }
+                        drawCanvas();
+                    });
 
                     $("#fileInput").on("change", function () {
                         var fileName = $("#fileInput").val();
@@ -361,7 +382,7 @@
                         drawCanvas();
                     });
 
-                    //******  make Anchor
+                    //******  make Anchor 앵커만들기
                     function onMouseDown(event) {
                         const rect = canvas.getBoundingClientRect();
                         const x = event.clientX - rect.left;
@@ -441,6 +462,7 @@
                     canvas.addEventListener("mousedown", onMouseDown);
                     canvas.addEventListener("mousemove", onMouseMove);
                     canvas.addEventListener("mouseup", onMouseUp);
+
                     const { src } = JSON.parse(localStorage.getItem("image-info"));
                     console.log(src);
 
@@ -517,7 +539,6 @@
 
                     function drawCanvas(showAnchors = true) {
                         if (img === null) return;
-
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
                         ctx.fillStyle = fontColorPicked;
@@ -594,10 +615,10 @@
                         ctx.fillStyle = fontColor;
                         ctx.font = fontWeight + " " + fontSize + "px " + fontFamily;
 
-                        // Split the text by newline characters and draw each line separately
+                        // textarea 엔터 인식하게 하는거
                         const lines = text.split("\n");
                         for (let i = 0; i < lines.length; i++) {
-                            ctx.fillText(lines[i], 0, textHeight * i);
+                            ctx.fillText(lines[i], 0, textHeight * (i + 1));
                         }
 
                         ctx.restore();

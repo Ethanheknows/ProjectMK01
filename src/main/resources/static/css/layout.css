@@ -126,6 +126,12 @@ body main {
 body #canvas {
   cursor: grab;
 }
+body #invert {
+  display: none;
+}
+body #grayscale {
+  display: none;
+}
 body .input-group-text {
   cursor: pointer;
 }
@@ -144,6 +150,7 @@ body .topWrap {
   display: flex;
   justify-content: flex-end;
   padding: 30px 20px;
+  /* move */
   /* move */
 }
 body .topWrap .OnOffwrapper {
@@ -189,6 +196,18 @@ body .topWrap #invert:checked + .switch_label:hover {
   background: #e55;
 }
 body .topWrap #invert:checked + .switch_label .onf_btn {
+  left: 33px;
+  background: #fff;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1254901961);
+}
+body .topWrap #grayscale:checked + .switch_label {
+  background: #c44;
+  border: 2px solid #c44;
+}
+body .topWrap #grayscale:checked + .switch_label:hover {
+  background: #e55;
+}
+body .topWrap #grayscale:checked + .switch_label .onf_btn {
   left: 33px;
   background: #fff;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1254901961);

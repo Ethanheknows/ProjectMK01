@@ -28,6 +28,12 @@ body {
     #canvas {
         cursor: grab;
     }
+    #invert {
+        display: none;
+    }
+    #grayscale {
+        display: none;
+    }
     .input-group-text {
         cursor: pointer;
     }
@@ -93,6 +99,21 @@ body {
 
         /* move */
         #invert:checked + .switch_label .onf_btn {
+            left: 33px;
+            background: #fff;
+            box-shadow: 1px 2px 3px #00000020;
+        }
+        #grayscale:checked + .switch_label {
+            background: #c44;
+            border: 2px solid #c44;
+        }
+
+        #grayscale:checked + .switch_label:hover {
+            background: #e55;
+        }
+
+        /* move */
+        #grayscale:checked + .switch_label .onf_btn {
             left: 33px;
             background: #fff;
             box-shadow: 1px 2px 3px #00000020;
