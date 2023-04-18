@@ -246,6 +246,7 @@ body .bottonWrap {
   padding: 0 100px;
 }
 body .bottonWrap .genCon {
+  background-image: url(/images/nnnoise.svg);
   display: block;
   width: 1000px;
   height: 150px;
