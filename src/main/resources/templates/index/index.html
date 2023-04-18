@@ -1,115 +1,138 @@
 <!DOCTYPE html>
 <html
-    lang="en"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns="http://www.thymeleaf.org"
-    layout:decorate="~{/layout/layout.html}"
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.thymeleaf.org"
+  layout:decorate="~{/layout/layout.html}"
 >
-    <head>
-        <title>MK01</title>
-    </head>
+  <head>
+    <title>MK01</title>
+  </head>
 
-    <body>
-        <div layout:fragment="contents">
-            <div class="headerS">
-                <!-- 작은 헤더 -->
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 325 100">
-                    <defs>
-                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="ssspill-grad">
-                            <stop stop-color="hsl(0, 0%, 100%)" stop-opacity="1" offset="45%"></stop>
-                            <stop stop-color="rgb(81, 218, 76" stop-opacity="1" offset="100%"></stop>
-                        </linearGradient>
-                    </defs>
-                    <rect width="100%" height="100%" fill="hsl(0, 0%, 0%)"></rect>
-                    <g fill="url(#ssspill-grad)">
-                        <rect width="100%" height="40" fill="hsl(0, 0%, 100%)"></rect>
+  <body>
+    <div layout:fragment="contents">
+      <div class="headerS">
+        <!-- 작은 헤더 -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svgjs="http://svgjs.dev/svgjs"
+          viewBox="0 0 325 100"
+        >
+          <defs>
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="ssspill-grad">
+              <stop stop-color="hsl(0, 0%, 100%)" stop-opacity="1" offset="45%"></stop>
+              <stop stop-color="rgb(81, 218, 76" stop-opacity="1" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="hsl(0, 0%, 0%)"></rect>
+          <g fill="url(#ssspill-grad)">
+            <rect width="100%" height="40" fill="hsl(0, 0%, 100%)"></rect>
 
-                        <rect x="0" width="9.0909%" height="92.87103612244118" rx="15"></rect>
-                        <rect x="18.1818181818%" width="9.0909%" height="93.12249512984371" rx="15"></rect>
-                        <rect x="36.3636363636%" width="9.0909%" height="73.30526433696727" rx="15"></rect>
-                        <rect x="54.545454545400005%" width="9.0909%" height="84.89965565660202" rx="15"></rect>
-                        <rect x="72.7272727272%" width="9.0909%" height="59.46419483518592" rx="15"></rect>
-                        <rect x="90.909090909%" width="9.0909%" height="62.46242962734221" rx="15"></rect>
-                    </g>
-                    <g fill="hsl(0, 0%, 0%)">
-                        <rect x="9.0909%" y="5.046017708674617" width="9.0909%" height="60" rx="15"></rect>
-                        <rect x="27.272727272700003%" y="6.565543761422873" width="9.0909%" height="60" rx="15"></rect>
-                        <rect x="45.4545454545%" y="25.721747771315414" width="9.0909%" height="60" rx="15"></rect>
-                        <rect x="63.636363636300004%" y="21.805139093523696" width="9.0909%" height="60" rx="15"></rect>
-                        <rect x="81.8181818181%" y="9.407752756342148" width="9.0909%" height="60" rx="15"></rect>
-                    </g>
-                </svg>
-            </div>
-            <a id="clickTag" th:text="ALL" th:value="all" style="cursor: pointer"></a>
+            <rect x="0" width="9.0909%" height="92.87103612244118" rx="15"></rect>
+            <rect x="18.1818181818%" width="9.0909%" height="93.12249512984371" rx="15"></rect>
+            <rect x="36.3636363636%" width="9.0909%" height="73.30526433696727" rx="15"></rect>
+            <rect x="54.545454545400005%" width="9.0909%" height="84.89965565660202" rx="15"></rect>
+            <rect x="72.7272727272%" width="9.0909%" height="59.46419483518592" rx="15"></rect>
+            <rect x="90.909090909%" width="9.0909%" height="62.46242962734221" rx="15"></rect>
+          </g>
+          <g fill="hsl(0, 0%, 0%)">
+            <rect x="9.0909%" y="5.046017708674617" width="9.0909%" height="60" rx="15"></rect>
+            <rect x="27.272727272700003%" y="6.565543761422873" width="9.0909%" height="60" rx="15"></rect>
+            <rect x="45.4545454545%" y="25.721747771315414" width="9.0909%" height="60" rx="15"></rect>
+            <rect x="63.636363636300004%" y="21.805139093523696" width="9.0909%" height="60" rx="15"></rect>
+            <rect x="81.8181818181%" y="9.407752756342148" width="9.0909%" height="60" rx="15"></rect>
+          </g>
+        </svg>
+      </div>
 
-            <tr th:each="item : ${tags}" class="text-center">
-                <a id="clickTag" th:text="${item}" th:value="${item}" style="cursor: pointer"></a>
-            </tr>
+      <tr th:each="item : ${tags}" class="text-center">
+        <a id="clickTag" th:text="${item}" th:value="${item}" style="cursor: pointer"></a>
+      </tr>
 
-            <div class="category">
-                <h1>#Hottest</h1>
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper tag1">
-                        <!-- <tr th:each="item : ${allImages}" class="text-center">            
+      <div class="category">
+        <h1 id="clickTag" th:utext="'#Newest'" th:value="'all'" style="cursor: pointer"></h1>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper tag1">
+            <!-- <tr th:each="item : ${allImages}" class="text-center">            
                             <div class="swiper-slide" th:if="${!item.original.contains('gif')}">
                                 <a href="" id="clickedImg">
                                         <img id="image" th:src="@{|/upload/jpg/${item.original}|}" class="card-img-top image" alt="...">
                                 </a>
                             </div>          
                         </tr> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="tag">
-                <h1>#GIF</h1>
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper tag2"></div>
-                </div>
-            </div>
-
-            <script>
-                const tag1 = document.querySelector(".tag1");
-                $(function () {
-                    for (i = 0; i < allImages.length; i++) {
-                        if (!allImages[i].original.includes("gif")) {
-                            $(".tag1").append(
-                                // prettier-ignored
-                                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` + allImages[i].original + `" alt="" /></a></div>`
-                            );
-                        } else {
-                            $(".tag2").append(
-                                // prettier-ignored
-                                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` + allImages[i].original + `" alt="" /></a></div>`
-                            );
-                        }
-                    }
-                });
-
-                const swiper = new Swiper(".swiper", {
-                    // autoHeight: true,
-                    observer: true,
-                    observeParents: true, // 이 두줄 있어야지 스와이프 내부 For문 돌아감  %중요
-                    slidesPerView: 6,
-                    centeredSlides: true,
-
-                    // spaceBetween: 10,
-                    // pagination: {
-                    //   el: ".swiper-pagination",
-                    //   clickable: true,
-                    //   renderBullet: function (index, className) {
-                    //     return '<span class="' + className + '">' + (index + 1) + "</span>";
-                    //   },
-                    // },
-                });
-
-                // swiper.update();
-
-                // 모달
-            </script>
-
-            <!-- 이안에 내용 -->
+          </div>
         </div>
-    </body>
+      </div>
+      <div class="category">
+        <h1 id="clickTag" th:utext="'#Hottest'" th:value="'all'" style="cursor: pointer"></h1>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper tag2">
+            <!-- <tr th:each="item : ${allImages}" class="text-center">            
+                            <div class="swiper-slide" th:if="${!item.original.contains('gif')}">
+                                <a href="" id="clickedImg">
+                                        <img id="image" th:src="@{|/upload/jpg/${item.original}|}" class="card-img-top image" alt="...">
+                                </a>
+                            </div>          
+                        </tr> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="tag">
+        <h1>#GIF</h1>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper tagGif"></div>
+        </div>
+      </div>
+
+      <script>
+        const tag1 = document.querySelector(".tag1");
+        $(function () {
+          for (i = 0; i < allImages.length; i++) {
+            if (!allImages[i].original.includes("gif")) {
+              $(".tag1").append(
+                // prettier-ignored
+                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                  allImages[i].original +
+                  `" alt="" /></a></div>`
+              );
+            } else {
+              $(".tagGif").append(
+                // prettier-ignored
+                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
+                  allImages[i].original +
+                  `" alt="" /></a></div>`
+              );
+            }
+          }
+        });
+
+        const swiper = new Swiper(".swiper", {
+          // autoHeight: true,
+          observer: true,
+          observeParents: true, // 이 두줄 있어야지 스와이프 내부 For문 돌아감  %중요
+          slidesPerView: 6,
+          centeredSlides: true,
+
+          // spaceBetween: 10,
+          // pagination: {
+          //   el: ".swiper-pagination",
+          //   clickable: true,
+          //   renderBullet: function (index, className) {
+          //     return '<span class="' + className + '">' + (index + 1) + "</span>";
+          //   },
+          // },
+        });
+
+        // swiper.update();
+
+        // 모달
+      </script>
+
+      <!-- 이안에 내용 -->
+    </div>
+  </body>
 </html>
