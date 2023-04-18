@@ -142,7 +142,7 @@ body .input-group input[type=file] {
 }
 body .topWrap {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 30px 20px;
   /* move */
 }
@@ -203,69 +203,71 @@ body #genCon3 {
 body #genCon4 {
   display: none;
 }
-body .genCon {
+body .bottonWrap {
+  text-align: center;
+  padding: 0 100px;
+}
+body .bottonWrap .genCon {
   display: block;
-  justify-content: center;
-  width: 1100px;
+  width: 1000px;
   height: 150px;
   border: 1px solid white;
-  justify-content: space-between;
-  align-items: center;
+  margin: 0 auto;
   margin-bottom: 10px;
 }
-body .genCon .anchorColor {
+body .bottonWrap .genCon .anchorColor {
   width: 20px;
   height: 20px;
   position: relative;
   border-radius: 6px;
 }
-body .genCon .anchor1 {
+body .bottonWrap .genCon .anchor1 {
   background-color: red;
 }
-body .genCon .anchor2 {
+body .bottonWrap .genCon .anchor2 {
   background-color: blue;
 }
-body .genCon .anchor3 {
+body .bottonWrap .genCon .anchor3 {
   background-color: green;
 }
-body .genCon .anchor4 {
+body .bottonWrap .genCon .anchor4 {
   background-color: yellow;
 }
-body .genCon .txtBoxDiv {
+body .bottonWrap .genCon .txtBoxDiv {
   display: flex;
   padding: 0 100px;
   justify-content: start;
   align-items: center;
   padding-bottom: 10px;
 }
-body .genCon .txtBoxDiv textarea {
+body .bottonWrap .genCon .txtBoxDiv textarea {
   resize: none;
 }
-body .genCon .txtBoxDiv .colorisFull .clr-field {
+body .bottonWrap .genCon .txtBoxDiv .colorisFull .clr-field {
   width: 50px;
   height: 30px;
   border-radius: 5px;
   border-radius: 1px solid black;
 }
-body .genCon .txtBoxDiv .colorisFull .clr-field input {
+body .bottonWrap .genCon .txtBoxDiv .colorisFull .clr-field input {
   opacity: 0;
   width: 50px;
   height: 30px;
   border-radius: 5px;
   border-radius: 1px solid black;
 }
-body .genCon .txtBoxDiv .colorisFull .clr-field button {
+body .bottonWrap .genCon .txtBoxDiv .colorisFull .clr-field button {
   width: 100%;
   height: 100%;
 }
-body .genCon .ranges {
+body .bottonWrap .ranges {
   display: flex;
   padding: 0 100px;
   justify-content: start;
   align-items: center;
   padding-bottom: 10px;
 }
-body .genCon .txtCon {
+body .bottonWrap .txtCon {
   display: flex;
   padding: 0 100px;
   justify-content: start;
@@ -316,7 +318,7 @@ body .share .kakaoBtn {
 }
 body .share .kakaoBtn a {
   width: 100px;
-  height: 50px;
+  height: 59px;
   margin: 10px 5px;
 }
 body .share .kakaoBtn a img {
