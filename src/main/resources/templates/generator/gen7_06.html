@@ -68,6 +68,8 @@
                                     </label>
                                 </div>
                             </div>
+                            <button id="add">add</button>
+                            <button id="del">del</button>
                         </div>
                         <div class="canvasWrap">
                             <canvas id="canvas" width="500" height="500"></canvas>
@@ -107,7 +109,7 @@
                                 >
                             </div>
                         </div>
-                        <div class="share mt-2 mb-2">
+                        <div class="share fs-2 mb-3">
                             <div class="shareTitle">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +190,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="genCon">
+                        <div class="genCon" id="genCon2">
                             <div class="anchorColor anchor2"></div>
                             <div class="ranges">
                                 <label for="topRange2">Top Position : </label>
@@ -242,7 +244,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="genCon">
+                        <div class="genCon" id="genCon3">
                             <div class="anchorColor anchor3"></div>
                             <div class="ranges">
                                 <label for="topRange3">Top Position : </label>
@@ -294,6 +296,58 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="genCon" id="genCon4">
+                            <div class="anchorColor anchor4"></div>
+                            <div class="ranges">
+                                <label for="topRange4">Top Position : </label>
+                                <input type="range" id="topRange4" min="0" max="500" step="1" value="90" />
+                                <label for="leftRange4">Left Position : </label>
+                                <input type="range" id="leftRange4" min="0" max="500" step="1" value="90" />
+                                <label for="rotateRange4">Rotate Position : </label>
+                                <input
+                                    type="range"
+                                    id="rotateRange4"
+                                    min="-180"
+                                    max="180"
+                                    step="30"
+                                    value="0"
+                                    list="values4"
+                                />
+                                <datalist id="values4">
+                                    <option value="-180" label="-180">-180deg</option>
+                                    <option value="-90" label="-90">-90deg</option>
+                                    <option value="0" label="0">0deg</option>
+                                    <option value="90" label="90">90deg</option>
+                                    <option value="180" label="180">180deg</option>
+                                </datalist>
+                            </div>
+                            <div class="txtBoxDiv">
+                                <label for="txtBox4">Text4 : </label>
+                                <textarea id="txtBox4" cols="30" rows="2"></textarea>
+                                <div class="colorisFull">
+                                    <label for="fontColor4">Font Color : </label>
+                                    <input type="text" id="fontColor4" value="#ffffff" data-coloris />
+                                </div>
+                            </div>
+                            <div class="txtCon">
+                                <label for="fontSizeRange4">Font Size : </label>
+                                <input type="range" id="fontSizeRange4" min="14" max="94" step="1" value="36" />
+                                <label for="fontWeight4">Font Weight : </label>
+                                <select id="fontWeight4">
+                                    <option value="bold">Bold</option>
+                                    <option value="italic">Italic</option>
+                                </select>
+                                <label for="fontFamilySelect4">Font Family : </label>
+                                <select id="fontFamilySelect4">
+                                    <option value="sans-serif">Sans-serif</option>
+                                    <option value="serif">Serif</option>
+                                    <option value="monospace">Monospace</option>
+                                    <option value="cursive">Cursive</option>
+                                    <option value="fantasy">Fantasy</option>
+                                    <option value="SCD">에스코어 Dream</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -330,6 +384,25 @@
                     const fontFamilySelect3 = document.querySelector("#fontFamilySelect3");
                     const colorPicker3 = document.querySelector("#fontColor3");
 
+                    const txtBox4 = document.querySelector("#txtBox4");
+                    const topRange4 = document.querySelector("#topRange4");
+                    const leftRange4 = document.querySelector("#leftRange4");
+                    const rotateRange4 = document.querySelector("#rotateRange4");
+                    const fontSizeRange4 = document.querySelector("#fontSizeRange4");
+                    const fontWeight4 = document.querySelector("#fontWeight4");
+                    const fontFamilySelect4 = document.querySelector("#fontFamilySelect4");
+                    const colorPicker4 = document.querySelector("#fontColor4");
+
+                    const genCon2 = document.getElementById("genCon2");
+                    const genCon3 = document.getElementById("genCon3");
+                    const genCon4 = document.getElementById("genCon4");
+                    const addBtn = document.getElementById("add");
+                    const delBtn = document.getElementById("del");
+                    
+                    let isDelON2 = true;
+                    let isDelON3 = true;
+                    let isDelON4 = true;
+
                     const downloadLinkPNG = document.querySelector("#downloadLinkPNG");
                     const downloadLinkJPG = document.querySelector("#downloadLinkJPG");
 
@@ -341,16 +414,19 @@
                     let fontColorPicked = "#ffffff";
                     let fontColorPicked2 = "#ffffff";
                     let fontColorPicked3 = "#ffffff";
+                    let fontColorPicked4 = "#ffffff";
 
                     let isDraggingBox1 = false;
                     let isDraggingBox2 = false;
                     let isDraggingBox3 = false;
+                    let isDraggingBox4 = false;
 
                     let dragStart = { x: 0, y: 0 };
 
                     const box1Radius = 15;
                     const box2Radius = 15;
                     const box3Radius = 15;
+                    const box4Radius = 15;
                     let sharedImageUrl = "";
 
                     //필터 버튼
@@ -398,13 +474,16 @@
                         txtBox.value = "";
                         txtBox2.value = "";
                         txtBox3.value = "";
+                        txtBox4.value = "";
 
                         colorPicker.value = "#ffffff";
                         colorPicker2.value = "#ffffff";
                         colorPicker3.value = "#ffffff";
+                        colorPicker4.value = "#ffffff";
                         fontColorPicked = "#ffffff";
                         fontColorPicked2 = "#ffffff";
                         fontColorPicked3 = "#ffffff";
+                        fontColorPicked4 = "#ffffff";
 
                         filterGrayscale.checked = false;
                         filterInvert.checked = false;
@@ -413,6 +492,44 @@
                         drawCanvas();
                     }
                     btnReset.addEventListener("click", resetForm);
+
+                     //삭제 추가
+                     addBtn.addEventListener("click", function() {
+                    if (isDelON2 === true){
+                        isDelON2 = false;
+                        genCon2.style.display = "block";
+                        // console.log(isDelON3,isDelON4);
+                    }else if(isDelON3 === true){
+                        isDelON3 = false;
+                        genCon3.style.display = "block";
+                        // console.log(isDelON3,isDelON4);
+                    }else if(isDelON4 === true){
+                        isDelON4 = false;
+                        genCon4.style.display = "block";
+                        // console.log(isDelON3,isDelON4);
+                    }
+                    });
+ 
+                    delBtn.addEventListener("click", function() {
+                    if(isDelON4 === false){
+                        isDelON4 = true;
+                        txtBox4.value="";
+                        genCon4.style.display = "none";
+                        // console.log(isDelON3,isDelON4);
+                    }else if(isDelON3 === false){
+                        isDelON3 = true;
+                        txtBox3.value="";
+                        genCon3.style.display = "none";
+                        // console.log(isDelON3,isDelON4);
+                    }else if(isDelON2 === false){
+                        isDelON2 = true;
+                        txtBox2.value="";
+                        genCon2.style.display = "none";
+                        // console.log(isDelON3,isDelON4);
+                    }
+                    });
+
+                    
                     //******  make Anchor 앵커만들기
                     function onMouseDown(event) {
                         const rect = canvas.getBoundingClientRect();
@@ -449,6 +566,15 @@
                             $("#canvas").css({
                                 cursor: "grabbing",
                             });
+                        }  else if (
+                            Math.sqrt(Math.pow(x - leftRange4.value, 2) + Math.pow(y - topRange4.value, 2)) <=
+                            box4Radius
+                        ) {
+                            isDraggingBox4 = true;
+                            dragStart = { x: x, y: y };
+                            $("#canvas").css({
+                                cursor: "grabbing",
+                            });
                         }
                     }
 
@@ -478,6 +604,13 @@
                             topRange3.value = parseInt(topRange3.value) + dy;
                             drawCanvas();
                             dragStart = { x: x, y: y };
+                        }  else if (isDraggingBox4) {
+                            const dx = x - dragStart.x;
+                            const dy = y - dragStart.y;
+                            leftRange4.value = parseInt(leftRange4.value) + dx;
+                            topRange4.value = parseInt(topRange4.value) + dy;
+                            drawCanvas();
+                            dragStart = { x: x, y: y };
                         }
                     }
 
@@ -485,6 +618,7 @@
                         isDraggingBox1 = false;
                         isDraggingBox2 = false;
                         isDraggingBox3 = false;
+                        isDraggingBox4 = false;
                         $("#canvas").css({
                             cursor: "grab",
                         });
@@ -554,6 +688,9 @@
                     colorPicker3.addEventListener("input", () => {
                         fontColorPicked3 = colorPicker3.value;
                     });
+                    colorPicker4.addEventListener("input", () => {
+                        fontColorPicked4 = colorPicker4.value;
+                    });
 
                     function drawAnchors() {
                         // Draw circles around txtBox and txtBox2  :: Anchor
@@ -562,15 +699,32 @@
                         ctx.arc(parseInt(leftRange.value), parseInt(topRange.value), box1Radius, 0, 2 * Math.PI);
                         ctx.stroke();
 
-                        ctx.strokeStyle = "blue";
-                        ctx.beginPath();
-                        ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
-                        ctx.stroke();
+                        if(isDelON2 === true){
+                            ctx.strokeStyle = "none";
+                        }else{
+                            ctx.strokeStyle = "blue";
+                            ctx.beginPath();
+                            ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
+                            ctx.stroke();
+                        }
 
-                        ctx.strokeStyle = "green";
-                        ctx.beginPath();
-                        ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
-                        ctx.stroke();
+                        if(isDelON3 === true){
+                            ctx.strokeStyle = "none";
+                        }else{
+                            ctx.strokeStyle = "green";
+                            ctx.beginPath();
+                            ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
+                            ctx.stroke();
+                        }
+                        if(isDelON4===true){
+                            ctx.strokeStyle = "none";
+                        }else{
+                            ctx.strokeStyle = "yellow";
+                            ctx.beginPath();
+                            ctx.arc(parseInt(leftRange4.value), parseInt(topRange4.value), box4Radius, 0, 2 * Math.PI);
+                            ctx.stroke();
+                            
+                        }
                     }
 
                     function drawCanvas(showAnchors = true) {
@@ -581,6 +735,7 @@
                         ctx.font = fontWeight.value + " " + fontSizeRange.value + "px " + fontFamilySelect.value;
                         ctx.font = fontWeight2.value + " " + fontSizeRange2.value + "px " + fontFamilySelect2.value;
                         ctx.font = fontWeight3.value + " " + fontSizeRange3.value + "px " + fontFamilySelect3.value;
+                        ctx.font = fontWeight4.value + " " + fontSizeRange4.value + "px " + fontFamilySelect4.value;
 
                         ctx.textAlign = "start";
                         drawText(
@@ -616,6 +771,17 @@
                             fontWeight3.value,
                             fontSizeRange3.value,
                             fontFamilySelect3.value
+                        );
+                        drawText(
+                            ctx,
+                            txtBox4.value,
+                            parseInt(leftRange4.value),
+                            parseInt(topRange4.value),
+                            parseInt(rotateRange4.value),
+                            fontColorPicked4,
+                            fontWeight4.value,
+                            fontSizeRange4.value,
+                            fontFamilySelect4.value
                         );
                         if (showAnchors) {
                             drawAnchors();
@@ -689,6 +855,18 @@
                     fontWeight3.addEventListener("input", drawCanvas);
                     fontSizeRange3.addEventListener("input", drawCanvas);
                     fontFamilySelect3.addEventListener("input", drawCanvas);
+
+                    txtBox4.addEventListener("input", drawCanvas);
+                    topRange4.addEventListener("input", drawCanvas);
+                    leftRange4.addEventListener("input", drawCanvas);
+                    rotateRange4.addEventListener("input", drawCanvas);
+                    colorPicker4.addEventListener("input", drawCanvas);
+                    fontWeight4.addEventListener("input", drawCanvas);
+                    fontSizeRange4.addEventListener("input", drawCanvas);
+                    fontFamilySelect4.addEventListener("input", drawCanvas);
+
+                    addBtn.addEventListener("click", drawCanvas);
+                    delBtn.addEventListener("click", drawCanvas);
 
                     downloadLinkPNG.addEventListener("click", downloadImage);
                     downloadLinkJPG.addEventListener("click", downloadImage);

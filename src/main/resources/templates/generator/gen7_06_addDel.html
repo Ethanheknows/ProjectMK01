@@ -15,7 +15,13 @@
             <div class="container genWrap">
                 <div class="consWrap">
                     <h1>gen7_06TESTESTEST</h1>
-                    <input type="file" id="fileInput" />
+
+                    <div class="input-group mb-3">
+                        <label class="input-group-text btn-secondary" for="fileInput">Customize</label>
+                        <input type="file" class="btn btn-secondary" id="fileInput" />
+                        <input class="upload-name" value="Location" placeholder="Location" readonly />
+                    </div>
+
                     <div class="topWrap">
                         <div class="canvasBtnWarp">
                             <div>
@@ -39,13 +45,31 @@
                                     reset
                                 </button>
                             </div>
-                            <div class="OnOffwrapper">
-                                <input type="checkbox" id="invert" />
-                                <label for="invert" class="switch_label">
-                                    <span class="onf_btn"></span>
-                                </label>
+                            <div class="filterButtons">
+                                <div class="OnOffwrapper">
+                                    <h6>Grayscale</h6>
+                                    <input type="checkbox" id="grayscale" />
+                                    <label for="grayscale" class="switch_label">
+                                        <span class="onf_btn"></span>
+                                    </label>
+                                </div>
+                                <div class="OnOffwrapper">
+                                    <h6>Invert</h6>
+                                    <input type="checkbox" id="invert" />
+                                    <label for="invert" class="switch_label">
+                                        <span class="onf_btn"></span>
+                                    </label>
+                                </div>
+                                <div class="OnOffwrapper">
+                                    <h6>Sepia</h6>
+                                    <input type="checkbox" id="sepia" />
+                                    <label for="sepia" class="switch_label">
+                                        <span class="onf_btn"></span>
+                                    </label>
+                                </div>
                             </div>
                             <button id="add">add</button>
+                            <button id="del">del</button>
                         </div>
                         <div class="canvasWrap">
                             <canvas id="canvas" width="500" height="500"></canvas>
@@ -85,226 +109,244 @@
                                 >
                             </div>
                         </div>
-                    </div>
-
-                    <div class="genCon" id="genCon">
-                        <div class="anchorColor anchor1"></div>
-                        <div class="ranges">
-                            <label for="topRange">Top Position:</label>
-                            <input type="range" id="topRange" min="0" max="500" step="1" value="30" />
-                            <label for="leftRange">Left Position:</label>
-                            <input type="range" id="leftRange" min="0" max="500" step="1" value="30" />
-                            <label for="rotateRange">Rotate Position:</label>
-                            <input
-                                type="range"
-                                id="rotateRange"
-                                min="-180"
-                                max="180"
-                                step="30"
-                                value="0"
-                                list="values1"
-                            />
-                            <datalist id="values1">
-                                <option value="-180" label="-180">-180deg</option>
-                                <option value="-90" label="-90">-90deg</option>
-                                <option value="0" label="0">0deg</option>
-                                <option value="90" label="90">90deg</option>
-                                <option value="180" label="180">180deg</option>
-                            </datalist>
-                        </div>
-                        <div class="txtBoxDiv">
-                            <label for="txtBox">Text:</label>
-                            <textarea id="txtBox" cols="50" rows="1"></textarea>
-                        </div>
-                        <div class="txtCon">
-                            <label for="fontSizeRange">Font Size:</label>
-                            <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
-
-                            <label for="fontColor">Font Color:</label>
-                            <input type="text" id="fontColor" value="#ffffff" data-coloris />
-
-                            <label for="fontWeight">Font Weight:</label>
-                            <select id="fontWeight">
-                                <option value="bold">Bold</option>
-                                <option value="italic">Italic</option>
-                            </select>
-
-                            <label for="fontFamilySelect">Font Family:</label>
-                            <select id="fontFamilySelect">
-                                <option value="sans-serif">Sans-serif</option>
-                                <option value="serif">Serif</option>
-                                <option value="monospace">Monospace</option>
-                                <option value="cursive">Cursive</option>
-                                <option value="fantasy">Fantasy</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="genCon" id="genCon2">
-                        <div class="anchorColor anchor2"></div>
-                        <div class="ranges">
-                            <label for="topRange2">Top Position:</label>
-                            <input type="range" id="topRange2" min="0" max="500" step="1" value="50" />
-                            <div>
-                                <label for="leftRange2">Left Position:</label>
-                                <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" />
+                        <div class="share fs-2 mb-3">
+                            <div class="shareTitle">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="30"
+                                    height="30"
+                                    fill="currentColor"
+                                    class="bi bi-share-fill"
+                                    viewBox="0 0 16 16"
+                                >
+                                    <path
+                                        d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
+                                    ></path>
+                                </svg>
+                                <h2>Share</h2>
                             </div>
 
-                            <label for="rotateRange2">Rotate Position:</label>
-                            <input
-                                type="range"
-                                id="rotateRange2"
-                                min="-180"
-                                max="180"
-                                step="30"
-                                value="0"
-                                list="values2"
-                            />
-                            <datalist id="values2">
-                                <option value="-180" label="-180">-180deg</option>
-                                <option value="-90" label="-90">-90deg</option>
-                                <option value="0" label="0">0deg</option>
-                                <option value="90" label="90">90deg</option>
-                                <option value="180" label="180">180deg</option>
-                            </datalist>
-                        </div>
-                        <div class="txtBoxDiv">
-                            <label for="txtBox2">Text2:</label>
-                            <textarea id="txtBox2" cols="50" rows="1"></textarea>
-                        </div>
-                        <div class="txtCon">
-                            <label for="fontSizeRange2">Font Size:</label>
-                            <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" />
-
-                            <label for="fontColor2">Font Color:</label>
-                            <input type="text" id="fontColor2" value="#ffffff" data-coloris />
-
-                            <label for="fontWeight2">Font Weight:</label>
-                            <select id="fontWeight2">
-                                <option value="bold">Bold</option>
-                                <option value="italic">Italic</option>
-                            </select>
-
-                            <label for="fontFamilySelect2">Font Family:</label>
-                            <select id="fontFamilySelect2">
-                                <option value="sans-serif">Sans-serif</option>
-                                <option value="serif">Serif</option>
-                                <option value="monospace">Monospace</option>
-                                <option value="cursive">Cursive</option>
-                                <option value="fantasy">Fantasy</option>
-                            </select>
+                            <div class="kakaoBtn">
+                                <a id="kakaotalk-sharing-btn" href="javascript:shareMessage()">
+                                    <img
+                                        src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+                                        alt="카카오톡 공유 보내기 버튼"
+                                    />
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="genCon" id="genCon3">
-                        <div class="anchorColor anchor3"></div>
-                        <div class="ranges">
-                            <label for="topRange3">Top Position:</label>
-                            <input type="range" id="topRange3" min="0" max="500" step="1" value="70" />
-
-                            <label for="leftRange3">Left Position:</label>
-                            <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" />
-
-                            <label for="rotateRange3">Rotate Position:</label>
-                            <input
-                                type="range"
-                                id="rotateRange3"
-                                min="-180"
-                                max="180"
-                                step="30"
-                                value="0"
-                                list="values3"
-                            />
-                            <datalist id="values3">
-                                <option value="-180" label="-180">-180deg</option>
-                                <option value="-90" label="-90">-90deg</option>
-                                <option value="0" label="0">0deg</option>
-                                <option value="90" label="90">90deg</option>
-                                <option value="180" label="180">180deg</option>
-                            </datalist>
+                    <div class="bottonWrap">
+                        <div class="genCon">
+                            <div class="anchorColor anchor1"></div>
+                            <div class="ranges">
+                                <label for="topRange">Top Position : </label>
+                                <input type="range" id="topRange" min="0" max="500" step="1" value="30" />
+                                <label for="leftRange">Left Position : </label>
+                                <input type="range" id="leftRange" min="0" max="500" step="1" value="30" />
+                                <label for="rotateRange">Rotate Position : </label>
+                                <input
+                                    type="range"
+                                    id="rotateRange"
+                                    min="-180"
+                                    max="180"
+                                    step="30"
+                                    value="0"
+                                    list="values1"
+                                />
+                                <datalist id="values1">
+                                    <option value="-180" label="-180">-180deg</option>
+                                    <option value="-90" label="-90">-90deg</option>
+                                    <option value="0" label="0">0deg</option>
+                                    <option value="90" label="90">90deg</option>
+                                    <option value="180" label="180">180deg</option>
+                                </datalist>
+                            </div>
+                            <div class="txtBoxDiv">
+                                <label for="txtBox">Text : </label>
+                                <textarea id="txtBox" cols="30" rows="2"></textarea>
+                                <div class="colorisFull">
+                                    <label for="fontColor">Font Color : </label>
+                                    <input type="text" id="fontColor" value="#ffffff" data-coloris />
+                                </div>
+                            </div>
+                            <div class="txtCon">
+                                <label for="fontSizeRange">Font Size : </label>
+                                <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
+                                <label for="fontWeight">Font Weight : </label>
+                                <select id="fontWeight">
+                                    <option value="bold">Bold</option>
+                                    <option value="italic">Italic</option>
+                                </select>
+                                <label for="fontFamilySelect">Font Family : </label>
+                                <select id="fontFamilySelect">
+                                    <option value="sans-serif">Sans-serif</option>
+                                    <option value="serif">Serif</option>
+                                    <option value="monospace">Monospace</option>
+                                    <option value="cursive">Cursive</option>
+                                    <option value="fantasy">Fantasy</option>
+                                    <option value="SCD">에스코어 Dream</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="txtBoxDiv">
-                            <label for="txtBox3">Text3:</label>
-                            <textarea id="txtBox3" cols="50" rows="1"></textarea>
+                        <div class="genCon" id="genCon2">
+                            <div class="anchorColor anchor2"></div>
+                            <div class="ranges">
+                                <label for="topRange2">Top Position : </label>
+                                <input type="range" id="topRange2" min="0" max="500" step="1" value="50" />
+                                <div>
+                                    <label for="leftRange2">Left Position : </label>
+                                    <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" />
+                                </div>
+                                <label for="rotateRange2">Rotate Position : </label>
+                                <input
+                                    type="range"
+                                    id="rotateRange2"
+                                    min="-180"
+                                    max="180"
+                                    step="30"
+                                    value="0"
+                                    list="values2"
+                                />
+                                <datalist id="values2">
+                                    <option value="-180" label="-180">-180deg</option>
+                                    <option value="-90" label="-90">-90deg</option>
+                                    <option value="0" label="0">0deg</option>
+                                    <option value="90" label="90">90deg</option>
+                                    <option value="180" label="180">180deg</option>
+                                </datalist>
+                            </div>
+                            <div class="txtBoxDiv">
+                                <label for="txtBox2">Text2 : </label>
+                                <textarea id="txtBox2" cols="30" rows="2"></textarea>
+                                <div class="colorisFull">
+                                    <label for="fontColor2">Font Color : </label>
+                                    <input type="text" id="fontColor2" value="#ffffff" data-coloris />
+                                </div>
+                            </div>
+                            <div class="txtCon">
+                                <label for="fontSizeRange2">Font Size : </label>
+                                <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" />
+                                <label for="fontWeight2">Font Weight : </label>
+                                <select id="fontWeight2">
+                                    <option value="bold">Bold</option>
+                                    <option value="italic">Italic</option>
+                                </select>
+                                <label for="fontFamilySelect2">Font Family : </label>
+                                <select id="fontFamilySelect2">
+                                    <option value="sans-serif">Sans-serif</option>
+                                    <option value="serif">Serif</option>
+                                    <option value="monospace">Monospace</option>
+                                    <option value="cursive">Cursive</option>
+                                    <option value="fantasy">Fantasy</option>
+                                    <option value="SCD">에스코어 Dream</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="txtCon">
-                            <label for="fontSizeRange3">Font Size:</label>
-                            <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" />
-
-                            <label for="fontColor3">Font Color:</label>
-                            <input type="text" id="fontColor3" value="#ffffff" data-coloris />
-
-                            <label for="fontWeight3">Font Weight:</label>
-                            <select id="fontWeight3">
-                                <option value="bold">Bold</option>
-                                <option value="italic">Italic</option>
-                            </select>
-
-                            <label for="fontFamilySelect3">Font Family:</label>
-                            <select id="fontFamilySelect3">
-                                <option value="sans-serif">Sans-serif</option>
-                                <option value="serif">Serif</option>
-                                <option value="monospace">Monospace</option>
-                                <option value="cursive">Cursive</option>
-                                <option value="fantasy">Fantasy</option>
-                            </select>
-                            <button id="del3">del</button>
+                        <div class="genCon" id="genCon3">
+                            <div class="anchorColor anchor3"></div>
+                            <div class="ranges">
+                                <label for="topRange3">Top Position : </label>
+                                <input type="range" id="topRange3" min="0" max="500" step="1" value="70" />
+                                <label for="leftRange3">Left Position : </label>
+                                <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" />
+                                <label for="rotateRange3">Rotate Position : </label>
+                                <input
+                                    type="range"
+                                    id="rotateRange3"
+                                    min="-180"
+                                    max="180"
+                                    step="30"
+                                    value="0"
+                                    list="values3"
+                                />
+                                <datalist id="values3">
+                                    <option value="-180" label="-180">-180deg</option>
+                                    <option value="-90" label="-90">-90deg</option>
+                                    <option value="0" label="0">0deg</option>
+                                    <option value="90" label="90">90deg</option>
+                                    <option value="180" label="180">180deg</option>
+                                </datalist>
+                            </div>
+                            <div class="txtBoxDiv">
+                                <label for="txtBox3">Text3 : </label>
+                                <textarea id="txtBox3" cols="30" rows="2"></textarea>
+                                <div class="colorisFull">
+                                    <label for="fontColor3">Font Color : </label>
+                                    <input type="text" id="fontColor3" value="#ffffff" data-coloris />
+                                </div>
+                            </div>
+                            <div class="txtCon">
+                                <label for="fontSizeRange3">Font Size : </label>
+                                <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" />
+                                <label for="fontWeight3">Font Weight : </label>
+                                <select id="fontWeight3">
+                                    <option value="bold">Bold</option>
+                                    <option value="italic">Italic</option>
+                                </select>
+                                <label for="fontFamilySelect3">Font Family : </label>
+                                <select id="fontFamilySelect3">
+                                    <option value="sans-serif">Sans-serif</option>
+                                    <option value="serif">Serif</option>
+                                    <option value="monospace">Monospace</option>
+                                    <option value="cursive">Cursive</option>
+                                    <option value="fantasy">Fantasy</option>
+                                    <option value="SCD">에스코어 Dream</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="genCon" id="genCon4">
-                        <div class="anchorColor anchor4"></div>
-                        <div class="ranges">
-                            <label for="topRange4">Top Position:</label>
-                            <input type="range" id="topRange4" min="0" max="500" step="1" value="90" />
-
-                            <label for="leftRange4">Left Position:</label>
-                            <input type="range" id="leftRange4" min="0" max="500" step="1" value="90" />
-
-                            <label for="rotateRange4">Rotate Position:</label>
-                            <input
-                                type="range"
-                                id="rotateRange4"
-                                min="-180"
-                                max="180"
-                                step="30"
-                                value="0"
-                                list="values3"
-                            />
-                            <datalist id="values4">
-                                <option value="-180" label="-180">-180deg</option>
-                                <option value="-90" label="-90">-90deg</option>
-                                <option value="0" label="0">0deg</option>
-                                <option value="90" label="90">90deg</option>
-                                <option value="180" label="180">180deg</option>
-                            </datalist>
-                        </div>
-                        <div class="txtBoxDiv">
-                            <label for="txtBox4">Text4:</label>
-                            <textarea id="txtBox4" cols="50" rows="1"></textarea>
-                        </div>
-                        <div class="txtCon">
-                            <label for="fontSizeRange4">Font Size:</label>
-                            <input type="range" id="fontSizeRange4" min="14" max="94" step="1" value="36" />
-
-                            <label for="fontColor4">Font Color:</label>
-                            <input type="text" id="fontColor4" value="#ffffff" data-coloris />
-
-                            <label for="fontWeight4">Font Weight:</label>
-                            <select id="fontWeight4">
-                                <option value="bold">Bold</option>
-                                <option value="italic">Italic</option>
-                            </select>
-
-                            <label for="fontFamilySelect4">Font Family:</label>
-                            <select id="fontFamilySelect4">
-                                <option value="sans-serif">Sans-serif</option>
-                                <option value="serif">Serif</option>
-                                <option value="monospace">Monospace</option>
-                                <option value="cursive">Cursive</option>
-                                <option value="fantasy">Fantasy</option>
-                            </select>
-                            <button id="del4">del</button>
+                        <div class="genCon" id="genCon4">
+                            <div class="anchorColor anchor4"></div>
+                            <div class="ranges">
+                                <label for="topRange4">Top Position : </label>
+                                <input type="range" id="topRange4" min="0" max="500" step="1" value="90" />
+                                <label for="leftRange4">Left Position : </label>
+                                <input type="range" id="leftRange4" min="0" max="500" step="1" value="90" />
+                                <label for="rotateRange4">Rotate Position : </label>
+                                <input
+                                    type="range"
+                                    id="rotateRange4"
+                                    min="-180"
+                                    max="180"
+                                    step="30"
+                                    value="0"
+                                    list="values4"
+                                />
+                                <datalist id="values4">
+                                    <option value="-180" label="-180">-180deg</option>
+                                    <option value="-90" label="-90">-90deg</option>
+                                    <option value="0" label="0">0deg</option>
+                                    <option value="90" label="90">90deg</option>
+                                    <option value="180" label="180">180deg</option>
+                                </datalist>
+                            </div>
+                            <div class="txtBoxDiv">
+                                <label for="txtBox4">Text4 : </label>
+                                <textarea id="txtBox4" cols="30" rows="2"></textarea>
+                                <div class="colorisFull">
+                                    <label for="fontColor4">Font Color : </label>
+                                    <input type="text" id="fontColor4" value="#ffffff" data-coloris />
+                                </div>
+                            </div>
+                            <div class="txtCon">
+                                <label for="fontSizeRange4">Font Size : </label>
+                                <input type="range" id="fontSizeRange4" min="14" max="94" step="1" value="36" />
+                                <label for="fontWeight4">Font Weight : </label>
+                                <select id="fontWeight4">
+                                    <option value="bold">Bold</option>
+                                    <option value="italic">Italic</option>
+                                </select>
+                                <label for="fontFamilySelect4">Font Family : </label>
+                                <select id="fontFamilySelect4">
+                                    <option value="sans-serif">Sans-serif</option>
+                                    <option value="serif">Serif</option>
+                                    <option value="monospace">Monospace</option>
+                                    <option value="cursive">Cursive</option>
+                                    <option value="fantasy">Fantasy</option>
+                                    <option value="SCD">에스코어 Dream</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -314,7 +356,6 @@
                     const ctx = canvas.getContext("2d");
                     const fileInput = document.querySelector("#fileInput");
                     const btnReset = document.querySelector("#textReset");
-                    const filterInvert = document.querySelector("#invert");
 
                     const txtBox = document.querySelector("#txtBox");
                     const topRange = document.querySelector("#topRange");
@@ -342,7 +383,7 @@
                     const fontWeight3 = document.querySelector("#fontWeight3");
                     const fontFamilySelect3 = document.querySelector("#fontFamilySelect3");
                     const colorPicker3 = document.querySelector("#fontColor3");
-                    
+
                     const txtBox4 = document.querySelector("#txtBox4");
                     const topRange4 = document.querySelector("#topRange4");
                     const leftRange4 = document.querySelector("#leftRange4");
@@ -352,40 +393,23 @@
                     const fontFamilySelect4 = document.querySelector("#fontFamilySelect4");
                     const colorPicker4 = document.querySelector("#fontColor4");
 
-                    const delBtn3 = document.getElementById("del3");
+                    const genCon2 = document.getElementById("genCon2");
                     const genCon3 = document.getElementById("genCon3");
-                    const delBtn4 = document.getElementById("del4");
                     const genCon4 = document.getElementById("genCon4");
                     const addBtn = document.getElementById("add");
-
-                    let isDelON3 = false;
-                    let isDelON4 = false;
-                    delBtn3.addEventListener("click", function() {
-                        isDelON3 =true;
-                    txtBox3.value="";
-                    genCon3.style.display = "none";
-                    });
-
-                    delBtn4.addEventListener("click", function() {
-                        isDelON4 =true;
-                    txtBox4.value="";
-                    genCon4.style.display = "none";
-                    });
-
-                    addBtn.addEventListener("click", function() {
-                    if (!genCon3.style.display) {
-                        genCon3.style.display = "block";
-                    } else {
-                        genCon3.style.display = "block";
-                        genCon4.style.display = "block";
-                    }
-                });
-
-
-
+                    const delBtn = document.getElementById("del");
+                    
+                    let isDelON2 = true;
+                    let isDelON3 = true;
+                    let isDelON4 = true;
 
                     const downloadLinkPNG = document.querySelector("#downloadLinkPNG");
                     const downloadLinkJPG = document.querySelector("#downloadLinkJPG");
+
+                    const filterInvert = document.querySelector("#invert");
+                    const filterGrayscale = document.querySelector("#grayscale");
+                    const filterSepia = document.querySelector("#sepia");
+
                     let img = null;
                     let fontColorPicked = "#ffffff";
                     let fontColorPicked2 = "#ffffff";
@@ -399,31 +423,59 @@
 
                     let dragStart = { x: 0, y: 0 };
 
-                    const box1Radius = 10;
-                    const box2Radius = 10;
-                    const box3Radius = 10;
-                    const box4Radius = 10;
+                    const box1Radius = 15;
+                    const box2Radius = 15;
+                    const box3Radius = 15;
+                    const box4Radius = 15;
+                    let sharedImageUrl = "";
 
-                    //   $(filterInvert).on("change", function () {
-                    //     if (filterInvert.checked) {
-                    //       doFilterInvert(100);
-                    //       drawCanvas();
-                    //     } else {
-                    //       doFilterInvert(0);
-                    //       drawCanvas();
-                    //       console.log("꺼짐");
-                    //     }
-                    //   });
+                    //필터 버튼
+                    filterSepia.addEventListener("change", function () {
+                        if (filterSepia.checked) {
+                            ctx.filter = "sepia(100%)";
+                            turnOffOtherFilters(filterSepia, [filterGrayscale]); // 다른 필터 버튼들 중 체크된 것이 있다면 꺼줌
+                            turnOffOtherFilters(filterSepia, [filterInvert]); // 다른 필터 버튼들 중 체크된 것이 있다면 꺼줌
+                        } else {
+                            ctx.filter = "none";
+                        }
+                        drawCanvas();
+                    });
+                    filterInvert.addEventListener("change", function () {
+                        if (filterInvert.checked) {
+                            ctx.filter = "invert(100%)";
+                            turnOffOtherFilters(filterInvert, [filterGrayscale]);
+                            turnOffOtherFilters(filterInvert, [filterSepia]);
+                        } else {
+                            ctx.filter = "none";
+                        }
+                        drawCanvas();
+                    });
 
-                    //   function doFilterInvert(int) {
-                    //     ctx.filter = `invert(` + int + `%)`;
-                    //   }
+                    filterGrayscale.addEventListener("change", function () {
+                        if (filterGrayscale.checked) {
+                            ctx.filter = "grayscale(100%)";
+                            turnOffOtherFilters(filterGrayscale, [filterInvert]);
+                            turnOffOtherFilters(filterGrayscale, [filterSepia]); // 다른 필터 버튼들 중 체크된 것이 있다면 꺼줌
+                        } else {
+                            ctx.filter = "none";
+                        }
+                        drawCanvas();
+                    });
+                    function turnOffOtherFilters(checkedButton, filterButtons) {
+                        filterButtons.forEach(function (button) {
+                            if (button !== checkedButton) {
+                                button.checked = false;
+                            }
+                        });
+                    }
+
                     // 리셋버튼
-                    btnReset.addEventListener("click", function () {
+                    function resetForm() {
                         txtBox.value = "";
                         txtBox2.value = "";
                         txtBox3.value = "";
                         txtBox4.value = "";
+
                         colorPicker.value = "#ffffff";
                         colorPicker2.value = "#ffffff";
                         colorPicker3.value = "#ffffff";
@@ -432,10 +484,53 @@
                         fontColorPicked2 = "#ffffff";
                         fontColorPicked3 = "#ffffff";
                         fontColorPicked4 = "#ffffff";
+
+                        filterGrayscale.checked = false;
+                        filterInvert.checked = false;
+                        filterSepia.checked = false;
+                        ctx.filter = "none";
                         drawCanvas();
+                    }
+                    btnReset.addEventListener("click", resetForm);
+
+                     //삭제 추가
+                     addBtn.addEventListener("click", function() {
+                    if (isDelON2 === true){
+                        isDelON2 = false;
+                        genCon2.style.display = "block";
+                        // console.log(isDelON3,isDelON4);
+                    }else if(isDelON3 === true){
+                        isDelON3 = false;
+                        genCon3.style.display = "block";
+                        // console.log(isDelON3,isDelON4);
+                    }else if(isDelON4 === true){
+                        isDelON4 = false;
+                        genCon4.style.display = "block";
+                        // console.log(isDelON3,isDelON4);
+                    }
+                    });
+ 
+                    delBtn.addEventListener("click", function() {
+                    if(isDelON4 === false){
+                        isDelON4 = true;
+                        txtBox4.value="";
+                        genCon4.style.display = "none";
+                        // console.log(isDelON3,isDelON4);
+                    }else if(isDelON3 === false){
+                        isDelON3 = true;
+                        txtBox3.value="";
+                        genCon3.style.display = "none";
+                        // console.log(isDelON3,isDelON4);
+                    }else if(isDelON2 === false){
+                        isDelON2 = true;
+                        txtBox2.value="";
+                        genCon2.style.display = "none";
+                        // console.log(isDelON3,isDelON4);
+                    }
                     });
 
-                    //make Anchor
+                    
+                    //******  make Anchor 앵커만들기
                     function onMouseDown(event) {
                         const rect = canvas.getBoundingClientRect();
                         const x = event.clientX - rect.left;
@@ -450,24 +545,36 @@
                         ) {
                             isDraggingBox1 = true;
                             dragStart = { x: x, y: y };
+                            $("#canvas").css({
+                                cursor: "grabbing",
+                            });
                         } else if (
                             Math.sqrt(Math.pow(x - leftRange2.value, 2) + Math.pow(y - topRange2.value, 2)) <=
                             box2Radius
                         ) {
                             isDraggingBox2 = true;
                             dragStart = { x: x, y: y };
+                            $("#canvas").css({
+                                cursor: "grabbing",
+                            });
                         } else if (
                             Math.sqrt(Math.pow(x - leftRange3.value, 2) + Math.pow(y - topRange3.value, 2)) <=
                             box3Radius
                         ) {
                             isDraggingBox3 = true;
                             dragStart = { x: x, y: y };
-                        } else if (
+                            $("#canvas").css({
+                                cursor: "grabbing",
+                            });
+                        }  else if (
                             Math.sqrt(Math.pow(x - leftRange4.value, 2) + Math.pow(y - topRange4.value, 2)) <=
                             box4Radius
                         ) {
                             isDraggingBox4 = true;
                             dragStart = { x: x, y: y };
+                            $("#canvas").css({
+                                cursor: "grabbing",
+                            });
                         }
                     }
 
@@ -497,7 +604,7 @@
                             topRange3.value = parseInt(topRange3.value) + dy;
                             drawCanvas();
                             dragStart = { x: x, y: y };
-                        } else if (isDraggingBox4) {
+                        }  else if (isDraggingBox4) {
                             const dx = x - dragStart.x;
                             const dy = y - dragStart.y;
                             leftRange4.value = parseInt(leftRange4.value) + dx;
@@ -512,14 +619,22 @@
                         isDraggingBox2 = false;
                         isDraggingBox3 = false;
                         isDraggingBox4 = false;
+                        $("#canvas").css({
+                            cursor: "grab",
+                        });
                     }
 
                     canvas.addEventListener("mousedown", onMouseDown);
                     canvas.addEventListener("mousemove", onMouseMove);
                     canvas.addEventListener("mouseup", onMouseUp);
+
                     const { src } = JSON.parse(localStorage.getItem("image-info"));
                     console.log(src);
-
+                    // 커스터 마이즈 버튼
+                    $("#fileInput").on("change", function () {
+                        var fileName = $("#fileInput").val();
+                        $(".upload-name").val(fileName);
+                    });
                     //generator image 띄우기
                     img = new Image();
                     img.src = src;
@@ -556,6 +671,7 @@
                                     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                                     downloadLinkPNG.style.display = "block";
                                     downloadLinkJPG.style.display = "block";
+                                    resetForm();
                                     drawCanvas();
                                 };
                                 img.src = reader.result;
@@ -583,33 +699,36 @@
                         ctx.arc(parseInt(leftRange.value), parseInt(topRange.value), box1Radius, 0, 2 * Math.PI);
                         ctx.stroke();
 
-                        ctx.strokeStyle = "blue";
-                        ctx.beginPath();
-                        ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
-                        ctx.stroke();
+                        if(isDelON2 === true){
+                            ctx.strokeStyle = "none";
+                        }else{
+                            ctx.strokeStyle = "blue";
+                            ctx.beginPath();
+                            ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
+                            ctx.stroke();
+                        }
 
-                        if(isDelON3){
-                            ctx.strokeStyle = none;
+                        if(isDelON3 === true){
+                            ctx.strokeStyle = "none";
                         }else{
-                        ctx.strokeStyle = "green";
+                            ctx.strokeStyle = "green";
+                            ctx.beginPath();
+                            ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
+                            ctx.stroke();
                         }
-                        ctx.beginPath();
-                        ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
-                        ctx.stroke();
-                        
-                        if(isDelON4){
-                            ctx.strokeStyle = none;
+                        if(isDelON4===true){
+                            ctx.strokeStyle = "none";
                         }else{
-                        ctx.strokeStyle = "yellow";
+                            ctx.strokeStyle = "yellow";
+                            ctx.beginPath();
+                            ctx.arc(parseInt(leftRange4.value), parseInt(topRange4.value), box4Radius, 0, 2 * Math.PI);
+                            ctx.stroke();
+                            
                         }
-                        ctx.beginPath();
-                        ctx.arc(parseInt(leftRange4.value), parseInt(topRange4.value), box4Radius, 0, 2 * Math.PI);
-                        ctx.stroke();
                     }
 
                     function drawCanvas(showAnchors = true) {
                         if (img === null) return;
-
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
                         ctx.fillStyle = fontColorPicked;
@@ -668,20 +787,32 @@
                             drawAnchors();
                         }
 
-                        topRange.max = canvas.height;
-                        topRange2.max = canvas.height;
-                        topRange3.max = canvas.height;
-                        topRange4.max = canvas.height;
+                        topRange.max = canvas.height - parseInt(fontSizeRange.value);
                         leftRange.max = canvas.width;
+                        topRange2.max = canvas.height - parseInt(fontSizeRange2.value);
+                        leftRange2.max = canvas.width;
+                        topRange3.max = canvas.height - parseInt(fontSizeRange3.value);
+                        leftRange3.max = canvas.width;
                     }
+
+                    // function downloadImage() {
+                    //     drawCanvas(false);
+                    //     downloadLinkPNG.href = canvas.toDataURL();
+                    //     downloadLinkJPG.href = canvas.toDataURL();
+                    //     drawCanvas(true);
+                    // }
 
                     function downloadImage() {
                         drawCanvas(false);
-                        downloadLinkPNG.href = canvas.toDataURL();
-                        downloadLinkJPG.href = canvas.toDataURL();
+                        const dataUrlPNG = canvas.toDataURL();
+                        const dataUrlJPG = canvas.toDataURL("image/jpeg");
+                        downloadLinkPNG.href = dataUrlPNG;
+                        downloadLinkJPG.href = dataUrlJPG;
+                        sharedImageUrl = dataUrlPNG; // Update the sharedImageUrl with the PNG data URL
                         drawCanvas(true);
-                    }
 
+                        console.log(sharedImageUrl);
+                    }
                     function drawText(ctx, text, x, y, rotate, fontColor, fontWeight, fontSize, fontFamily) {
                         let textHeight = parseInt(fontSize);
                         ctx.save();
@@ -690,10 +821,10 @@
                         ctx.fillStyle = fontColor;
                         ctx.font = fontWeight + " " + fontSize + "px " + fontFamily;
 
-                        // Split the text by newline characters and draw each line separately
+                        // textarea 엔터 인식하게 하는거
                         const lines = text.split("\n");
                         for (let i = 0; i < lines.length; i++) {
-                            ctx.fillText(lines[i], 0, textHeight * i);
+                            ctx.fillText(lines[i], 0, textHeight * (i + 1));
                         }
 
                         ctx.restore();
@@ -733,8 +864,9 @@
                     fontWeight4.addEventListener("input", drawCanvas);
                     fontSizeRange4.addEventListener("input", drawCanvas);
                     fontFamilySelect4.addEventListener("input", drawCanvas);
-                    delBtn3.addEventListener("click", drawCanvas);
-                    delBtn4.addEventListener("click", drawCanvas);
+
+                    addBtn.addEventListener("click", drawCanvas);
+                    delBtn.addEventListener("click", drawCanvas);
 
                     downloadLinkPNG.addEventListener("click", downloadImage);
                     downloadLinkJPG.addEventListener("click", downloadImage);
@@ -763,6 +895,43 @@
                         inline: false,
                         defaultColor: "#000000",
                     });
+                    //카카오
+                    function shareMessage() {
+                        Kakao.Share.sendDefault({
+                            objectType: "feed",
+                            content: {
+                                title: "내가 만든 MEME ",
+                                description: "#분노 #동물 #귀여운 #슬픔 #블랙유머 #GIF",
+                                imageUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
+                                link: {
+                                    // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+                                    mobileWebUrl: "http://127.0.0.1:9091",
+                                    webUrl: "http://127.0.0.1:9091",
+                                },
+                            },
+                            social: {
+                                likeCount: 286,
+                                commentCount: 45,
+                                sharedCount: 845,
+                            },
+                            buttons: [
+                                {
+                                    title: "웹으로 보기",
+                                    link: {
+                                        mobileWebUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
+                                        webUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
+                                    },
+                                },
+                                {
+                                    title: "앱으로 보기",
+                                    link: {
+                                        mobileWebUrl: "http://127.0.0.1:9091",
+                                        webUrl: "http://127.0.0.1:9091",
+                                    },
+                                },
+                            ],
+                        });
+                    }
                 </script>
             </div>
         </div>

@@ -232,6 +232,9 @@ body .topWrap .canvasWrap {
   border: 1px solid white;
   transition: all 0.25s ease;
 }
+body #genCon2 {
+  display: none;
+}
 body #genCon3 {
   display: none;
 }
@@ -367,8 +370,7 @@ body .share .kakaoBtn a img {
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #modal-image img {
   width: 700px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   border-radius: 10px;
 }
 
@@ -412,8 +414,7 @@ body .share .kakaoBtn a img {
   to {
     width: 700px;
     height: 350px;
-    -o-object-fit: contain;
-       object-fit: contain;
+    object-fit: contain;
     opacity: 100%;
   }
 }
@@ -422,7 +423,6 @@ body .share .kakaoBtn a img {
   width: 300px;
   border-radius: 10px;
   height: 300px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: width 0.25s ease, height 0.25s ease;
 }
