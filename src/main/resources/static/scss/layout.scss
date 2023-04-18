@@ -8,12 +8,22 @@ body {
 
     .myHeader {
         border-bottom: none;
-        transition: all 0.25s ease;
+        transition: all 0.5s ease;
+        background-color: white;
 
+        color: black;
         &.on {
-            background-color: white;
-            color: black;
+            background-color: black;
         }
+    }
+    .headerS {
+        position: fixed;
+        display: block;
+        top: -10px;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 70px;
     }
     h1 {
         font-weight: 700;
@@ -158,7 +168,7 @@ body {
         text-align: center;
         padding: 0 100px;
         .genCon {
-            background-image: url(/images/nnnoise.svg);
+            // background-image: url(/images/nnnoise.svg);
             display: block;
             width: 1000px;
             height: 150px;
