@@ -26,21 +26,9 @@
                         <div class="canvasBtnWarp">
                             <div>
                                 <button type="button" class="btn btn-secondary" id="textReset">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        class="bi bi-arrow-clockwise"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
-                                        ></path>
-                                        <path
-                                            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
-                                        ></path>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"></path>
+                                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"></path>
                                     </svg>
                                     reset
                                 </button>
@@ -76,14 +64,7 @@
                         </div>
                         <div class="download mt-2 mb-2">
                             <div class="download_title">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="30"
-                                    height="30"
-                                    fill="currentColor"
-                                    class="bi bi-arrow-down-circle-fill"
-                                    viewBox="0 0 16 16"
-                                >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
                                     <path
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
                                     />
@@ -91,34 +72,13 @@
                                 <h2>Download</h2>
                             </div>
                             <div class="btnDown">
-                                <a
-                                    class="btn btn-primary"
-                                    id="downloadLinkPNG"
-                                    download="meme.png"
-                                    href="#"
-                                    style="display: none"
-                                    >.PNG</a
-                                >
-                                <a
-                                    class="btn btn-primary"
-                                    id="downloadLinkJPG"
-                                    download="meme.jpg"
-                                    href="#"
-                                    style="display: none"
-                                    >.JPG</a
-                                >
+                                <a class="btn btn-primary" id="downloadLinkPNG" download="meme.png" href="#" style="display: none">.PNG</a>
+                                <a class="btn btn-primary" id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">.JPG</a>
                             </div>
                         </div>
-                        <div class="share fs-2 mb-3">
+                        <div class="share mt-2 mb-2">
                             <div class="shareTitle">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="30"
-                                    height="30"
-                                    fill="currentColor"
-                                    class="bi bi-share-fill"
-                                    viewBox="0 0 16 16"
-                                >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
                                     <path
                                         d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
                                     ></path>
@@ -142,19 +102,11 @@
                             <div class="anchorColor anchor1"></div>
                             <div class="ranges">
                                 <label for="topRange">Top Position : </label>
-                                <input type="range" id="topRange" min="0" max="500" step="1" value="30" />
+                                <input type="range" id="topRange" min="0" max="500" step="1" value="30" class="slider" />
                                 <label for="leftRange">Left Position : </label>
-                                <input type="range" id="leftRange" min="0" max="500" step="1" value="30" />
+                                <input type="range" id="leftRange" min="0" max="500" step="1" value="30" class="slider" />
                                 <label for="rotateRange">Rotate Position : </label>
-                                <input
-                                    type="range"
-                                    id="rotateRange"
-                                    min="-180"
-                                    max="180"
-                                    step="30"
-                                    value="0"
-                                    list="values1"
-                                />
+                                <input type="range" id="rotateRange" min="-180" max="180" step="30" value="0" list="values1" class="slider" />
                                 <datalist id="values1">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -173,7 +125,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange">Font Size : </label>
-                                <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
+                                <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" class="slider" />
                                 <label for="fontWeight">Font Weight : </label>
                                 <select id="fontWeight">
                                     <option value="bold">Bold</option>
@@ -187,6 +139,7 @@
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
                                     <option value="SCD">에스코어 Dream</option>
+                                    <option value="Sohne">Söhne(eng)</option>
                                 </select>
                             </div>
                         </div>
@@ -194,21 +147,13 @@
                             <div class="anchorColor anchor2"></div>
                             <div class="ranges">
                                 <label for="topRange2">Top Position : </label>
-                                <input type="range" id="topRange2" min="0" max="500" step="1" value="50" />
+                                <input type="range" id="topRange2" min="0" max="500" step="1" value="50" class="slider" />
                                 <div>
                                     <label for="leftRange2">Left Position : </label>
-                                    <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" />
+                                    <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" class="slider" />
                                 </div>
                                 <label for="rotateRange2">Rotate Position : </label>
-                                <input
-                                    type="range"
-                                    id="rotateRange2"
-                                    min="-180"
-                                    max="180"
-                                    step="30"
-                                    value="0"
-                                    list="values2"
-                                />
+                                <input type="range" id="rotateRange2" min="-180" max="180" step="30" value="0" list="values2" class="slider" />
                                 <datalist id="values2">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -227,7 +172,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange2">Font Size : </label>
-                                <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" />
+                                <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" class="slider" />
                                 <label for="fontWeight2">Font Weight : </label>
                                 <select id="fontWeight2">
                                     <option value="bold">Bold</option>
@@ -241,6 +186,7 @@
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
                                     <option value="SCD">에스코어 Dream</option>
+                                    <option value="Sohne">Söhne(eng)</option>
                                 </select>
                             </div>
                         </div>
@@ -248,19 +194,11 @@
                             <div class="anchorColor anchor3"></div>
                             <div class="ranges">
                                 <label for="topRange3">Top Position : </label>
-                                <input type="range" id="topRange3" min="0" max="500" step="1" value="70" />
+                                <input type="range" id="topRange3" min="0" max="500" step="1" value="70" class="slider" />
                                 <label for="leftRange3">Left Position : </label>
-                                <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" />
+                                <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" class="slider" />
                                 <label for="rotateRange3">Rotate Position : </label>
-                                <input
-                                    type="range"
-                                    id="rotateRange3"
-                                    min="-180"
-                                    max="180"
-                                    step="30"
-                                    value="0"
-                                    list="values3"
-                                />
+                                <input type="range" id="rotateRange3" min="-180" max="180" step="30" value="0" list="values3" class="slider" />
                                 <datalist id="values3">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -279,7 +217,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange3">Font Size : </label>
-                                <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" />
+                                <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" class="slider" />
                                 <label for="fontWeight3">Font Weight : </label>
                                 <select id="fontWeight3">
                                     <option value="bold">Bold</option>
@@ -293,6 +231,7 @@
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
                                     <option value="SCD">에스코어 Dream</option>
+                                    <option value="Sohne">Söhne(eng)</option>
                                 </select>
                             </div>
                         </div>
@@ -300,19 +239,11 @@
                             <div class="anchorColor anchor4"></div>
                             <div class="ranges">
                                 <label for="topRange4">Top Position : </label>
-                                <input type="range" id="topRange4" min="0" max="500" step="1" value="90" />
+                                <input type="range" id="topRange4" min="0" max="500" step="1" value="90" class="slider" />
                                 <label for="leftRange4">Left Position : </label>
-                                <input type="range" id="leftRange4" min="0" max="500" step="1" value="90" />
+                                <input type="range" id="leftRange4" min="0" max="500" step="1" value="90" class="slider" />
                                 <label for="rotateRange4">Rotate Position : </label>
-                                <input
-                                    type="range"
-                                    id="rotateRange4"
-                                    min="-180"
-                                    max="180"
-                                    step="30"
-                                    value="0"
-                                    list="values4"
-                                />
+                                <input type="range" id="rotateRange4" min="-180" max="180" step="30" value="0" list="values4" class="slider" />
                                 <datalist id="values4">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -331,7 +262,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange4">Font Size : </label>
-                                <input type="range" id="fontSizeRange4" min="14" max="94" step="1" value="36" />
+                                <input type="range" id="fontSizeRange4" min="14" max="94" step="1" value="36" class="slider" />
                                 <label for="fontWeight4">Font Weight : </label>
                                 <select id="fontWeight4">
                                     <option value="bold">Bold</option>
@@ -345,6 +276,7 @@
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
                                     <option value="SCD">에스코어 Dream</option>
+                                    <option value="Sohne">Söhne(eng)</option>
                                 </select>
                             </div>
                         </div>
@@ -398,7 +330,7 @@
                     const genCon4 = document.getElementById("genCon4");
                     const addBtn = document.getElementById("add");
                     const delBtn = document.getElementById("del");
-                    
+
                     let isDelON2 = true;
                     let isDelON3 = true;
                     let isDelON4 = true;
@@ -493,83 +425,67 @@
                     }
                     btnReset.addEventListener("click", resetForm);
 
-                     //삭제 추가
-                     addBtn.addEventListener("click", function() {
-                    if (isDelON2 === true){
-                        isDelON2 = false;
-                        genCon2.style.display = "block";
-                        // console.log(isDelON3,isDelON4);
-                    }else if(isDelON3 === true){
-                        isDelON3 = false;
-                        genCon3.style.display = "block";
-                        // console.log(isDelON3,isDelON4);
-                    }else if(isDelON4 === true){
-                        isDelON4 = false;
-                        genCon4.style.display = "block";
-                        // console.log(isDelON3,isDelON4);
-                    }
-                    });
- 
-                    delBtn.addEventListener("click", function() {
-                    if(isDelON4 === false){
-                        isDelON4 = true;
-                        txtBox4.value="";
-                        genCon4.style.display = "none";
-                        // console.log(isDelON3,isDelON4);
-                    }else if(isDelON3 === false){
-                        isDelON3 = true;
-                        txtBox3.value="";
-                        genCon3.style.display = "none";
-                        // console.log(isDelON3,isDelON4);
-                    }else if(isDelON2 === false){
-                        isDelON2 = true;
-                        txtBox2.value="";
-                        genCon2.style.display = "none";
-                        // console.log(isDelON3,isDelON4);
-                    }
+                    //삭제 추가
+                    addBtn.addEventListener("click", function () {
+                        if (isDelON2 === true) {
+                            isDelON2 = false;
+                            genCon2.style.display = "block";
+                            // console.log(isDelON3,isDelON4);
+                        } else if (isDelON3 === true) {
+                            isDelON3 = false;
+                            genCon3.style.display = "block";
+                            // console.log(isDelON3,isDelON4);
+                        } else if (isDelON4 === true) {
+                            isDelON4 = false;
+                            genCon4.style.display = "block";
+                            // console.log(isDelON3,isDelON4);
+                        }
                     });
 
-                    
+                    delBtn.addEventListener("click", function () {
+                        if (isDelON4 === false) {
+                            isDelON4 = true;
+                            txtBox4.value = "";
+                            genCon4.style.display = "none";
+                            // console.log(isDelON3,isDelON4);
+                        } else if (isDelON3 === false) {
+                            isDelON3 = true;
+                            txtBox3.value = "";
+                            genCon3.style.display = "none";
+                            // console.log(isDelON3,isDelON4);
+                        } else if (isDelON2 === false) {
+                            isDelON2 = true;
+                            txtBox2.value = "";
+                            genCon2.style.display = "none";
+                            // console.log(isDelON3,isDelON4);
+                        }
+                    });
+
                     //******  make Anchor 앵커만들기
                     function onMouseDown(event) {
                         const rect = canvas.getBoundingClientRect();
                         const x = event.clientX - rect.left;
                         const y = event.clientY - rect.top;
-                        //맨 상단으로 올려야 오류 안남
-                        // gsap.to(window, 0.3, {
-                        //     scrollTo: 0,
-                        // });
 
-                        if (
-                            Math.sqrt(Math.pow(x - leftRange.value, 2) + Math.pow(y - topRange.value, 2)) <= box1Radius
-                        ) {
+                        if (Math.sqrt(Math.pow(x - leftRange.value, 2) + Math.pow(y - topRange.value, 2)) <= box1Radius) {
                             isDraggingBox1 = true;
                             dragStart = { x: x, y: y };
                             $("#canvas").css({
                                 cursor: "grabbing",
                             });
-                        } else if (
-                            Math.sqrt(Math.pow(x - leftRange2.value, 2) + Math.pow(y - topRange2.value, 2)) <=
-                            box2Radius
-                        ) {
+                        } else if (Math.sqrt(Math.pow(x - leftRange2.value, 2) + Math.pow(y - topRange2.value, 2)) <= box2Radius) {
                             isDraggingBox2 = true;
                             dragStart = { x: x, y: y };
                             $("#canvas").css({
                                 cursor: "grabbing",
                             });
-                        } else if (
-                            Math.sqrt(Math.pow(x - leftRange3.value, 2) + Math.pow(y - topRange3.value, 2)) <=
-                            box3Radius
-                        ) {
+                        } else if (Math.sqrt(Math.pow(x - leftRange3.value, 2) + Math.pow(y - topRange3.value, 2)) <= box3Radius) {
                             isDraggingBox3 = true;
                             dragStart = { x: x, y: y };
                             $("#canvas").css({
                                 cursor: "grabbing",
                             });
-                        }  else if (
-                            Math.sqrt(Math.pow(x - leftRange4.value, 2) + Math.pow(y - topRange4.value, 2)) <=
-                            box4Radius
-                        ) {
+                        } else if (Math.sqrt(Math.pow(x - leftRange4.value, 2) + Math.pow(y - topRange4.value, 2)) <= box4Radius) {
                             isDraggingBox4 = true;
                             dragStart = { x: x, y: y };
                             $("#canvas").css({
@@ -604,7 +520,7 @@
                             topRange3.value = parseInt(topRange3.value) + dy;
                             drawCanvas();
                             dragStart = { x: x, y: y };
-                        }  else if (isDraggingBox4) {
+                        } else if (isDraggingBox4) {
                             const dx = x - dragStart.x;
                             const dy = y - dragStart.y;
                             leftRange4.value = parseInt(leftRange4.value) + dx;
@@ -699,31 +615,30 @@
                         ctx.arc(parseInt(leftRange.value), parseInt(topRange.value), box1Radius, 0, 2 * Math.PI);
                         ctx.stroke();
 
-                        if(isDelON2 === true){
+                        if (isDelON2 === true) {
                             ctx.strokeStyle = "none";
-                        }else{
+                        } else {
                             ctx.strokeStyle = "blue";
                             ctx.beginPath();
                             ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
                             ctx.stroke();
                         }
 
-                        if(isDelON3 === true){
+                        if (isDelON3 === true) {
                             ctx.strokeStyle = "none";
-                        }else{
+                        } else {
                             ctx.strokeStyle = "green";
                             ctx.beginPath();
                             ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
                             ctx.stroke();
                         }
-                        if(isDelON4===true){
+                        if (isDelON4 === true) {
                             ctx.strokeStyle = "none";
-                        }else{
+                        } else {
                             ctx.strokeStyle = "yellow";
                             ctx.beginPath();
                             ctx.arc(parseInt(leftRange4.value), parseInt(topRange4.value), box4Radius, 0, 2 * Math.PI);
                             ctx.stroke();
-                            
                         }
                     }
 
@@ -881,19 +796,7 @@
                         format: "hex",
                         clearButton: true,
                         clearLabel: "Clear",
-                        swatches: [
-                            "#000000",
-                            "#ffffff",
-                            "#cccccc",
-                            "#ff0000",
-                            "#ffee00",
-                            "#22ff00",
-                            "#00ffe5",
-                            "#0000ff",
-                            "#9500ff",
-                            "#4ced82",
-                            "#f01d7c",
-                        ],
+                        swatches: ["#000000", "#ffffff", "#cccccc", "#ff0000", "#ffee00", "#22ff00", "#00ffe5", "#0000ff", "#9500ff", "#4ced82", "#f01d7c"],
                         inline: false,
                         defaultColor: "#000000",
                     });
