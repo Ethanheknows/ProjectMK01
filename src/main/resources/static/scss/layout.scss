@@ -229,7 +229,7 @@ body {
         }
     }
     .download {
-        margin-left: 40px;
+        margin: 0 10px;
         display: inline;
 
         .download_title {
@@ -254,7 +254,7 @@ body {
     }
     .share {
         margin-top: 8px;
-        margin-left: 40px;
+        margin: 0 10px;
         display: inline;
         .shareTitle {
             display: flex;
@@ -269,15 +269,15 @@ body {
             justify-content: space-between;
             align-items: center;
             width: 100px;
-            height: 50px;
+            height: 38px;
 
             a {
                 width: 100px;
-                height: 59px;
+                height: 26px;
                 margin: 10px 5px;
                 img {
-                    width: 40px;
-                    height: 40px;
+                    width: 39px;
+                    height: 39px;
                 }
             }
         }

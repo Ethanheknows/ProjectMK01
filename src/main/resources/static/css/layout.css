@@ -311,7 +311,7 @@ body .bottonWrap .txtCon {
   padding-bottom: 10px;
 }
 body .download {
-  margin-left: 40px;
+  margin: 0 10px;
   display: inline;
 }
 body .download .download_title {
@@ -334,7 +334,7 @@ body .download .btnDown a {
 }
 body .share {
   margin-top: 8px;
-  margin-left: 40px;
+  margin: 0 10px;
   display: inline;
 }
 body .share .shareTitle {
@@ -350,16 +350,16 @@ body .share .kakaoBtn {
   justify-content: space-between;
   align-items: center;
   width: 100px;
-  height: 50px;
+  height: 38px;
 }
 body .share .kakaoBtn a {
   width: 100px;
-  height: 59px;
+  height: 26px;
   margin: 10px 5px;
 }
 body .share .kakaoBtn a img {
-  width: 40px;
-  height: 40px;
+  width: 39px;
+  height: 39px;
 }
 
 .modal.fade#imgModal {
