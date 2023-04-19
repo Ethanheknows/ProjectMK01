@@ -309,6 +309,7 @@ body .bottomWrap .addDelBtn .addBarBox {
 }
 body .bottomWrap .addDelBtn .barBox1 {
   background-color: #00fd0a;
+  margin-left: 0;
 }
 body .bottomWrap .addDelBtn .barBox2.on {
   background-color: #00fd0a;
@@ -396,7 +397,7 @@ body .bottomWrap .slider::-webkit-slider-thumb {
   box-shadow: -407px 0 0 400px #00fd0a;
 }
 body .bottomWrap .slider.rotateRange::-webkit-slider-thumb {
-  transform: translateY(-3.5px);
+  transform: translateY(-3.8px);
 }
 body .bottomWrap .ranges {
   display: flex;

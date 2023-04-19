@@ -230,6 +230,7 @@ body {
             }
             .barBox1 {
                 background-color: #00fd0a;
+                margin-left: 0;
             }
             .barBox2.on {
                 background-color: #00fd0a;
@@ -328,7 +329,7 @@ body {
         }
         // 이상하게 로테이트 레인지만 딱 안맞음
         .slider.rotateRange::-webkit-slider-thumb {
-            transform: translateY(-3.5px);
+            transform: translateY(-3.8px);
         }
         .ranges {
             display: flex;
