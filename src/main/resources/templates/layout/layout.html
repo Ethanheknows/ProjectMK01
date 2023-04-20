@@ -158,7 +158,7 @@
                     <div class="modal-body">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="swiper clickedSwiper">
+                                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper clickedSwiper">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide col-md-4" id="modal-image"></div>
                                         <div class="swiper-slide">
@@ -170,10 +170,30 @@
                                         <div class="swiper-slide">
                                             <img src="/images/sample.jpg" alt="" class="col-md-4" />
                                         </div>
+                                        <div class="swiper-slide">
+                                            <img src="/images/sample.jpg" alt="" class="col-md-4" />
+                                        </div>
                                     </div>
-                                    <div class="swiper-pagination"></div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
                                 </div>
-
+                                <div thumbsSlider="" class="swiper clickedSwiperThumb">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide" id="modal-image_Thumb"></div>
+                                        <div class="swiper-slide">
+                                            <img src="/images/sample.jpg" alt="" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="/images/sample.jpg" alt="" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="/images/sample.jpg" alt="" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="/images/sample.jpg" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-4 ms-auto">
                                     <p>클릭한 이미지 어디까지 되는지 테스트 해보는중</p>
                                     <a href="/gen" id="generator">generator 링크</a>
@@ -279,6 +299,7 @@
 
 
                       $('#modal-image').html(`<img src="`+src+`" alt=""/>`)
+                      $('#modal-image_Thumb').html(`<img src="`+src+`" alt=""/>`)
                       $("#comments-data").remove();
                       $('#comments').html(`<div id="comments-data"></div>`)
 
@@ -651,17 +672,32 @@
 
                     })
 
-                    const clickedSwiper = new Swiper(".clickedSwiper", {
-                        direction: "vertical",
-                        slidesPerView: 1,
-                        spaceBetween: 30,
-                        mousewheel: true,
-                        pagination: {
-                          el: ".swiper-pagination",
-                          clickable: true,
+                    // const clickedSwiper = new Swiper(".clickedSwiper", {
+                    //     direction: "vertical",
+                    //     slidesPerView: 1,
+                    //     spaceBetween: 30,
+                    //     mousewheel: true,
+                    //     pagination: {
+                    //       el: ".swiper-pagination",
+                    //       clickable: true,
+                    //     },
+                    //   });
+                      var clickedSwiperThumb = new Swiper(".clickedSwiperThumb", {
+                        spaceBetween: 10,
+                        slidesPerView: 4,
+                        freeMode: true,
+                        watchSlidesProgress: true,
+                      });
+                      var clickedSwiper = new Swiper(".clickedSwiper", {
+                        spaceBetween: 10,
+                        navigation: {
+                          nextEl: ".swiper-button-next",
+                          prevEl: ".swiper-button-prev",
+                        },
+                        thumbs: {
+                          swiper: clickedSwiperThumb  ,
                         },
                       });
-
                     /*]]>*/
         </script>
     </body>

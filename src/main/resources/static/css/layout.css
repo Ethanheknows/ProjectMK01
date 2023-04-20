@@ -491,15 +491,41 @@ body .share .kakaoBtn a img {
 }
 
 .clickedSwiper {
-  width: 700px !important;
-  height: 700px !important;
+  width: 600px !important;
+  height: 600px !important;
+  margin: 0 !important;
+  background-color: #000;
 }
 .clickedSwiper .swiper-wrapper .swiper-slide {
-  width: 700px;
-  height: 700px;
+  width: 600px;
+  height: 600px;
 }
 .clickedSwiper .swiper-wrapper .swiper-slide img {
-  width: 700px;
+  width: 600px;
+  border-radius: 0px !important;
+}
+
+.clickedSwiperThumb {
+  width: 600px !important;
+  height: 100px !important;
+  margin: 0 !important;
+  background-color: #000;
+}
+.clickedSwiperThumb .swiper-wrapper {
+  width: 600px !important;
+}
+.clickedSwiperThumb .swiper-wrapper .swiper-slide {
+  width: 150px;
+  opacity: 0.4;
+}
+.clickedSwiperThumb .swiper-wrapper .swiper-slide img {
+  width: 150px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.clickedSwiperThumb .swiper-wrapper .swiper-slide-thumb-active {
+  opacity: 1;
 }
 
 .swiper {

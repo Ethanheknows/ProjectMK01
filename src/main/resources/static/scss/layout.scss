@@ -439,17 +439,43 @@ body {
     }
 }
 
-//index 부분
+//index 부분 스와이퍼 ====
 .clickedSwiper {
-    width: 700px !important;
-    height: 700px !important;
+    width: 600px !important;
+    height: 600px !important;
+    margin: 0 !important;
+    background-color: #000;
     .swiper-wrapper {
         .swiper-slide {
-            width: 700px;
-            height: 700px;
+            width: 600px;
+            height: 600px;
             img {
-                width: 700px;
+                width: 600px;
+                border-radius: 0px !important;
             }
+        }
+    }
+}
+.clickedSwiperThumb {
+    width: 600px !important;
+    height: 100px !important;
+    margin: 0 !important;
+    background-color: #000;
+    .swiper-wrapper {
+        width: 600px !important;
+        .swiper-slide {
+            width: 150px;
+            opacity: 0.4;
+
+            img {
+                width: 150px;
+                height: 100px;
+                object-fit: cover;
+                // border-radius: 10px;
+            }
+        }
+        .swiper-slide-thumb-active {
+            opacity: 1;
         }
     }
 }
