@@ -336,6 +336,7 @@
 
                       console.log("이미지 클릭중===============")
                       imgModal.show();
+                      clickedSwiperOpen();
                      });
 
 
@@ -682,13 +683,13 @@
                     //       clickable: true,
                     //     },
                     //   });
-                      var clickedSwiperThumb = new Swiper(".clickedSwiperThumb", {
+                      const clickedSwiperThumb = new Swiper(".clickedSwiperThumb", {
                         spaceBetween: 10,
                         slidesPerView: 4,
                         freeMode: true,
                         watchSlidesProgress: true,
                       });
-                      var clickedSwiper = new Swiper(".clickedSwiper", {
+                      const clickedSwiper = new Swiper(".clickedSwiper", {
                         spaceBetween: 10,
                         navigation: {
                           nextEl: ".swiper-button-next",
@@ -698,6 +699,10 @@
                           swiper: clickedSwiperThumb  ,
                         },
                       });
+                      // 모달 띄울때 맨 처음 사진으로 가게 하는 함수
+                      function clickedSwiperOpen() {
+                        clickedSwiper.slideTo(0, 0, false)
+                          }
                     /*]]>*/
         </script>
     </body>
