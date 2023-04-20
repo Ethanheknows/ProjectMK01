@@ -158,7 +158,21 @@
                     <div class="modal-body">
                         <div class="container-fluid">
                             <div class="row">
-                                <div id="modal-image" class="col-md-4"></div>
+                                <div class="swiper clickedSwiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide col-md-4" id="modal-image"></div>
+                                        <div class="swiper-slide">
+                                            <img src="/images/sample.jpg" alt="" class="col-md-4" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="/images/sample.jpg" alt="" class="col-md-4" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="/images/sample.jpg" alt="" class="col-md-4" />
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
 
                                 <div class="col-md-4 ms-auto">
                                     <p>클릭한 이미지 어디까지 되는지 테스트 해보는중</p>
@@ -636,6 +650,17 @@
 
 
                     })
+
+                    const clickedSwiper = new Swiper(".clickedSwiper", {
+                        direction: "vertical",
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                        mousewheel: true,
+                        pagination: {
+                          el: ".swiper-pagination",
+                          clickable: true,
+                        },
+                      });
 
                     /*]]>*/
         </script>

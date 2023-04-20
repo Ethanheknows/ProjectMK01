@@ -485,8 +485,21 @@ body .share .kakaoBtn a img {
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #modal-image img {
   width: 700px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 10px;
+}
+
+.clickedSwiper {
+  width: 700px !important;
+  height: 700px !important;
+}
+.clickedSwiper .swiper-wrapper .swiper-slide {
+  width: 700px;
+  height: 700px;
+}
+.clickedSwiper .swiper-wrapper .swiper-slide img {
+  width: 700px;
 }
 
 .swiper {
@@ -529,7 +542,8 @@ body .share .kakaoBtn a img {
   to {
     width: 700px;
     height: 350px;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     opacity: 100%;
   }
 }
@@ -538,6 +552,7 @@ body .share .kakaoBtn a img {
   width: 300px;
   border-radius: 10px;
   height: 300px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   transition: width 0.25s ease, height 0.25s ease;
 }
