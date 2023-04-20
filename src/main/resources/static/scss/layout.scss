@@ -441,8 +441,8 @@ body {
 
 //index 부분 스와이퍼 ====
 .clickedSwiper {
-    width: 600px !important;
-    height: 600px !important;
+    width: 580px !important;
+    height: 580px !important;
     margin: 0 !important;
     background-color: #000;
     .pageNav {
@@ -458,30 +458,30 @@ body {
 
     .swiper-wrapper {
         .swiper-slide {
-            width: 600px;
-            height: 600px;
+            width: 580px;
+            height: 580px;
             img {
-                width: 600px;
+                width: 580px;
                 border-radius: 0px !important;
             }
         }
     }
 }
 .clickedSwiperThumb {
-    width: 600px !important;
-    height: 100px !important;
+    width: 580px !important;
+    height: 70px !important;
     margin: 0 !important;
     background-color: #000;
 
     .swiper-wrapper {
-        width: 600px !important;
+        width: 580px !important;
         .swiper-slide {
-            width: 150px;
+            width: 145px;
             opacity: 0.4;
 
             img {
-                width: 150px;
-                height: 100px;
+                width: 145px;
+                height: 70px;
                 object-fit: cover;
                 // border-radius: 10px;
             }
