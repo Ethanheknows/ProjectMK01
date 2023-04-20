@@ -160,22 +160,22 @@
                             <div class="row">
                                 <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper clickedSwiper">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide col-md-4" id="modal-image"></div>
+                                        <div class="swiper-slide" id="modal-image"></div>
                                         <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" class="col-md-4" />
+                                            <img src="/images/sample.jpg" alt="" class="modalImgMain" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" class="col-md-4" />
+                                            <img src="/images/sample.jpg" alt="" class="modalImgMain" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" class="col-md-4" />
+                                            <img src="/images/sample.jpg" alt="" class="modalImgMain" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" class="col-md-4" />
+                                            <img src="/images/sample.jpg" alt="" class="modalImgMain" />
                                         </div>
                                     </div>
-                                    <div class="swiper-button-next"></div>
-                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next pageNav"></div>
+                                    <div class="swiper-button-prev pageNav"></div>
                                 </div>
                                 <div thumbsSlider="" class="swiper clickedSwiperThumb">
                                     <div class="swiper-wrapper">
@@ -298,8 +298,8 @@
 
 
 
-                      $('#modal-image').html(`<img src="`+src+`" alt=""/>`)
-                      $('#modal-image_Thumb').html(`<img src="`+src+`" alt=""/>`)
+                      $('#modal-image').html(`<img src="`+src+`" alt="" class="modalImgMain"/>`)
+                      $('#modal-image_Thumb').html(`<img src="`+src+`" alt="" />`)
                       $("#comments-data").remove();
                       $('#comments').html(`<div id="comments-data"></div>`)
 
@@ -687,10 +687,12 @@
                         spaceBetween: 10,
                         slidesPerView: 4,
                         freeMode: true,
-                        watchSlidesProgress: true,
+                          watchSlidesProgress: true,
                       });
                       const clickedSwiper = new Swiper(".clickedSwiper", {
                         spaceBetween: 10,
+                        rewind: true,
+
                         navigation: {
                           nextEl: ".swiper-button-next",
                           prevEl: ".swiper-button-prev",
@@ -703,6 +705,14 @@
                       function clickedSwiperOpen() {
                         clickedSwiper.slideTo(0, 0, false)
                           }
+                          // 페이지네비게이션 호버
+                  $(document).on('mouseenter','.modalImgMain',function(){
+
+                          $(".pageNav").addClass("on")
+                        });
+                        $(document).on('mouseleave','.modalImgMain',function(){
+                          $(".pageNav").removeClass("on")
+                        });
                     /*]]>*/
         </script>
     </body>

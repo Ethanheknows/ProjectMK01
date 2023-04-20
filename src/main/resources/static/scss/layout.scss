@@ -445,6 +445,17 @@ body {
     height: 600px !important;
     margin: 0 !important;
     background-color: #000;
+    .pageNav {
+        opacity: 0;
+        transition: all 0.25s ease;
+        &:hover {
+            opacity: 1;
+        }
+        &.on {
+            opacity: 1;
+        }
+    }
+
     .swiper-wrapper {
         .swiper-slide {
             width: 600px;
@@ -461,6 +472,7 @@ body {
     height: 100px !important;
     margin: 0 !important;
     background-color: #000;
+
     .swiper-wrapper {
         width: 600px !important;
         .swiper-slide {
