@@ -97,7 +97,12 @@
 
                     <div class="bottomWrap">
                         <div class="addDelBtn">
-                            <div id="delGenCon" class="addGenCon off">
+                            <div id="addGenCon" class="addGenCon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                                </svg>
+                            </div>
+                            <div id="delGenCon" class="addGenCon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
                                 </svg>
@@ -106,11 +111,6 @@
                             <div class="addBarBox barBox2"></div>
                             <div class="addBarBox barBox3"></div>
                             <div class="addBarBox barBox4"></div>
-                            <div id="addGenCon" class="addGenCon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                                </svg>
-                            </div>
                         </div>
                         <div class="genCon">
                             <div class="anchorColor anchor1"></div>
@@ -426,20 +426,20 @@
                         txtBox3.value = "";
                         txtBox4.value = "";
 
-                        topRange.value=30;
-                        topRange2.value=50;
-                        topRange3.value=70;
-                        topRange4.value=90;
-                        
-                        leftRange.value=30;
-                        leftRange2.value=50;
-                        leftRange3.value=70;
-                        leftRange4.value=90;
-                        
-                        rotateRange.value=0;
-                        rotateRange2.value=0;
-                        rotateRange3.value=0;
-                        rotateRange4.value=0;
+                        topRange.value = 30;
+                        topRange2.value = 50;
+                        topRange3.value = 70;
+                        topRange4.value = 90;
+
+                        leftRange.value = 30;
+                        leftRange2.value = 50;
+                        leftRange3.value = 70;
+                        leftRange4.value = 90;
+
+                        rotateRange.value = 0;
+                        rotateRange2.value = 0;
+                        rotateRange3.value = 0;
+                        rotateRange4.value = 0;
 
                         colorPicker.value = "#ffffff";
                         colorPicker2.value = "#ffffff";
@@ -464,18 +464,18 @@
                     addBtn.addEventListener("click", function () {
                         if (isDelON2 === true) {
                             isDelON2 = false;
-                            genCon2.classList.add("show")
+                            genCon2.classList.add("show");
                             $(barBox2).addClass("on");
                             $(delBtn).removeClass("off");
                             // console.log(isDelON3,isDelON4);
                         } else if (isDelON3 === true) {
                             isDelON3 = false;
-                            genCon3.classList.add("show")
+                            genCon3.classList.add("show");
                             $(barBox3).addClass("on");
                             // console.log(isDelON3,isDelON4);
                         } else if (isDelON4 === true) {
                             isDelON4 = false;
-                            genCon4.classList.add("show")
+                            genCon4.classList.add("show");
                             $(barBox4).addClass("on");
                             $(addBtn).addClass("off");
                             // console.log(isDelON3,isDelON4);
@@ -486,29 +486,29 @@
                         if (isDelON4 === false) {
                             isDelON4 = true;
                             txtBox4.value = "";
-                            genCon4.classList.remove("show")
-                            topRange4.value=90;
-                            leftRange4.value=90;
-                            rotateRange4.value=0;
+                            genCon4.classList.remove("show");
+                            topRange4.value = 90;
+                            leftRange4.value = 90;
+                            rotateRange4.value = 0;
                             $(barBox4).removeClass("on");
                             $(addBtn).removeClass("off");
                             // console.log(isDelON3,isDelON4);
                         } else if (isDelON3 === false) {
                             isDelON3 = true;
                             txtBox3.value = "";
-                            topRange3.value=70;
-                            leftRange3.value=70;
-                            rotateRange3.value=0;
-                            genCon3.classList.remove("show")
+                            topRange3.value = 70;
+                            leftRange3.value = 70;
+                            rotateRange3.value = 0;
+                            genCon3.classList.remove("show");
                             $(barBox3).removeClass("on");
                             // console.log(isDelON3,isDelON4);
                         } else if (isDelON2 === false) {
                             isDelON2 = true;
                             txtBox2.value = "";
-                            topRange2.value=50;
-                            leftRange2.value=50;
-                            rotateRange2.value=0;
-                            genCon2.classList.remove("show")
+                            topRange2.value = 50;
+                            leftRange2.value = 50;
+                            rotateRange2.value = 0;
+                            genCon2.classList.remove("show");
                             $(barBox2).removeClass("on");
                             $(delBtn).addClass("off");
                             // console.log(isDelON3,isDelON4);
@@ -599,6 +599,7 @@
                     canvas.addEventListener("mouseup", onMouseUp);
 
                     const { src } = JSON.parse(localStorage.getItem("image-info"));
+                    console.log(src);
                     // 커스터 마이즈 버튼
                     $("#fileInput").on("change", function () {
                         var fileName = $("#fileInput").val();
