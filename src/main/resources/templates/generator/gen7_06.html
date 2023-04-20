@@ -426,10 +426,26 @@
                         txtBox3.value = "";
                         txtBox4.value = "";
 
+                        topRange.value=30;
+                        topRange2.value=50;
+                        topRange3.value=70;
+                        topRange4.value=90;
+                        
+                        leftRange.value=30;
+                        leftRange2.value=50;
+                        leftRange3.value=70;
+                        leftRange4.value=90;
+                        
+                        rotateRange.value=0;
+                        rotateRange2.value=0;
+                        rotateRange3.value=0;
+                        rotateRange4.value=0;
+
                         colorPicker.value = "#ffffff";
                         colorPicker2.value = "#ffffff";
                         colorPicker3.value = "#ffffff";
                         colorPicker4.value = "#ffffff";
+
                         fontColorPicked = "#ffffff";
                         fontColorPicked2 = "#ffffff";
                         fontColorPicked3 = "#ffffff";
@@ -448,18 +464,18 @@
                     addBtn.addEventListener("click", function () {
                         if (isDelON2 === true) {
                             isDelON2 = false;
-                            genCon2.style.display = "block";
+                            genCon2.classList.add("show")
                             $(barBox2).addClass("on");
                             $(delBtn).removeClass("off");
                             // console.log(isDelON3,isDelON4);
                         } else if (isDelON3 === true) {
                             isDelON3 = false;
-                            genCon3.style.display = "block";
+                            genCon3.classList.add("show")
                             $(barBox3).addClass("on");
                             // console.log(isDelON3,isDelON4);
                         } else if (isDelON4 === true) {
                             isDelON4 = false;
-                            genCon4.style.display = "block";
+                            genCon4.classList.add("show")
                             $(barBox4).addClass("on");
                             $(addBtn).addClass("off");
                             // console.log(isDelON3,isDelON4);
@@ -470,21 +486,29 @@
                         if (isDelON4 === false) {
                             isDelON4 = true;
                             txtBox4.value = "";
-                            genCon4.style.display = "none";
+                            genCon4.classList.remove("show")
+                            topRange4.value=90;
+                            leftRange4.value=90;
+                            rotateRange4.value=0;
                             $(barBox4).removeClass("on");
                             $(addBtn).removeClass("off");
                             // console.log(isDelON3,isDelON4);
                         } else if (isDelON3 === false) {
                             isDelON3 = true;
                             txtBox3.value = "";
-                            genCon3.style.display = "none";
+                            topRange3.value=70;
+                            leftRange3.value=70;
+                            rotateRange3.value=0;
+                            genCon3.classList.remove("show")
                             $(barBox3).removeClass("on");
-
                             // console.log(isDelON3,isDelON4);
                         } else if (isDelON2 === false) {
                             isDelON2 = true;
                             txtBox2.value = "";
-                            genCon2.style.display = "none";
+                            topRange2.value=50;
+                            leftRange2.value=50;
+                            rotateRange2.value=0;
+                            genCon2.classList.remove("show")
                             $(barBox2).removeClass("on");
                             $(delBtn).addClass("off");
                             // console.log(isDelON3,isDelON4);
