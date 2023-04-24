@@ -1,13 +1,15 @@
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
                 xmlns:th="http://www.thymeleaf.org" 
                 xmlns="http://www.thymeleaf.org"
                 layout:decorate="~{/layout/layout.html}">
 <head>
-  <title>delete</title>
+  <title>REPLYBOARD</title>
 </head>
 <body>
-  <div layout:fragment="contents ">
+  <div layout:fragment="contents">
         
     <form class="mt-5" action="/deleteProcess" method="post" th:object="${loginBoardDto}" enctype="multipart/form-data" >
       <h3>회원탈퇴 안내사항</h3>
@@ -29,9 +31,9 @@
         </div>
       </form>
 
+    </div>
 
-
-
+     
   </div>
 </body>
 
