@@ -35,6 +35,7 @@ public class MainController {
         List<ImageDto> allImages = imageService.getAllimages();
         List<ImageDto> orderByHitImages = imageService.orderByHitImages();
         log.info(orderByHitImages);
+        log.info(allImages);
         List<commentBoardDto> allcomments = imageService.getAllcomment();
         List<uploadDto> getUploadOrignalPath = imageService.getUploadOrignalPath();
         List<String> tagList = new ArrayList<>();
@@ -42,7 +43,6 @@ public class MainController {
             log.info(allImages.get(i).getTag());
             String tag = allImages.get(i).getTag();
             String[] tags = tag.split(",");
-            log.info(tags);
             for (int j = 0; j < tags.length; j++) {
                 if (!tagList.contains(tags[j])) {
                     tagList.add(tags[j]);
