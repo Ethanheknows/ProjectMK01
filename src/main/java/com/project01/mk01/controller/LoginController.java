@@ -1,6 +1,5 @@
 package com.project01.mk01.controller;
 
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +23,6 @@ import com.project01.mk01.dto.LoginBoardDto;
 import com.project01.mk01.dto.uploadDto;
 import com.project01.mk01.service.LoginBoardService;
 
-import lombok.val;
 import lombok.extern.log4j.Log4j2;
 
 @Controller

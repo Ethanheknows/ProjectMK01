@@ -1,6 +1,5 @@
 package com.project01.mk01.dto;
 
-import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 
 @Data

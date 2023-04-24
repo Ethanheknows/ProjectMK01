@@ -1,7 +1,5 @@
 package com.project01.mk01.dto;
 
-import java.sql.Blob;
-
 import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 
