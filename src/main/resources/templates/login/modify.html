@@ -24,8 +24,8 @@
         </div>
      
         <div class="col-md-6">
-          <label for="inputEmail4" class="form-label" >ID</label>
-          <input type="text" class="form-control id_modify" id="userId" name="userId" th:value="${session.board.userId}" >
+          <label for="inputEmail4" class="form-label" readonly>ID</label>
+          <input readonly type="text" class="form-control id_modify" id="userId" name="userId" th:value="${session.board.userId}" >
           <div id="id_div"></div>
           <!-- <p th:if="${#fields.hasErrors('userId')}" th:errorclass="errorTxt" th:errors="*{userId}"></p>
           <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button> -->
@@ -52,21 +52,16 @@
 
         </div>
    
-        <div>
           
           
 
 
+     
         <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
-          </div>
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Sign in</button>
+         
+          <button type="submit" class="btn btn-primary">MODIFY</button>
+            
+          
           <a href="/info" class="btn btn-secondary">CANCEL</a>
 
         </div>

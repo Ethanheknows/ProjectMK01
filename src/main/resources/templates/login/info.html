@@ -29,19 +29,57 @@
 
         </div>
 
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control userPw_confirm" id="userPw" name="userPw" th:value="${session.board.userPw}">
-
-        </div>
        
+        <div class="tag">
+          <h1 th:text="|${session.board.nickName}'s Meme|">MY Meme</h1>
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper myMeme"></div>
+          </div>
+        </div>
 
         <div class="col-12">
           <a href="/modify" class="btn btn-primary">MODIFY</a>
-          <a href="/login/delete" class="btn btn-warning">DELETE</a>
+          <a href="/delete" class="btn btn-warning">DELETE</a>
           <a href="/" class="btn btn-secondary">CANCEL</a>
         </div>
     </div>
+    <script>
+
+      const tag1 = document.querySelector(".tag1");
+      
+      $(function () {
+        for (i = 0; i < alluploads.length; i++) {
+          console.log(alluploads[i].userId);
+          console.log(String(session.board.userId));
+          console.log(alluploads[i].userId== '"'+session.board.userId+'"');
+          
+          if(alluploads[i].userId== '"'+session.board.userId+'"'){
+
+            $(".myMeme").append(
+              // prettier-ignored
+              
+              `<div class="swiper-slide"><a href="/upload/upload/` +
+                alluploads[i].renamed +
+                `" id="clickedImg" download><img src="/upload/upload/` +
+                alluploads[i].renamed +
+                `" alt="" /></a></div>`
+                );
+              }
+            }
+      });
+
+      const swiper = new Swiper(".swiper", {
+       
+        observer: true,
+        observeParents: true, // 이 두줄 있어야지 스와이프 내부 For문 돌아감  %중요
+        slidesPerView: 6,
+        centeredSlides: true,
+
+     
+      });
+
+  
+    </script>
   </div>
 </body>
 

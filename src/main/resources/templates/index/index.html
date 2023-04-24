@@ -66,6 +66,17 @@
           </div>
         </div>
       </div>
+
+      <div class="category02 hidden" id="category02">
+        <h1 id="selectTag" th:utext="${tag}" th:value="'all'" style="cursor: pointer"></h1>
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper tag3">
+                         
+            </div>
+         </div>
+      </div>
+
+
       <div class="category">
         <h1 id="clickTag" th:utext="'#Hottest'" th:value="'all'" style="cursor: pointer"></h1>
         <div class="swiper mySwiper">
@@ -76,10 +87,11 @@
                                         <img id="image" th:src="@{|/upload/jpg/${item.original}|}" class="card-img-top image" alt="...">
                                 </a>
                             </div>          
-                        </tr> -->
+            </tr> -->
           </div>
         </div>
       </div>
+
 
       <div class="tag">
         <h1>#GIF</h1>
@@ -99,7 +111,10 @@
                   allImages[i].original +
                   `" alt="" /></a></div>`
               );
-            } else {
+            } 
+            
+            
+            else {
               $(".tagGif").append(
                 // prettier-ignored
                 `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +

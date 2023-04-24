@@ -6,7 +6,7 @@
 
     <select id="searchBoard" resultType="LoginBoardDto" parameterType="LoginBoardDto" >
 
-        select * from signup where userid = #{userId} and  userpw = #{userPw}
+        select * from signup where userid = #{userId} and  userpw = #{userPw} and existence = 1
         
     </select>
     <select id="idCheck" resultType="Integer" parameterType="LoginBoardDto" >
@@ -28,12 +28,32 @@
         #{nickName},
         #{userId},
         #{userPw},
-        #{userEmail}
-      
+        #{userEmail},
+        1
             )
 
       
     </insert>
+
+    <update id="deleteAccount" parameterType="LoginBoardDto" >
+        update signup set existence=0 
+        where nickname=#{nickName} and userid = #{userId}  
+    </update>
+
+    
+    <update id="updateBoard" parameterType="LoginBoardDto" >
+
+      UPDATE signup
+      SET nickname =  #{nickName} , userpw=#{userPw},useremail= #{userEmail}
+      where userid=#{userId}
+    </update>
+
+    <select id="getAllupload" resultType="uploadDto"  >
+
+      SELECT * FROM uploadboard 
+        
+    </select>
+
 
 
 

@@ -31,4 +31,4 @@ mybatis:
     config-location: classpath:mapper/config/config.xml
 
 file:
-    path: C:/project01/upload/
+  path: C:/project01/upload/

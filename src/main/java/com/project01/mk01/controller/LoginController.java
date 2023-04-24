@@ -1,22 +1,31 @@
 package com.project01.mk01.controller;
 
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project01.mk01.dto.LoginBoardDto;
+import com.project01.mk01.dto.uploadDto;
 import com.project01.mk01.service.LoginBoardService;
 
+import lombok.val;
 import lombok.extern.log4j.Log4j2;
 
 @Controller
@@ -53,6 +62,37 @@ public class LoginController {
 
     }
 
+    @GetMapping("/delete")
+    public String delete() {
+
+        return "/login/delete";
+    }
+
+    @PostMapping("/deleteAccountProcess")
+    @ResponseBody
+    public Map<String, Object> deleteAccountProcess(HttpServletRequest request, LoginBoardDto loginBoardDto,
+            RedirectAttributes redirectAttributes) {
+        log.info(loginBoardDto);
+
+        int result = loginBoardService.deleteAccount(loginBoardDto);
+
+        HttpSession session = request.getSession();
+        session.removeAttribute("board");
+
+        Map<String, Object> sendJson = new HashMap<>();
+        if (result > 0) {
+            // replyJsonDto.setMsg("ok");
+            sendJson.put("msg", "ok");
+
+        } else {
+            // replyJsonDto.setMsg("fail");
+            sendJson.put("msg", "fail");
+        }
+        // return replyJsonDto;
+
+        return sendJson;
+    }
+
     @GetMapping("/signup")
     public String signup(LoginBoardDto loginBoardDto, Model model) {
         model.addAttribute("loginBoardDto", new LoginBoardDto());
@@ -63,9 +103,32 @@ public class LoginController {
     public String signProcess(@Valid LoginBoardDto loginBoardDto, BindingResult bindingResult,
             RedirectAttributes redirectAttributes,
             Model model) {
-        if (bindingResult.hasErrors()) {
+        String errormessage = "";
+        int idChk = loginBoardService.idCheck(loginBoardDto);
+        int nickChk = loginBoardService.nickNameCheck(loginBoardDto);
+        String pw = loginBoardDto.getUserPw();
+        String pwchk = loginBoardDto.getUserPwCheck();
+        Map<String, String> errorMap = new HashMap<>();
+        for (FieldError error : bindingResult.getFieldErrors()) {
+
+            errorMap.put(error.getField(), error.getDefaultMessage());
+            log.info(error.getDefaultMessage());
+            errormessage = error.getDefaultMessage();
+        }
+        if (nickChk != 0) {
+            redirectAttributes.addFlashAttribute("msg", "이미 사용중이거나 탈퇴한 닉네임입니다.");
+            return "redirect:/signup";
+        } else if (idChk != 0) {
+            redirectAttributes.addFlashAttribute("msg", "이미 사용중이거나 탈퇴한 ID입니다.");
+            return "redirect:/signup";
+        } else if (!pw.equals(pwchk)) {
+            redirectAttributes.addFlashAttribute("msg", "비밀번호가 비밀번호 확인 입력칸과 일치하지 않습니다.");
+            return "redirect:/signup";
+        } else if (bindingResult.hasErrors()) {
             log.info("sdsdsdsdsssssssssssss");
-            return "/login/signup";
+            log.info("modifyerror");
+            redirectAttributes.addFlashAttribute("msg", errormessage);
+            return "redirect:/signup";
         } else {
 
             loginBoardService.signup(loginBoardDto);
@@ -73,6 +136,49 @@ public class LoginController {
             redirectAttributes.addFlashAttribute("title", "회원 가입 성공");
             return "redirect:/login";
         }
+
+    }
+
+    @PostMapping("/modifyProcess")
+    public String modifyProcess(@Valid LoginBoardDto loginBoardDto, BindingResult bindingResult,
+            RedirectAttributes redirectAttributes, Model model, HttpSession session) {
+        String errormessage = "";
+        Map<String, String> errorMap = new HashMap<>();
+        int nickChk = loginBoardService.nickNameCheck(loginBoardDto);
+        String nickName = loginBoardDto.getNickName();
+        String pw = loginBoardDto.getUserPw();
+        String pwchk = loginBoardDto.getUserPwCheck();
+        Object obj = session.getAttribute("board");
+
+        log.info("aaaaa");
+        LoginBoardDto board = (LoginBoardDto) obj;
+
+        for (FieldError error : bindingResult.getFieldErrors()) {
+            errorMap.put(error.getField(), error.getDefaultMessage());
+            log.info(error.getDefaultMessage());
+            errormessage = error.getDefaultMessage();
+        }
+        if (nickChk != 0 && !nickName.equals(board.getNickName())) {
+            log.info("asdasd");
+            redirectAttributes.addFlashAttribute("msg", "이미 사용중이거나 탈퇴한 닉네임입니다.");
+            return "redirect:/modify";
+        } else if (!pw.equals(pwchk)) {
+            redirectAttributes.addFlashAttribute("msg", "비밀번호가 비밀번호 확인 입력칸과 일치하지 않습니다.");
+            return "redirect:/modify";
+        } else if (bindingResult.hasErrors()) {
+            log.info("modifyerror");
+            redirectAttributes.addFlashAttribute("msg", errormessage);
+
+            return "redirect:/modify";
+        } else {
+
+            loginBoardService.updateBoard(loginBoardDto);
+            redirectAttributes.addFlashAttribute("msg", "회원정보가 수정되었니다.");
+            redirectAttributes.addFlashAttribute("title", "회원 수정 성공");
+            return "redirect:/info";
+        }
+
+        // board 객체를 사용하는 코드 작성
 
     }
 
@@ -99,7 +205,10 @@ public class LoginController {
     }
 
     @GetMapping("/info")
-    public String info() {
+    public String info(Model model, HttpServletRequest request, HttpSession httpSession) {
+        List<uploadDto> alluploads = loginBoardService.getAllupload();
+        log.info(alluploads);
+        model.addAttribute("alluploads", alluploads);
         return "/login/info";
     }
 

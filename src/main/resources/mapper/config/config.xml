@@ -8,5 +8,6 @@
     <typeAlias alias="LoginBoardDto" type="com.project01.mk01.dto.LoginBoardDto" />
     <typeAlias alias="ImageDto" type="com.project01.mk01.dto.ImageDto" />
     <typeAlias alias="commentBoardDto" type="com.project01.mk01.dto.commentBoardDto" />
+    <typeAlias alias="uploadDto" type="com.project01.mk01.dto.uploadDto" />
   </typeAliases>
 </configuration>

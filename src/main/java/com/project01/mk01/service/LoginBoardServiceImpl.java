@@ -1,10 +1,13 @@
 package com.project01.mk01.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project01.mk01.dao.LoginBoardDao;
 import com.project01.mk01.dto.LoginBoardDto;
+import com.project01.mk01.dto.uploadDto;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -54,10 +57,28 @@ public class LoginBoardServiceImpl implements LoginBoardService {
         return result;
     }
 
+    public int updateBoard(LoginBoardDto loginBoardDto) {
+        // TODO Auto-generated method stub
+
+        int result = loginBoardDao.updateBoard(loginBoardDto);
+        return result;
+    }
+
+    public int deleteAccount(LoginBoardDto loginBoardDto) {
+        // TODO Auto-generated method stub
+        int result = loginBoardDao.deleteAccount(loginBoardDto);
+        return result;
+    }
+
     public int nickNameCheck(LoginBoardDto loginBoardDto) {
         // TODO Auto-generated method stub
 
         int result = loginBoardDao.nickNameCheck(loginBoardDto);
+        return result;
+    }
+
+    public List<uploadDto> getAllupload() {
+        List<uploadDto> result = loginBoardDao.getAllupload();
         return result;
     }
 

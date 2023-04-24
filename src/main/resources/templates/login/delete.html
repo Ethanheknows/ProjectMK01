@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+                xmlns:th="http://www.thymeleaf.org" 
+                xmlns="http://www.thymeleaf.org"
+                layout:decorate="~{/layout/layout.html}">
+<head>
+  <title>delete</title>
+</head>
+<body>
+  <div layout:fragment="contents ">
+        
+    <form class="mt-5" action="/deleteProcess" method="post" th:object="${loginBoardDto}" enctype="multipart/form-data" >
+      <h3>회원탈퇴 안내사항</h3>
+          <ul>
+            <li>탈퇴 전에는 반드시 회원정보를 확인해주세요. 회원정보에는 개인정보가 포함되어 있으므로, 정확하게 입력되어 있는지 확인하시고 수정이 필요한 부분이 있다면 수정해주세요.</li>
+            <li>탈퇴 시에는 모든 데이터가 삭제됩니다. 회원님의 모든 데이터가 삭제됩니다. 이는 복구가 불가능하므로, 탈퇴 전에는 꼭 필요한 데이터를 백업해두시기 바랍니다.</li>
+            <li>탈퇴 후에는 재가입이 불가능합니다. 해당 사이트나 서비스에 재가입이 불가능합니다. 따라서, 탈퇴 전에는 재가입이 필요한 경우를 고려해보시기 바랍니다.</li>
+            <li>탈퇴 시에는 보유중인 포인트나 적립금 등이 소멸됩니다. 보유중인 포인트나 적립금 등이 소멸됩니다. 이는 회원님의 손실이 될 수 있으므로, 탈퇴 전에는 꼭 사용하시기 바랍니다.</li>
+            <li>탈퇴 시에는 서비스 이용이 불가능합니다. 해당 사이트나 서비스의 모든 기능을 이용할 수 없습니다. 따라서, 탈퇴 전에는 서비스 이용에 필요한 기능을 확인하시기 바랍니다.</li>
+            <li>탈퇴 시에는 이용약관 및 개인정보처리방침을 확인해주세요. 이는 회원님의 권리와 의무를 명확하게 알려주는 중요한 문서입니다.</li>
+            <li>위의 유의사항을 꼭 확인하시고, 회원탈퇴를 결정하시기 바랍니다. 회원탈퇴는 회원님의 자유의사에 따라 결정하시면 됩니다.</li>
+          </ul>
+  
+        <div class="col-12">
+         
+          <a href="#" type="button" class="btnInfo btn btn-primary">delete</a>
+          <a href="/" class="btn btn-secondary">CANCEL</a>
+
+        </div>
+      </form>
+
+
+
+
+  </div>
+</body>
+
+</html>

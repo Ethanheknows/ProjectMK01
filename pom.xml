@@ -74,7 +74,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 				<version>20200518</version>
 			</dependency>
 			
-  
+			<!-- https://mvnrepository.com/artifact/servlets.com/cos -->
+			<dependency>
+				<groupId>servlets.com</groupId>
+				<artifactId>cos</artifactId>
+				<version>05Nov2002</version>
+			</dependency>
+
 		</dependencies>
 		
 		

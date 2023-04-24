@@ -1,7 +1,11 @@
 package com.project01.mk01.controller;
 
+import java.io.Console;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,11 +14,15 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project01.mk01.dto.ImageDto;
+import com.project01.mk01.dto.uploadDto;
 import com.project01.mk01.service.ImageService;
 
 @Controller
@@ -41,7 +49,6 @@ public class ImageController {
             // log.info(allImages.get(i).getTag());
             String tag = allImages.get(i).getTag();
             String[] tags = tag.split(",");
-            log.info(tags);
             for (int j = 0; j < tags.length; j++) {
                 if (!tagList.contains(tags[j])) {
                     tagList.add(tags[j]);
@@ -79,10 +86,26 @@ public class ImageController {
         return "redirect:/";
     }
 
-    @GetMapping("/comment")
-    public String comment() {
-        log.info("dddddddddddddd");
-        return "/gallery/comment";
+    // @GetMapping("/comment")
+    // public String comment() {
+    // log.info("dddddddddddddd");
+    // return "/gallery/comment";
+    // }
+
+    // @PostMapping("/saveIamge")
+    // public String saveIamge(@RequestParam(value = "file", required = true)
+    // MultipartFile[] file) {
+
+    // log.info("file size : ", file[0].getSize()); // 서버로 무사히 안착됨
+
+    // return "";
+    // }
+
+    @PostMapping("/saveImage")
+    public String saveImage(uploadDto uploadDto) {
+        log.info(uploadDto);
+        imageService.insertImage(uploadDto);
+        return "redirect:/";
     }
 
     // @PostMapping("/getReply/{no}")

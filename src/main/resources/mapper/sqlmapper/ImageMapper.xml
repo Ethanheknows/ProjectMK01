@@ -17,7 +17,7 @@
         )
       </insert>
 
-
+   
 
       <select id="getAllimages" resultType="ImageDto">
 
@@ -36,6 +36,23 @@
       </select>
       
 
+      <select id="getUploadOrignalPath" resultType="uploadDto">
+        select renamed, originalpath from uploadboard  
+      </select>
 
+
+
+      <insert id="insertImage" parameterType="uploadDto">
+        INSERT INTO  uploadboard values (
+          UPLOADBOARD_SEQ.NEXTVAL,
+          #{userId},
+          #{original},
+          #{renamed},
+          SYSDATE,
+          #{originalPath}
+        )
+      </insert>
+
+   
       
 </mapper>
