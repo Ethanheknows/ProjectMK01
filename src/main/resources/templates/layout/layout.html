@@ -161,7 +161,6 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper clickedSwiper">
-<<<<<<< HEAD
                                     <div class="swiper-wrapper click-modal=slide" id="click-modal-slide">
                                     </div>
                                     <div id="prev-next-btn">
@@ -175,43 +174,6 @@
                                     </div>
                                 </div>
 
-=======
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide" id="modal-image"></div>
-                                        <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" class="modalImgMain" />
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" class="modalImgMain" />
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" class="modalImgMain" />
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" class="modalImgMain" />
-                                        </div>
-                                    </div>
-                                    <div class="swiper-button-next pageNav"></div>
-                                    <div class="swiper-button-prev pageNav"></div>
-                                </div>
-                                <div thumbsSlider="" class="swiper clickedSwiperThumb">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide" id="modal-image_Thumb"></div>
-                                        <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" />
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" />
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" />
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/images/sample.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                </div>
->>>>>>> a719c0eacce10f016c22559b7aa5739152eec7ae
                                 <div class="col-md-4 ms-auto">
                                     <p>클릭한 이미지 어디까지 되는지 테스트 해보는중</p>
                                 </div>
@@ -413,36 +375,33 @@
           //
           // });
 
-
-<<<<<<< HEAD
-        
-=======
-
-                      $('#modal-image').html(`<img src="`+src+`" alt="" class="modalImgMain"/>`)
-                      $('#modal-image_Thumb').html(`<img src="`+src+`" alt="" />`)
-                      $("#comments-data").remove();
-                      $('#comments').html(`<div id="comments-data"></div>`)
-
-                      for(i = 0;i<allcomments.length;i++){
-                        console.log(ogsrc)
-
-                        if(allcomments[i].original==ogsrc && allcomments[i].available==0){
-                          console.log(i+"번 삽입");
-                          $('#comments-data').append(`
-                          <tr>
-                          <td class="text-start ps-sm-5 "">
-                          <td>
-                            `+allcomments[i].contents+`
-                          </td>
-                          </td>
-                          <td>`+allcomments[i].nickName+`</td>
-                          <td>`+allcomments[i].regDate+`</td>
-                          </tr>
-                          `)
-                        }
-
-                      }
->>>>>>> a719c0eacce10f016c22559b7aa5739152eec7ae
+//
+//
+             //         $('#modal-image').html(`<img src="`+src+`" alt="" class="modalImgMain"/>`)
+             //         $('#modal-image_Thumb').html(`<img src="`+src+`" alt="" />`)
+             //         $("#comments-data").remove();
+             //         $('#comments').html(`<div id="comments-data"></div>`)
+//
+             //         for(i = 0;i<allcomments.length;i++){
+             //           console.log(ogsrc)
+//
+             //           if(allcomments[i].original==ogsrc && allcomments[i].available==0){
+             //             console.log(i+"번 삽입");
+             //             $('#comments-data').append(`
+             //             <tr>
+             //             <td class="text-start ps-sm-5 "">
+             //             <td>
+             //               `+allcomments[i].contents+`
+             //             </td>
+             //             </td>
+             //             <td>`+allcomments[i].nickName+`</td>
+             //             <td>`+allcomments[i].regDate+`</td>
+             //             </tr>
+             //             `)
+             //           }
+//
+             //         }
+//
 
 
 
@@ -451,8 +410,6 @@
 
 
 
-
-<<<<<<< HEAD
          
           $(document).on('click','#clickTag',function(e){
             var selectTag=$(this).attr("value");
@@ -469,27 +426,6 @@
                 $("#category02").addClass("hidden");
                 
                           //$(".category02").addClass("hidden");
-=======
-
-                      e.preventDefault();
-
-                      console.log("이미지 클릭중===============")
-                      imgModal.show();
-                      clickedSwiperOpen();
-                     });
-
-
-
-                    $(document).on('click','#clickTag',function(e){
-                      var selectTag=$(this).attr("value");
-                      $(".swiper-slide").remove();
-                      $('.tag1').html(`<div class="swiper-slide"></div>`)
-
-                      for(i = 0;i<allImages.length;i++){
-                        var allTag= allImages[i].tag;
-                        if(allTag.includes(selectTag)){
-
->>>>>>> a719c0eacce10f016c22559b7aa5739152eec7ae
                           if(!allImages[i].original.includes("gif")){
 
                             $(".tag1").append(
@@ -865,7 +801,6 @@
 
                     })
 
-<<<<<<< HEAD
                     $(".btnInfo").on("click",function(){
                       console.log("uuuu");       
                       deleteModal.show();
@@ -954,48 +889,6 @@
                     function clickedSwiperOpen() {
                     
                         }
-=======
-                    // const clickedSwiper = new Swiper(".clickedSwiper", {
-                    //     direction: "vertical",
-                    //     slidesPerView: 1,
-                    //     spaceBetween: 30,
-                    //     mousewheel: true,
-                    //     pagination: {
-                    //       el: ".swiper-pagination",
-                    //       clickable: true,
-                    //     },
-                    //   });
-                      const clickedSwiperThumb = new Swiper(".clickedSwiperThumb", {
-                        spaceBetween: 10,
-                        slidesPerView: 4,
-                        freeMode: true,
-                          watchSlidesProgress: true,
-                      });
-                      const clickedSwiper = new Swiper(".clickedSwiper", {
-                        spaceBetween: 10,
-                        rewind: true,
-
-                        navigation: {
-                          nextEl: ".swiper-button-next",
-                          prevEl: ".swiper-button-prev",
-                        },
-                        thumbs: {
-                          swiper: clickedSwiperThumb  ,
-                        },
-                      });
-                      // 모달 띄울때 맨 처음 사진으로 가게 하는 함수
-                      function clickedSwiperOpen() {
-                        clickedSwiper.slideTo(0, 0, false)
-                          }
-                          // 페이지네비게이션 호버
-                  $(document).on('mouseenter','.modalImgMain',function(){
-
-                          $(".pageNav").addClass("on")
-                        });
-                        $(document).on('mouseleave','.modalImgMain',function(){
-                          $(".pageNav").removeClass("on")
-                        });
->>>>>>> a719c0eacce10f016c22559b7aa5739152eec7ae
                     /*]]>*/
         </script>
     </body>
