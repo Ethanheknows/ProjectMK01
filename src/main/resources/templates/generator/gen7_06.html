@@ -420,73 +420,57 @@
                             }
                         });
                     }
-                    
+
                     function uploadImg() {
-                      
-                      commentsModal.show();
-                      $("#commentsModal .modal-title").text("이미지 업로드");
-                      $("#commentsModal .modal-body").text("이미지를 업로드 하시겠습니까?");
+                        commentsModal.show();
+                        $("#commentsModal .modal-title").text("이미지 업로드");
+                        $("#commentsModal .modal-body").text("이미지를 업로드 하시겠습니까?");
 
-                      $("#commentsModal .memo-modal-button-yes").on("click", function() {
-                   
-                        
-                      
-                      
-                     
+                        $("#commentsModal .memo-modal-button-yes").on("click", function () {
+                            drawCanvas(false);
+                            var imgDataUrl = canvas.toDataURL("image/png");
+                            var blobBin = atob(imgDataUrl.split(",")[1]); // base64 데이터 디코딩
+                            var array = [];
+                            for (var i = 0; i < blobBin.length; i++) {
+                                array.push(blobBin.charCodeAt(i));
+                            }
+                            console.log(src);
+                            var file = new Blob([new Uint8Array(array)], { type: "image/png" }); // Blob 생성
+                            var formdata = new FormData(); // formData 생성
+                            formdata.append("file", file); // file data 추가
+                            try {
+                                session.board.nickName != null;
+                                formdata.append("userId", JSON.stringify(session.board.userId));
+                                console.log("aaa");
+                                formdata.append("originalPath", src);
+                            } catch {
+                                formdata.append("userId", JSON.stringify("guest"));
+                                formdata.append("originalPath", src);
+                                console.log("bbb");
+                            }
 
+                            $.ajax({
+                                url: "/saveImage",
+                                type: "post",
+                                data: formdata,
 
-
-
-                      drawCanvas(false);
-                      var imgDataUrl = canvas.toDataURL('image/png');     
-                      var blobBin = atob(imgDataUrl.split(',')[1]);	// base64 데이터 디코딩
-                      var array = [];
-                      for (var i = 0; i < blobBin.length; i++) {
-                          array.push(blobBin.charCodeAt(i));
-                      }
-                        console.log(src);
-                      var file = new Blob([new Uint8Array(array)], {type: 'image/png'});	// Blob 생성
-                      var formdata = new FormData();	// formData 생성
-                      formdata.append("file", file);	// file data 추가
-                      try{
-                        
-                          session.board.nickName!=null;
-                          formdata.append("userId", JSON.stringify(session.board.userId))                      
-                          console.log("aaa")
-                          formdata.append("originalPath", src)                      
-
-                      }catch{
-                          formdata.append("userId", JSON.stringify("guest"))
-                          formdata.append("originalPath", src)
-                          console.log("bbb")
-
-                      }
-
-                      $.ajax({
-                          url : "/saveImage",
-                          type : 'post',
-                          data: formdata,
-                         
-                          processData : false,	// data 파라미터 강제 string 변환 방지!!
-                          contentType : false,	// application/x-www-form-urlencoded; 방지!!
-                          success : function (data) {
-                            memoModal.show();
-                            $("#memoModal .modal-title").text("이미지 업로드");
-                            $("#memoModal .modal-body").text("이미지를 업로드 하였습니다.");
-                            $("#memoModal .memo-modal-button").on("click", function() {
-                              location.href = "/";
-                              }); 
-
-                         
-                          },
-                          error: function(xhr, status, error) {
-                            // ajax 요청이 실패하면 실행되는 함수
-                            console.log(error);
-                          }
-                      });
-                    }); 
+                                processData: false, // data 파라미터 강제 string 변환 방지!!
+                                contentType: false, // application/x-www-form-urlencoded; 방지!!
+                                success: function (data) {
+                                    memoModal.show();
+                                    $("#memoModal .modal-title").text("이미지 업로드");
+                                    $("#memoModal .modal-body").text("이미지를 업로드 하였습니다.");
+                                    $("#memoModal .memo-modal-button").on("click", function () {
+                                        location.href = "/";
+                                    });
+                                },
+                                error: function (xhr, status, error) {
+                                    // ajax 요청이 실패하면 실행되는 함수
+                                    console.log(error);
+                                },
+                            });
+                        });
                     }
-
 
                     // 리셋버튼
                     function resetForm() {
@@ -669,12 +653,16 @@
 
                     const { src } = JSON.parse(localStorage.getItem("image-info"));
                     console.log(src);
+
                     // 커스터 마이즈 버튼
+
                     $("#fileInput").on("change", function () {
                         var fileName = $("#fileInput").val();
                         $(".upload-name").val(fileName);
                     });
+
                     //generator image 띄우기
+
                     img = new Image();
                     img.src = src;
                     img.onload = function () {
@@ -691,6 +679,7 @@
                         downloadLinkJPG.style.display = "block";
                         drawCanvas();
                     };
+
                     // 파일 불러올때 비율 맞춰주는 메소드
 
                     fileInput.addEventListener("change", () => {
