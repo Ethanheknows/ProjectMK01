@@ -31,8 +31,10 @@ public class MainController {
     ImageService imageService;
 
     @GetMapping("/")
-    public String index(Model model, Model model2, Model model3, Model model4) {
+    public String index(Model model, Model model2, Model model3, Model model4, Model model5) {
         List<ImageDto> allImages = imageService.getAllimages();
+        List<ImageDto> orderByHitImages = imageService.orderByHitImages();
+        log.info(orderByHitImages);
         List<commentBoardDto> allcomments = imageService.getAllcomment();
         List<uploadDto> getUploadOrignalPath = imageService.getUploadOrignalPath();
         List<String> tagList = new ArrayList<>();
@@ -54,7 +56,8 @@ public class MainController {
         model.addAttribute("allImages", allImages);
         model2.addAttribute("tags", tagList);
         model3.addAttribute("allcomments", allcomments);
-        model3.addAttribute("getUploadOrignalPath", getUploadOrignalPath);
+        model4.addAttribute("getUploadOrignalPath", getUploadOrignalPath);
+        model5.addAttribute("orderByHitImages", orderByHitImages);
         return "/index/index";
     }
 

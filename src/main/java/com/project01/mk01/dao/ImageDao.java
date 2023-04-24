@@ -15,9 +15,13 @@ public interface ImageDao {
 
     List<ImageDto> getAllimages();
 
+    List<ImageDto> orderByHitImages();
+
     List<uploadDto> getUploadOrignalPath();
 
     List<commentBoardDto> getAllcomment();
 
     int insertImage(uploadDto uploadDto);
+
+    int hitUp(ImageDto imageDto);
 }

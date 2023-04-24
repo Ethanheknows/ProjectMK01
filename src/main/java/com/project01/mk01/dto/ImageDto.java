@@ -12,5 +12,6 @@ public class ImageDto {
     private MultipartFile file; // insert.html에 file의 name
     private String original;
     private String regDate;
+    private int hit;
 
 }

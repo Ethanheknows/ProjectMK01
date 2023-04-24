@@ -66,6 +66,13 @@ public class ImageServiceImpl implements ImageService {
 
     }
 
+    public List<ImageDto> orderByHitImages() {
+
+        List<ImageDto> result = imageDao.orderByHitImages();
+        return result;
+
+    }
+
     public List<uploadDto> getUploadOrignalPath() {
 
         List<uploadDto> result = imageDao.getUploadOrignalPath();
@@ -104,4 +111,11 @@ public class ImageServiceImpl implements ImageService {
 
         return result;
     }
+
+    @Override
+    public int hitUp(ImageDto imagedto) {
+        int result = imageDao.hitUp(imagedto);
+        return result;
+    }
+
 }

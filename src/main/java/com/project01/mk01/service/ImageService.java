@@ -12,9 +12,13 @@ public interface ImageService {
 
     public List<ImageDto> getAllimages();
 
+    public List<ImageDto> orderByHitImages();
+
     public List<uploadDto> getUploadOrignalPath();
 
     public List<commentBoardDto> getAllcomment();
 
     public int insertImage(uploadDto uploadDto);
+
+    public int hitUp(ImageDto ImageDto);
 }

@@ -182,7 +182,7 @@
                     </div>
                     <div class="modal-footer">
                         <a href="/gen" id="generator" class="btn btn-primary">Generate</a>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="closeModal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -237,6 +237,7 @@
                     const session = /*[[${session}]]*/;
                     const allImages = /*[[${allImages}]]*/;
                     const allcomments = /*[[${allcomments}]]*/;
+                    const orderByHitImages = /*[[${orderByHitImages}]]*/;
                     const alluploads = /*[[${alluploads}]]*/;
                     const getUploadOrignalPath = /*[[${getUploadOrignalPath}]]*/;
                     const headerS = document.querySelector(".headerS");
@@ -247,6 +248,10 @@
                     const footerS = document.querySelector(".footerS");
                  
 
+                   // document.getElementById("closeModal").addEventListener("click", function() {
+                   //   location.reload();
+                   // 
+                   // });
 
                     function email_check(email) {
 
@@ -321,6 +326,28 @@
                                                 
                                                   console.log("이미지 클릭중===============");
                                                   imgModal.show();
+
+
+                                                  $.ajax({
+                                                    url : "/hitProcess" ,
+                                                    type : "post",
+                                                    dataType : "json",
+                                                    data : {"original" : ogsrc},
+                                                    success : function(data){
+                                                      if(data == 0){
+                                                        
+                                                       }else{
+                                                            
+                                                      }
+                                                    }
+                                                  })
+
+
+
+
+
+
+
                                                 });                                               
                   
                   //tag누르면 png gif
@@ -424,7 +451,15 @@
               if(selectTag=="all"){
                 //addclass hidden
                 $("#category02").addClass("hidden");
-                
+                if (!orderByHitImages[i].original.includes("gif")) {
+            
+                  $(".tag2").append(
+                    // prettier-ignored
+                    `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                      orderByHitImages[i].original +
+                      `" alt="" /></a></div>`
+                  );
+                } 
                           //$(".category02").addClass("hidden");
                           if(!allImages[i].original.includes("gif")){
 
@@ -443,16 +478,22 @@
                                     );
                                 }
                         
-                        }else{
+                  }else{
 
-                          if (element.classList.contains('hidden')) {
-                         
-                            $("#category02").removeClass("hidden");
-                            
-
+                    if (element.classList.contains('hidden')) {                 
+                      $("#category02").removeClass("hidden");
                         }
                         const source = document.getElementById('selectTag');
                         source.innerHTML = "#"+selectTag;
+                        if (!orderByHitImages[i].original.includes("gif")) {
+            
+                          $(".tag2").append(
+                            // prettier-ignored
+                            `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                              orderByHitImages[i].original +
+                              `" alt="" /></a></div>`
+                          );
+                        } 
                           if(!allImages[i].original.includes("gif")){
                             if(allTag.includes(selectTag)){
                             $(".tag3").append(
@@ -468,7 +509,17 @@
                                     allImages[i].original +
                                     `" alt="" /></a></div>`
                                     );
+                                  
                           }else{
+                            if (!orderByHitImages[i].original.includes("gif")) {
+            
+                              $(".tag2").append(
+                                // prettier-ignored
+                                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                                  orderByHitImages[i].original +
+                                  `" alt="" /></a></div>`
+                              );
+                            } 
                             if(allTag.includes(selectTag)){
                             $(".tag3").append(
                               // prettier-ignored

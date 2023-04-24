@@ -104,6 +104,16 @@
         const tag1 = document.querySelector(".tag1");
         $(function () {
           for (i = 0; i < allImages.length; i++) {
+
+          if (!orderByHitImages[i].original.includes("gif")) {
+            
+            $(".tag2").append(
+              // prettier-ignored
+              `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                orderByHitImages[i].original +
+                `" alt="" /></a></div>`
+            );
+          } 
             if (!allImages[i].original.includes("gif")) {
               $(".tag1").append(
                 // prettier-ignored
@@ -111,6 +121,7 @@
                   allImages[i].original +
                   `" alt="" /></a></div>`
               );
+  
             } 
             
             
@@ -121,6 +132,8 @@
                   allImages[i].original +
                   `" alt="" /></a></div>`
               );
+          
+  
             }
           }
         });

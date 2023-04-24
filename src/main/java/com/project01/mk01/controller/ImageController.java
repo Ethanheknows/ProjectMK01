@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project01.mk01.dto.ImageDto;
@@ -39,31 +40,31 @@ public class ImageController {
     // model.addAttribute("imageList", imageList);
     // return "/gallery/list";
     // }
-    @GetMapping("/view")
-    public String view(Model model, Model model2) {
-        log.info("allImages===========");
+    // @GetMapping("/view")
+    // public String view(Model model, Model model2) {
+    // log.info("allImages===========");
 
-        List<ImageDto> allImages = imageService.getAllimages();
-        List<String> tagList = new ArrayList<>();
-        for (int i = 0; i < allImages.size(); i++) {
-            // log.info(allImages.get(i).getTag());
-            String tag = allImages.get(i).getTag();
-            String[] tags = tag.split(",");
-            for (int j = 0; j < tags.length; j++) {
-                if (!tagList.contains(tags[j])) {
-                    tagList.add(tags[j]);
-                    log.info(tags[j]);
+    // List<ImageDto> allImages = imageService.getAllimages();
+    // List<String> tagList = new ArrayList<>();
+    // for (int i = 0; i < allImages.size(); i++) {
+    // // log.info(allImages.get(i).getTag());
+    // String tag = allImages.get(i).getTag();
+    // String[] tags = tag.split(",");
+    // for (int j = 0; j < tags.length; j++) {
+    // if (!tagList.contains(tags[j])) {
+    // tagList.add(tags[j]);
+    // log.info(tags[j]);
 
-                }
-            }
+    // }
+    // }
 
-        }
+    // }
 
-        model.addAttribute("allImages", allImages);
-        model2.addAttribute("tags", tagList);
+    // model.addAttribute("allImages", allImages);
+    // model2.addAttribute("tags", tagList);
 
-        return "/gallery/view";
-    }
+    // return "/gallery/view";
+    // }
 
     @GetMapping("/insert")
     public String insert(HttpServletRequest request) {
@@ -108,6 +109,15 @@ public class ImageController {
         return "redirect:/";
     }
 
+    @ResponseBody
+    @PostMapping("/hitProcess")
+    public int hitProcess(ImageDto imageDto) {
+        log.info(imageDto);
+        imageService.hitUp(imageDto);
+        log.info(imageDto);
+
+        return 1;
+    }
     // @PostMapping("/getReply/{no}")
     // @ResponseBody
     // public List<ReplyDto> getReply(@PathVariable("no") int no) {

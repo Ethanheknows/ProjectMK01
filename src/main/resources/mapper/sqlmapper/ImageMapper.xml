@@ -12,7 +12,9 @@
           #{title},
           #{tag},
           #{original},
-          SYSDATE
+          SYSDATE,
+          0
+
           
         )
       </insert>
@@ -22,6 +24,13 @@
       <select id="getAllimages" resultType="ImageDto">
 
         SELECT * FROM IMAGES ORDER BY NO DESC
+
+
+      </select>
+
+      <select id="orderByHitImages" resultType="ImageDto">
+
+        SELECT * FROM IMAGES ORDER BY hit desc
 
 
       </select>
@@ -40,6 +49,9 @@
         select renamed, originalpath from uploadboard  
       </select>
 
+      <update id="hitUp" parameterType="ImageDto">
+        update images set hit =hit+1 where original = #{original}
+    </update>
 
 
       <insert id="insertImage" parameterType="uploadDto">
