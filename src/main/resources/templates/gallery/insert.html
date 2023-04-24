@@ -9,31 +9,32 @@
     <head>
         <title>MK01</title>
     </head>
-<body>
-<div layout:fragment="contents">
-
-  <div class="form insert">
-    <form action="/insertProcess" method="post" enctype="multipart/form-data">
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingInput" placeholder="title" name="title">
-        <label for="floatingInput">title</label>
-      </div>
-      <div class="form-floating  mb-3">
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="tag"></textarea>
-        <label for="floatingTextarea">Comments</label>
-      </div>
-      <div class="mb-3">
-        <input class="form-control" type="file" id="formFile" name="file">
-      </div>
-      <hr>
-      <div class="btns text-center">
-        <button class="btn btn-primary">CONFIRM</button>
-        <button class="btn btn-secondary">RESET</button>
-        <a href="/" class="btn btn-success">LIST</a>
-      </div>
-    </form>
-  </div>
-  </div>
-</body>
+    <body>
+        <div layout:fragment="contents">
+            <div class="container mb-3">
+                <div class="form insert mt-5">
+                    <p>매니저 권한 템플릿 삽입 창입니다. 태그를 알맞게 입력해주세요.</p>
+                    <form action="/insertProcess" method="post" enctype="multipart/form-data">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="title" name="title" />
+                            <label for="floatingInput">템플릿 제목</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="tag"></textarea>
+                            <label for="floatingTextarea">메인 페이지 Tag</label>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="file" id="formFile" name="file" />
+                        </div>
+                        <hr />
+                        <div class="btns text-center">
+                            <button class="btn btn-primary">CONFIRM</button>
+                            <button class="btn btn-secondary">RESET</button>
+                            <a href="/" class="btn btn-success">LIST</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
-
