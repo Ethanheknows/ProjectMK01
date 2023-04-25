@@ -11,8 +11,40 @@
     </head>
 
     <body>
-        <div layout:fragment="contents">
-            <div class="container genWrap">
+        <div layout:fragment="contents" class="genCustomWarp">
+            <div class="genCHeader off">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 325 100">
+                    <defs>
+                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="ssspill-grad">
+                            <stop stop-color="hsl(0, 0%, 100%)" stop-opacity="1" offset="45%"></stop>
+                            <stop stop-color="rgb(255, 89, 0)" stop-opacity="1" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="rgb(255, 89, 0)"></rect>
+                    <g fill="url(#ssspill-grad)">
+                        <rect width="100%" height="40" fill="hsl(0, 0%, 100%)"></rect>
+
+                        <rect x="0" width="6.66%" height="96.55006196309512" rx="12"></rect>
+                        <rect x="13.33%" width="6.66%" height="75.83461611470717" rx="12"></rect>
+                        <rect x="26.67%" width="6.66%" height="74.86105021881366" rx="12"></rect>
+                        <rect x="40%" width="6.66%" height="66.30941528525163" rx="12"></rect>
+                        <rect x="53.33%" width="6.66%" height="88.79327991169853" rx="12"></rect>
+                        <rect x="66.67%" width="6.66%" height="87.73888944762831" rx="12"></rect>
+                        <rect x="80%" width="6.66%" height="64.41126770242268" rx="12"></rect>
+                        <rect x="93.33%" width="6.66%" height="60.40205620594592" rx="12"></rect>
+                    </g>
+                    <g fill="rgb(255, 89, 0)">
+                        <rect x="6.66%" y="9.221430091538114" width="6.66%" height="60" rx="12"></rect>
+                        <rect x="20%" y="15.21860314383344" width="6.66%" height="60" rx="12"></rect>
+                        <rect x="33.33%" y="13.434774037933838" width="6.66%" height="60" rx="12"></rect>
+                        <rect x="46.67%" y="5.641318974050603" width="6.66%" height="60" rx="12"></rect>
+                        <rect x="60%" y="2.256389311177481" width="6.66%" height="60" rx="12"></rect>
+                        <rect x="73.33%" y="17.89668740745832" width="6.66%" height="60" rx="12"></rect>
+                        <rect x="86.67%" y="9.52548125708741" width="6.66%" height="60" rx="12"></rect>
+                    </g>
+                </svg>
+            </div>
+            <div class="container genWrap genCWrap">
                 <div class="consWrap">
                     <h1>Generator</h1>
 
@@ -77,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="share mt-2 mb-2">
-                                <div class="shareTitle">
+                                <div class="share_title">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
                                         <path
                                             d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
@@ -951,6 +983,34 @@
                             ],
                         });
                     }
+
+                    //헤더 애니메이션
+
+                    let timer;
+
+                    $(window).scroll(function () {
+                        const y = $(window).scrollTop();
+
+                        if (y > 50) {
+                            clearTimeout(timer);
+                            gsap.to(".genCHeader", { opacity: 1, y: -1000, duration: 1 });
+                        } else if (y <= 50) {
+                            clearTimeout(timer);
+
+                            timer = setTimeout(function () {
+                                gsap.to(".genCHeader", { opacity: 0, y: -1000, duration: 1 }),
+                                    gsap.to(".genCHeader", {
+                                        opacity: 1,
+                                        y: 0,
+                                        duration: 2,
+                                        delay: 0.5,
+                                    });
+                            }, 500);
+                        }
+                    });
+
+                    // Trigger the scroll event to execute the code when the page loads
+                    $(window).trigger("scroll");
                 </script>
             </div>
         </div>

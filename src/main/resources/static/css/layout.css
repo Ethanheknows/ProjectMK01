@@ -105,6 +105,25 @@
   display: none;
 }
 
+.genCustomWarp {
+  font-family: "Sohne", "SCD", sans-serif;
+  font-weight: 300;
+  background-color: rgb(255, 89, 0);
+  color: black;
+}
+.genCustomWarp .genCWrap {
+  position: relative;
+  z-index: 2;
+}
+
+.genCHeader {
+  width: 100%;
+  position: fixed;
+}
+.genCHeader.off {
+  opacity: 0;
+}
+
 body {
   font-family: "Sohne", "SCD", sans-serif;
   font-weight: 300;
@@ -128,6 +147,9 @@ body .headerS {
   width: 100%;
   height: 100%;
   top: 70px;
+}
+body .headerS.off {
+  opacity: 0;
 }
 body .footerS {
   z-index: -1;

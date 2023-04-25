@@ -3,6 +3,30 @@
 .hidden {
     display: none;
 }
+.genCustomWarp {
+    font-family: "Sohne", "SCD", sans-serif;
+    font-weight: 300;
+    background-color: rgb(255, 89, 0);
+    color: black;
+
+    .genCWrap {
+        position: relative;
+        z-index: 2;
+    }
+}
+.genCHeader {
+    width: 100%;
+    position: fixed;
+
+    &.off {
+        opacity: 0;
+    }
+
+    // opacity: 0;
+    // &.on {
+    //     opacity: 1;
+    // }
+}
 
 body {
     font-family: "Sohne", "SCD", sans-serif;
@@ -28,6 +52,9 @@ body {
         width: 100%;
         height: 100%;
         top: 70px;
+        &.off {
+            opacity: 0;
+        }
     }
 
     .footerS {
