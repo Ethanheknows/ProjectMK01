@@ -45,23 +45,23 @@
                         </svg></a
                     >
                 </li>
-                <li>
-                    <a href="/genCustom" class="btn btn-info" id="customizeBtn">Meme Customize</a>
-                </li>
             </ul>
 
             <div class="col-md-3 text-end" th:if="${session.board == null}">
+                <a href="/genCustom" class="btn btn-outline-secondary me-2">Meme Customize</a>
                 <a href="/login" class="btn btn-outline-primary me-2"> Login </a>
                 <a href="/signup" class="btn btn-primary">Sign-up</a>
             </div>
 
             <div class="col-md-3 text-end" th:unless="${session.board == null}">
+                <a href="/genCustom" class="btn btn-outline-secondary me-2">Meme Customize</a>
                 <!-- <div class="col-md-3 text-end" th:if="${session.board.nickName} == manager and ${session.board.userId} == manager"> -->
-                <a href="/info" class="btnInfo">
+                <a href="/info" class="btnInfo btn btn-primary me-2">
                     <span th:text="${session.board.nickName}">nickName</span>
+                    <span> 님</span>
                 </a>
-                <a href="/logout">로그아웃</a>
-                <a href="/insert" th:if="${session.board.nickName.equals('manager')}">이미지 관리</a>
+                <a href="/logout" class="btn btn-outline-primary me-2">로그아웃</a>
+                <a href="/insert" class="btn btn-outline-secondary" th:if="${session.board.nickName.equals('manager')}">##이미지 관리##</a>
             </div>
         </header>
 
@@ -210,13 +210,12 @@
                     $("#click-modal-slide-thumb").append(`<div class="swiper-slide"><img src="` + src + `" alt=""/></div>`);
 
                     for(i = 0;i<allImages.length;i++){
-                      console.log(allImages[i].originalPath +"==="+ ogsrc+" 이거확인중" );
-                    console.log(allImages[i].originalPath == ogsrc);
-                    console.log(getUploadOrignalPath.length);
-                      if(allImages[i].original == ogsrc){
-                        $(".clickedModalTitle").append( `<h5 class="modal-title">`+allImages[i].title +`</h5>`)
-                      }
-                    }
+
+
+                        if(allImages[i].original == ogsrc){
+                          $(".clickedModalTitle").append( `<h5 class="modal-title">`+allImages[i].title +`</h5>`)
+                        }
+                        }
 
 
                     for (i = 0; i < getUploadOrignalPath.length; i++) {
@@ -352,7 +351,6 @@
                         $(document).on('click','#clickTag',function(e){
                         var selectTag=$(this).attr("value");
                         const element = document.getElementById('category02');
-                        console.log(element)
 
                         $(".swiper-slide").remove();
 
@@ -756,10 +754,8 @@
                            })
 
                            $(".btnInfo").on("click",function(){
-                             console.log("uuuu");
                              deleteModal.show();
                              const pw = session.board.userPw;
-                             console.log(pw);
                              $("#deleteModal .modal-title").text("비밀번호를 입력해 주세요.");
                              $("#btnDeleteConfirm").on("click",function(e){
                                if($("#password").val()!=pw){
