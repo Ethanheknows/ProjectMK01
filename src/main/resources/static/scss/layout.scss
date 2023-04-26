@@ -507,6 +507,7 @@ body {
 // 모달
 .modal.fade#imgModal {
     color: black;
+
     .modal-dialog {
         .modal-content {
             .modal-body {
@@ -517,6 +518,16 @@ body {
                                 width: 700px;
                                 object-fit: contain;
                                 border-radius: 10px;
+                            }
+                        }
+                        .input-group {
+                            width: 500px;
+                            position: absolute;
+                            right: 10px;
+                            bottom: 10px;
+                            display: flex;
+                            textarea {
+                                resize: none;
                             }
                         }
                     }
