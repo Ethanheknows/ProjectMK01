@@ -129,4 +129,9 @@ public class ImageServiceImpl implements ImageService {
         int result = imageDao.delReply(commentBoardDto);
         return result;
     }
+
+    public ImageDto getTag(ImageDto imageDto) {
+        ImageDto result = imageDao.getTag(imageDto);
+        return result;
+    }
 }

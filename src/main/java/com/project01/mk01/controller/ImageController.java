@@ -108,6 +108,16 @@ public class ImageController {
 
         return 1;
     }
+
+    @PostMapping("/getTag")
+    @ResponseBody
+    public ImageDto getTag(ImageDto imageDto) {
+        log.info("imgdto" + imageDto);
+        ImageDto getTag = imageService.getTag(imageDto);
+        log.info("imgdtoget" + getTag);
+
+        return getTag;
+    }
     // @PostMapping("/getReply/{no}")
     // @ResponseBody
     // public List<ReplyDto> getReply(@PathVariable("no") int no) {
