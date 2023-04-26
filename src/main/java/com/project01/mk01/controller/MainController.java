@@ -27,19 +27,15 @@ public class MainController {
     public String index(Model model, Model model2, Model model3, Model model4, Model model5) {
         List<ImageDto> allImages = imageService.getAllimages();
         List<ImageDto> orderByHitImages = imageService.orderByHitImages();
-        log.info(orderByHitImages);
-        log.info(allImages);
         List<commentBoardDto> allcomments = imageService.getAllcomment();
         List<uploadDto> getUploadOrignalPath = imageService.getUploadOrignalPath();
         List<String> tagList = new ArrayList<>();
         for (int i = 0; i < allImages.size(); i++) {
-            log.info(allImages.get(i).getTag());
             String tag = allImages.get(i).getTag();
             String[] tags = tag.split(",");
             for (int j = 0; j < tags.length; j++) {
                 if (!tagList.contains(tags[j])) {
                     tagList.add(tags[j]);
-                    log.info(tags[j]);
 
                 }
             }
@@ -63,8 +59,6 @@ public class MainController {
     @ResponseBody
     public List<commentBoardDto> updatereply(commentBoardDto commentBoardDto) {
 
-        log.info("aaaaa=" + commentBoardDto);
-
         imageService.updateReply(commentBoardDto);
 
         List<commentBoardDto> getAllcomment = imageService.getAllcomment();
@@ -82,9 +76,7 @@ public class MainController {
     @PostMapping("/delReply")
     @ResponseBody
     public int delReply(commentBoardDto commentBoardDto) {
-        log.info("ㅇㄴㄹ미ㅏㅓㅁㄴㅇ러ㅏㅣㅇ리ㅏㅓㅇㄴㄹ미ㅓㅏㄴㅇㅁ라ㅓㅣ;" + commentBoardDto);
         imageService.delReply(commentBoardDto);
-        log.info("ㅁㅁㅁㅁ");
         return 1;
 
     }

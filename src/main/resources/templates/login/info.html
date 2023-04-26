@@ -40,10 +40,6 @@
 
                 $(function () {
                     for (i = 0; i < alluploads.length; i++) {
-                        console.log(alluploads[i].userId);
-                        console.log(String(session.board.userId));
-                        console.log(alluploads[i].userId == '"' + session.board.userId + '"');
-
                         if (alluploads[i].userId == '"' + session.board.userId + '"') {
                             $(".myMeme").append(
                                 // prettier-ignored
