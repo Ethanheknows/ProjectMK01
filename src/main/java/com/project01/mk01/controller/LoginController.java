@@ -40,15 +40,12 @@ public class LoginController {
     @PostMapping("/loginProcess")
     public String loginProcess(LoginBoardDto loginBoardDto, RedirectAttributes redirectAttributes,
             HttpServletRequest request) {
-        log.info("Dto========" + loginBoardDto);
         LoginBoardDto board = loginBoardService.searchBoard(loginBoardDto);
-        log.info("board========" + board);
         if (board != null) {
             HttpSession session = request.getSession();
             redirectAttributes.addFlashAttribute("msg", "로그인에 성공했습니다.");
             redirectAttributes.addFlashAttribute("title", "로그인 성공.");
             session.setAttribute("board", board);
-            log.info("session=================" + session);
             return "redirect:/";
         } else {
             redirectAttributes.addFlashAttribute("title", "로그인 실패.");
@@ -69,7 +66,6 @@ public class LoginController {
     @ResponseBody
     public Map<String, Object> deleteAccountProcess(HttpServletRequest request, LoginBoardDto loginBoardDto,
             RedirectAttributes redirectAttributes) {
-        log.info(loginBoardDto);
 
         int result = loginBoardService.deleteAccount(loginBoardDto);
 
@@ -109,7 +105,6 @@ public class LoginController {
         for (FieldError error : bindingResult.getFieldErrors()) {
 
             errorMap.put(error.getField(), error.getDefaultMessage());
-            log.info(error.getDefaultMessage());
             errormessage = error.getDefaultMessage();
         }
         if (nickChk != 0) {
@@ -122,8 +117,6 @@ public class LoginController {
             redirectAttributes.addFlashAttribute("msg", "비밀번호가 비밀번호 확인 입력칸과 일치하지 않습니다.");
             return "redirect:/signup";
         } else if (bindingResult.hasErrors()) {
-            log.info("sdsdsdsdsssssssssssss");
-            log.info("modifyerror");
             redirectAttributes.addFlashAttribute("msg", errormessage);
             return "redirect:/signup";
         } else {
@@ -147,23 +140,19 @@ public class LoginController {
         String pwchk = loginBoardDto.getUserPwCheck();
         Object obj = session.getAttribute("board");
 
-        log.info("aaaaa");
         LoginBoardDto board = (LoginBoardDto) obj;
 
         for (FieldError error : bindingResult.getFieldErrors()) {
             errorMap.put(error.getField(), error.getDefaultMessage());
-            log.info(error.getDefaultMessage());
             errormessage = error.getDefaultMessage();
         }
         if (nickChk != 0 && !nickName.equals(board.getNickName())) {
-            log.info("asdasd");
             redirectAttributes.addFlashAttribute("msg", "이미 사용중이거나 탈퇴한 닉네임입니다.");
             return "redirect:/modify";
         } else if (!pw.equals(pwchk)) {
             redirectAttributes.addFlashAttribute("msg", "비밀번호가 비밀번호 확인 입력칸과 일치하지 않습니다.");
             return "redirect:/modify";
         } else if (bindingResult.hasErrors()) {
-            log.info("modifyerror");
             redirectAttributes.addFlashAttribute("msg", errormessage);
 
             return "redirect:/modify";
@@ -182,10 +171,8 @@ public class LoginController {
     @ResponseBody
     @PostMapping("/idCheck")
     public int idCheck(LoginBoardDto loginBoardDto, RedirectAttributes redirectAttributes) {
-        log.info(loginBoardDto);
 
         int result = loginBoardService.idCheck(loginBoardDto);
-        log.info("result=====" + result);
 
         return result;
     }
@@ -193,10 +180,8 @@ public class LoginController {
     @ResponseBody
     @PostMapping("/nickNameCheck")
     public int nickNameCheck(LoginBoardDto loginBoardDto, RedirectAttributes redirectAttributes) {
-        log.info(loginBoardDto);
 
         int result = loginBoardService.nickNameCheck(loginBoardDto);
-        log.info("result=====" + result);
 
         return result;
     }
@@ -204,7 +189,6 @@ public class LoginController {
     @GetMapping("/info")
     public String info(Model model, HttpServletRequest request, HttpSession httpSession) {
         List<uploadDto> alluploads = loginBoardService.getAllupload();
-        log.info(alluploads);
         model.addAttribute("alluploads", alluploads);
         return "/login/info";
     }
@@ -226,17 +210,5 @@ public class LoginController {
         redirectAttributes.addFlashAttribute("title", "로그 아웃 성공");
         return "redirect:/";
     }
-
-    // @ResponseBody
-    // @PostMapping("/nickNameCheck")
-    // public int nickNameCheck(LoginBoardDto loginBoardDto, RedirectAttributes
-    // redirectAttributes) {
-    // log.info(loginBoardDto);
-
-    // int result = loginBoardService.nickNameCheck(loginBoardDto);
-    // log.info("result=====" + result);
-
-    // return result;
-    // }
 
 }

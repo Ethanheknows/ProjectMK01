@@ -454,12 +454,10 @@
                             try {
                                 session.board.nickName != null;
                                 formdata.append("userId", JSON.stringify(session.board.userId));
-                                console.log("aaa");
                                 formdata.append("originalPath", src);
                             } catch {
                                 formdata.append("userId", JSON.stringify("guest"));
                                 formdata.append("originalPath", src);
-                                console.log("bbb");
                             }
 
                             $.ajax({
@@ -533,18 +531,15 @@
                             genCon2.classList.add("show");
                             $(barBox2).addClass("on");
                             $(delBtn).removeClass("off");
-                            // console.log(isDelON3,isDelON4);
                         } else if (isDelON3 === true) {
                             isDelON3 = false;
                             genCon3.classList.add("show");
                             $(barBox3).addClass("on");
-                            // console.log(isDelON3,isDelON4);
                         } else if (isDelON4 === true) {
                             isDelON4 = false;
                             genCon4.classList.add("show");
                             $(barBox4).addClass("on");
                             $(addBtn).addClass("off");
-                            // console.log(isDelON3,isDelON4);
                         }
                     });
 
@@ -558,7 +553,6 @@
                             rotateRange4.value = 0;
                             $(barBox4).removeClass("on");
                             $(addBtn).removeClass("off");
-                            // console.log(isDelON3,isDelON4);
                         } else if (isDelON3 === false) {
                             isDelON3 = true;
                             txtBox3.value = "";
@@ -567,7 +561,6 @@
                             rotateRange3.value = 0;
                             genCon3.classList.remove("show");
                             $(barBox3).removeClass("on");
-                            // console.log(isDelON3,isDelON4);
                         } else if (isDelON2 === false) {
                             isDelON2 = true;
                             txtBox2.value = "";
@@ -577,7 +570,6 @@
                             genCon2.classList.remove("show");
                             $(barBox2).removeClass("on");
                             $(delBtn).addClass("off");
-                            // console.log(isDelON3,isDelON4);
                         }
                     });
 
@@ -665,8 +657,6 @@
                     canvas.addEventListener("mouseup", onMouseUp);
 
                     const { src } = JSON.parse(localStorage.getItem("image-info"));
-                    console.log(src);
-                    console.log(`"http://127.0.0.1:9091` + src + `"`);
                     // 커스터 마이즈 버튼
 
                     $("#fileInput").on("change", function () {
@@ -853,7 +843,6 @@
                         sharedImageUrl = dataUrlPNG; // Update the sharedImageUrl with the PNG data URL
                         drawCanvas(true);
 
-                        console.log(sharedImageUrl);
                     }
                     function drawText(ctx, text, x, y, rotate, fontColor, fontWeight, fontSize, fontFamily) {
                         let textHeight = parseInt(fontSize);
@@ -888,7 +877,6 @@
                     fontWeight2.addEventListener("input", drawCanvas);
                     fontSizeRange2.addEventListener("input", drawCanvas);
                     fontFamilySelect2.addEventListener("input", drawCanvas);
-
                     txtBox3.addEventListener("input", drawCanvas);
                     topRange3.addEventListener("input", drawCanvas);
                     leftRange3.addEventListener("input", drawCanvas);
@@ -925,49 +913,66 @@
                         inline: false,
                         defaultColor: "#000000",
                     });
-                    //카카오
-
+                    //카카오 #우울 #환희
+                 
                     function shareMessage() {
-                        let url = "http://13.125.252.153:9091" + src;
-                        console.log(url);
+                        var ogsrc = src.split("/")[3];    
+                        $.ajax({
+                                url : "/getTag" ,
+                                    type : "post",
+                                    dataType : "json",
+                                    data:{"original" : ogsrc},
+                                    success : function(data){
+                                        var tags="";
+                                         var tagList= data.tag.split(",");
+                                         for(i=0;i<tagList.length;i++){
+                                             tags+="#"+tagList[i];
+                                         }
+                                         let url = "http://13.125.252.153:9091" + src;
+                                         Kakao.Share.scrapImage({
+                                             imageUrl: url,
+                                         })
+                                             .then(function (response) {
+                                                 console.log(response.infos.original.url);
+                                             })
+                                             .catch(function (error) {
+                                                 console.log(error);
+                                             });
+                 
+                                         Kakao.Share.sendDefault({
+                                             objectType: "feed",
+                                             content: {
+                                                 title: "나도 한번 만들어 볼까?",
+                                                 description: tags ,
+                                                 imageUrl: url,
+                                                 link: {
+                                                     // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+                                                     mobileWebUrl: "http://13.125.252.153:9091",
+                                                     webUrl: "http://13.125.252.153:9091",
+                                                 },
+                                             },
+                                             social: {
+                                                 likeCount: 286,
+                                                 commentCount: 45,
+                                                 sharedCount: 845,
+                                             },
+                                             buttons: [
+                                                 {
+                                                     title: "바로 만들러 가기",
+                                                     link: {
+                                                         mobileWebUrl: "http://13.125.252.153:9091/gen ",
+                                                         webUrl: "http://13.125.252.153:9091/gen ",
+                                                     },
+                                                 },
+                                             ],
+                                         });
 
-                        Kakao.Share.scrapImage({
-                            imageUrl: url,
-                        })
-                            .then(function (response) {
-                                console.log(response.infos.original.url);
+                                        }
                             })
-                            .catch(function (error) {
-                                console.log(error);
-                            });
 
-                        Kakao.Share.sendDefault({
-                            objectType: "feed",
-                            content: {
-                                title: "나도 한번 만들어 볼까?",
-                                description: "태그 들어갈 자리.",
-                                imageUrl: url,
-                                link: {
-                                    // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-                                    mobileWebUrl: "http://13.125.252.153:9091",
-                                    webUrl: "http://13.125.252.153:9091",
-                                },
-                            },
-                            social: {
-                                likeCount: 286,
-                                commentCount: 45,
-                                sharedCount: 845,
-                            },
-                            buttons: [
-                                {
-                                    title: "바로 만들러 가기",
-                                    link: {
-                                        mobileWebUrl: "http://13.125.252.153:9091/gen ",
-                                        webUrl: "http://13.125.252.153:9091/gen ",
-                                    },
-                                },
-                            ],
-                        });
+
+                       
+
                     }
                 </script>
             </div>

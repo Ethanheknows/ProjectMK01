@@ -119,9 +119,8 @@
 .genCHeader {
   position: fixed;
   display: block;
-  top: -10px;
+  top: 70;
   width: 100%;
-  top: 70px;
 }
 .genCHeader.off {
   opacity: 0;

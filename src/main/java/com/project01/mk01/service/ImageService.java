@@ -24,6 +24,8 @@ public interface ImageService {
 
     public int delReply(commentBoardDto commentBoardDto);
 
+    public ImageDto getTag(ImageDto imageDto);
+
     public List<commentBoardDto> getAllcomment();
 
 }
