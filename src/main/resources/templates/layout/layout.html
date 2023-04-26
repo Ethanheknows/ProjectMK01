@@ -529,7 +529,7 @@
                                                        var id=$("#nickName").val();
 
                                                        if(id==''||id.length==0){
-                                                         $('#nickName_div').html('<a" style="color:red">닉네임을 입력해 주세요.</a>:')
+                                                         $('#nickName_div').html('<a" style="color:red">닉네임을 입력해 주세요.</a>')
                                                          nickError="닉네임을 입력해 주세요.";
                                                          return false;
                                                        }
@@ -541,10 +541,10 @@
                                                              data : {"nickName" : $("#nickName").val()},
                                                              success : function(data){
                                                                      if(data == 0){
-                                                                       $('#nickName_div').html('<a">사용가능한 닉네임입니다.</a>:')
+                                                                       $('#nickName_div').html('<a">사용가능한 닉네임입니다.</a>')
                                                                      }else{
 
-                                                                       $('#nickName_div').html('<a" style="color:red">이미 사용중인 닉네임입니다.</a>:')
+                                                                       $('#nickName_div').html('<a" style="color:red">이미 사용중인 닉네임입니다.</a>')
 
                                                                      }
                                                                  }
@@ -555,7 +555,7 @@
                                                        var id=$("#nickName").val();
 
                                                        if(id==''||id.length==0){
-                                                         $('#nickName_div').html('<a" style="color:red">닉네임을 입력해 주세요.</a>:')
+                                                         $('#nickName_div').html('<a" style="color:red">닉네임을 입력해 주세요.</a>')
 
                                                          return false;
                                                        }
@@ -568,16 +568,16 @@
                                                              data : {"nickName" : $("#nickName").val()},
                                                              success : function(data){
                                                                      if(data == 0 ){
-                                                                       $('#nickName_div').html('<a">좋은 NICKNAME 이네요!</a>:')
+                                                                       $('#nickName_div').html('<a">좋은 NICKNAME 이네요!</a>')
 
                                                                      }else if(id == session.board.nickName){
                                                                        console.log(session.board.nickName)
-                                                                       $('#nickName_div').html('<a" >기존 사용하고 있는 닉네임입니다.</a>:')
+                                                                       $('#nickName_div').html('<a" >기존 사용하고 있는 닉네임입니다.</a>')
                                                                    }
                                                                      else{
                                                                        console.log(session.board.nickName)
 
-                                                                       $('#nickName_div').html('<a" style="color:red">이미 사용중인 닉네임입니다.</a>:')
+                                                                       $('#nickName_div').html('<a" style="color:red">이미 사용중인 닉네임입니다.</a>')
                                                                        nickError="이미 사용중인 닉네임입니다."
                                                                    }
                                                                  }
@@ -591,12 +591,12 @@
                                                        var id=$("#userId").val();
 
                                                        if(id==''||id.length==0){
-                                                         $('#id_div').html('<a" style="color:red">아이디를 입력해 주세요.</a>:')
+                                                         $('#id_div').html('<a" style="color:red">아이디를 입력해 주세요.</a>')
 
                                                          return false;
                                                        }
                                                        if(id.length<5){
-                                                         $('#id_div').html('<a" style="color:red">아이디를 5글자 이상 입력해 주세요.</a>:')
+                                                         $('#id_div').html('<a" style="color:red">아이디를 5글자 이상 입력해 주세요.</a>')
 
 
                                                          return false;
@@ -610,7 +610,7 @@
                                                                       console.log(data);
 
                                                                      if(data == 0 ){
-                                                                       $('#id_div').html('<a">사용가능한 ID입니다.</a>:')
+                                                                       $('#id_div').html('<a">사용가능한 ID입니다.</a>')
 
                                                                      }else{
                                                                        $('#id_div').html('<a" style="color:red">이미 사용중이거나 탈퇴한 ID입니다.</a>')
@@ -627,7 +627,7 @@
                                                     //   var id=$("#userId").val();
                                                 //
                                                     //   if(id==''||id.length==0){
-                                                    //     $('#id_div').html('<a" style="color:red">아이디를 입력해 주세요.</a>:')
+                                                    //     $('#id_div').html('<a" style="color:red">아이디를 입력해 주세요.</a>')
                                                     //     idError="아이디를 입력해 주세요"
                                                 //
                                                     //     return false;
@@ -679,11 +679,11 @@
 
 
                                                        if(id==''||id.length==0){
-                                                         $('#userPw_div').html('<a"  style="color:red" id="pw_null">비밀번호를 입력해 주세요.</a>:')
+                                                         $('#userPw_div').html('<a"  style="color:red" id="pw_null">비밀번호를 입력해 주세요.</a>')
 
                                                          return false;
                                                        }else{
-                                                         $('#userPw_div').html('<a" id="pw_null">비밀번호 입력이 완료되었습니다.</a>:')
+                                                         $('#userPw_div').html('<a" id="pw_null">비밀번호 입력이 완료되었습니다.</a>')
 
 
 
@@ -699,13 +699,13 @@
 
 
                                                        if(pw!= pwchk){
-                                                         $('#userPwCheck_div').html('<a" style="color:red" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>:')
+                                                         $('#userPwCheck_div').html('<a" style="color:red" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>')
 
 
                                                          return false
 
                                                        }else{
-                                                         $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
+                                                         $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>')
                                                          pwckError=""
 
                                                          return true
@@ -725,25 +725,25 @@
 
 
                                                        if(pw!= pwchk){
-                                                         $('#userPwCheck_div').html('<a" style="color:red" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>:')
+                                                         $('#userPwCheck_div').html('<a" style="color:red" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>')
 
 
                                                          return false
 
                                                        }else{
-                                                         $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>:')
+                                                         $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>')
                                                          pwckError=""
 
                                                          return true
 
                                                        }
                                                          if(pwchk==''||pwchk.length==0){
-                                                           $('#userPwCheck_div').html('<a" style="color:red" id="pwchk_null">비밀번호를 입력해 주세요.</a>:')
+                                                           $('#userPwCheck_div').html('<a" style="color:red" id="pwchk_null">비밀번호를 입력해 주세요.</a>')
                                                            pwckError="비밀번호를 입력해 주세요."
                                                          return false
 
                                                          }else{
-                                                           $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호 입력이 완료되었습니다.</a>:')
+                                                           $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호 입력이 완료되었습니다.</a>')
                                                               pwckError=""
 
                                                          return true
