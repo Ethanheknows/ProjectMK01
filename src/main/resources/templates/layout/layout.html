@@ -310,13 +310,13 @@
                                                     const timeDifference = getTimeDifference(timeString);
 
 
-                                                    $("#commentBoard").append(`<tr id="comments-tr`+i+`"></tr>`);
+                                                    $("#commentBoard").append(`<tr class="commentWrap" id="comments-tr`+i+`"></tr>`);
                                                     $(`#comments-tr`+i).append(`<td class="hidden" id="delNo">`+response[i].no+ `</td>`);
-                                                    $(`#comments-tr`+i).append(`<td>`+response[i].nickName+ `</td>`);
-                                                    $(`#comments-tr`+i).append(`<td>`+response[i].contents+ `</td>`);
-                                                    $(`#comments-tr`+i).append(`<td>`+timeDifference+ `</td>`);
+                                                    $(`#comments-tr`+i).append(`<td class="replyNickName">`+response[i].nickName+ `</td>`);
+                                                    $(`#comments-tr`+i).append(`<td class="replyContents">`+response[i].contents+ `</td>`);
+                                                    $(`#comments-tr`+i).append(`<td class="replyTime">`+timeDifference+ `</td>`);
                                                     if(session.board!=null &&(session.board.nickName==response[i].nickName || session.board.userId=="manager")  ){
-                                                     $(`#comments-tr`+i).append(`<td id="del"><span style="cursor:pointer;" class="material-icons"> clear</span></td>`);
+                                                     $(`#comments-tr`+i).append(`<td class="replyDel" id="del"><span style="cursor:pointer;" class="material-icons"> clear</span></td>`);
                                                     }
                                                     $("#category02").addClass("hidden");
                                                   }
@@ -407,16 +407,16 @@
               let timeString2   = response[i].regDate;
               const timeDifference2 = getTimeDifference(timeString2);
 
-              $("#commentBoard").append(`<tr id="comments-tr`+i+`"></tr>`);
+              $("#commentBoard").append(`<tr class="commentWrap" id="comments-tr`+i+`"></tr>`);
               $(`#comments-tr`+i).append(`<td class="hidden" id="delNo">`+response[i].no+ `</td>`);
 
-            $(`#comments-tr`+i).append(`<td>`+response[i].nickName+ `</td>`);
-            $(`#comments-tr`+i).append(`<td>`+response[i].contents+ `</td>`);
-            $(`#comments-tr`+i).append(`<td>`+timeDifference2+ `</td>`);
+              $(`#comments-tr`+i).append(`<td class="replyNickName">`+response[i].nickName+ `</td>`);
+              $(`#comments-tr`+i).append(`<td class="replyContents">`+response[i].contents+ `</td>`);
+              $(`#comments-tr`+i).append(`<td class="replyTime">`+timeDifference2+ `</td>`);
 
 
             if(session.board!=null &&(session.board.nickName==response[i].nickName || session.board.userId=="manager")  ){
-            $(`#comments-tr`+i).append(`<td id="del"><span style="cursor:pointer;" class="material-icons"> clear</span></td>`);
+              $(`#comments-tr`+i).append(`<td class="replyDel" id="del"><span style="cursor:pointer;" class="material-icons"> clear</span></td>`);
             }
             }
             }

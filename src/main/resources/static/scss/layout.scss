@@ -530,6 +530,39 @@ body {
                                 resize: none;
                             }
                         }
+                        #commentBoard {
+                            .commentWrap {
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: start;
+                                width: 470px;
+
+                                .replyNickName {
+                                    font-weight: 700;
+                                    position: relative;
+                                    top: 0;
+                                }
+                                .replyContents {
+                                    position: relative;
+                                    padding-left: 20px;
+                                    width: 300px;
+                                }
+                                .replyTime {
+                                    position: relative;
+                                    right: -56px;
+                                    margin-left: 10px;
+                                }
+                                .replyDel {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+
+                                    span {
+                                        position: relative;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

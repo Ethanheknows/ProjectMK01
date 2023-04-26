@@ -575,6 +575,35 @@ body .bottomWrap .txtCon {
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .input-group textarea {
   resize: none;
 }
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  width: 470px;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyNickName {
+  font-weight: 700;
+  position: relative;
+  top: 0;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyContents {
+  position: relative;
+  padding-left: 20px;
+  width: 300px;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyTime {
+  position: relative;
+  right: -56px;
+  margin-left: 10px;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel span {
+  position: relative;
+}
 
 .clickedSwiper {
   width: 580px !important;
