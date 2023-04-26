@@ -108,7 +108,7 @@
 .genCustomWarp {
   font-family: "Sohne", "SCD", sans-serif;
   font-weight: 300;
-  background-color: rgb(255, 89, 0);
+  background-color: #ff7700;
   color: black;
 }
 .genCustomWarp .genCWrap {
@@ -117,8 +117,13 @@
 }
 
 .genCHeader {
-  width: 100%;
   position: fixed;
+  display: block;
+  top: -10px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 70px;
 }
 .genCHeader.off {
   opacity: 0;
@@ -137,7 +142,7 @@ body .myHeader {
   color: black;
 }
 body .myHeader.on {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
 }
 body .headerS {
   position: fixed;
@@ -700,4 +705,12 @@ body .bottomWrap .txtCon {
   align-items: center;
   justify-content: center;
   height: calc(100vh - 250px);
+}
+
+.infoCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 250px);
+  text-align: left;
 }

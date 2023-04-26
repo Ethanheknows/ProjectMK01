@@ -9,7 +9,7 @@
   <title>REPLYBOARD</title>
 </head>
 <body>
-  <div layout:fragment="contents">
+  <div layout:fragment="contents" class="container infoCenter">
         
     <form class="mt-5" action="/deleteProcess" method="post" th:object="${loginBoardDto}" enctype="multipart/form-data" >
       <h3>회원탈퇴 안내사항</h3>
@@ -23,10 +23,10 @@
             <li>위의 유의사항을 꼭 확인하시고, 회원탈퇴를 결정하시기 바랍니다. 회원탈퇴는 회원님의 자유의사에 따라 결정하시면 됩니다.</li>
           </ul>
   
-        <div class="col-12">
+        <div class="col-12 pt-3 text-center">
          
-          <a href="#" type="button" class="btnInfo btn btn-primary">delete</a>
-          <a href="/" class="btn btn-secondary">CANCEL</a>
+          <a href="#" type="button" class="btnInfo btn btn-primary mx-2">삭제하기</a>
+          <a href="/info" class="btn btn-secondary">취소하기</a>
 
         </div>
       </form>

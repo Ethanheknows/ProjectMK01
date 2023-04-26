@@ -6,7 +6,7 @@
 .genCustomWarp {
     font-family: "Sohne", "SCD", sans-serif;
     font-weight: 300;
-    background-color: #ff7700
+    background-color: #ff7700;
     color: black;
 
     .genCWrap {
@@ -692,4 +692,12 @@ body {
     align-items: center;
     justify-content: center;
     height: calc(100vh - 250px);
+  }
+
+  .infoCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 250px);
+    text-align: left;
   }
