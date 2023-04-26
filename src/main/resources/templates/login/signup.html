@@ -5,77 +5,69 @@
                 layout:decorate="~{/layout/layout.html}">
                 
 <head>
-  <title>REPLYBOARD</title>
+  <title>SIGN-UP</title>
 </head>
 <body>
   <div layout:fragment="contents">
-    <h2>SIGN-UP</h2>
-
-    <form class="mt-5" action="/signProcess" method="post" th:object="${loginBoardDto}" enctype="multipart/form-data" >
-
-
-        <div class="col-md-6">
-          <label for="inputEmail4" class="form-label" >NickName</label>
-          <input type="text" class="form-control nickName_confirm" id="nickName" name="nickName" 
-          >
-          <div id="nickName_div"></div>
-
-          <!-- <p th:if="${#fields.hasErrors('nickName')}" th:errorclass="errorTxt" th:errors="*{nickName}"></p> -->
-        </div>
-     
-        <div class="col-md-6">
-          <label for="inputEmail4" class="form-label" >ID</label>
-          <input type="text" class="form-control id_confirm" id="userId" name="userId" >
-          <div id="id_div"></div>
-          <!-- <p th:if="${#fields.hasErrors('userId')}" th:errorclass="errorTxt" th:errors="*{userId}"></p>
-          <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button> -->
-        </div>
-
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control userPw_confirm" id="userPw" name="userPw"  >
-          <div id="userPw_div"></div>
-
-        </div>
-
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Password Check</label>
-          <input type="password" class="form-control userPwCheck_confirm" id="userPwCheck" name="userPwCheck"  >
-          <div id="userPwCheck_div"></div>
-
-        </div>
-
+    
+    <form class="mt-5 centerSet" action="/signProcess" method="post" th:object="${loginBoardDto}" enctype="multipart/form-data" >
+      <div class="container">
+        <h2 class="col-md-4 mx-auto ">회원가입</h2>
         
-
-        <div class="col-md-6">
-          <label for="inputEmail4" class="form-label" >Email</label>
-          <input type="text" class="form-control email_confirm" id="userEmail" name="userEmail" >
-          <div id="email_div"></div>
-
-        </div>
-   
-
-<!-- 
-        <div class="mt-2">
-          <input class="form-control" type="file" id="formFile" name="originalFile">
-        </div>
-        -->
-        <div>
-          
-          
-
-
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
+          <div class="form-floating col-md-4 mx-auto mb-3 ">
+            <input type="text" class="form-control nickName_confirm" id="nickName" placeholder="Nickname" name="nickName">
+            <label for="inputEmail4 floatingInput" class="" >NickName</label>
+            <div id="nickName_div"></div>
+            <!-- <p th:if="${#fields.hasErrors('nickName')}" th:errorclass="errorTxt" th:errors="*{nickName}"></p> -->
           </div>
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
+
+          <div class="form-floating col-md-4 mx-auto mb-3">
+            <input type="text" class="form-control id_confirm" id="userId" placeholder="ID" name="userId" >
+            <label for="inputEmail4" class="" >ID</label>
+            <div id="id_div"></div>
+            <!-- <p th:if="${#fields.hasErrors('userId')}" th:errorclass="errorTxt" th:errors="*{userId}"></p>
+            <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button> -->
+          </div>
+
+          <div class="form-floating col-md-4 mx-auto mb-3">
+            <input type="password" class="form-control userPw_confirm" id="userPw" placeholder="Password" name="userPw"  >
+            <label for="inputPassword4" class="">Password</label>
+            <div id="userPw_div"></div>
+          </div>
+
+          <div class="form-floating col-md-4 mx-auto mb-3">
+            <input type="password" class="form-control userPwCheck_confirm" id="userPwCheck" placeholder="Password Check" name="userPwCheck"  >
+            <label for="inputPassword4" class="">Password Check</label>
+            <div id="userPwCheck_div"></div>
+          </div>
+        
+          <div class="form-floating col-md-4 mx-auto mb-3">
+            <input type="text" class="form-control email_confirm" id="userEmail" placeholder="Email" name="userEmail" >
+            <label for="inputEmail4" class="" >Email</label>
+            <div id="email_div"></div>
+          </div>
+           
+        
+        <!--
+          <div class="mt-2">
+            <input class="form-control" type="file" id="formFile" name="originalFile">
+          </div>
+          -->
+          <div>
+        
+        
+          <div class="col-12 col-md-4 mx-auto mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>
+            </div>
+          </div>
+          <div class="col-md-4 mx-auto mb-3">
+            <button type="submit" class="w-100 btn btn-lg btn-primary">회원가입</button>
+          </div>
+      </div>
       </form>
 
   </div>

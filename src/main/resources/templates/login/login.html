@@ -11,24 +11,24 @@
   </head>
   <body>
     <div layout:fragment="contents">
-      <div class="container">
-        <form action="/loginProcess" method="post" class="mt-5">
+      <div class="container w-25">
+        <form action="/loginProcess" method="post" class="mt-5 centerSet">
           <!-- <img class="mb-4" src="/images/Coca-Cola_logo.svg" alt="" width="72" height="57"> -->
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-          <div class="form-floating mb-3">
+          <div class="form-floating col-md-10 mb-3">
             <input type="text" class="form-control" id="userId" placeholder="ID" name="userId" />
             <label for="floatingInput">ID</label>
           </div>
-          <div class="form-floating mb-3">
+          <div class="form-floating col-md-10 mb-3">
             <input type="password" class="form-control" id="userPw" placeholder="Password" name="userPw" />
             <label for="floatingPassword">Password</label>
           </div>
 
-          <div class="checkbox mb-3">
+          <div class="checkbox col-md-10 mb-3">
             <label> <input type="checkbox" value="remember-me" /> Remember me </label>
           </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+          <button class="col-md-10  btn btn-lg btn-primary" type="submit">로그인</button>
         </form>
       </div>
     </div>
