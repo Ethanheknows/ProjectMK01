@@ -66,4 +66,33 @@ public class MainController {
         return "/generator/gen7_06";
     }
 
+    @PostMapping("/updatereply")
+    @ResponseBody
+    public List<commentBoardDto> updatereply(commentBoardDto commentBoardDto) {
+
+        log.info("aaaaa=" + commentBoardDto);
+
+        imageService.updateReply(commentBoardDto);
+
+        List<commentBoardDto> getAllcomment = imageService.getAllcomment();
+        return getAllcomment;
+    }
+
+    @PostMapping("/getAllCommets")
+    @ResponseBody
+    public List<commentBoardDto> getAllCommets(commentBoardDto commentBoardDto) {
+
+        List<commentBoardDto> getAllcomment = imageService.getAllcomment();
+        return getAllcomment;
+    }
+
+    @PostMapping("/delReply")
+    @ResponseBody
+    public int delReply(commentBoardDto commentBoardDto) {
+        log.info("ㅇㄴㄹ미ㅏㅓㅁㄴㅇ러ㅏㅣㅇ리ㅏㅓㅇㄴㄹ미ㅓㅏㄴㅇㅁ라ㅓㅣ;" + commentBoardDto);
+        imageService.delReply(commentBoardDto);
+        log.info("ㅁㅁㅁㅁ");
+        return 1;
+    }
+
 }

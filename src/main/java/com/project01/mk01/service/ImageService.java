@@ -16,9 +16,14 @@ public interface ImageService {
 
     public List<uploadDto> getUploadOrignalPath();
 
-    public List<commentBoardDto> getAllcomment();
-
     public int insertImage(uploadDto uploadDto);
 
     public int hitUp(ImageDto ImageDto);
+
+    public int updateReply(commentBoardDto commentBoardDto);
+
+    public int delReply(commentBoardDto commentBoardDto);
+
+    public List<commentBoardDto> getAllcomment();
+
 }
