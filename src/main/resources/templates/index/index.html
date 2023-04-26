@@ -42,7 +42,7 @@
                 </svg>
             </div>
 
-            <div class="tagWrap">
+            <div class="tagWrap mt-4">
                 <div class="tickerMove">
                     <tr th:each="item : ${tags}" class="text-center">
                         <a id="clickTag" th:text="${item}" th:value="${item}" style="cursor: pointer"></a>
@@ -153,6 +153,35 @@
                 </svg>
             </div>
             <script>
+                //헤더 애니메이션
+                let timer;
+
+                $(window).scroll(function () {
+                    const y = $(window).scrollTop();
+
+                    if (y > 50) {
+                        clearTimeout(timer);
+                        gsap.to(".headerS", { opacity: 1, y: -1000, duration: 1 });
+                    } else if (y <= 50) {
+                        clearTimeout(timer);
+
+                        timer = setTimeout(function () {
+                            gsap.to(".headerS", { opacity: 0, y: -1000, duration: 1 }),
+                                gsap.to(".headerS", {
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 2,
+                                    delay: 0.5,
+                                });
+                        }, 500);
+                    }
+                });
+                $(window).trigger("scroll");
+                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                    gsap.to(".footerS", { duration: 2, scrollTo: 100 });
+                } else {
+                    $(".footerS").removeClass("on");
+                }
                 const tag1 = document.querySelector(".tag1");
                 $(function () {
                     for (i = 0; i < allImages.length; i++) {
@@ -181,6 +210,7 @@
                     observer: true,
                     observeParents: true, // 이 두줄 있어야지 스와이프 내부 For문 돌아감  %중요
                     slidesPerView: 6,
+
                     // centeredSlides: true,
                     //   autoplay: {
                     //     delay: 5000,

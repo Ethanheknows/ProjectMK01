@@ -14,10 +14,9 @@
     <form class="mt-5" action="/modifyProcess" method="post" th:object="${loginBoardDto}" enctype="multipart/form-data" >
 
 
-        <div class="col-md-6">
+        <div class="form-floating col-md-6">
           <label for="inputEmail4" class="form-label" >NickName</label>
-          <input type="text" class="form-control nickName_modify" id="nickName" name="nickName" th:value="${session.board.nickName}"    
-          >
+          <input type="text" class="form-control nickName_modify" id="nickName" name="nickName" th:value="${session.board.nickName}">
           <div id="nickName_div"></div>
 
           <!-- <p th:if="${#fields.hasErrors('nickName')}" th:errorclass="errorTxt" th:errors="*{nickName}"></p> -->

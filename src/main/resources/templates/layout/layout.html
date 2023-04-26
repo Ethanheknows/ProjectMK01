@@ -45,23 +45,23 @@
                         </svg></a
                     >
                 </li>
-                <li>
-                    <a href="/genCustom" class="btn btn-info" id="customizeBtn">Meme Customize</a>
-                </li>
             </ul>
 
             <div class="col-md-3 text-end" th:if="${session.board == null}">
+                <a href="/genCustom" class="btn btn-outline-secondary me-2">Meme Customize</a>
                 <a href="/login" class="btn btn-outline-primary me-2"> Login </a>
                 <a href="/signup" class="btn btn-primary">Sign-up</a>
             </div>
 
             <div class="col-md-3 text-end" th:unless="${session.board == null}">
+                <a href="/genCustom" class="btn btn-outline-secondary me-2">Meme Customize</a>
                 <!-- <div class="col-md-3 text-end" th:if="${session.board.nickName} == manager and ${session.board.userId} == manager"> -->
-                <a href="/info" class="btnInfo">
+                <a href="/info" class="btnInfo btn btn-primary me-2">
                     <span th:text="${session.board.nickName}">nickName</span>
+                    <span> 님</span>
                 </a>
-                <a href="/logout">로그아웃</a>
-                <a href="/insert" th:if="${session.board.nickName.equals('manager')}">이미지 관리</a>
+                <a href="/logout" class="btn btn-outline-primary me-2">로그아웃</a>
+                <a href="/insert" class="btn btn-outline-secondary" th:if="${session.board.nickName.equals('manager')}">##이미지 관리##</a>
             </div>
         </header>
 
@@ -165,368 +165,337 @@
         </div>
 
         <script th:inline="javascript">
-                                                             /*<![CDATA[*/
-                                                   const msg = /*[[${msg}]]*/;
-                                                   const title = /*[[${msg}]]*/;
-                                                   const param = /*[[${param}]]*/;
-                                                   const no = /*[[${param.no}]]*/;
-                                                   const session = /*[[${session}]]*/;
-                                                   const allImages = /*[[${allImages}]]*/;
-                                                   const allcomments = /*[[${allcomments}]]*/;
-                                                   const orderByHitImages = /*[[${orderByHitImages}]]*/;
-                                                   const alluploads = /*[[${alluploads}]]*/;
-                                                   const getUploadOrignalPath = /*[[${getUploadOrignalPath}]]*/;
-                                                   const headerS = document.querySelector(".headerS");
-                                                   const memoModal = new bootstrap.Modal("#memoModal");
-                                                   const deleteModal = new bootstrap.Modal("#deleteModal");
-                                                   const imgModal = new bootstrap.Modal("#imgModal")
-                                                   const commentsModal = new bootstrap.Modal("#commentsModal")
-                                                   const footerS = document.querySelector(".footerS");
+                                     /*<![CDATA[*/
+                           const msg = /*[[${msg}]]*/;
+                           const title = /*[[${msg}]]*/;
+                           const param = /*[[${param}]]*/;
+                           const no = /*[[${param.no}]]*/;
+                           const session = /*[[${session}]]*/;
+                           const allImages = /*[[${allImages}]]*/;
+                           const allcomments = /*[[${allcomments}]]*/;
+                           const orderByHitImages = /*[[${orderByHitImages}]]*/;
+                           const alluploads = /*[[${alluploads}]]*/;
+                           const getUploadOrignalPath = /*[[${getUploadOrignalPath}]]*/;
+                           const headerS = document.querySelector(".headerS");
+                           const memoModal = new bootstrap.Modal("#memoModal");
+                           const deleteModal = new bootstrap.Modal("#deleteModal");
+                           const imgModal = new bootstrap.Modal("#imgModal")
+                           const commentsModal = new bootstrap.Modal("#commentsModal")
+                           const footerS = document.querySelector(".footerS");
 
 
 
-                                                   function email_check(email) {
+                           function email_check(email) {
 
-                                                     var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+                             var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
-                                                     return reg.test(email);
+                             return reg.test(email);
 
-                                                   }
+                           }
 
-                                                   //헤더 애니메이션
-                                                   let timer;
 
-                        $(window).scroll(function () {
-                            const y = $(window).scrollTop();
+                $(document).on("click", "#clickedImg", function (e) {
+                    var src = $(this).find("img").attr("src");
+                    var ogsrc = src.split("/")[3];
+                      console.log(ogsrc);
+                    $("#click-modal-slide-thumb").empty();
+                    $("#click-modal-slide").empty();
+                    $("#prev-next-btn").empty();
+                    $(".clickedModalTitle").empty();
+                    $("#prev-next-btn").append(`<div class="swiper-button-prev"></div><div class="swiper-button-next"></div>`);
+                    makeNewSlider();
+                    clickedSwiperOpen();
 
-                            if (y > 50) {
-                                clearTimeout(timer);
-                                gsap.to(".headerS", { opacity: 1, y: -1000, duration: 1 });
-                            } else if (y <= 50) {
-                                clearTimeout(timer);
+                    $("#click-modal-slide").append(`<div class="swiper-slide" id="main-image"><img src="` + src + `" alt=""/></div>`);
+                    $("#click-modal-slide-thumb").append(`<div class="swiper-slide"><img src="` + src + `" alt=""/></div>`);
 
-                                timer = setTimeout(function () {
-                                    gsap.to(".headerS", { opacity: 0, y: -1000, duration: 1 }),
-                                        gsap.to(".headerS", {
-                                            opacity: 1,
-                                            y: 0,
-                                            duration: 2,
-                                            delay: 0.5,
-                                        });
-                                }, 500);
+                    for(i = 0;i<allImages.length;i++){
+
+
+                        if(allImages[i].original == ogsrc){
+                          $(".clickedModalTitle").append( `<h5 class="modal-title">`+allImages[i].title +`</h5>`)
+                        }
+                        }
+
+
+                    for (i = 0; i < getUploadOrignalPath.length; i++) {
+
+
+
+                        if (getUploadOrignalPath[i].originalPath.split("/")[3] == ogsrc) {
+                            $("#click-modal-slide-thumb").append(
+                                `<div class="swiper-slide">
+                                                            <img src="/upload/upload/` +
+                                    getUploadOrignalPath[i].renamed +
+                                    `" alt="" />
+                                                          </div>`
+                            );
+
+                            $("#click-modal-slide").append(
+                                `<div class="swiper-slide">
+                                                            <img src="/upload/upload/` +
+                                    getUploadOrignalPath[i].renamed +
+                                    `" alt="" class="col-md-4"/>
+                                                          </div>`
+                            );
+                        }
+                    }
+
+                    e.preventDefault();
+
+                    console.log("이미지 클릭중===============");
+                    imgModal.show();
+
+                    $.ajax({
+                        url: "/hitProcess",
+                        type: "post",
+                        dataType: "json",
+                        data: { original: ogsrc },
+                        success: function (data) {
+                            if (data == 0) {
+                            } else {
                             }
-
+                        },
+                });
             });
-            $(window).trigger("scroll");
-            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-            gsap.to(".footerS", {duration: 2, scrollTo: 100 })
-             } else {
-              $(".footerS").removeClass("on");
-               }
-                                        $(document).on("click", "#clickedImg", function (e) {
-                                            var src = $(this).find("img").attr("src");
-                                            var ogsrc = src.split("/")[3];
-                                              console.log(ogsrc);
-                                            $("#click-modal-slide-thumb").empty();
-                                            $("#click-modal-slide").empty();
-                                            $("#prev-next-btn").empty();
-                                            $(".clickedModalTitle").empty();
-                                            $("#prev-next-btn").append(`<div class="swiper-button-prev"></div><div class="swiper-button-next"></div>`);
-                                            makeNewSlider();
-                                            clickedSwiperOpen();
-
-                                            $("#click-modal-slide").append(`<div class="swiper-slide" id="main-image"><img src="` + src + `" alt=""/></div>`);
-                                            $("#click-modal-slide-thumb").append(`<div class="swiper-slide"><img src="` + src + `" alt=""/></div>`);
-
-                                            for(i = 0;i<allImages.length;i++){
-                                              console.log(allImages[i].originalPath +"==="+ ogsrc+" 이거확인중" );
-                                            console.log(allImages[i].originalPath == ogsrc);
-                                            console.log(getUploadOrignalPath.length);
-                                              if(allImages[i].original == ogsrc){
-                                                $(".clickedModalTitle").append( `<h5 class="modal-title">`+allImages[i].title +`</h5>`)
-                                              }
-                                            }
-
-
-                                            for (i = 0; i < getUploadOrignalPath.length; i++) {
-
-
-
-                                                if (getUploadOrignalPath[i].originalPath.split("/")[3] == ogsrc) {
-                                                    $("#click-modal-slide-thumb").append(
-                                                        `<div class="swiper-slide">
-                                                                                    <img src="/upload/upload/` +
-                                                            getUploadOrignalPath[i].renamed +
-                                                            `" alt="" />
-                                                                                  </div>`
-                                                    );
-
-                                                    $("#click-modal-slide").append(
-                                                        `<div class="swiper-slide">
-                                                                                    <img src="/upload/upload/` +
-                                                            getUploadOrignalPath[i].renamed +
-                                                            `" alt="" class="col-md-4"/>
-                                                                                  </div>`
-                                                    );
-                                                }
-                                            }
-
-                                            e.preventDefault();
-
-                                            console.log("이미지 클릭중===============");
-                                            imgModal.show();
-
-                                            $.ajax({
-                                                url: "/hitProcess",
-                                                type: "post",
-                                                dataType: "json",
-                                                data: { original: ogsrc },
-                                                success: function (data) {
-                                                    if (data == 0) {
-                                                    } else {
-                                                    }
-                                                },
-                                        });
-                                    });
-
-
-                                                 //tag누르면 png gif
-                                                 //$(document).on('click','#clickTag',function(e){
-                                                   //  var selectTag=$(this).attr("value");
-                                                   //  $(".swiper-slide").remove();
-                                                   //  $('.tag1').html(`<div class="swiper-slide">tagGif</div>`)
-                                                   //
-                                                   //  for(i = 0;i<allImages.length;i++){
-                                                     //    var allTag= allImages[i].tag;
-                                                     //    if(allTag.includes(selectTag)){
-                                                       //
-                                                       //      if(!allImages[i].original.includes("gif")){
-                                                         //      $(".tag1").append(
-                                                           //        // prettier-ignored
-                                                           //        `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-                                                             //            allImages[i].original +
-                                                             //            `" alt="" /></a></div>`
-                                                             //            );
-                                                             //        }else{
-                                                               //          $(".tagGif").append(
-                                                                 //            // prettier-ignored
-                                                                 //            `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
-                                                                   //              allImages[i].original +
-                                                                   //              `" alt="" /></a></div>`
-                                                                   //              );
-                                                   //          }
-                                                   //        }else if(selectTag=="all"){
-                                                   //          if(!allImages[i].original.includes("gif")){
-                                                //
-                                                //            $(".tag1").append(
-                                                //                // prettier-ignored
-                                                //                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-                                                //                    allImages[i].original +
-                                                //                    `" alt="" /></a></div>`
-                                                //                    );
-                                                //        }else{
-                                                //            $(".tagGif").append(
-                                                //                // prettier-ignored
-                                                //                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
-                                                //                    allImages[i].original +
-                                                //                    `" alt="" /></a></div>`
-                                                //                    );
-                                                //                }
-                                                //        }
-                                                //
-                                                //  }
-                                                //
-                                                //
-                                                //
-                                                //
-                                                //
-                                                // });
-
-                                                //
-                                                //
-                                                //         $('#modal-image').html(`<img src="`+src+`" alt="" class="modalImgMain"/>`)
-                                                //         $('#modal-image_Thumb').html(`<img src="`+src+`" alt="" />`)
-                                                //         $("#comments-data").remove();
-                                                //         $('#comments').html(`<div id="comments-data"></div>`)
-                                                //
-                                                //         for(i = 0;i<allcomments.length;i++){
-                                                //           console.log(ogsrc)
-                                                //
-                                                //           if(allcomments[i].original==ogsrc && allcomments[i].available==0){
-                                                //             console.log(i+"번 삽입");
-                                                //             $('#comments-data').append(`
-                                                //             <tr>
-                                                //             <td class="text-start ps-sm-5 "">
-                                                //             <td>
-                                                //               `+allcomments[i].contents+`
-                                                //             </td>
-                                                //             </td>
-                                                //             <td>`+allcomments[i].nickName+`</td>
-                                                //             <td>`+allcomments[i].regDate+`</td>
-                                                //             </tr>
-                                                //             `)
-                                                //           }
-                                                //
-                                                //         }
-                                                //
-
-
-
-
-
-
-
-
-
-                                                $(document).on('click','#clickTag',function(e){
-                                                var selectTag=$(this).attr("value");
-                                                const element = document.getElementById('category02');
-                                                console.log(element)
-
-                                                $(".swiper-slide").remove();
-
-                                                for(i = 0;i<allImages.length;i++){
-                                                var allTag= allImages[i].tag;
-
-                                                   if(selectTag=="all"){
-                                                     //addclass hidden
-                                                     $("#category02").addClass("hidden");
-                                                     if (!orderByHitImages[i].original.includes("gif")) {
-
-                                                       $(".tag2").append(
-                                                         // prettier-ignored
-                                                         `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-                                                           orderByHitImages[i].original +
-                                                           `" alt="" /></a></div>`
-                                                       );
-                                                     }
-                                                         //$(".category02").addClass("hidden");
-                                                         if(!allImages[i].original.includes("gif")){
-
-                                                           $(".tag1").append(
-                                                               // prettier-ignored
-                                                               `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-                                                                   allImages[i].original +
-                                                                   `" alt="" /></a></div>`
-                                                                   );
-                                                         }else{
-                                                           $(".tagGif").append(
-                                                               // prettier-ignored
-                                                               `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
-                                                                   allImages[i].original +
-                                                                   `" alt="" /></a></div>`
-                                                                   );
-                                                               }
-
-                                                 }else{
-
-                                                   if (element.classList.contains('hidden')) {
-                                                     $("#category02").removeClass("hidden");
-                                                       }
-                                                       const source = document.getElementById('selectTag');
-                                                       source.innerHTML = "#"+selectTag;
-                                                       if (!orderByHitImages[i].original.includes("gif")) {
 
-                                                         $(".tag2").append(
-                                                           // prettier-ignored
-                                                           `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-                                                             orderByHitImages[i].original +
-                                                             `" alt="" /></a></div>`
-                                                         );
-                                                       }
-                                                         if(!allImages[i].original.includes("gif")){
-                                                           if(allTag.includes(selectTag)){
-                                                           $(".tag3").append(
-                                                             // prettier-ignored
-                                                             `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-                                                                 allImages[i].original +
-                                                                 `" alt="" /></a></div>`
-                                                                 );
-                                                             }
-                                                             $(".tag1").append(
-                                                               // prettier-ignored
-                                                               `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-                                                                   allImages[i].original +
-                                                                   `" alt="" /></a></div>`
-                                                                   );
 
-                                                         }else{
+                         //tag누르면 png gif
+                         //$(document).on('click','#clickTag',function(e){
+                           //  var selectTag=$(this).attr("value");
+                           //  $(".swiper-slide").remove();
+                           //  $('.tag1').html(`<div class="swiper-slide">tagGif</div>`)
+                           //
+                           //  for(i = 0;i<allImages.length;i++){
+                             //    var allTag= allImages[i].tag;
+                             //    if(allTag.includes(selectTag)){
+                               //
+                               //      if(!allImages[i].original.includes("gif")){
+                                 //      $(".tag1").append(
+                                   //        // prettier-ignored
+                                   //        `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                                     //            allImages[i].original +
+                                     //            `" alt="" /></a></div>`
+                                     //            );
+                                     //        }else{
+                                       //          $(".tagGif").append(
+                                         //            // prettier-ignored
+                                         //            `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
+                                           //              allImages[i].original +
+                                           //              `" alt="" /></a></div>`
+                                           //              );
+                           //          }
+                           //        }else if(selectTag=="all"){
+                           //          if(!allImages[i].original.includes("gif")){
+                        //
+                        //            $(".tag1").append(
+                        //                // prettier-ignored
+                        //                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                        //                    allImages[i].original +
+                        //                    `" alt="" /></a></div>`
+                        //                    );
+                        //        }else{
+                        //            $(".tagGif").append(
+                        //                // prettier-ignored
+                        //                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
+                        //                    allImages[i].original +
+                        //                    `" alt="" /></a></div>`
+                        //                    );
+                        //                }
+                        //        }
+                        //
+                        //  }
+                        //
+                        //
+                        //
+                        //
+                        //
+                        // });
+
+                        //
+                        //
+                        //         $('#modal-image').html(`<img src="`+src+`" alt="" class="modalImgMain"/>`)
+                        //         $('#modal-image_Thumb').html(`<img src="`+src+`" alt="" />`)
+                        //         $("#comments-data").remove();
+                        //         $('#comments').html(`<div id="comments-data"></div>`)
+                        //
+                        //         for(i = 0;i<allcomments.length;i++){
+                        //           console.log(ogsrc)
+                        //
+                        //           if(allcomments[i].original==ogsrc && allcomments[i].available==0){
+                        //             console.log(i+"번 삽입");
+                        //             $('#comments-data').append(`
+                        //             <tr>
+                        //             <td class="text-start ps-sm-5 "">
+                        //             <td>
+                        //               `+allcomments[i].contents+`
+                        //             </td>
+                        //             </td>
+                        //             <td>`+allcomments[i].nickName+`</td>
+                        //             <td>`+allcomments[i].regDate+`</td>
+                        //             </tr>
+                        //             `)
+                        //           }
+                        //
+                        //         }
+                        //
+
+
+
+
+
+
+
+
+
+                        $(document).on('click','#clickTag',function(e){
+                        var selectTag=$(this).attr("value");
+                        const element = document.getElementById('category02');
+
+                        $(".swiper-slide").remove();
+
+                        for(i = 0;i<allImages.length;i++){
+                        var allTag= allImages[i].tag;
+
+                           if(selectTag=="all"){
+                             //addclass hidden
+                             $("#category02").addClass("hidden");
+                             if (!orderByHitImages[i].original.includes("gif")) {
+
+                               $(".tag2").append(
+                                 // prettier-ignored
+                                 `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                                   orderByHitImages[i].original +
+                                   `" alt="" /></a></div>`
+                               );
+                             }
+                                 //$(".category02").addClass("hidden");
+                                 if(!allImages[i].original.includes("gif")){
+
+                                   $(".tag1").append(
+                                       // prettier-ignored
+                                       `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                                           allImages[i].original +
+                                           `" alt="" /></a></div>`
+                                           );
+                                 }else{
+                                   $(".tagGif").append(
+                                       // prettier-ignored
+                                       `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
+                                           allImages[i].original +
+                                           `" alt="" /></a></div>`
+                                           );
+                                       }
 
-                                                           if(allTag.includes(selectTag)){
-                                                           $(".tag3").append(
-                                                             // prettier-ignored
-                                                             `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
-                                                               allImages[i].original +
-                                                               `" alt="" /></a></div>`
-                                                           );}
-                                                           $(".tagGif").append(
-                                                                 // prettier-ignored
-                                                             `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
-                                                                 allImages[i].original +
-                                                                     `" alt="" /></a></div>`
-                                                                 );
-                                                           }
+                         }else{
 
+                           if (element.classList.contains('hidden')) {
+                             $("#category02").removeClass("hidden");
+                               }
+                               const source = document.getElementById('selectTag');
+                               source.innerHTML = "#"+selectTag;
+                               if (!orderByHitImages[i].original.includes("gif")) {
 
+                                 $(".tag2").append(
+                                   // prettier-ignored
+                                   `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                                     orderByHitImages[i].original +
+                                     `" alt="" /></a></div>`
+                                 );
+                               }
+                                 if(!allImages[i].original.includes("gif")){
+                                   if(allTag.includes(selectTag)){
+                                   $(".tag3").append(
+                                     // prettier-ignored
+                                     `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                                         allImages[i].original +
+                                         `" alt="" /></a></div>`
+                                         );
+                                     }
+                                     $(".tag1").append(
+                                       // prettier-ignored
+                                       `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
+                                           allImages[i].original +
+                                           `" alt="" /></a></div>`
+                                           );
 
-                                                       }
+                                 }else{
 
+                                   if(allTag.includes(selectTag)){
+                                   $(".tag3").append(
+                                     // prettier-ignored
+                                     `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
+                                       allImages[i].original +
+                                       `" alt="" /></a></div>`
+                                   );}
+                                   $(".tagGif").append(
+                                         // prettier-ignored
+                                     `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
+                                         allImages[i].original +
+                                             `" alt="" /></a></div>`
+                                         );
+                                   }
 
-                                                     }
 
 
+                               }
 
 
+                             }
 
-                                                    });
 
 
 
 
+                            });
 
 
 
 
-                                                   // $("#clickedImg").on("click",function(e){
-                                                   //   e.preventDefault();
-                                                   //   console.log("이미지 클릭중===============")
-                                                   //   imgModal.show();
-                                                   // });
 
-                                                   if(msg){
-                                                     memoModal.show();
 
-                                                   }
-                                                   $("#btnDeleteAjax").on("click",function(e){
 
-                                                     //e.preventDefault();
-                                                     deleteModal.show();
-                                                     return false;
-                                                   });
 
+                           // $("#clickedImg").on("click",function(e){
+                           //   e.preventDefault();
+                           //   console.log("이미지 클릭중===============")
+                           //   imgModal.show();
+                           // });
 
+                           if(msg){
+                             memoModal.show();
 
-                                                   $("#generator").on("click",function(e){
+                           }
+                           $("#btnDeleteAjax").on("click",function(e){
 
+                             //e.preventDefault();
+                             deleteModal.show();
+                             return false;
+                           });
 
 
 
-                                                     var src=$("#main-image").find("img").attr("src");
-                                                     const imageinfo = {
-                                                             src: src
-                                                     }
-                                                     localStorage.setItem("image-info", JSON.stringify(imageinfo));
+                           $("#generator").on("click",function(e){
 
-                                                     console.log("img======="+src);
-                                                     //e.preventDefault();
-                                                   });
 
 
 
+                             var src=$("#main-image").find("img").attr("src");
+                             const imageinfo = {
+                                     src: src
+                             }
+                             localStorage.setItem("image-info", JSON.stringify(imageinfo));
 
-                                                   $(document).ready(function(){
-                                                     $(".nickName_confirm").on("focusout",function(){
-                                                       var id=$("#nickName").val();
+                             console.log("img======="+src);
+                             //e.preventDefault();
+                           });
+
+
+
+
+                           $(document).ready(function(){
+                             $(".nickName_confirm").on("focusout",function(){
+                               var id=$("#nickName").val();
 
                                                        if(id==''||id.length==0){
                                                          $('#nickName_div').html('<a" style="color:red">닉네임을 입력해 주세요.</a>')
@@ -546,19 +515,19 @@
 
                                                                        $('#nickName_div').html('<a" style="color:red">이미 사용중인 닉네임입니다.</a>')
 
-                                                                     }
-                                                                 }
-                                                       })
-                                                     })
+                                             }
+                                         }
+                               })
+                             })
 
-                                                     $(".nickName_modify").on("focusout",function(){
-                                                       var id=$("#nickName").val();
+                             $(".nickName_modify").on("focusout",function(){
+                               var id=$("#nickName").val();
 
                                                        if(id==''||id.length==0){
                                                          $('#nickName_div').html('<a" style="color:red">닉네임을 입력해 주세요.</a>')
 
-                                                         return false;
-                                                       }
+                                 return false;
+                               }
 
 
                                                        $.ajax({
@@ -587,8 +556,8 @@
 
 
 
-                                                     $(".id_confirm").on("focusout",function(){
-                                                       var id=$("#userId").val();
+                             $(".id_confirm").on("focusout",function(){
+                               var id=$("#userId").val();
 
                                                        if(id==''||id.length==0){
                                                          $('#id_div').html('<a" style="color:red">아이디를 입력해 주세요.</a>')
@@ -599,26 +568,26 @@
                                                          $('#id_div').html('<a" style="color:red">아이디를 5글자 이상 입력해 주세요.</a>')
 
 
-                                                         return false;
-                                                       }
-                                                       $.ajax({
-                                                         url : "/idCheck",
-                                                             type : "post",
-                                                             dataType : "json",
-                                                             data : {"userId" : $("#userId").val()},
-                                                             success : function(data){
-                                                                      console.log(data);
+                                 return false;
+                               }
+                               $.ajax({
+                                 url : "/idCheck",
+                                     type : "post",
+                                     dataType : "json",
+                                     data : {"userId" : $("#userId").val()},
+                                     success : function(data){
+                                              console.log(data);
 
                                                                      if(data == 0 ){
                                                                        $('#id_div').html('<a">사용가능한 ID입니다.</a>')
 
-                                                                     }else{
-                                                                       $('#id_div').html('<a" style="color:red">이미 사용중이거나 탈퇴한 ID입니다.</a>')
+                                             }else{
+                                               $('#id_div').html('<a" style="color:red">이미 사용중이거나 탈퇴한 ID입니다.</a>')
 
-                                                                   }
-                                                                 }
-                                                       })
-                                                     })
+                                           }
+                                         }
+                               })
+                             })
 
 
 
@@ -670,10 +639,10 @@
 
 
 
-                                                     $(".userPw_confirm").on("focusout",function(){
-                                                       var id=$("#userPw").val();
+                             $(".userPw_confirm").on("focusout",function(){
+                               var id=$("#userPw").val();
 
-                                                       console.log(id);
+                               console.log(id);
 
 
 
@@ -687,40 +656,14 @@
 
 
 
-                                                         return false
-                                                       }
+                                 return false
+                               }
 
 
-                                                     })
-                                                     $(".userPw_confirm").on("focusout",function(){
-                                                       var pwchk=$("#userPwCheck").val();
-                                                       var pw=$("#userPw").val();
-
-
-
-                                                       if(pw!= pwchk){
-                                                         $('#userPwCheck_div').html('<a" style="color:red" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>')
-
-
-                                                         return false
-
-                                                       }else{
-                                                         $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>')
-                                                         pwckError=""
-
-                                                         return true
-
-                                                       }
-
-
-                                                     })
-
-
-
-
-                                                     $(".userPwCheck_confirm").on("focusout",function(){
-                                                       var pwchk=$("#userPwCheck").val();
-                                                       var pw=$("#userPw").val();
+                             })
+                             $(".userPw_confirm").on("focusout",function(){
+                               var pwchk=$("#userPwCheck").val();
+                               var pw=$("#userPw").val();
 
 
 
@@ -728,13 +671,39 @@
                                                          $('#userPwCheck_div').html('<a" style="color:red" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>')
 
 
-                                                         return false
+                                 return false
 
                                                        }else{
                                                          $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>')
                                                          pwckError=""
 
-                                                         return true
+                                 return true
+
+                               }
+
+
+                             })
+
+
+
+
+                             $(".userPwCheck_confirm").on("focusout",function(){
+                               var pwchk=$("#userPwCheck").val();
+                               var pw=$("#userPw").val();
+
+
+
+                                                       if(pw!= pwchk){
+                                                         $('#userPwCheck_div').html('<a" style="color:red" id="pwchk_diff">비밀번호가 일치하지 않습니다.</a>')
+
+
+                                 return false
+
+                                                       }else{
+                                                         $('#userPwCheck_div').html('<a" id="pwchk_diff">비밀번호가 일치합니다.</a>')
+                                                         pwckError=""
+
+                                 return true
 
                                                        }
                                                          if(pwchk==''||pwchk.length==0){
@@ -746,133 +715,131 @@
                                                            $('#userPwCheck_div').html('<a" id="pwchk_null">비밀번호 입력이 완료되었습니다.</a>')
                                                               pwckError=""
 
-                                                         return true
+                                 return true
 
 
-                                                         }
-
-
-
-
-                                                     })
-
-                                                     $(".email_confirm").on("focusout",function(){
-                                                       var userEmail=$("#userEmail").val();
-
-
-                                                       if(userEmail==''||userEmail.length==0){
-                                                         $('#email_div').html('<a" style="color:red" id="email_null">이메일을 입력해 주세요.</a>')
-                                                         return false
-                                                       }else{
-                                                         $('#email_div').html('<a" id="email_null">이메일 입력이 완료되었습니다.</a>')
-
-                                                       }
-
-                                                       if(!email_check(userEmail)){
-                                                         $('#email_div').html('<a" style="color:red" id="email_null">이메일 양식을 지켜서 입력해 주세요.</a>')
-                                                         return false
-
-                                                       }else{
-                                                         $('#email_div').html('<a" id="email_null">이메일 입력이 완료되었습니다.</a>')
-                                                         return false
-
-                                                       }
-                                                     })
+                                 }
 
 
 
 
-                                                   })
+                             })
 
-                                                   $(".btnInfo").on("click",function(){
-                                                     console.log("uuuu");
-                                                     deleteModal.show();
-                                                     const pw = session.board.userPw;
-                                                     console.log(pw);
-                                                     $("#deleteModal .modal-title").text("비밀번호를 입력해 주세요.");
-                                                     $("#btnDeleteConfirm").on("click",function(e){
-                                                       if($("#password").val()!=pw){
-                                                         console.log("1실패")
+                             $(".email_confirm").on("focusout",function(){
+                               var userEmail=$("#userEmail").val();
 
-                                                         console.log("123123123")
-                                                         memoModal.show();
-                                                         $("#memoModal .modal-title").text("비밀번호를 오류");
-                                                         $("#memoModal .modal-body").text("비밀번호를 잘못 입력하셨습니다.");
-                                                         return false;
-                                                       }
-                                                       console.log("1차성공")
-                                                       $.ajax({
-                                                         url : "/deleteAccountProcess" ,
-                                                             type : "post",
-                                                             dataType : "json",
-                                                             data : {"nickName" : session.board.nickName,
-                                                                     "userId" : session.board.userId,
-                                                                     "userPw" : session.board.userPw
-                                                           },
-                                                             success : function(response){
-                                                               console.log("aaaaa");
-                                                               console.log(response);
-                                                               if(response.msg==="ok") {
-                                                                   memoModal.show();
-                                                                   $("#memoModal .modal-title").text("계정을 삭제 하였습니다.");
-                                                                   $("#memoModal .modal-body").text("계정 삭제를 완료하였습니다.");
-                                                                   $("#memoModal .memo-modal-button").on("click", function() {
-                                                                     location.href = "/";
-                                                                     });
 
-                                                               }else {
-                                                                 memoModal.show();
-                                                                 $("#memoModal .modal-title").text("계정 삭제에 실패하였습니다.");
-                                                                 $("#memoModal .modal-body").text("계정 삭제를 실패하였습니다. 다시 시도해주세요.");
-                                                               }
-                                                             }
-                                                       })
+                               if(userEmail==''||userEmail.length==0){
+                                 $('#email_div').html('<a" style="color:red" id="email_null">이메일을 입력해 주세요.</a>')
+                                 return false
+                               }else{
+                                 $('#email_div').html('<a" id="email_null">이메일 입력이 완료되었습니다.</a>')
+
+                               }
+
+                               if(!email_check(userEmail)){
+                                 $('#email_div').html('<a" style="color:red" id="email_null">이메일 양식을 지켜서 입력해 주세요.</a>')
+                                 return false
+
+                               }else{
+                                 $('#email_div').html('<a" id="email_null">이메일 입력이 완료되었습니다.</a>')
+                                 return false
+
+                               }
+                             })
 
 
 
 
-                                                     })
-                                                   });
+                           })
+
+                           $(".btnInfo").on("click",function(){
+                             deleteModal.show();
+                             const pw = session.board.userPw;
+                             $("#deleteModal .modal-title").text("비밀번호를 입력해 주세요.");
+                             $("#btnDeleteConfirm").on("click",function(e){
+                               if($("#password").val()!=pw){
+                                 console.log("1실패")
+
+                                 console.log("123123123")
+                                 memoModal.show();
+                                 $("#memoModal .modal-title").text("비밀번호를 오류");
+                                 $("#memoModal .modal-body").text("비밀번호를 잘못 입력하셨습니다.");
+                                 return false;
+                               }
+                               console.log("1차성공")
+                               $.ajax({
+                                 url : "/deleteAccountProcess" ,
+                                     type : "post",
+                                     dataType : "json",
+                                     data : {"nickName" : session.board.nickName,
+                                             "userId" : session.board.userId,
+                                             "userPw" : session.board.userPw
+                                   },
+                                     success : function(response){
+                                       console.log("aaaaa");
+                                       console.log(response);
+                                       if(response.msg==="ok") {
+                                           memoModal.show();
+                                           $("#memoModal .modal-title").text("계정을 삭제 하였습니다.");
+                                           $("#memoModal .modal-body").text("계정 삭제를 완료하였습니다.");
+                                           $("#memoModal .memo-modal-button").on("click", function() {
+                                             location.href = "/";
+                                             });
+
+                                       }else {
+                                         memoModal.show();
+                                         $("#memoModal .modal-title").text("계정 삭제에 실패하였습니다.");
+                                         $("#memoModal .modal-body").text("계정 삭제를 실패하였습니다. 다시 시도해주세요.");
+                                       }
+                                     }
+                               })
 
 
 
-                                                   // 모달 띄울때 맨 처음 사진으로 가게 하는 함수
-                                                   function makeNewSlider() {
 
-                                                     const clickedSwiperThumb = new Swiper(".clickedSwiperThumb", {
-                                                       spaceBetween: 10,
-                                                       slidesPerView: 4,
-                                                       watchSlidesProgress: true,
-                                                     });
-
-                                                     const clickedSwiper = new Swiper(".clickedSwiper", {
-                                                       slidesPerView: 1,
-                                                       spaceBetween: 10,
-                                                       navigation: {
-                                                         nextEl: ".swiper-button-next",
-                                                         prevEl: ".swiper-button-prev",
-                                                       },thumbs: {                       //added
-                                                         swiper:clickedSwiperThumb,
-
-                                                         //added
-                                                     },
-
-                                                     });
-
-                                                     clickedSwiper.on('slideChange', function() {
-                                                       console.log('현재 슬라이더 인덱스:', clickedSwiper.activeIndex);
-                                                     });
+                             })
+                           });
 
 
 
-                                                     clickedSwiper.slideTo(0, 0, false)
+                           // 모달 띄울때 맨 처음 사진으로 가게 하는 함수
+                           function makeNewSlider() {
+
+                             const clickedSwiperThumb = new Swiper(".clickedSwiperThumb", {
+                               spaceBetween: 10,
+                               slidesPerView: 4,
+                               watchSlidesProgress: true,
+                             });
+
+                             const clickedSwiper = new Swiper(".clickedSwiper", {
+                               slidesPerView: 1,
+                               spaceBetween: 10,
+                               navigation: {
+                                 nextEl: ".swiper-button-next",
+                                 prevEl: ".swiper-button-prev",
+                               },thumbs: {                       //added
+                                 swiper:clickedSwiperThumb,
+
+                                 //added
+                             },
+
+                             });
+
+                             clickedSwiper.on('slideChange', function() {
+                               console.log('현재 슬라이더 인덱스:', clickedSwiper.activeIndex);
+                             });
 
 
-                                                   }
-                                                   function clickedSwiperOpen() {
 
-                                                       }
-                                                   /*]]>*/
+                             clickedSwiper.slideTo(0, 0, false)
+
+
+                           }
+                           function clickedSwiperOpen() {
+
+                               }
+                           /*]]>*/
         </script>
     </body>
 </html>

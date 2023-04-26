@@ -91,7 +91,7 @@
                                             alt="카카오톡 공유 보내기 버튼"
                                         />
                                     </a>
-                                </div>  
+                                </div>
                             </div>
                             <div class="upload mt-2 mb-2">
                                 <div class="upload_title">
@@ -448,7 +448,6 @@
                             for (var i = 0; i < blobBin.length; i++) {
                                 array.push(blobBin.charCodeAt(i));
                             }
-                            console.log(src);
                             var file = new Blob([new Uint8Array(array)], { type: "image/png" }); // Blob 생성
                             var formdata = new FormData(); // formData 생성
                             formdata.append("file", file); // file data 추가
@@ -667,7 +666,7 @@
 
                     const { src } = JSON.parse(localStorage.getItem("image-info"));
                     console.log(src);
-
+                    console.log(`"http://127.0.0.1:9091` + src + `"`);
                     // 커스터 마이즈 버튼
 
                     $("#fileInput").on("change", function () {
@@ -927,17 +926,31 @@
                         defaultColor: "#000000",
                     });
                     //카카오
+
                     function shareMessage() {
+                        let url = "http://13.125.252.153:9091" + src;
+                        console.log(url);
+
+                        Kakao.Share.scrapImage({
+                            imageUrl: url,
+                        })
+                            .then(function (response) {
+                                console.log(response.infos.original.url);
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+
                         Kakao.Share.sendDefault({
                             objectType: "feed",
                             content: {
-                                title: "내가 만든 MEME ",
-                                description: "#분노 #동물 #귀여운 #슬픔 #블랙유머 #GIF",
-                                imageUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
+                                title: "나도 한번 만들어 볼까?",
+                                description: "태그 들어갈 자리.",
+                                imageUrl: url,
                                 link: {
                                     // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-                                    mobileWebUrl: "http://127.0.0.1:9091",
-                                    webUrl: "http://127.0.0.1:9091",
+                                    mobileWebUrl: "http://13.125.252.153:9091",
+                                    webUrl: "http://13.125.252.153:9091",
                                 },
                             },
                             social: {
@@ -947,17 +960,10 @@
                             },
                             buttons: [
                                 {
-                                    title: "웹으로 보기",
+                                    title: "바로 만들러 가기",
                                     link: {
-                                        mobileWebUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
-                                        webUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
-                                    },
-                                },
-                                {
-                                    title: "앱으로 보기",
-                                    link: {
-                                        mobileWebUrl: "http://127.0.0.1:9091",
-                                        webUrl: "http://127.0.0.1:9091",
+                                        mobileWebUrl: "http://13.125.252.153:9091/gen ",
+                                        webUrl: "http://13.125.252.153:9091/gen ",
                                     },
                                 },
                             ],

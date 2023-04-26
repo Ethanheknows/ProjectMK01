@@ -167,11 +167,11 @@ body {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: 100px;
+                    width: 39px;
                     height: 38px;
 
                     a {
-                        width: 100px;
+                        width: 39px;
                         height: 26px;
                         margin: 10px 5px;
                         img {
@@ -686,5 +686,5 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; 
+    height: calc(100vh - 250px);
   }
