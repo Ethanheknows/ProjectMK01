@@ -119,9 +119,8 @@
 .genCHeader {
   position: fixed;
   display: block;
-  top: -10px;
+  top: 70;
   width: 100%;
-  top: 70px;
 }
 .genCHeader.off {
   opacity: 0;
@@ -150,6 +149,7 @@ body .headerS {
   width: 100%;
   height: 100%;
   top: 70px;
+  opacity: 100%;
 }
 body .headerS.off {
   opacity: 0;
@@ -212,7 +212,6 @@ body .topWrap .canvasBtnWarp {
   margin-right: 30px;
 }
 body .topWrap .canvasWrap {
-  border: 1px solid white;
   transition: all 0.25s ease;
 }
 body .topWrap .OnOffwrapper {
@@ -272,6 +271,10 @@ body .topWrap .rightBtnWrap .share .kakaoBtn a {
 body .topWrap .rightBtnWrap .share .kakaoBtn a img {
   width: 39px;
   height: 39px;
+  filter: grayscale(100);
+}
+body .topWrap .rightBtnWrap .share .kakaoBtn a img:hover {
+  filter: grayscale(0);
 }
 body .topWrap .rightBtnWrap .upload {
   margin-top: 8px;
@@ -426,14 +429,27 @@ body .bottomWrap .addDelBtn .barBox1 {
   background-color: #00fd0a;
   margin-left: 0;
 }
+body .bottomWrap .addDelBtn .barBox1.addBarBoxCustom {
+  background-color: #000000;
+  margin-left: 0;
+}
 body .bottomWrap .addDelBtn .barBox2.on {
   background-color: #00fd0a;
+}
+body .bottomWrap .addDelBtn .barBox2.on.addBarBoxCustom {
+  background-color: #000000;
 }
 body .bottomWrap .addDelBtn .barBox3.on {
   background-color: #00fd0a;
 }
+body .bottomWrap .addDelBtn .barBox3.on.addBarBoxCustom {
+  background-color: #000000;
+}
 body .bottomWrap .addDelBtn .barBox4.on {
   background-color: #00fd0a;
+}
+body .bottomWrap .addDelBtn .barBox4.on.addBarBoxCustom {
+  background-color: #000000;
 }
 body .bottomWrap .genCon {
   display: block;
@@ -442,6 +458,9 @@ body .bottomWrap .genCon {
   border: 1px solid white;
   margin: 0 auto;
   margin-bottom: 10px;
+}
+body .bottomWrap .genCon.genConCustom {
+  border: 1px solid rgb(0, 0, 0);
 }
 body .bottomWrap .genCon .anchorColor {
   width: 20px;
@@ -500,6 +519,14 @@ body .bottomWrap .slider {
   overflow: hidden;
   box-shadow: inset 0 0 5px rgb(0, 0, 0);
   margin-right: 10px;
+}
+body .bottomWrap .slider.sliderCustom {
+  background: rgba(0, 0, 0, 0.3);
+}
+body .bottomWrap .slider.sliderCustom::-webkit-slider-thumb {
+  background: rgb(0, 0, 0);
+  box-shadow: -407px 0 0 400px #000000;
+  border: 5px solid #ffffff;
 }
 body .bottomWrap .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -704,8 +731,4 @@ body .bottomWrap .txtCon {
   justify-content: center;
   height: calc(100vh - 250px);
   text-align: left;
-}
-
-th, td {
-  padding-right: 20px;
 }
