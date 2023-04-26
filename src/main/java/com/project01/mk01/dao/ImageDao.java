@@ -29,4 +29,6 @@ public interface ImageDao {
 
     int delReply(commentBoardDto commentBoardDto);
 
+    ImageDto getTag(ImageDto imageDto);
+
 }

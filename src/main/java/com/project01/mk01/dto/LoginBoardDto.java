@@ -22,7 +22,6 @@ public class LoginBoardDto {
     @NotBlank(message = "비밀번호는 필수 입력 값입니다.")
     private String userPwCheck;
 
-    // @NotBlank(message = "이메일을 확인 해주세요.")
     @Pattern(regexp = "^(?:\\w+\\.?)*\\w+@(?:\\w+\\.)+\\w+$", message = "이메일 양식을 지켜서 입력해 주세요.")
     @NotBlank(message = "이메일은 필수 입력 값입니다.")
     private String userEmail;

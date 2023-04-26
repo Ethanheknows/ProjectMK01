@@ -216,7 +216,10 @@
                     const commentsModal = new bootstrap.Modal("#commentsModal")
                     const footerS = document.querySelector(".footerS");
 
-                 
+
+
+
+
                     function email_check(email) {
 
                       var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -224,6 +227,7 @@
                       return reg.test(email);
                     
                     }
+                    
                     
                     
                    $(window).scroll(function() {
@@ -279,7 +283,6 @@
                                                   for (i = 0; i < getUploadOrignalPath.length; i++) {
                                                     
                                                     if (getUploadOrignalPath[i].originalPath.split("/")[3] == ogsrc) {
-                                                      console.log(i + ogsrc);
                                                       $("#click-modal-slide-thumb").append(
                                                         `<div class="swiper-slide">
                                                           <img src="/upload/upload/` +
@@ -321,7 +324,6 @@
                                                           $(`#comments-tr`+i).append(`<td>`+response[i].contents+ `</td>`);
                                                           $(`#comments-tr`+i).append(`<td>`+response[i].regDate+ `</td>`);
                                                           if(session.board!=null &&(session.board.nickName==response[i].nickName || session.board.userId=="manager")  ){
-                                                           console.log("a")
                                                            $(`#comments-tr`+i).append(`<td id="del"><span style="cursor:pointer;" class="material-icons"> clear</span></td>`);
                                                           }
                                                           $("#category02").addClass("hidden");
@@ -356,91 +358,11 @@
 
 
                                                 });                                               
-                  
-                  //tag누르면 png gif
-                  //$(document).on('click','#clickTag',function(e){
-                    //  var selectTag=$(this).attr("value");
-                    //  $(".swiper-slide").remove();
-                    //  $('.tag1').html(`<div class="swiper-slide">tagGif</div>`)
-                    //
-                    //  for(i = 0;i<allImages.length;i++){
-                      //    var allTag= allImages[i].tag;
-                      //    if(allTag.includes(selectTag)){
-                        //
-                        //      if(!allImages[i].original.includes("gif")){
-                          //      $(".tag1").append(
-                            //        // prettier-ignored
-                            //        `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-                              //            allImages[i].original +
-                              //            `" alt="" /></a></div>`
-                              //            );
-                              //        }else{
-                                //          $(".tagGif").append(
-                                  //            // prettier-ignored
-                                  //            `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
-                                    //              allImages[i].original +
-                                    //              `" alt="" /></a></div>`
-                                    //              );
-                    //          }
-                    //        }else if(selectTag=="all"){
-                    //          if(!allImages[i].original.includes("gif")){
-//
-//            $(".tag1").append(
-  //                // prettier-ignored
-  //                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/jpg/` +
-    //                    allImages[i].original +
-    //                    `" alt="" /></a></div>`
-    //                    );
-    //        }else{
-      //            $(".tagGif").append(
-        //                // prettier-ignored
-        //                `<div class="swiper-slide"><a href="" id="clickedImg"><img src="/upload/gif/` +
-          //                    allImages[i].original +
-          //                    `" alt="" /></a></div>`
-          //                    );
-          //                }
-          //        }
-          //
-          //  }
-          //
-          //
-          //
-          //
-          //
-          // });
-
-//
-//
-             //         $('#modal-image').html(`<img src="`+src+`" alt="" class="modalImgMain"/>`)
-             //         $('#modal-image_Thumb').html(`<img src="`+src+`" alt="" />`)
-             //         $("#comments-data").remove();
-             //         $('#comments').html(`<div id="comments-data"></div>`)
-//
-             //         for(i = 0;i<allcomments.length;i++){
-             //           console.log(ogsrc)
-//
-             //           if(allcomments[i].original==ogsrc && allcomments[i].available==0){
-             //             console.log(i+"번 삽입");
-             //             $('#comments-data').append(`
-             //             <tr>
-             //             <td class="text-start ps-sm-5 "">
-             //             <td>
-             //               `+allcomments[i].contents+`
-             //             </td>
-             //             </td>
-             //             <td>`+allcomments[i].nickName+`</td>
-             //             <td>`+allcomments[i].regDate+`</td>
-             //             </tr>
-             //             `)
-             //           }
-//
-             //         }
+         
 //          
             $(document).on('click','#del',function(e){
               var delId= this.parentNode.id
-              console.log(delId); // "comments-tr19"  
               var guest = this.parentNode.querySelector("#delNo").innerHTML;
-              console.log(guest);
 
 
               $.ajax({
@@ -474,7 +396,6 @@
             else{
               nickName=session.board.nickName;
             }
-            console.log($("#replyComment").val());
             
             $.ajax({
               url: "/updatereply",
@@ -500,7 +421,6 @@
                     $(`#comments-tr`+i).append(`<td>`+response[i].contents+ `</td>`);
                     $(`#comments-tr`+i).append(`<td>`+response[i].regDate+ `</td>`);
                     if(session.board!=null &&(session.board.nickName==response[i].nickName || session.board.userId=="manager")  ){
-                      console.log("a")
                       $(`#comments-tr`+i).append(`<td id="del"><span style="cursor:pointer;" class="material-icons"> clear</span></td>`);
                      }
                   }
@@ -522,7 +442,6 @@
           $(document).on('click','#clickTag',function(e){
             var selectTag=$(this).attr("value");
             const element = document.getElementById('category02');
-            console.log(element)
             
             $(".swiper-slide").remove();
             
@@ -628,12 +547,6 @@
 
 
 
-                    // $("#clickedImg").on("click",function(e){
-                    //   e.preventDefault();
-                    //   console.log("이미지 클릭중===============")
-                    //   imgModal.show();
-                    // });
-
                     if(msg){
                       memoModal.show();
                       
@@ -658,7 +571,6 @@
                       }
                       localStorage.setItem("image-info", JSON.stringify(imageinfo));
 
-                      console.log("img======="+src);
                       //e.preventDefault();
                     });
 
@@ -711,12 +623,12 @@
                                                                      if(data == 0 ){
                                                                        $('#nickName_div').html('<a">좋은 NICKNAME 이네요!</a>')
 
-                                                                     }else if(id == session.board.nickName){
-                                                                       console.log(session.board.nickName)
-                                                                       $('#nickName_div').html('<a" >기존 사용하고 있는 닉네임입니다.</a>')
-                                                                   }
-                                                                     else{
-                                                                       console.log(session.board.nickName)
+                                      }else if(id == session.board.nickName){
+                                        console.log(session.board.nickName)
+                                        $('#nickName_div').html('<a" >기존 사용하고 있는 닉네임입니다.</a>:')
+                                    }
+                                      else{
+                                        console.log(session.board.nickName)
 
                                                                        $('#nickName_div').html('<a" style="color:red">이미 사용중인 닉네임입니다.</a>')
                                                                        nickError="이미 사용중인 닉네임입니다."
@@ -762,59 +674,9 @@
                       })
 
 
-
-
-                                                    // $(".id_modify").on("focusout",function(){
-                                                    //   var id=$("#userId").val();
-                                                //
-                                                    //   if(id==''||id.length==0){
-                                                    //     $('#id_div').html('<a" style="color:red">아이디를 입력해 주세요.</a>')
-                                                    //     idError="아이디를 입력해 주세요"
-                                                //
-                                                    //     return false;
-                                                    //   }
-                                                    //   if(id.length<5){
-                                                    //     $('#id_div').html('<a" style="color:red">아이디를 5글자 이상 입력해 주세요.</a>:')
-                                                    //     idError="아이디를 5글자 이상 입력해 주세요."
-                                                //
-                                                //
-                                                    //     return false;
-                                                    //   }
-                                                    //   $.ajax({
-                                                    //     url : "/idCheck",
-                                                    //         type : "post",
-                                                    //         dataType : "json",
-                                                    //         data : {"userId" : $("#userId").val()},
-                                                    //         success : function(data){
-                                                    //                 if(data == 0 ){
-                                                    //                   idError=""
-                                                //
-                                                    //                   $('#id_div').html('<a">사용가능한 ID입니다.</a>:')
-                                                    //                   console.log(session.board.userId)
-                                                    //                   console.log(id)
-                                                    //                   return true
-                                                    //                 }
-                                                    //                 //else if(id == session.board.userId){
-                                                    //                   //console.log(session.board.userId)
-                                                //
-                                                    //                   //$('#id_div').html('<a">기존 사용하고 있는 아이디입니다.</a>:')
-                                                    //               //}
-                                                    //               else{
-                                                    //
-                                                //
-                                                    //                   $('#id_div').html('<a" style="color:red">이미 사용중이거나 탈퇴한 ID입니다.</a>:')
-                                                    //                   return true
-                                                    //               }
-                                                    //             }
-                                                    //   })
-                                                    // })
-
-
-
                       $(".userPw_confirm").on("focusout",function(){
                         var id=$("#userPw").val();
 
-                        console.log(id);
 
 
                         
@@ -926,22 +788,17 @@
                     })
 
                     $(".btnInfo").on("click",function(){
-                      console.log("uuuu");       
                       deleteModal.show();
                       const pw = session.board.userPw;
-                      console.log(pw);
                       $("#deleteModal .modal-title").text("비밀번호를 입력해 주세요.");
                       $("#btnDeleteConfirm").on("click",function(e){
                         if($("#password").val()!=pw){
-                          console.log("1실패")
                
-                          console.log("123123123")
                           memoModal.show();
                           $("#memoModal .modal-title").text("비밀번호를 오류");
                           $("#memoModal .modal-body").text("비밀번호를 잘못 입력하셨습니다.");
                           return false;
                         }
-                        console.log("1차성공")
                         $.ajax({
                           url : "/deleteAccountProcess" ,
                               type : "post",
@@ -951,8 +808,6 @@
                                       "userPw" : session.board.userPw
                             },
                               success : function(response){
-                                console.log("aaaaa");
-                                console.log(response);
                                 if(response.msg==="ok") { 
                                     memoModal.show();
                                     $("#memoModal .modal-title").text("계정을삭제하였습니다.");
@@ -1000,10 +855,7 @@
                       
                       });
 
-                      clickedSwiper.on('slideChange', function() {
-                        console.log('현재 슬라이더 인덱스:', clickedSwiper.activeIndex);
-                      });
-
+                  
 
 
                       clickedSwiper.slideTo(0, 0, false)

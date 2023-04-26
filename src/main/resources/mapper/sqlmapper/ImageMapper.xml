@@ -43,6 +43,12 @@
 
 
       </select>
+
+      <select id="getTag" resultType="ImageDto">
+
+        SELECT * FROM images where original = #{original}
+
+      </select>
       
 
       <select id="getUploadOrignalPath" resultType="uploadDto">

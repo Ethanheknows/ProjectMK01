@@ -705,3 +705,7 @@ body .bottomWrap .txtCon {
   height: calc(100vh - 250px);
   text-align: left;
 }
+
+th, td {
+  padding-right: 20px;
+}
