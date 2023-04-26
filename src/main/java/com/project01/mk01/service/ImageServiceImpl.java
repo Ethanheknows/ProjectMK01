@@ -80,13 +80,6 @@ public class ImageServiceImpl implements ImageService {
 
     }
 
-    public List<commentBoardDto> getAllcomment() {
-
-        List<commentBoardDto> result = imageDao.getAllcomment();
-        return result;
-
-    }
-
     public int insertImage(uploadDto uploadDto) {
 
         UUID uuid = UUID.randomUUID();
@@ -118,4 +111,22 @@ public class ImageServiceImpl implements ImageService {
         return result;
     }
 
+    public List<commentBoardDto> getAllcomment() {
+
+        List<commentBoardDto> result = imageDao.getAllcomment();
+        return result;
+
+    }
+
+    @Override
+    public int updateReply(commentBoardDto commentBoardDto) {
+        int result = imageDao.updateReply(commentBoardDto);
+        return result;
+    }
+
+    @Override
+    public int delReply(commentBoardDto commentBoardDto) {
+        int result = imageDao.delReply(commentBoardDto);
+        return result;
+    }
 }

@@ -120,9 +120,7 @@
   position: fixed;
   display: block;
   top: -10px;
-  z-index: -1;
   width: 100%;
-  height: 100%;
   top: 70px;
 }
 .genCHeader.off {
@@ -676,13 +674,6 @@ body .bottomWrap .txtCon {
 
 #imgModal {
   backdrop-filter: blur(5px);
-}
-
-.replyInput {
-  display: flex;
-  position: absolute;
-  bottom: 10%;
-  width: 40%;
 }
 
 .material-icons {

@@ -39,7 +39,7 @@
       
       <select id="getAllcomment" resultType="commentBoardDto">
 
-        SELECT * FROM imageboard ORDER BY NO DESC
+        SELECT * FROM imageboard ORDER BY NO 
 
 
       </select>
@@ -51,6 +51,10 @@
 
       <update id="hitUp" parameterType="ImageDto">
         update images set hit =hit+1 where original = #{original}
+    </update>
+
+    <update id="delReply" parameterType="commentBoardDto">
+       update imageboard set AVAILABLE = 0 where no = #{no}
     </update>
 
 
@@ -67,4 +71,16 @@
 
    
       
+      <insert id="updateReply" parameterType="commentBoardDto">
+            insert into imageboard values (
+                      imageboard_SEQ.NEXTVAL,
+                      #{contents},
+                      SYSDATE,
+                      1,
+                      #{nickName},
+                      #{original}
+                    )
+        
+    </insert>
+
 </mapper>
