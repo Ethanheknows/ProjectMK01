@@ -163,16 +163,18 @@
                         gsap.to(".headerS", { opacity: 1, y: -1000, duration: 1 });
                         $(".myHeader").addClass("on");
                     } else if (y <= 0) {
+                        clearTimeout(timer);
                         $(".myHeader").removeClass("on");
                         timer = setTimeout(function () {
                             // gsap.to(".headerS", { opacity: 0, y: -1000, duration: 1 }),
                             gsap.to(".headerS", {
-                                // opacity: 1,
+                                opacity: 1,
                                 y: 0,
                                 duration: 2,
                                 // delay: 0.5,
                             });
                         }, 500);
+                        $(".headerS").removeClass("off");
                     }
                 });
                 $(window).trigger("scroll");

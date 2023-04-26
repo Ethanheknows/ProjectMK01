@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="canvasWrap">
+                        <div class="canvasWrap canvasCustom">
                             <canvas id="canvas" width="500" height="500"></canvas>
                         </div>
                         <div class="rightBtnWrap">
@@ -107,8 +107,8 @@
                                     <h2>Download</h2>
                                 </div>
                                 <div class="btnDown">
-                                    <a class="btn btn-primary" id="downloadLinkPNG" download="meme.png" href="#" style="display: none">.PNG</a>
-                                    <a class="btn btn-primary" id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">.JPG</a>
+                                    <a class="btn btn-info" id="downloadLinkPNG" download="meme.png" href="#" style="display: none">.PNG</a>
+                                    <a class="btn btn-info" id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">.JPG</a>
                                     <button class="btn btn-primary hidden" id="upload" href="#">upload</button>
                                 </div>
                             </div>
@@ -141,25 +141,25 @@
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
                                 </svg>
                             </div>
-                            <div class="addBarBox barBox1"></div>
-                            <div class="addBarBox barBox2"></div>
-                            <div class="addBarBox barBox3"></div>
-                            <div class="addBarBox barBox4"></div>
+                            <div class="addBarBox barBox1 addBarBoxCustom"></div>
+                            <div class="addBarBox barBox2 addBarBoxCustom"></div>
+                            <div class="addBarBox barBox3 addBarBoxCustom"></div>
+                            <div class="addBarBox barBox4 addBarBoxCustom"></div>
                             <div id="addGenCon" class="addGenCon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
                                 </svg>
                             </div>
                         </div>
-                        <div class="genCon">
+                        <div class="genCon genConCustom">
                             <div class="anchorColor anchor1"></div>
                             <div class="ranges">
                                 <label for="topRange">Top Position : </label>
-                                <input type="range" id="topRange" min="0" max="500" step="1" value="30" class="slider" />
+                                <input type="range" id="topRange" min="0" max="500" step="1" value="30" class="slider sliderCustom" />
                                 <label for="leftRange">Left Position : </label>
-                                <input type="range" id="leftRange" min="0" max="500" step="1" value="30" class="slider" />
+                                <input type="range" id="leftRange" min="0" max="500" step="1" value="30" class="slider sliderCustom" />
                                 <label for="rotateRange">Rotate Position : </label>
-                                <input type="range" id="rotateRange" min="-180" max="180" step="30" value="0" list="values1" class="slider rotateRange" />
+                                <input type="range" id="rotateRange" min="-180" max="180" step="30" value="0" list="values1" class="slider rotateRange sliderCustom" />
                                 <datalist id="values1">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -178,7 +178,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange">Font Size : </label>
-                                <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" class="slider" />
+                                <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" class="slider sliderCustom" />
                                 <label for="fontWeight">Font Weight : </label>
                                 <select id="fontWeight">
                                     <option value="bold">Bold</option>
@@ -196,17 +196,17 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="genCon" id="genCon2">
+                        <div class="genCon genConCustom" id="genCon2">
                             <div class="anchorColor anchor2"></div>
                             <div class="ranges">
                                 <label for="topRange2">Top Position : </label>
-                                <input type="range" id="topRange2" min="0" max="500" step="1" value="50" class="slider" />
+                                <input type="range" id="topRange2" min="0" max="500" step="1" value="50" class="slider sliderCustom" />
                                 <div>
                                     <label for="leftRange2">Left Position : </label>
-                                    <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" class="slider" />
+                                    <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" class="slider sliderCustom" />
                                 </div>
                                 <label for="rotateRange2">Rotate Position : </label>
-                                <input type="range" id="rotateRange2" min="-180" max="180" step="30" value="0" list="values2" class="slider rotateRange" />
+                                <input type="range" id="rotateRange2" min="-180" max="180" step="30" value="0" list="values2" class="slider rotateRange sliderCustom" />
                                 <datalist id="values2">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -225,7 +225,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange2">Font Size : </label>
-                                <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" class="slider" />
+                                <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" class="slider sliderCustom" />
                                 <label for="fontWeight2">Font Weight : </label>
                                 <select id="fontWeight2">
                                     <option value="bold">Bold</option>
@@ -243,15 +243,15 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="genCon" id="genCon3">
+                        <div class="genCon genConCustom" id="genCon3">
                             <div class="anchorColor anchor3"></div>
                             <div class="ranges">
                                 <label for="topRange3">Top Position : </label>
-                                <input type="range" id="topRange3" min="0" max="500" step="1" value="70" class="slider" />
+                                <input type="range" id="topRange3" min="0" max="500" step="1" value="70" class="slider sliderCustom" />
                                 <label for="leftRange3">Left Position : </label>
-                                <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" class="slider" />
+                                <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" class="slider sliderCustom" />
                                 <label for="rotateRange3">Rotate Position : </label>
-                                <input type="range" id="rotateRange3" min="-180" max="180" step="30" value="0" list="values3" class="slider rotateRange" />
+                                <input type="range" id="rotateRange3" min="-180" max="180" step="30" value="0" list="values3" class="slider rotateRange sliderCustom" />
                                 <datalist id="values3">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -270,7 +270,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange3">Font Size : </label>
-                                <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" class="slider" />
+                                <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" class="slider sliderCustom" />
                                 <label for="fontWeight3">Font Weight : </label>
                                 <select id="fontWeight3">
                                     <option value="bold">Bold</option>
@@ -288,15 +288,15 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="genCon" id="genCon4">
+                        <div class="genCon genConCustom" id="genCon4">
                             <div class="anchorColor anchor4"></div>
                             <div class="ranges">
                                 <label for="topRange4">Top Position : </label>
-                                <input type="range" id="topRange4" min="0" max="500" step="1" value="90" class="slider" />
+                                <input type="range" id="topRange4" min="0" max="500" step="1" value="90" class="slider sliderCustom" />
                                 <label for="leftRange4">Left Position : </label>
-                                <input type="range" id="leftRange4" min="0" max="500" step="1" value="90" class="slider" />
+                                <input type="range" id="leftRange4" min="0" max="500" step="1" value="90" class="slider sliderCustom" />
                                 <label for="rotateRange4">Rotate Position : </label>
-                                <input type="range" id="rotateRange4" min="-180" max="180" step="30" value="0" list="values4" class="slider rotateRange" />
+                                <input type="range" id="rotateRange4" min="-180" max="180" step="30" value="0" list="values4" class="slider rotateRange sliderCustom" />
                                 <datalist id="values4">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -315,7 +315,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange4">Font Size : </label>
-                                <input type="range" id="fontSizeRange4" min="14" max="94" step="1" value="36" class="slider" />
+                                <input type="range" id="fontSizeRange4" min="14" max="94" step="1" value="36" class="slider sliderCustom" />
                                 <label for="fontWeight4">Font Weight : </label>
                                 <select id="fontWeight4">
                                     <option value="bold">Bold</option>
