@@ -105,6 +105,28 @@
   display: none;
 }
 
+.genCustomWarp {
+  font-family: "Sohne", "SCD", sans-serif;
+  font-weight: 300;
+  background-color: #ff7700;
+  color: black;
+}
+.genCustomWarp .genCWrap {
+  position: relative;
+  z-index: 2;
+}
+
+.genCHeader {
+  position: fixed;
+  display: block;
+  top: -10px;
+  width: 100%;
+  top: 70px;
+}
+.genCHeader.off {
+  opacity: 0;
+}
+
 body {
   font-family: "Sohne", "SCD", sans-serif;
   font-weight: 300;
@@ -119,7 +141,7 @@ body .myHeader {
   color: black;
 }
 body .myHeader.on {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
 }
 body .headerS {
   position: fixed;
@@ -129,6 +151,9 @@ body .headerS {
   width: 100%;
   height: 100%;
   top: 70px;
+}
+body .headerS.off {
+  opacity: 0;
 }
 body .footerS {
   z-index: -1;
@@ -182,16 +207,122 @@ body .topWrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 30px 20px;
   /* move */
   /* move */
   /* move */
 }
+body .topWrap .canvasBtnWarp {
+  margin-right: 30px;
+}
+body .topWrap .canvasWrap {
+  border: 1px solid white;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
 body .topWrap .OnOffwrapper {
   position: relative;
+}
+body .topWrap .rightBtnWrap {
+  display: inline;
+  margin-left: 30px;
+}
+body .topWrap .rightBtnWrap .download {
+  margin: 0 10px;
+  display: inline;
+}
+body .topWrap .rightBtnWrap .download .download_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+body .topWrap .rightBtnWrap .download .download_title h2 {
+  margin-left: 10px;
+}
+body .topWrap .rightBtnWrap .download .btnDown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100px;
+  height: 50px;
+}
+body .topWrap .rightBtnWrap .download .btnDown a {
+  margin: 10px 5px;
+}
+body .topWrap .rightBtnWrap .share {
+  margin-top: 8px;
+  margin: 0 10px;
+  display: inline;
+}
+body .topWrap .rightBtnWrap .share .share_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+body .topWrap .rightBtnWrap .share .share_title h2 {
+  margin-left: 10px;
+}
+body .topWrap .rightBtnWrap .share .kakaoBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 39px;
+  height: 38px;
+}
+body .topWrap .rightBtnWrap .share .kakaoBtn a {
+  width: 39px;
+  height: 26px;
+  margin: 10px 5px;
+}
+body .topWrap .rightBtnWrap .share .kakaoBtn a img {
+  width: 39px;
+  height: 39px;
+}
+body .topWrap .rightBtnWrap .upload {
+  margin-top: 8px;
+  margin: 0 10px;
+  display: inline;
+}
+body .topWrap .rightBtnWrap .upload .upload_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+body .topWrap .rightBtnWrap .upload .upload_title h2 {
+  margin-left: 10px;
 }
 body .topWrap .invert {
   position: absolute;
@@ -265,11 +396,6 @@ body .topWrap #sepia:checked + .switch_label .onf_btn {
   background: #fff;
   -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1254901961);
           box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1254901961);
-}
-body .topWrap .canvasWrap {
-  border: 1px solid white;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
 }
 body #genCon2 {
   opacity: 0;
@@ -488,81 +614,6 @@ body .bottomWrap .txtCon {
       -ms-flex-align: center;
           align-items: center;
   padding-bottom: 10px;
-}
-body .download {
-  margin: 0 10px;
-  display: inline;
-}
-body .download .download_title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-body .download .download_title h2 {
-  margin-left: 10px;
-}
-body .download .btnDown {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100px;
-  height: 50px;
-}
-body .download .btnDown a {
-  margin: 10px 5px;
-}
-body .share {
-  margin-top: 8px;
-  margin: 0 10px;
-  display: inline;
-}
-body .share .shareTitle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-body .share .shareTitle h2 {
-  margin-left: 10px;
-}
-body .share .kakaoBtn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100px;
-  height: 38px;
-}
-body .share .kakaoBtn a {
-  width: 100px;
-  height: 26px;
-  margin: 10px 5px;
-}
-body .share .kakaoBtn a img {
-  width: 39px;
-  height: 39px;
 }
 
 .modal.fade#imgModal {

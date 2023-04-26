@@ -12,7 +12,7 @@
     --bs-purple: #6f42c1;
     --bs-pink: #d63384;
     --bs-red: #dc3545;
-    --bs-orange: #fd7e14;
+    --bs-orange: #rgb(255, 89, 0);
     --bs-yellow: #ffc107;
     --bs-green: #198754;
     --bs-teal: #20c997;
@@ -50,8 +50,8 @@
     --bs-black-rgb: 0, 0, 0;
     --bs-body-color-rgb: 33, 37, 41;
     --bs-body-bg-rgb: 255, 255, 255;
-    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans",
-        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", "Noto Color Emoji";
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
     --bs-body-font-family: var(--bs-font-sans-serif);
@@ -396,9 +396,7 @@ select:disabled {
     opacity: 1;
 }
 
-[list]:not([type="date"]):not([type="datetime-local"]):not([type="month"]):not([type="week"]):not(
-        [type="time"]
-    )::-webkit-calendar-picker-indicator {
+[list]:not([type="date"]):not([type="datetime-local"]):not([type="month"]):not([type="week"]):not([type="time"])::-webkit-calendar-picker-indicator {
     display: none !important;
 }
 
@@ -2096,10 +2094,8 @@ progress {
     border-width: 0;
     border-inline-end-width: 1px;
     border-radius: 0;
-    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-        box-shadow 0.15s ease-in-out;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-        box-shadow 0.15s ease-in-out;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .form-control::file-selector-button {
     padding: 0.375rem 0.75rem;
@@ -2114,8 +2110,7 @@ progress {
     border-width: 0;
     border-inline-end-width: 1px;
     border-radius: 0;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-        box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
     .form-control::-webkit-file-upload-button {
@@ -2663,10 +2658,7 @@ textarea.form-control-lg {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-.input-group
-    > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(
-        .invalid-feedback
-    ) {
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
     margin-left: -1px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -2920,8 +2912,7 @@ textarea.form-control.is-invalid {
     border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
     border-radius: var(--bs-btn-border-radius);
     background-color: var(--bs-btn-bg);
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-        box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
     .btn {
@@ -2981,8 +2972,8 @@ fieldset:disabled .btn {
     --bs-btn-bg: rgb(81, 218, 76);
     --bs-btn-border-color: rgb(81, 218, 76);
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: rgb(81, 218, 76);
-    --bs-btn-hover-border-color: rgb(81, 218, 76);
+    --bs-btn-hover-bg: rgb(255, 89, 0);
+    --bs-btn-hover-border-color: rgb(255, 89, 0);
     --bs-btn-focus-shadow-rgb: 49, 132, 253;
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: rgb(81, 218, 76);
@@ -3012,36 +3003,36 @@ fieldset:disabled .btn {
 
 .btn-success {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #198754;
-    --bs-btn-border-color: #198754;
+    --bs-btn-bg: rgb(255, 98, 0);
+    --bs-btn-border-color: rgb(81, 218, 76);
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #157347;
-    --bs-btn-hover-border-color: #146c43;
+    --bs-btn-hover-bg: #rgb(255, 89, 0);
+    --bs-btn-hover-border-color: rgb(255, 98, 0);
     --bs-btn-focus-shadow-rgb: 60, 153, 110;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #146c43;
-    --bs-btn-active-border-color: #13653f;
+    --bs-btn-active-bg: rgb(255, 98, 0);
+    --bs-btn-active-border-color: #rgb(255, 89, 0);
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #198754;
-    --bs-btn-disabled-border-color: #198754;
+    --bs-btn-disabled-bg: rgb(255, 98, 0);
+    --bs-btn-disabled-border-color: rgb(255, 98, 0);
 }
 
 .btn-info {
-    --bs-btn-color: #000;
-    --bs-btn-bg: #0dcaf0;
-    --bs-btn-border-color: #0dcaf0;
-    --bs-btn-hover-color: #000;
-    --bs-btn-hover-bg: #31d2f2;
-    --bs-btn-hover-border-color: #25cff2;
-    --bs-btn-focus-shadow-rgb: 11, 172, 204;
-    --bs-btn-active-color: #000;
-    --bs-btn-active-bg: #3dd5f3;
-    --bs-btn-active-border-color: #25cff2;
+    --bs-btn-color: #fff;
+    --bs-btn-bg: rgb(255, 89, 0);
+    --bs-btn-border-color: rgb(255, 89, 0);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: rgb(81, 218, 76);
+    --bs-btn-hover-border-color: rgb(81, 218, 76);
+    --bs-btn-focus-shadow-rgb: 60, 153, 110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: rgb(255, 89, 0);
+    --bs-btn-active-border-color: #rgb(255, 89, 0);
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #000;
-    --bs-btn-disabled-bg: #0dcaf0;
-    --bs-btn-disabled-border-color: #0dcaf0;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: rgb(255, 89, 0);
+    --bs-btn-disabled-border-color: #rgb(255, 89, 0);
 }
 
 .btn-warning {
@@ -3113,19 +3104,19 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-primary {
-    --bs-btn-color: rgb(81,218,76);
-    --bs-btn-border-color: rgb(81,218,76);
+    --bs-btn-color: rgb(81, 218, 76);
+    --bs-btn-border-color: rgb(81, 218, 76);
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: rgb(81,218,76);
-    --bs-btn-hover-border-color: rgb(81,218,76);
+    --bs-btn-hover-bg: rgb(81, 218, 76);
+    --bs-btn-hover-border-color: rgb(81, 218, 76);
     --bs-btn-focus-shadow-rgb: 13, 110, 253;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: rgb(81,218,76);
-    --bs-btn-active-border-color: rgb(81,218,76);
+    --bs-btn-active-bg: rgb(81, 218, 76);
+    --bs-btn-active-border-color: rgb(81, 218, 76);
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: rgb(81,218,76);
+    --bs-btn-disabled-color: rgb(81, 218, 76);
     --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: rgb(81,218,76);
+    --bs-btn-disabled-border-color: rgb(81, 218, 76);
     --bs-gradient: none;
 }
 
@@ -3133,8 +3124,8 @@ fieldset:disabled .btn {
     --bs-btn-color: #6c757d;
     --bs-btn-border-color: #6c757d;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #6c757d;
-    --bs-btn-hover-border-color: #6c757d;
+    --bs-btn-hover-bg: rgb(255, 98, 0);
+    --bs-btn-hover-border-color: rgb(255, 98, 0);
     --bs-btn-focus-shadow-rgb: 108, 117, 125;
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #6c757d;
@@ -4479,8 +4470,7 @@ fieldset:disabled .btn {
 .accordion {
     --bs-accordion-color: #212529;
     --bs-accordion-bg: #fff;
-    --bs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+    --bs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
     --bs-accordion-border-color: var(--bs-border-color);
     --bs-accordion-border-width: 1px;
     --bs-accordion-border-radius: 0.375rem;
@@ -4680,8 +4670,7 @@ fieldset:disabled .btn {
     text-decoration: none;
     background-color: var(--bs-pagination-bg);
     border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-        box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
     .page-link {
@@ -5524,8 +5513,7 @@ fieldset:disabled .btn {
 }
 .modal-header .btn-close {
     padding: calc(var(--bs-modal-header-padding-y) * 0.5) calc(var(--bs-modal-header-padding-x) * 0.5);
-    margin: calc(-0.5 * var(--bs-modal-header-padding-y)) calc(-0.5 * var(--bs-modal-header-padding-x))
-        calc(-0.5 * var(--bs-modal-header-padding-y)) auto;
+    margin: calc(-0.5 * var(--bs-modal-header-padding-y)) calc(-0.5 * var(--bs-modal-header-padding-x)) calc(-0.5 * var(--bs-modal-header-padding-y)) auto;
 }
 
 .modal-title {
@@ -5770,8 +5758,7 @@ fieldset:disabled .btn {
 .bs-tooltip-end .tooltip-arrow::before,
 .bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow::before {
     right: -1px;
-    border-width: calc(var(--bs-tooltip-arrow-width) * 0.5) var(--bs-tooltip-arrow-height)
-        calc(var(--bs-tooltip-arrow-width) * 0.5) 0;
+    border-width: calc(var(--bs-tooltip-arrow-width) * 0.5) var(--bs-tooltip-arrow-height) calc(var(--bs-tooltip-arrow-width) * 0.5) 0;
     border-right-color: var(--bs-tooltip-bg);
 }
 
@@ -5797,8 +5784,7 @@ fieldset:disabled .btn {
 .bs-tooltip-start .tooltip-arrow::before,
 .bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow::before {
     left: -1px;
-    border-width: calc(var(--bs-tooltip-arrow-width) * 0.5) 0 calc(var(--bs-tooltip-arrow-width) * 0.5)
-        var(--bs-tooltip-arrow-height);
+    border-width: calc(var(--bs-tooltip-arrow-width) * 0.5) 0 calc(var(--bs-tooltip-arrow-width) * 0.5) var(--bs-tooltip-arrow-height);
     border-left-color: var(--bs-tooltip-bg);
 }
 
@@ -5904,8 +5890,7 @@ fieldset:disabled .btn {
 .bs-popover-auto[data-popper-placement^="right"] > .popover-arrow::before,
 .bs-popover-end > .popover-arrow::after,
 .bs-popover-auto[data-popper-placement^="right"] > .popover-arrow::after {
-    border-width: calc(var(--bs-popover-arrow-width) * 0.5) var(--bs-popover-arrow-height)
-        calc(var(--bs-popover-arrow-width) * 0.5) 0;
+    border-width: calc(var(--bs-popover-arrow-width) * 0.5) var(--bs-popover-arrow-height) calc(var(--bs-popover-arrow-width) * 0.5) 0;
 }
 .bs-popover-end > .popover-arrow::before,
 .bs-popover-auto[data-popper-placement^="right"] > .popover-arrow::before {
@@ -5962,8 +5947,7 @@ fieldset:disabled .btn {
 .bs-popover-auto[data-popper-placement^="left"] > .popover-arrow::before,
 .bs-popover-start > .popover-arrow::after,
 .bs-popover-auto[data-popper-placement^="left"] > .popover-arrow::after {
-    border-width: calc(var(--bs-popover-arrow-width) * 0.5) 0 calc(var(--bs-popover-arrow-width) * 0.5)
-        var(--bs-popover-arrow-height);
+    border-width: calc(var(--bs-popover-arrow-width) * 0.5) 0 calc(var(--bs-popover-arrow-width) * 0.5) var(--bs-popover-arrow-height);
 }
 .bs-popover-start > .popover-arrow::before,
 .bs-popover-auto[data-popper-placement^="left"] > .popover-arrow::before {

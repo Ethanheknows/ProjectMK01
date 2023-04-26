@@ -7,16 +7,16 @@
     layout:decorate="~{/layout/layout.html}"
 >
     <head>
-        <title>gen7_06TESTESTEST</title>
+        <title>Meme Maker</title>
     </head>
 
     <body>
         <div layout:fragment="contents">
             <div class="container genWrap">
                 <div class="consWrap">
-                    <h1>gen7_06TESTESTEST</h1>
+                    <h1>Meme Maker</h1>
 
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3 hidden">
                         <label class="input-group-text btn-secondary" for="fileInput">Customize</label>
                         <input type="file" class="btn btn-secondary" id="fileInput" />
                         <input class="upload-name" value="Location" placeholder="Location" readonly />
@@ -60,38 +60,52 @@
                         <div class="canvasWrap">
                             <canvas id="canvas" width="500" height="500"></canvas>
                         </div>
-                        <div class="download mt-2 mb-2">
-                            <div class="download_title">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
-                                    />
-                                </svg>
-                                <h2>Download</h2>
+                        <div class="rightBtnWrap">
+                            <div class="download mt-2 mb-2">
+                                <div class="download_title">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+                                        />
+                                    </svg>
+                                    <h2>Download</h2>
+                                </div>
+                                <div class="btnDown">
+                                    <a class="btn btn-primary" id="downloadLinkPNG" download="meme.png" href="#" style="display: none">.PNG</a>
+                                    <a class="btn btn-primary" id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">.JPG</a>
+                                </div>
                             </div>
-                            <div class="btnDown">
-                                <a class="btn btn-primary" id="downloadLinkPNG" download="meme.png" href="#" style="display: none">.PNG</a>
-                                <a class="btn btn-primary" id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">.JPG</a>
+                            <div class="share mt-2 mb-2">
+                                <div class="share_title">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
+                                        ></path>
+                                    </svg>
+                                    <h2>Share</h2>
+                                </div>
+                                <div class="kakaoBtn">
+                                    <a id="kakaotalk-sharing-btn" href="javascript:shareMessage()">
+                                        <img
+                                            src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+                                            alt="카카오톡 공유 보내기 버튼"
+                                        />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="upload mt-2 mb-2">
+                                <div class="upload_title">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                                        <path
+                                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                                        />
+                                        <path
+                                            d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"
+                                        />
+                                    </svg>
+                                    <h2>Upload</h2>
+                                </div>
                                 <button class="btn btn-primary" id="upload" href="#">upload</button>
-                            </div>
-                        </div>
-                        <div class="share mt-2 mb-2">
-                            <div class="shareTitle">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
-                                    ></path>
-                                </svg>
-                                <h2>Share</h2>
-                            </div>
-
-                            <div class="kakaoBtn">
-                                <a id="kakaotalk-sharing-btn" href="javascript:shareMessage()">
-                                    <img
-                                        src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
-                                        alt="카카오톡 공유 보내기 버튼"
-                                    />
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -434,7 +448,6 @@
                             for (var i = 0; i < blobBin.length; i++) {
                                 array.push(blobBin.charCodeAt(i));
                             }
-                            console.log(src);
                             var file = new Blob([new Uint8Array(array)], { type: "image/png" }); // Blob 생성
                             var formdata = new FormData(); // formData 생성
                             formdata.append("file", file); // file data 추가
@@ -653,7 +666,7 @@
 
                     const { src } = JSON.parse(localStorage.getItem("image-info"));
                     console.log(src);
-
+                    console.log(`"http://127.0.0.1:9091` + src + `"`);
                     // 커스터 마이즈 버튼
 
                     $("#fileInput").on("change", function () {
@@ -913,17 +926,31 @@
                         defaultColor: "#000000",
                     });
                     //카카오
+
                     function shareMessage() {
+                        let url = "http://13.125.252.153:9091" + src;
+                        console.log(url);
+
+                        Kakao.Share.scrapImage({
+                            imageUrl: url,
+                        })
+                            .then(function (response) {
+                                console.log(response.infos.original.url);
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+
                         Kakao.Share.sendDefault({
                             objectType: "feed",
                             content: {
-                                title: "내가 만든 MEME ",
-                                description: "#분노 #동물 #귀여운 #슬픔 #블랙유머 #GIF",
-                                imageUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
+                                title: "나도 한번 만들어 볼까?",
+                                description: "태그 들어갈 자리.",
+                                imageUrl: url,
                                 link: {
                                     // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-                                    mobileWebUrl: "http://127.0.0.1:9091",
-                                    webUrl: "http://127.0.0.1:9091",
+                                    mobileWebUrl: "http://13.125.252.153:9091",
+                                    webUrl: "http://13.125.252.153:9091",
                                 },
                             },
                             social: {
@@ -933,17 +960,10 @@
                             },
                             buttons: [
                                 {
-                                    title: "웹으로 보기",
+                                    title: "바로 만들러 가기",
                                     link: {
-                                        mobileWebUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
-                                        webUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
-                                    },
-                                },
-                                {
-                                    title: "앱으로 보기",
-                                    link: {
-                                        mobileWebUrl: "http://127.0.0.1:9091",
-                                        webUrl: "http://127.0.0.1:9091",
+                                        mobileWebUrl: "http://13.125.252.153:9091/gen ",
+                                        webUrl: "http://13.125.252.153:9091/gen ",
                                     },
                                 },
                             ],
