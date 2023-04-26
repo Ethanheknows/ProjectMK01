@@ -155,24 +155,23 @@
             <script>
                 //헤더 애니메이션
                 let timer;
-
                 $(window).scroll(function () {
                     const y = $(window).scrollTop();
 
-                    if (y > 50) {
+                    if (y > 0) {
                         clearTimeout(timer);
                         gsap.to(".headerS", { opacity: 1, y: -1000, duration: 1 });
-                    } else if (y <= 50) {
-                        clearTimeout(timer);
-
+                        $(".myHeader").addClass("on");
+                    } else if (y <= 0) {
+                        $(".myHeader").removeClass("on");
                         timer = setTimeout(function () {
-                            gsap.to(".headerS", { opacity: 0, y: -1000, duration: 1 }),
-                                gsap.to(".headerS", {
-                                    opacity: 1,
-                                    y: 0,
-                                    duration: 2,
-                                    delay: 0.5,
-                                });
+                            // gsap.to(".headerS", { opacity: 0, y: -1000, duration: 1 }),
+                            gsap.to(".headerS", {
+                                // opacity: 1,
+                                y: 0,
+                                duration: 2,
+                                // delay: 0.5,
+                            });
                         }, 500);
                     }
                 });
@@ -182,6 +181,7 @@
                 } else {
                     $(".footerS").removeClass("on");
                 }
+
                 const tag1 = document.querySelector(".tag1");
                 $(function () {
                     for (i = 0; i < allImages.length; i++) {
