@@ -18,7 +18,6 @@
         <script type="text/javascript" src="/js/jquery-3.6.4.min.js"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/swiper-bundle.min.js"></script>
-        <script src="/js/gif.js"></script>
         <script src="/js/gsap/gsap.min.js"></script>
         <script src="/js/gsap/ScrollToPlugin.min.js"></script>
         <script src="/js/coloris.js"></script>
@@ -47,14 +46,13 @@
                     >
                 </li>
             </ul>
-
-            <div class="col-md-3 text-end" th:if="${session.board == null}">
+            <div class="col-md-3 text-end headerBtn" th:if="${session.board == null}">
                 <a href="/genCustom" class="btn btn-outline-secondary me-2">Meme Customize</a>
                 <a href="/login" class="btn btn-outline-primary me-2"> Login </a>
                 <a href="/signup" class="btn btn-primary">Sign-up</a>
             </div>
 
-            <div class="col-md-3 text-end" th:unless="${session.board == null}">
+            <div class="col-md-3 text-end headerBtn" th:unless="${session.board == null}">
                 <a href="/genCustom" class="btn btn-outline-secondary me-2">Meme Customize</a>
                 <!-- <div class="col-md-3 text-end" th:if="${session.board.nickName} == manager and ${session.board.userId} == manager"> -->
                 <a href="/info" class="btnInfo btn btn-primary me-2">

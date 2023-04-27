@@ -66,6 +66,10 @@ body {
         &.on {
             background-color: rgba(0, 0, 0, 0);
         }
+
+        .headerBtn {
+            width: 50% !important;
+        }
     }
     .headerS {
         position: fixed;
@@ -554,7 +558,7 @@ body {
                         .commentBoardWarpper {
                             max-width: 501px;
                             padding: 0;
-                            word-wrap: none;
+
                             height: 600px;
                             overflow-y: scroll;
                             overflow-x: hidden;
@@ -567,15 +571,19 @@ body {
                                     margin-bottom: 10px;
 
                                     .replyNickName {
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
                                         font-weight: 700;
                                         position: relative;
                                         top: 0;
-                                        width: 60px;
+                                        width: 300px;
+                                        margin-bottom: 5px;
                                     }
                                     .replyContents {
                                         position: relative;
                                         padding-left: 20px;
-                                        width: 300px;
+                                        width: 360px;
                                         word-break: break-all;
                                     }
                                     .replyTime {

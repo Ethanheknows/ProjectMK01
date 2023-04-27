@@ -164,6 +164,9 @@ body .myHeader {
 body .myHeader.on {
   background-color: rgba(0, 0, 0, 0);
 }
+body .myHeader .headerBtn {
+  width: 50% !important;
+}
 body .headerS {
   position: fixed;
   display: block;
@@ -600,7 +603,6 @@ body .bottomWrap .txtCon {
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper {
   max-width: 501px;
   padding: 0;
-  word-wrap: none;
   height: 600px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -613,15 +615,19 @@ body .bottomWrap .txtCon {
   margin-bottom: 10px;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyNickName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-weight: 700;
   position: relative;
   top: 0;
-  width: 60px;
+  width: 300px;
+  margin-bottom: 5px;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyContents {
   position: relative;
   padding-left: 20px;
-  width: 300px;
+  width: 360px;
   word-break: break-all;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyTime {
