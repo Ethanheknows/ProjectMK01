@@ -30,12 +30,33 @@
     // }
 }
 
+//스크롤바
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar-thumb:hover{
+    background: rgba(0,0,0,0.4);
+}
+::-webkit-scrollbar-thumb:active{
+    background: rgba(0,0,0,.9);
+}
+
+  
 body {
     font-family: "Sohne", "SCD", sans-serif;
     font-weight: 300;
     background-color: black;
     color: rgb(81, 218, 76);
-
+    
     .myHeader {
         border-bottom: none;
         transition: all 0.5s ease;
@@ -521,17 +542,17 @@ body {
                             }
                         }
                         .input-group {
-                            width: 500px;
+                            width: 532px;
                             position: absolute;
-                            right: 10px;
-                            bottom: 10px;
+                            right: 0px;
+                            bottom: 16px;
                             display: flex;
                             textarea {
                                 resize: none;
                             }
                         }
                         .commentBoardWarpper {
-                            max-width: 470px;
+                            max-width: 501px;
                             padding: 0;
                             word-wrap: none;
                             height: 600px;

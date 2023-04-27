@@ -126,6 +126,29 @@
   opacity: 0;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.9);
+}
+
 body {
   font-family: "Sohne", "SCD", sans-serif;
   font-weight: 300;
@@ -565,17 +588,17 @@ body .bottomWrap .txtCon {
   border-radius: 10px;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .input-group {
-  width: 500px;
+  width: 532px;
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 0px;
+  bottom: 16px;
   display: flex;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .input-group textarea {
   resize: none;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper {
-  max-width: 470px;
+  max-width: 501px;
   padding: 0;
   word-wrap: none;
   height: 600px;
