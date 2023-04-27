@@ -536,29 +536,36 @@ body {
                                 flex-wrap: wrap;
                                 justify-content: start;
                                 width: 470px;
+                                overflow: hidden;
 
                                 .replyNickName {
                                     font-weight: 700;
                                     position: relative;
                                     top: 0;
+                                    width: 60px;
                                 }
                                 .replyContents {
                                     position: relative;
                                     padding-left: 20px;
                                     width: 300px;
+                                    word-break: break-all;
                                 }
                                 .replyTime {
+                                    font-size: 13px;
                                     position: relative;
-                                    right: -56px;
+                                    right: -5px;
                                     margin-left: 10px;
+                                    width: 80px;
                                 }
                                 .replyDel {
+                                    width: 30px;
                                     display: flex;
                                     justify-content: center;
                                     align-items: center;
-
-                                    span {
+                                    color: #848484;
+                                    svg {
                                         position: relative;
+                                        cursor: pointer;
                                     }
                                 }
                             }

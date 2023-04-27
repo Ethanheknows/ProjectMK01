@@ -580,29 +580,37 @@ body .bottomWrap .txtCon {
   flex-wrap: wrap;
   justify-content: start;
   width: 470px;
+  overflow: hidden;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyNickName {
   font-weight: 700;
   position: relative;
   top: 0;
+  width: 60px;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyContents {
   position: relative;
   padding-left: 20px;
   width: 300px;
+  word-break: break-all;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyTime {
+  font-size: 13px;
   position: relative;
-  right: -56px;
+  right: -5px;
   margin-left: 10px;
+  width: 80px;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel {
+  width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #848484;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel span {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel svg {
   position: relative;
+  cursor: pointer;
 }
 
 .clickedSwiper {
