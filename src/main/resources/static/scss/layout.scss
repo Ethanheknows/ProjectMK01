@@ -530,42 +530,51 @@ body {
                                 resize: none;
                             }
                         }
-                        #commentBoard {
-                            .commentWrap {
-                                display: flex;
-                                flex-wrap: wrap;
-                                justify-content: start;
-                                width: 470px;
-                                overflow: hidden;
-
-                                .replyNickName {
-                                    font-weight: 700;
-                                    position: relative;
-                                    top: 0;
-                                    width: 60px;
-                                }
-                                .replyContents {
-                                    position: relative;
-                                    padding-left: 20px;
-                                    width: 300px;
-                                    word-break: break-all;
-                                }
-                                .replyTime {
-                                    font-size: 13px;
-                                    position: relative;
-                                    right: -5px;
-                                    margin-left: 10px;
-                                    width: 80px;
-                                }
-                                .replyDel {
-                                    width: 30px;
+                        .commentBoardWarpper {
+                            max-width: 470px;
+                            padding: 0;
+                            word-wrap: none;
+                            height: 600px;
+                            overflow-y: scroll;
+                            overflow-x: hidden;
+                            #commentBoard {
+                                .commentWrap {
                                     display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    color: #848484;
-                                    svg {
+                                    flex-wrap: wrap;
+                                    justify-content: start;
+                                    width: 500px;
+                                    margin-bottom: 10px;
+
+                                    .replyNickName {
+                                        font-weight: 700;
                                         position: relative;
-                                        cursor: pointer;
+                                        top: 0;
+                                        width: 60px;
+                                    }
+                                    .replyContents {
+                                        position: relative;
+                                        padding-left: 20px;
+                                        width: 300px;
+                                        word-break: break-all;
+                                    }
+                                    .replyTime {
+                                        font-size: 10px;
+                                        position: relative;
+                                        right: -5px;
+                                        margin-left: 10px;
+                                        width: 50px;
+                                        top: 0px;
+                                    }
+                                    .replyDel {
+                                        width: 30px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        color: #848484;
+                                        svg {
+                                            position: relative;
+                                            cursor: pointer;
+                                        }
                                     }
                                 }
                             }
