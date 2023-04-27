@@ -82,3 +82,31 @@ Also, you can distribute it to other friends through Kakao Talk.
 |tags|   click tag   |   manage image   |    
 |---|---|---|
 |<img src="https://user-images.githubusercontent.com/57060166/234790199-526d78d2-3807-4b05-a73d-299c6e0ec61b.png" width="320" height="100">|<img src="https://user-images.githubusercontent.com/57060166/234789050-b31ebd75-673b-4d0f-8ac5-b80d6cea7793.png" width="320" height="180">|<img src="https://user-images.githubusercontent.com/57060166/234788891-86bedcc7-9af0-44a5-b9ce-3356baa4eb01.png" width="320" height="180">|
+
+
+
+## Main Function
+ 
+> ### 태그 클릭시 그 태그에 맞는 이미지들로 재정렬
+>   + manager가 이미지를 삽입 할 때,tag를 입력 하면 mainpage에 tag가 띄워진다.
+>   + 그 tag를 클릭 할 시 공통적으로 tag가 걸려있는 모든 이미지들이 newest 아래에 정렬되어 출력된다. 
+   
+>### 밈 생성기능
+>   + 이미지를 클릭하여 generate page로 들어가면 클릭한 이미지에 대해서 편집할 수 있다.
+>   + 편집한 후에는 png,jpg등으로 저장 할 수있으며 upload 버튼을 통해 서버에 저장해 그 이미지에 대한 예시 자료로 사용되고 자신의 info 화면에서 나중에 다시 다운받을 수 있습니다. 
+>   + kakao 공유를 통해 자신이 만든 이미지와 홈페이지를 공유 할 수 있습니다
+   
+> ### 댓글 생성기능
+>   + main page 에서 이미지를 선택하면 그 이미지에 대하여 댓글을 적을 수 있습니다.
+>   + login 한후 적은 댓글인 경우 삭제 할 수 있습니다. 
+
+
+
+
+
+
+
+
+
+
+
