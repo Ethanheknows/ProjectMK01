@@ -574,40 +574,49 @@ body .bottomWrap .txtCon {
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .input-group textarea {
   resize: none;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper {
+  max-width: 470px;
+  padding: 0;
+  word-wrap: none;
+  height: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  width: 470px;
-  overflow: hidden;
+  width: 500px;
+  margin-bottom: 10px;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyNickName {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyNickName {
   font-weight: 700;
   position: relative;
   top: 0;
   width: 60px;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyContents {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyContents {
   position: relative;
   padding-left: 20px;
   width: 300px;
   word-break: break-all;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyTime {
-  font-size: 13px;
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyTime {
+  font-size: 10px;
   position: relative;
   right: -5px;
   margin-left: 10px;
-  width: 80px;
+  width: 50px;
+  top: 0px;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyDel {
   width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #848484;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel svg {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyDel svg {
   position: relative;
   cursor: pointer;
 }
