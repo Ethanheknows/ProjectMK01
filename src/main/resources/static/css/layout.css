@@ -132,6 +132,9 @@ body {
   background-color: black;
   color: rgb(81, 218, 76);
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 body .myHeader {
   border-bottom: none;
   transition: all 0.5s ease;
@@ -585,14 +588,32 @@ body .bottomWrap .txtCon {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.9);
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
   width: 500px;
   margin-bottom: 10px;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyNickName {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap .replyNickName {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -602,30 +623,35 @@ body .bottomWrap .txtCon {
   width: 300px;
   margin-bottom: 5px;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyContents {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap .replyContents {
   position: relative;
   padding-left: 20px;
   width: 360px;
   word-break: break-all;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyTime {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap .replyTime {
   font-size: 10px;
   position: relative;
   right: -5px;
   margin-left: 10px;
   width: 50px;
   top: 0px;
+  z-index: 1;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyDel {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap .replyDel {
   width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #848484;
-}
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper #commentBoard .commentWrap .replyDel svg {
-  position: relative;
   cursor: pointer;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap .replyDel svg {
+  position: relative;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap.delete {
+  display: none;
+  clear: both;
 }
 
 .clickedSwiper {

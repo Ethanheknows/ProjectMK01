@@ -31,6 +31,9 @@
 }
 
 body {
+    &::-webkit-scrollbar {
+        display: none;
+    }
     font-family: "Sohne", "SCD", sans-serif;
     font-weight: 300;
     background-color: black;
@@ -535,13 +538,33 @@ body {
                             }
                         }
                         .commentBoardWarpper {
+                            //스크롤바
+                            &::-webkit-scrollbar {
+                                width: 6px;
+                                height: 6px;
+                            }
+                            &::-webkit-scrollbar-track {
+                                border-radius: 10px;
+                                background: rgba(0, 0, 0, 0.1);
+                            }
+                            &::-webkit-scrollbar-thumb {
+                                border-radius: 10px;
+                                background: rgba(0, 0, 0, 0.2);
+                            }
+                            &::-webkit-scrollbar-thumb:hover {
+                                background: rgba(0, 0, 0, 0.4);
+                            }
+                            &::-webkit-scrollbar-thumb:active {
+                                background: rgba(0, 0, 0, 0.9);
+                            }
+
                             max-width: 470px;
                             padding: 0;
 
                             height: 600px;
                             overflow-y: scroll;
                             overflow-x: hidden;
-                            #commentBoard {
+                            .commentBoard {
                                 .commentWrap {
                                     display: flex;
                                     flex-wrap: wrap;
@@ -572,6 +595,7 @@ body {
                                         margin-left: 10px;
                                         width: 50px;
                                         top: 0px;
+                                        z-index: 1;
                                     }
                                     .replyDel {
                                         width: 30px;
@@ -579,10 +603,14 @@ body {
                                         justify-content: center;
                                         align-items: center;
                                         color: #848484;
+                                        cursor: pointer;
                                         svg {
                                             position: relative;
-                                            cursor: pointer;
                                         }
+                                    }
+                                    &.delete {
+                                        display: none;
+                                        clear: both;
                                     }
                                 }
                             }
