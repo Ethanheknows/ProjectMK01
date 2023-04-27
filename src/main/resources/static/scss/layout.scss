@@ -559,6 +559,7 @@ body {
                             }
                         }
                         .commentBoardWarpper {
+                            
                             //스크롤바
                             &::-webkit-scrollbar {
                                 width: 6px;
@@ -578,12 +579,11 @@ body {
                             &::-webkit-scrollbar-thumb:active {
                                 background: rgba(0, 0, 0, 0.9);
                             }
-
-                            max-width: 470px;
+                            max-width: 500px;
                             padding: 0;
 
                             height: 600px;
-                            overflow-y: scroll;
+                            
                             overflow-x: hidden;
                             .commentBoard {
                                 .commentWrap {

@@ -604,10 +604,9 @@ body .bottomWrap .txtCon {
   resize: none;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper {
-  max-width: 501px;
+  max-width: 500px;
   padding: 0;
   height: 600px;
-  overflow-y: scroll;
   overflow-x: hidden;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar {
