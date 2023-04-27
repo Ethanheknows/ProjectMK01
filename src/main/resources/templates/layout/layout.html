@@ -111,16 +111,16 @@
                                     </div>
                                 </div>
 
-                                <!-- 댓글 보는 곳 -->
+                                 <!-- 댓글 보는 곳 -->
                                 <div class="col">
                                     <div class="d-flex row">
                                         <!-- 반복될 부분 -->
 
                                         <!-- 반복될 부분 -->
-
-                                        <div>
-                                            <table id="commentBoard"></table>
-                                        </div>
+                                      
+                                            <div>
+                                              <table id="commentBoard"></table>
+                                            </div>       
                                     </div>
                                 </div>
 
@@ -395,16 +395,18 @@
 
                                                 })
 
-                                                $(document).on('click','#sendBtn',function(e){
-                                                var nickName=""
-                                                var src=$(".modal-body").find("img").attr("src");
-                                                if(!session.board){
-                                                nickName="guest";
+                                                function updateReply() {
+                                                var nickName = "";
+                                                var src = $(".modal-body").find("img").attr("src");
+                                                if (!session.board) {
+                                                  nickName = "guest";
+                                                } else {
+                                                  nickName = session.board.nickName;
                                                 }
-                                                else{
-                                                nickName=session.board.nickName;
+                                                var replyComment = $("#replyComment").val(); // 입력값을 변수에 저장합니다.
+                                                if (!replyComment) {
+                                                  return; // 입력값이 null인 경우 함수 실행을 중단합니다.
                                                 }
-                                                console.log($("#replyComment").val());
 
                                                 $.ajax({
                                                 url: "/updatereply",
@@ -449,9 +451,19 @@
                                                 }
                                                 });
 
-                                                })
+                                              }
 
+                                              $(document).on('keydown', 'textarea', function (e) {
+                                                if (e.keyCode == 13 && !e.shiftKey) {
+                                                  e.preventDefault();
+                                                  updateReply();
+                                                }
+                                              });
 
+                                              $(document).on('click', '#sendBtn', function (e) {
+                                                e.preventDefault();
+                                                updateReply();
+                                              });
 
 
 

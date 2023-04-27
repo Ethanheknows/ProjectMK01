@@ -561,8 +561,7 @@ body .bottomWrap .txtCon {
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #modal-image img {
   width: 700px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   border-radius: 10px;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .input-group {
@@ -636,8 +635,7 @@ body .bottomWrap .txtCon {
 .clickedSwiper .swiper-wrapper .swiper-slide img {
   width: 580px;
   height: 580px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   border-radius: 0px !important;
 }
 
@@ -657,8 +655,7 @@ body .bottomWrap .txtCon {
 .clickedSwiperThumb .swiper-wrapper .swiper-slide img {
   width: 145px;
   height: 70px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .clickedSwiperThumb .swiper-wrapper .swiper-slide-thumb-active {
   opacity: 1;
@@ -704,8 +701,7 @@ body .bottomWrap .txtCon {
   to {
     width: 700px;
     height: 350px;
-    -o-object-fit: contain;
-       object-fit: contain;
+    object-fit: contain;
     opacity: 100%;
   }
 }
@@ -714,8 +710,7 @@ body .bottomWrap .txtCon {
   width: 300px;
   border-radius: 10px;
   height: 300px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: width 0.25s ease, height 0.25s ease;
 }
 
@@ -752,8 +747,7 @@ body .bottomWrap .txtCon {
 }
 
 #imgModal {
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 
 .material-icons {
