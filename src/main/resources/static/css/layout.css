@@ -105,6 +105,27 @@
   display: none;
 }
 
+.genCustomWarp {
+  font-family: "Sohne", "SCD", sans-serif;
+  font-weight: 300;
+  background-color: #ff7700;
+  color: black;
+}
+.genCustomWarp .genCWrap {
+  position: relative;
+  z-index: 2;
+}
+
+.genCHeader {
+  position: fixed;
+  display: block;
+  top: 70;
+  width: 100%;
+}
+.genCHeader.off {
+  opacity: 0;
+}
+
 body {
   font-family: "Sohne", "SCD", sans-serif;
   font-weight: 300;
@@ -118,7 +139,7 @@ body .myHeader {
   color: black;
 }
 body .myHeader.on {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
 }
 body .headerS {
   position: fixed;
@@ -128,6 +149,10 @@ body .headerS {
   width: 100%;
   height: 100%;
   top: 70px;
+  opacity: 100%;
+}
+body .headerS.off {
+  opacity: 0;
 }
 body .footerS {
   z-index: -1;
@@ -177,14 +202,92 @@ body .input-group input[type=file] {
 }
 body .topWrap {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 30px 20px;
   /* move */
   /* move */
   /* move */
 }
+body .topWrap .canvasBtnWarp {
+  margin-right: 30px;
+}
+body .topWrap .canvasWrap {
+  transition: all 0.25s ease;
+}
 body .topWrap .OnOffwrapper {
   position: relative;
+}
+body .topWrap .rightBtnWrap {
+  display: inline;
+  margin-left: 30px;
+}
+body .topWrap .rightBtnWrap .download {
+  margin: 0 10px;
+  display: inline;
+}
+body .topWrap .rightBtnWrap .download .download_title {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+body .topWrap .rightBtnWrap .download .download_title h2 {
+  margin-left: 10px;
+}
+body .topWrap .rightBtnWrap .download .btnDown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  height: 50px;
+}
+body .topWrap .rightBtnWrap .download .btnDown a {
+  margin: 10px 5px;
+}
+body .topWrap .rightBtnWrap .share {
+  margin-top: 8px;
+  margin: 0 10px;
+  display: inline;
+}
+body .topWrap .rightBtnWrap .share .share_title {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+body .topWrap .rightBtnWrap .share .share_title h2 {
+  margin-left: 10px;
+}
+body .topWrap .rightBtnWrap .share .kakaoBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 39px;
+  height: 38px;
+}
+body .topWrap .rightBtnWrap .share .kakaoBtn a {
+  width: 39px;
+  height: 26px;
+  margin: 10px 5px;
+}
+body .topWrap .rightBtnWrap .share .kakaoBtn a img {
+  width: 39px;
+  height: 39px;
+  filter: grayscale(100);
+}
+body .topWrap .rightBtnWrap .share .kakaoBtn a img:hover {
+  filter: grayscale(0);
+}
+body .topWrap .rightBtnWrap .upload {
+  margin-top: 8px;
+  margin: 0 10px;
+  display: inline;
+}
+body .topWrap .rightBtnWrap .upload .upload_title {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+body .topWrap .rightBtnWrap .upload .upload_title h2 {
+  margin-left: 10px;
 }
 body .topWrap .invert {
   position: absolute;
@@ -253,10 +356,6 @@ body .topWrap #sepia:checked + .switch_label .onf_btn {
   left: 33px;
   background: #fff;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1254901961);
-}
-body .topWrap .canvasWrap {
-  border: 1px solid white;
-  transition: all 0.25s ease;
 }
 body #genCon2 {
   opacity: 0;
@@ -330,14 +429,27 @@ body .bottomWrap .addDelBtn .barBox1 {
   background-color: #00fd0a;
   margin-left: 0;
 }
+body .bottomWrap .addDelBtn .barBox1.addBarBoxCustom {
+  background-color: #000000;
+  margin-left: 0;
+}
 body .bottomWrap .addDelBtn .barBox2.on {
   background-color: #00fd0a;
+}
+body .bottomWrap .addDelBtn .barBox2.on.addBarBoxCustom {
+  background-color: #000000;
 }
 body .bottomWrap .addDelBtn .barBox3.on {
   background-color: #00fd0a;
 }
+body .bottomWrap .addDelBtn .barBox3.on.addBarBoxCustom {
+  background-color: #000000;
+}
 body .bottomWrap .addDelBtn .barBox4.on {
   background-color: #00fd0a;
+}
+body .bottomWrap .addDelBtn .barBox4.on.addBarBoxCustom {
+  background-color: #000000;
 }
 body .bottomWrap .genCon {
   display: block;
@@ -346,6 +458,9 @@ body .bottomWrap .genCon {
   border: 1px solid white;
   margin: 0 auto;
   margin-bottom: 10px;
+}
+body .bottomWrap .genCon.genConCustom {
+  border: 1px solid rgb(0, 0, 0);
 }
 body .bottomWrap .genCon .anchorColor {
   width: 20px;
@@ -405,6 +520,14 @@ body .bottomWrap .slider {
   box-shadow: inset 0 0 5px rgb(0, 0, 0);
   margin-right: 10px;
 }
+body .bottomWrap .slider.sliderCustom {
+  background: rgba(0, 0, 0, 0.3);
+}
+body .bottomWrap .slider.sliderCustom::-webkit-slider-thumb {
+  background: rgb(0, 0, 0);
+  box-shadow: -407px 0 0 400px #000000;
+  border: 5px solid #ffffff;
+}
 body .bottomWrap .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 15px;
@@ -432,57 +555,6 @@ body .bottomWrap .txtCon {
   align-items: center;
   padding-bottom: 10px;
 }
-body .download {
-  margin: 0 10px;
-  display: inline;
-}
-body .download .download_title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-body .download .download_title h2 {
-  margin-left: 10px;
-}
-body .download .btnDown {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100px;
-  height: 50px;
-}
-body .download .btnDown a {
-  margin: 10px 5px;
-}
-body .share {
-  margin-top: 8px;
-  margin: 0 10px;
-  display: inline;
-}
-body .share .shareTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-body .share .shareTitle h2 {
-  margin-left: 10px;
-}
-body .share .kakaoBtn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100px;
-  height: 38px;
-}
-body .share .kakaoBtn a {
-  width: 100px;
-  height: 26px;
-  margin: 10px 5px;
-}
-body .share .kakaoBtn a img {
-  width: 39px;
-  height: 39px;
-}
 
 .modal.fade#imgModal {
   color: black;
@@ -492,6 +564,45 @@ body .share .kakaoBtn a img {
   -o-object-fit: contain;
      object-fit: contain;
   border-radius: 10px;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .input-group {
+  width: 500px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .input-group textarea {
+  resize: none;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  width: 470px;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyNickName {
+  font-weight: 700;
+  position: relative;
+  top: 0;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyContents {
+  position: relative;
+  padding-left: 20px;
+  width: 300px;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyTime {
+  position: relative;
+  right: -56px;
+  margin-left: 10px;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel span {
+  position: relative;
 }
 
 .clickedSwiper {
@@ -630,4 +741,39 @@ body .share .kakaoBtn a img {
 .tagWrap .tickerMove a:hover {
   background-color: #00fd0a;
   color: #fff;
+}
+
+#imgModal {
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
+.material-icons {
+  display: flex;
+  align-items: center;
+  font-size: 36px;
+  color: rgb(81, 218, 76);
+  border: none;
+  outline: none;
+}
+
+.sendBtn {
+  border: none;
+  background: none;
+}
+
+.centerSet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 250px);
+}
+
+.infoCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 250px);
+  text-align: left;
 }

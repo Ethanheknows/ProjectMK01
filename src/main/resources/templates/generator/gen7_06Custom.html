@@ -7,14 +7,50 @@
     layout:decorate="~{/layout/layout.html}"
 >
     <head>
-        <title>gen7_06TESTESTEST</title>
+        <title>Generator</title>
     </head>
 
     <body>
-        <div layout:fragment="contents">
-            <div class="container genWrap">
+        <div layout:fragment="contents" class="genCustomWarp">
+            <div class="genCHeader off">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 325 100">
+                    <defs>
+                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="ssspill-grad">
+                            <stop stop-color="hsl(0, 0%, 100%)" stop-opacity="1" offset="45%"></stop>
+                            <stop stop-color="#ff7700" stop-opacity="1" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="#ff7700"></rect>
+                    <g fill="url(#ssspill-grad)">
+                        <rect width="100%" height="40" fill="hsl(0, 0%, 100%)"></rect>
+
+                        <rect x="0" width="5.26%" height="68.93529284738165" rx="12"></rect>
+                        <rect x="10.5263157894%" width="5.26%" height="64.41769948133152" rx="12"></rect>
+                        <rect x="21.0526315788%" width="5.26%" height="75.37487429473978" rx="12"></rect>
+                        <rect x="31.578947368199998%" width="5.26%" height="64.26532482329854" rx="12"></rect>
+                        <rect x="42.1052631576%" width="5.26%" height="88.1963194873574" rx="12"></rect>
+                        <rect x="52.631578947%" width="5.26%" height="91.83603020116514" rx="12"></rect>
+                        <rect x="63.157894736399996%" width="5.26%" height="64.5016714185028" rx="12"></rect>
+                        <rect x="73.6842105258%" width="5.26%" height="82.77247956402613" rx="12"></rect>
+                        <rect x="84.2105263152%" width="5.26%" height="74.85561907093702" rx="12"></rect>
+                        <rect x="94.7368421046%" width="5.26%" height="89.88602620708386" rx="12"></rect>
+                    </g>
+                    <g fill="#ff7700">
+                        <rect x="5.26%" y="17.30434442206156" width="5.26%" height="60" rx="12"></rect>
+                        <rect x="15.789473684099999%" y="12.9747988012909" width="5.26%" height="60" rx="12"></rect>
+                        <rect x="26.3157894735%" y="9.361068092239915" width="5.26%" height="60" rx="12"></rect>
+                        <rect x="36.8421052629%" y="19.13771157191863" width="5.26%" height="60" rx="12"></rect>
+                        <rect x="47.3684210523%" y="6.942983507331464" width="5.26%" height="60" rx="12"></rect>
+                        <rect x="57.8947368417%" y="10.920576950558331" width="5.26%" height="60" rx="12"></rect>
+                        <rect x="68.4210526311%" y="16.061171644766524" width="5.26%" height="60" rx="12"></rect>
+                        <rect x="78.9473684205%" y="19.770368503164736" width="5.26%" height="60" rx="12"></rect>
+                        <rect x="89.4736842099%" y="19.112405262004156" width="5.26%" height="60" rx="12"></rect>
+                    </g>
+                </svg>
+            </div>
+            <div class="container genWrap genCWrap">
                 <div class="consWrap">
-                    <h1>gen7_06TESTESTEST</h1>
+                    <h1>Generator</h1>
 
                     <div class="input-group mb-3">
                         <label class="input-group-text btn-secondary" for="fileInput">Customize</label>
@@ -26,21 +62,9 @@
                         <div class="canvasBtnWarp">
                             <div>
                                 <button type="button" class="btn btn-secondary" id="textReset">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        class="bi bi-arrow-clockwise"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
-                                        ></path>
-                                        <path
-                                            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
-                                        ></path>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"></path>
+                                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"></path>
                                     </svg>
                                     reset
                                 </button>
@@ -68,93 +92,74 @@
                                     </label>
                                 </div>
                             </div>
-                            <button id="add">add</button>
-                            <button id="del">del</button>
                         </div>
-                        <div class="canvasWrap">
+                        <div class="canvasWrap canvasCustom">
                             <canvas id="canvas" width="500" height="500"></canvas>
                         </div>
-                        <div class="download mt-2 mb-2">
-                            <div class="download_title">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="30"
-                                    height="30"
-                                    fill="currentColor"
-                                    class="bi bi-arrow-down-circle-fill"
-                                    viewBox="0 0 16 16"
-                                >
-                                    <path
-                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
-                                    />
-                                </svg>
-                                <h2>Download</h2>
+                        <div class="rightBtnWrap">
+                            <div class="download mt-2 mb-2">
+                                <div class="download_title">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+                                        />
+                                    </svg>
+                                    <h2>Download</h2>
+                                </div>
+                                <div class="btnDown">
+                                    <a class="btn btn-info" id="downloadLinkPNG" download="meme.png" href="#" style="display: none">.PNG</a>
+                                    <a class="btn btn-info" id="downloadLinkJPG" download="meme.jpg" href="#" style="display: none">.JPG</a>
+                                    <button class="btn btn-primary hidden" id="upload" href="#">upload</button>
+                                </div>
                             </div>
-                            <div class="btnDown">
-                                <a
-                                    class="btn btn-primary"
-                                    id="downloadLinkPNG"
-                                    download="meme.png"
-                                    href="#"
-                                    style="display: none"
-                                    >.PNG</a
-                                >
-                                <a
-                                    class="btn btn-primary"
-                                    id="downloadLinkJPG"
-                                    download="meme.jpg"
-                                    href="#"
-                                    style="display: none"
-                                    >.JPG</a
-                                >
-                            </div>
-                        </div>
-                        <div class="share fs-2 mb-3">
-                            <div class="shareTitle">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="30"
-                                    height="30"
-                                    fill="currentColor"
-                                    class="bi bi-share-fill"
-                                    viewBox="0 0 16 16"
-                                >
-                                    <path
-                                        d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
-                                    ></path>
-                                </svg>
-                                <h2>Share</h2>
-                            </div>
+                            <div class="share mt-2 mb-2">
+                                <div class="share_title">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
+                                        ></path>
+                                    </svg>
+                                    <h2>Share</h2>
+                                </div>
 
-                            <div class="kakaoBtn">
-                                <a id="kakaotalk-sharing-btn" href="javascript:shareMessage()">
-                                    <img
-                                        src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
-                                        alt="카카오톡 공유 보내기 버튼"
-                                    />
-                                </a>
+                                <div class="kakaoBtn">
+                                    <a id="kakaotalk-sharing-btn" href="javascript:shareMessage()">
+                                        <img
+                                            src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+                                            alt="카카오톡 공유 보내기 버튼"
+                                        />
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bottonWrap">
-                        <div class="genCon">
+                    <div class="bottomWrap">
+                        <div class="addDelBtn">
+                            <div id="delGenCon" class="addGenCon off">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                                </svg>
+                            </div>
+                            <div class="addBarBox barBox1 addBarBoxCustom"></div>
+                            <div class="addBarBox barBox2 addBarBoxCustom"></div>
+                            <div class="addBarBox barBox3 addBarBoxCustom"></div>
+                            <div class="addBarBox barBox4 addBarBoxCustom"></div>
+                            <div id="addGenCon" class="addGenCon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="genCon genConCustom">
                             <div class="anchorColor anchor1"></div>
                             <div class="ranges">
                                 <label for="topRange">Top Position : </label>
-                                <input type="range" id="topRange" min="0" max="500" step="1" value="30" />
+                                <input type="range" id="topRange" min="0" max="500" step="1" value="30" class="slider sliderCustom" />
                                 <label for="leftRange">Left Position : </label>
-                                <input type="range" id="leftRange" min="0" max="500" step="1" value="30" />
+                                <input type="range" id="leftRange" min="0" max="500" step="1" value="30" class="slider sliderCustom" />
                                 <label for="rotateRange">Rotate Position : </label>
-                                <input
-                                    type="range"
-                                    id="rotateRange"
-                                    min="-180"
-                                    max="180"
-                                    step="30"
-                                    value="0"
-                                    list="values1"
-                                />
+                                <input type="range" id="rotateRange" min="-180" max="180" step="30" value="0" list="values1" class="slider rotateRange sliderCustom" />
                                 <datalist id="values1">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -173,7 +178,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange">Font Size : </label>
-                                <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" />
+                                <input type="range" id="fontSizeRange" min="14" max="94" step="1" value="36" class="slider sliderCustom" />
                                 <label for="fontWeight">Font Weight : </label>
                                 <select id="fontWeight">
                                     <option value="bold">Bold</option>
@@ -187,28 +192,21 @@
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
                                     <option value="SCD">에스코어 Dream</option>
+                                    <option value="Sohne">Söhne(eng)</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="genCon" id="genCon2">
+                        <div class="genCon genConCustom" id="genCon2">
                             <div class="anchorColor anchor2"></div>
                             <div class="ranges">
                                 <label for="topRange2">Top Position : </label>
-                                <input type="range" id="topRange2" min="0" max="500" step="1" value="50" />
+                                <input type="range" id="topRange2" min="0" max="500" step="1" value="50" class="slider sliderCustom" />
                                 <div>
                                     <label for="leftRange2">Left Position : </label>
-                                    <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" />
+                                    <input type="range" id="leftRange2" min="0" max="500" step="1" value="50" class="slider sliderCustom" />
                                 </div>
                                 <label for="rotateRange2">Rotate Position : </label>
-                                <input
-                                    type="range"
-                                    id="rotateRange2"
-                                    min="-180"
-                                    max="180"
-                                    step="30"
-                                    value="0"
-                                    list="values2"
-                                />
+                                <input type="range" id="rotateRange2" min="-180" max="180" step="30" value="0" list="values2" class="slider rotateRange sliderCustom" />
                                 <datalist id="values2">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -227,7 +225,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange2">Font Size : </label>
-                                <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" />
+                                <input type="range" id="fontSizeRange2" min="14" max="94" step="1" value="36" class="slider sliderCustom" />
                                 <label for="fontWeight2">Font Weight : </label>
                                 <select id="fontWeight2">
                                     <option value="bold">Bold</option>
@@ -241,26 +239,19 @@
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
                                     <option value="SCD">에스코어 Dream</option>
+                                    <option value="Sohne">Söhne(eng)</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="genCon" id="genCon3">
+                        <div class="genCon genConCustom" id="genCon3">
                             <div class="anchorColor anchor3"></div>
                             <div class="ranges">
                                 <label for="topRange3">Top Position : </label>
-                                <input type="range" id="topRange3" min="0" max="500" step="1" value="70" />
+                                <input type="range" id="topRange3" min="0" max="500" step="1" value="70" class="slider sliderCustom" />
                                 <label for="leftRange3">Left Position : </label>
-                                <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" />
+                                <input type="range" id="leftRange3" min="0" max="500" step="1" value="70" class="slider sliderCustom" />
                                 <label for="rotateRange3">Rotate Position : </label>
-                                <input
-                                    type="range"
-                                    id="rotateRange3"
-                                    min="-180"
-                                    max="180"
-                                    step="30"
-                                    value="0"
-                                    list="values3"
-                                />
+                                <input type="range" id="rotateRange3" min="-180" max="180" step="30" value="0" list="values3" class="slider rotateRange sliderCustom" />
                                 <datalist id="values3">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -279,7 +270,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange3">Font Size : </label>
-                                <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" />
+                                <input type="range" id="fontSizeRange3" min="14" max="94" step="1" value="36" class="slider sliderCustom" />
                                 <label for="fontWeight3">Font Weight : </label>
                                 <select id="fontWeight3">
                                     <option value="bold">Bold</option>
@@ -293,26 +284,19 @@
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
                                     <option value="SCD">에스코어 Dream</option>
+                                    <option value="Sohne">Söhne(eng)</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="genCon" id="genCon4">
+                        <div class="genCon genConCustom" id="genCon4">
                             <div class="anchorColor anchor4"></div>
                             <div class="ranges">
                                 <label for="topRange4">Top Position : </label>
-                                <input type="range" id="topRange4" min="0" max="500" step="1" value="90" />
+                                <input type="range" id="topRange4" min="0" max="500" step="1" value="90" class="slider sliderCustom" />
                                 <label for="leftRange4">Left Position : </label>
-                                <input type="range" id="leftRange4" min="0" max="500" step="1" value="90" />
+                                <input type="range" id="leftRange4" min="0" max="500" step="1" value="90" class="slider sliderCustom" />
                                 <label for="rotateRange4">Rotate Position : </label>
-                                <input
-                                    type="range"
-                                    id="rotateRange4"
-                                    min="-180"
-                                    max="180"
-                                    step="30"
-                                    value="0"
-                                    list="values4"
-                                />
+                                <input type="range" id="rotateRange4" min="-180" max="180" step="30" value="0" list="values4" class="slider rotateRange sliderCustom" />
                                 <datalist id="values4">
                                     <option value="-180" label="-180">-180deg</option>
                                     <option value="-90" label="-90">-90deg</option>
@@ -331,7 +315,7 @@
                             </div>
                             <div class="txtCon">
                                 <label for="fontSizeRange4">Font Size : </label>
-                                <input type="range" id="fontSizeRange4" min="14" max="94" step="1" value="36" />
+                                <input type="range" id="fontSizeRange4" min="14" max="94" step="1" value="36" class="slider sliderCustom" />
                                 <label for="fontWeight4">Font Weight : </label>
                                 <select id="fontWeight4">
                                     <option value="bold">Bold</option>
@@ -345,6 +329,7 @@
                                     <option value="cursive">Cursive</option>
                                     <option value="fantasy">Fantasy</option>
                                     <option value="SCD">에스코어 Dream</option>
+                                    <option value="Sohne">Söhne(eng)</option>
                                 </select>
                             </div>
                         </div>
@@ -383,6 +368,7 @@
                     const fontWeight3 = document.querySelector("#fontWeight3");
                     const fontFamilySelect3 = document.querySelector("#fontFamilySelect3");
                     const colorPicker3 = document.querySelector("#fontColor3");
+                    const uploadJPG = document.querySelector("#upload");
 
                     const txtBox4 = document.querySelector("#txtBox4");
                     const topRange4 = document.querySelector("#topRange4");
@@ -396,9 +382,9 @@
                     const genCon2 = document.getElementById("genCon2");
                     const genCon3 = document.getElementById("genCon3");
                     const genCon4 = document.getElementById("genCon4");
-                    const addBtn = document.getElementById("add");
-                    const delBtn = document.getElementById("del");
-                    
+                    const addBtn = document.getElementById("addGenCon");
+                    const delBtn = document.getElementById("delGenCon");
+
                     let isDelON2 = true;
                     let isDelON3 = true;
                     let isDelON4 = true;
@@ -429,12 +415,16 @@
                     const box4Radius = 15;
                     let sharedImageUrl = "";
 
+                    const barBox2 = document.querySelector(".barBox2");
+                    const barBox3 = document.querySelector(".barBox3");
+                    const barBox4 = document.querySelector(".barBox4");
+
                     //필터 버튼
                     filterSepia.addEventListener("change", function () {
                         if (filterSepia.checked) {
                             ctx.filter = "sepia(100%)";
                             turnOffOtherFilters(filterSepia, [filterGrayscale]); // 다른 필터 버튼들 중 체크된 것이 있다면 꺼줌
-                            turnOffOtherFilters(filterSepia, [filterInvert]); // 다른 필터 버튼들 중 체크된 것이 있다면 꺼줌
+                            turnOffOtherFilters(filterSepia, [filterInvert]);
                         } else {
                             ctx.filter = "none";
                         }
@@ -455,7 +445,7 @@
                         if (filterGrayscale.checked) {
                             ctx.filter = "grayscale(100%)";
                             turnOffOtherFilters(filterGrayscale, [filterInvert]);
-                            turnOffOtherFilters(filterGrayscale, [filterSepia]); // 다른 필터 버튼들 중 체크된 것이 있다면 꺼줌
+                            turnOffOtherFilters(filterGrayscale, [filterSepia]);
                         } else {
                             ctx.filter = "none";
                         }
@@ -469,6 +459,57 @@
                         });
                     }
 
+                    function uploadImg() {
+                        commentsModal.show();
+                        $("#commentsModal .modal-title").text("이미지 업로드");
+                        $("#commentsModal .modal-body").text("이미지를 업로드 하시겠습니까?");
+
+                        $("#commentsModal .memo-modal-button-yes").on("click", function () {
+                            drawCanvas(false);
+                            var imgDataUrl = canvas.toDataURL("image/png");
+                            var blobBin = atob(imgDataUrl.split(",")[1]); // base64 데이터 디코딩
+                            var array = [];
+                            for (var i = 0; i < blobBin.length; i++) {
+                                array.push(blobBin.charCodeAt(i));
+                            }
+                            console.log(src);
+                            var file = new Blob([new Uint8Array(array)], { type: "image/png" }); // Blob 생성
+                            var formdata = new FormData(); // formData 생성
+                            formdata.append("file", file); // file data 추가
+                            try {
+                                session.board.nickName != null;
+                                formdata.append("userId", JSON.stringify(session.board.userId));
+                                console.log("aaa");
+                                formdata.append("originalPath", src);
+                            } catch {
+                                formdata.append("userId", JSON.stringify("guest"));
+                                formdata.append("originalPath", src);
+                                console.log("bbb");
+                            }
+
+                            $.ajax({
+                                url: "/saveImage",
+                                type: "post",
+                                data: formdata,
+
+                                processData: false, // data 파라미터 강제 string 변환 방지!!
+                                contentType: false, // application/x-www-form-urlencoded; 방지!!
+                                success: function (data) {
+                                    memoModal.show();
+                                    $("#memoModal .modal-title").text("이미지 업로드");
+                                    $("#memoModal .modal-body").text("이미지를 업로드 하였습니다.");
+                                    $("#memoModal .memo-modal-button").on("click", function () {
+                                        location.href = "/";
+                                    });
+                                },
+                                error: function (xhr, status, error) {
+                                    // ajax 요청이 실패하면 실행되는 함수
+                                    console.log(error);
+                                },
+                            });
+                        });
+                    }
+
                     // 리셋버튼
                     function resetForm() {
                         txtBox.value = "";
@@ -476,10 +517,26 @@
                         txtBox3.value = "";
                         txtBox4.value = "";
 
+                        topRange.value = 30;
+                        topRange2.value = 50;
+                        topRange3.value = 70;
+                        topRange4.value = 90;
+
+                        leftRange.value = 30;
+                        leftRange2.value = 50;
+                        leftRange3.value = 70;
+                        leftRange4.value = 90;
+
+                        rotateRange.value = 0;
+                        rotateRange2.value = 0;
+                        rotateRange3.value = 0;
+                        rotateRange4.value = 0;
+
                         colorPicker.value = "#ffffff";
                         colorPicker2.value = "#ffffff";
                         colorPicker3.value = "#ffffff";
                         colorPicker4.value = "#ffffff";
+
                         fontColorPicked = "#ffffff";
                         fontColorPicked2 = "#ffffff";
                         fontColorPicked3 = "#ffffff";
@@ -491,85 +548,89 @@
                         ctx.filter = "none";
                         drawCanvas();
                     }
+
                     btnReset.addEventListener("click", resetForm);
 
-                     //삭제 추가
-                     addBtn.addEventListener("click", function() {
-                    if (isDelON2 === true){
-                        isDelON2 = false;
-                        genCon2.style.display = "block";
-                        // console.log(isDelON3,isDelON4);
-                    }else if(isDelON3 === true){
-                        isDelON3 = false;
-                        genCon3.style.display = "block";
-                        // console.log(isDelON3,isDelON4);
-                    }else if(isDelON4 === true){
-                        isDelON4 = false;
-                        genCon4.style.display = "block";
-                        // console.log(isDelON3,isDelON4);
-                    }
-                    });
- 
-                    delBtn.addEventListener("click", function() {
-                    if(isDelON4 === false){
-                        isDelON4 = true;
-                        txtBox4.value="";
-                        genCon4.style.display = "none";
-                        // console.log(isDelON3,isDelON4);
-                    }else if(isDelON3 === false){
-                        isDelON3 = true;
-                        txtBox3.value="";
-                        genCon3.style.display = "none";
-                        // console.log(isDelON3,isDelON4);
-                    }else if(isDelON2 === false){
-                        isDelON2 = true;
-                        txtBox2.value="";
-                        genCon2.style.display = "none";
-                        // console.log(isDelON3,isDelON4);
-                    }
+                    //삭제 추가
+                    addBtn.addEventListener("click", function () {
+                        if (isDelON2 === true) {
+                            isDelON2 = false;
+                            genCon2.classList.add("show");
+                            $(barBox2).addClass("on");
+                            $(delBtn).removeClass("off");
+                            // console.log(isDelON3,isDelON4);
+                        } else if (isDelON3 === true) {
+                            isDelON3 = false;
+                            genCon3.classList.add("show");
+                            $(barBox3).addClass("on");
+                            // console.log(isDelON3,isDelON4);
+                        } else if (isDelON4 === true) {
+                            isDelON4 = false;
+                            genCon4.classList.add("show");
+                            $(barBox4).addClass("on");
+                            $(addBtn).addClass("off");
+                            // console.log(isDelON3,isDelON4);
+                        }
                     });
 
-                    
+                    delBtn.addEventListener("click", function () {
+                        if (isDelON4 === false) {
+                            isDelON4 = true;
+                            txtBox4.value = "";
+                            genCon4.classList.remove("show");
+                            topRange4.value = 90;
+                            leftRange4.value = 90;
+                            rotateRange4.value = 0;
+                            $(barBox4).removeClass("on");
+                            $(addBtn).removeClass("off");
+                            // console.log(isDelON3,isDelON4);
+                        } else if (isDelON3 === false) {
+                            isDelON3 = true;
+                            txtBox3.value = "";
+                            topRange3.value = 70;
+                            leftRange3.value = 70;
+                            rotateRange3.value = 0;
+                            genCon3.classList.remove("show");
+                            $(barBox3).removeClass("on");
+                            // console.log(isDelON3,isDelON4);
+                        } else if (isDelON2 === false) {
+                            isDelON2 = true;
+                            txtBox2.value = "";
+                            topRange2.value = 50;
+                            leftRange2.value = 50;
+                            rotateRange2.value = 0;
+                            genCon2.classList.remove("show");
+                            $(barBox2).removeClass("on");
+                            $(delBtn).addClass("off");
+                            // console.log(isDelON3,isDelON4);
+                        }
+                    });
+
                     //******  make Anchor 앵커만들기
                     function onMouseDown(event) {
                         const rect = canvas.getBoundingClientRect();
                         const x = event.clientX - rect.left;
                         const y = event.clientY - rect.top;
-                        //맨 상단으로 올려야 오류 안남
-                        // gsap.to(window, 0.3, {
-                        //     scrollTo: 0,
-                        // });
 
-                        if (
-                            Math.sqrt(Math.pow(x - leftRange.value, 2) + Math.pow(y - topRange.value, 2)) <= box1Radius
-                        ) {
+                        if (Math.sqrt(Math.pow(x - leftRange.value, 2) + Math.pow(y - topRange.value, 2)) <= box1Radius) {
                             isDraggingBox1 = true;
                             dragStart = { x: x, y: y };
                             $("#canvas").css({
                                 cursor: "grabbing",
                             });
-                        } else if (
-                            Math.sqrt(Math.pow(x - leftRange2.value, 2) + Math.pow(y - topRange2.value, 2)) <=
-                            box2Radius
-                        ) {
+                        } else if (Math.sqrt(Math.pow(x - leftRange2.value, 2) + Math.pow(y - topRange2.value, 2)) <= box2Radius) {
                             isDraggingBox2 = true;
                             dragStart = { x: x, y: y };
                             $("#canvas").css({
                                 cursor: "grabbing",
                             });
-                        } else if (
-                            Math.sqrt(Math.pow(x - leftRange3.value, 2) + Math.pow(y - topRange3.value, 2)) <=
-                            box3Radius
-                        ) {
+                        } else if (Math.sqrt(Math.pow(x - leftRange3.value, 2) + Math.pow(y - topRange3.value, 2)) <= box3Radius) {
                             isDraggingBox3 = true;
                             dragStart = { x: x, y: y };
                             $("#canvas").css({
                                 cursor: "grabbing",
                             });
-                        }  else if (
-                            Math.sqrt(Math.pow(x - leftRange4.value, 2) + Math.pow(y - topRange4.value, 2)) <=
-                            box4Radius
-                        ) {
+                        } else if (Math.sqrt(Math.pow(x - leftRange4.value, 2) + Math.pow(y - topRange4.value, 2)) <= box4Radius) {
                             isDraggingBox4 = true;
                             dragStart = { x: x, y: y };
                             $("#canvas").css({
@@ -604,7 +665,7 @@
                             topRange3.value = parseInt(topRange3.value) + dy;
                             drawCanvas();
                             dragStart = { x: x, y: y };
-                        }  else if (isDraggingBox4) {
+                        } else if (isDraggingBox4) {
                             const dx = x - dragStart.x;
                             const dy = y - dragStart.y;
                             leftRange4.value = parseInt(leftRange4.value) + dx;
@@ -630,28 +691,33 @@
 
                     const { src } = JSON.parse(localStorage.getItem("image-info"));
                     console.log(src);
+
                     // 커스터 마이즈 버튼
-                    $("#fileInput").on("change", function () {
-                        var fileName = $("#fileInput").val();
-                        $(".upload-name").val(fileName);
-                    });
+
+                    // $("#fileInput").on("change", function () {
+                    //     var fileName = $("#fileInput").val();
+                    //     $(".upload-name").val(fileName);
+                    // });
+
                     //generator image 띄우기
-                    img = new Image();
-                    img.src = src;
-                    img.onload = function () {
-                        let ratio = img.width / img.height;
-                        if (ratio > 1) {
-                            canvas.width = 500;
-                            canvas.height = 500 / ratio;
-                        } else {
-                            canvas.width = 500 * ratio;
-                            canvas.height = 500;
-                        }
-                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                        downloadLinkPNG.style.display = "block";
-                        downloadLinkJPG.style.display = "block";
-                        drawCanvas();
-                    };
+
+                    // img = new Image();
+                    // img.src = src;
+                    // img.onload = function () {
+                    //     let ratio = img.width / img.height;
+                    //     if (ratio > 1) {
+                    //         canvas.width = 500;
+                    //         canvas.height = 500 / ratio;
+                    //     } else {
+                    //         canvas.width = 500 * ratio;
+                    //         canvas.height = 500;
+                    //     }
+                    //     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    //     downloadLinkPNG.style.display = "block";
+                    //     downloadLinkJPG.style.display = "block";
+                    //     drawCanvas();
+                    // };
+
                     // 파일 불러올때 비율 맞춰주는 메소드
 
                     fileInput.addEventListener("change", () => {
@@ -699,31 +765,30 @@
                         ctx.arc(parseInt(leftRange.value), parseInt(topRange.value), box1Radius, 0, 2 * Math.PI);
                         ctx.stroke();
 
-                        if(isDelON2 === true){
+                        if (isDelON2 === true) {
                             ctx.strokeStyle = "none";
-                        }else{
+                        } else {
                             ctx.strokeStyle = "blue";
                             ctx.beginPath();
                             ctx.arc(parseInt(leftRange2.value), parseInt(topRange2.value), box2Radius, 0, 2 * Math.PI);
                             ctx.stroke();
                         }
 
-                        if(isDelON3 === true){
+                        if (isDelON3 === true) {
                             ctx.strokeStyle = "none";
-                        }else{
+                        } else {
                             ctx.strokeStyle = "green";
                             ctx.beginPath();
                             ctx.arc(parseInt(leftRange3.value), parseInt(topRange3.value), box3Radius, 0, 2 * Math.PI);
                             ctx.stroke();
                         }
-                        if(isDelON4===true){
+                        if (isDelON4 === true) {
                             ctx.strokeStyle = "none";
-                        }else{
+                        } else {
                             ctx.strokeStyle = "yellow";
                             ctx.beginPath();
                             ctx.arc(parseInt(leftRange4.value), parseInt(topRange4.value), box4Radius, 0, 2 * Math.PI);
                             ctx.stroke();
-                            
                         }
                     }
 
@@ -793,6 +858,8 @@
                         leftRange2.max = canvas.width;
                         topRange3.max = canvas.height - parseInt(fontSizeRange3.value);
                         leftRange3.max = canvas.width;
+                        topRange4.max = canvas.height - parseInt(fontSizeRange4.value);
+                        leftRange4.max = canvas.width;
                     }
 
                     // function downloadImage() {
@@ -870,7 +937,7 @@
 
                     downloadLinkPNG.addEventListener("click", downloadImage);
                     downloadLinkJPG.addEventListener("click", downloadImage);
-
+                    uploadJPG.addEventListener("click", uploadImg);
                     Coloris({
                         theme: "pill",
                         themeMode: "dark",
@@ -879,34 +946,35 @@
                         format: "hex",
                         clearButton: true,
                         clearLabel: "Clear",
-                        swatches: [
-                            "#000000",
-                            "#ffffff",
-                            "#cccccc",
-                            "#ff0000",
-                            "#ffee00",
-                            "#22ff00",
-                            "#00ffe5",
-                            "#0000ff",
-                            "#9500ff",
-                            "#4ced82",
-                            "#f01d7c",
-                        ],
+                        swatches: ["#000000", "#ffffff", "#cccccc", "#ff0000", "#ffee00", "#22ff00", "#00ffe5", "#0000ff", "#9500ff", "#4ced82", "#f01d7c"],
                         inline: false,
                         defaultColor: "#000000",
                     });
                     //카카오
                     function shareMessage() {
+                        var url = "http://13.125.252.153:9091" + src;
+                        console.log(url);
+
+                        Kakao.Share.scrapImage({
+                            imageUrl: url,
+                        })
+                            .then(function (response) {
+                                console.log(response.infos.original.url);
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+
                         Kakao.Share.sendDefault({
                             objectType: "feed",
                             content: {
-                                title: "내가 만든 MEME ",
+                                title: "나도 한번 만들어 볼까?",
                                 description: "#분노 #동물 #귀여운 #슬픔 #블랙유머 #GIF",
-                                imageUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
+                                imageUrl: url,
                                 link: {
                                     // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-                                    mobileWebUrl: "http://127.0.0.1:9091",
-                                    webUrl: "http://127.0.0.1:9091",
+                                    mobileWebUrl: "http://13.125.252.153:9091",
+                                    webUrl: "http://13.125.252.153:9091",
                                 },
                             },
                             social: {
@@ -918,20 +986,47 @@
                                 {
                                     title: "웹으로 보기",
                                     link: {
-                                        mobileWebUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
-                                        webUrl: `"http://127.0.0.1:9091/` + sharedImageUrl + `"`,
+                                        mobileWebUrl: `"http://13.125.252.153:9091` + src + `"`,
+                                        webUrl: `"http://13.125.252.153:9091` + src + `"`,
                                     },
                                 },
                                 {
                                     title: "앱으로 보기",
                                     link: {
-                                        mobileWebUrl: "http://127.0.0.1:9091",
-                                        webUrl: "http://127.0.0.1:9091",
+                                        mobileWebUrl: "http://13.125.252.153:9091",
+                                        webUrl: "http://13.125.252.153:9091",
                                     },
                                 },
                             ],
                         });
                     }
+
+                    //헤더 애니메이션
+
+                    let timer2;
+
+                    $(window).scroll(function () {
+                        const y = $(window).scrollTop();
+
+                        if (y > 0) {
+                            clearTimeout(timer2);
+                            // $(".genCHeader").addClass("off");
+                            gsap.to(".genCHeader", { opacity: 1, y: -1000, duration: 1 });
+                        } else if (y <= 0) {
+                            // $(".genCHeader").removeClass("off");
+                            timer2 = setTimeout(function () {
+                                // gsap.to(".genCHeader", { opacity: 0, y: -1000, duration: 1 }),
+                                gsap.to(".genCHeader", {
+                                    y: 0,
+                                    duration: 2,
+                                    // delay: 0.5,
+                                });
+                            }, 500);
+                        }
+                    });
+
+                    // Trigger the scroll event to execute the code when the page loads
+                    $(window).trigger("scroll");
                 </script>
             </div>
         </div>

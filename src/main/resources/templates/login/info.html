@@ -11,20 +11,20 @@
     </head>
     <body>
         <div layout:fragment="contents">
-            <div class="container mt-5">
+            <div class="container mt-5 infoCenter">
                 <h3>회원 정보</h3>
                 <div class="col-md-6" action="/login/signProcess" method="post" th:object="${LoginBoardDto}">
-                    <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">NICKNAME</label>
+                    <div class="form-floating col-md-6">
                         <p type="text" class="form-control" id="nickName" th:text="${session.board.nickName}">asd</p>
+                        <label for="inputEmail4 floatingInput" class="">NICKNAME</label>
                     </div>
-                    <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">ID</label>
+                    <div class="form-floating col-md-6">
                         <p type="text" class="form-control" id="userId" th:text="${session.board.userId}">asd</p>
+                        <label for="inputEmail4 floatingInput" class="form-label">ID</label>
                     </div>
-                    <div class="tag">
+                    <div class="tag pt-5">
                         <h3 th:text="|${session.board.nickName}'s Archive|">MY Meme</h3>
-                        <div class="swiper mySwiper">
+                        <div class="swiper mySwiper" >
                             <div class="swiper-wrapper myMeme"></div>
                         </div>
                     </div>
@@ -40,10 +40,6 @@
 
                 $(function () {
                     for (i = 0; i < alluploads.length; i++) {
-                        console.log(alluploads[i].userId);
-                        console.log(String(session.board.userId));
-                        console.log(alluploads[i].userId == '"' + session.board.userId + '"');
-
                         if (alluploads[i].userId == '"' + session.board.userId + '"') {
                             $(".myMeme").append(
                                 // prettier-ignored
