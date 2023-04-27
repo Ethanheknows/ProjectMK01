@@ -14,13 +14,13 @@
 
 ## 프로젝트 소개
 
-### meme generator will help you make your own meme
-You can make your own memes through meme generator and make the latest fashionable memes<br>
-according to the guidelines.You can also download it as png or jpg
+> ### meme generator will help you make your own meme
+> You can make your own memes through meme generator and make the latest fashionable memes<br>
+> according to the guidelines.You can also download it as png or jpg
 
-### You can show off your own meme on the meme generator
-The meme generator allows you to create and share memes that you have made and comment.</br>
-Also, you can distribute it to other friends through Kakao Talk.
+> ### You can show off your own meme on the meme generator
+> The meme generator allows you to create and share memes that you have made and comment.</br>
+> Also, you can distribute it to other friends through Kakao Talk.
 
 ## Stacks
 
@@ -75,7 +75,7 @@ Also, you can distribute it to other friends through Kakao Talk.
 |<img src="https://user-images.githubusercontent.com/57060166/234787579-77325310-131e-4bfd-b6a7-90d642c03933.png" width="320" height="180">|<img src="https://user-images.githubusercontent.com/57060166/234787716-8f79dd6f-e05d-423c-8fa8-b9b642f762e0.png" width="320" height="180">|<img src="https://user-images.githubusercontent.com/57060166/234787906-dfacd50e-f468-4f55-b22d-e04773ab3533.png" width="320" height="180">|
 
 
-|   delete   |   generator   |   Customized memes   |
+|   delete   |   generator   |   Customizing memes   |
 |---|---|---|
 |<img src="https://user-images.githubusercontent.com/57060166/234788172-6895998c-8237-4d57-8ebb-adfd94fd7d19.png" width="320" height="180">|<img src="https://user-images.githubusercontent.com/57060166/234788299-87e1d631-3b15-4bd5-be4d-6c5b6733a23c.png" width="320" height="180">|<img src="https://user-images.githubusercontent.com/57060166/234788417-d4a3ace1-dea9-46f1-880b-2b2adc02a3d6.png" width="320" height="180">|
 
@@ -99,6 +99,7 @@ Also, you can distribute it to other friends through Kakao Talk.
 > ### 댓글 생성기능
 >   + main page 에서 이미지를 선택하면 그 이미지에 대하여 댓글을 적을 수 있습니다.
 >   + login 한후 적은 댓글인 경우 삭제 할 수 있습니다. 
+
 
 
 
