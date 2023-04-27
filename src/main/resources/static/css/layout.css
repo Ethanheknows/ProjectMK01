@@ -126,11 +126,37 @@
   opacity: 0;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.9);
+}
+
 body {
   font-family: "Sohne", "SCD", sans-serif;
   font-weight: 300;
   background-color: black;
   color: rgb(81, 218, 76);
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 body .myHeader {
   border-bottom: none;
@@ -140,6 +166,9 @@ body .myHeader {
 }
 body .myHeader.on {
   background-color: rgba(0, 0, 0, 0);
+}
+body .myHeader .headerBtn {
+  width: 50% !important;
 }
 body .headerS {
   position: fixed;
@@ -155,7 +184,6 @@ body .headerS.off {
   opacity: 0;
 }
 body .footerS {
-  z-index: -1;
   width: 100%;
   height: 100%;
   position: relative;
@@ -165,6 +193,19 @@ body .footerS {
 body .footerS.on {
   opacity: 100;
   display: block;
+}
+body .footerS .githubIcon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  bottom: -600px;
+  left: 50%;
+  z-index: 2;
+  cursor: pointer;
+}
+body .footerS .githubIcon svg {
+  width: 80px;
+  height: 80px;
 }
 body h1 {
   font-weight: 700;
@@ -559,6 +600,11 @@ body .bottomWrap .txtCon {
 .modal.fade#imgModal {
   color: black;
 }
+.modal.fade#imgModal .modal-dialog .modal-content .modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #modal-image img {
   width: 700px;
   -o-object-fit: contain;
@@ -566,43 +612,85 @@ body .bottomWrap .txtCon {
   border-radius: 10px;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .input-group {
-  width: 500px;
+  width: 532px;
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 0px;
+  bottom: 16px;
   display: flex;
 }
 .modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .input-group textarea {
   resize: none;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper {
+  max-width: 500px;
+  padding: 0;
+  height: 600px;
+  overflow-x: hidden;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.9);
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  width: 470px;
+  width: 500px;
+  margin-bottom: 10px;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyNickName {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap .replyNickName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-weight: 700;
   position: relative;
   top: 0;
+  width: 300px;
+  margin-bottom: 5px;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyContents {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap .replyContents {
   position: relative;
   padding-left: 20px;
-  width: 300px;
+  width: 360px;
+  word-break: break-all;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyTime {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap .replyTime {
+  font-size: 10px;
   position: relative;
-  right: -56px;
+  right: -5px;
   margin-left: 10px;
+  width: 50px;
+  top: 0px;
+  z-index: 1;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap .replyDel {
+  width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #848484;
+  cursor: pointer;
 }
-.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row #commentBoard .commentWrap .replyDel span {
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap .replyDel svg {
   position: relative;
+}
+.modal.fade#imgModal .modal-dialog .modal-content .modal-body .container-fluid .row .commentBoardWarpper .commentBoard .commentWrap.delete {
+  display: none;
+  clear: both;
 }
 
 .clickedSwiper {

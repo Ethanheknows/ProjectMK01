@@ -5,14 +5,14 @@
                 layout:decorate="~{/layout/layout.html}">
                 
 <head>
-  <title>SIGN-UP</title>
+  <title>Sign-up</title>
 </head>
 <body>
   <div layout:fragment="contents">
     
     <form class="mt-5 centerSet" action="/signProcess" method="post" th:object="${loginBoardDto}" enctype="multipart/form-data" >
       <div class="container">
-        <h2 class="col-md-4 mx-auto ">회원가입</h2>
+        <h2 class="col-md-4 mx-auto ">Sign-up</h2>
         
           <div class="form-floating col-md-4 mx-auto mb-3 ">
             <input type="text" class="form-control nickName_confirm" id="nickName" placeholder="Nickname" name="nickName">
@@ -65,7 +65,7 @@
             </div>
           </div>
           <div class="col-md-4 mx-auto mb-3">
-            <button type="submit" class="w-100 btn btn-lg btn-primary">회원가입</button>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Sign-up</button>
           </div>
       </div>
       </form>

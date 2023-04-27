@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html
-    lang="en"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns="http://www.thymeleaf.org"
-    layout:decorate="~{/layout/layout.html}"
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.thymeleaf.org"
+  layout:decorate="~{/layout/layout.html}"
 >
-    <head>
-        <title>REPLYBOARD</title>
-    </head>
-    <body>
-        <div layout:fragment="contents">
-            <div class="container mt-5 infoCenter">
-                <h3>회원 정보</h3>
-                <div class="col-md-6" action="/login/signProcess" method="post" th:object="${LoginBoardDto}">
-                    <div class="form-floating col-md-6">
-                        <p type="text" class="form-control" id="nickName" th:text="${session.board.nickName}">asd</p>
-                        <label for="inputEmail4 floatingInput" class="">NICKNAME</label>
-                    </div>
-                    <div class="form-floating col-md-6">
-                        <p type="text" class="form-control" id="userId" th:text="${session.board.userId}">asd</p>
-                        <label for="inputEmail4 floatingInput" class="form-label">ID</label>
-                    </div>
-                    <div class="tag pt-5">
-                        <h3 th:text="|${session.board.nickName}'s Archive|">MY Meme</h3>
-                        <div class="swiper mySwiper" >
-                            <div class="swiper-wrapper myMeme"></div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <a href="/modify" class="btn btn-primary">MODIFY</a>
-                        <a href="/delete" class="btn btn-warning">DELETE</a>
-                        <a href="/" class="btn btn-secondary">CANCEL</a>
-                    </div>
-                </div>
+  <head>
+    <title>Member Information</title>
+  </head>
+  <body>
+    <div layout:fragment="contents">
+      <div class="container mt-5 infoCenter">
+        <h3>Member Information</h3>
+        <div class="col-md-6" action="/login/signProcess" method="post" th:object="${LoginBoardDto}">
+          <div class="form-floating col-md-6">
+            <p type="text" class="form-control" id="nickName" th:text="${session.board.nickName}">asd</p>
+            <label for="inputEmail4 floatingInput" class="">NICKNAME</label>
+          </div>
+          <div class="form-floating col-md-6">
+            <p type="text" class="form-control" id="userId" th:text="${session.board.userId}">asd</p>
+            <label for="inputEmail4 floatingInput" class="form-label">ID</label>
+          </div>
+          <div class="tag pt-5">
+            <h3 th:text="|${session.board.nickName}'s Archive|">MY Meme</h3>
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper myMeme"></div>
             </div>
-            <script>
-                const tag1 = document.querySelector(".tag1");
-
-                $(function () {
-                    for (i = 0; i < alluploads.length; i++) {
-                        if (alluploads[i].userId == '"' + session.board.userId + '"') {
-                            $(".myMeme").append(
-                                // prettier-ignored
-
-                                `<div class="swiper-slide"><a href="/upload/upload/` +
-                                    alluploads[i].renamed +
-                                    `" id="clickedImg" download><img src="/upload/upload/` +
-                                    alluploads[i].renamed +
-                                    `" alt="" /></a></div>`
-                            );
-                        }
-                    }
-                });
-
-                const swiper = new Swiper(".swiper", {
-                    observer: true,
-                    observeParents: true, // 이 두줄 있어야지 스와이프 내부 For문 돌아감  %중요
-                    slidesPerView: 6,
-                    centeredSlides: true,
-                });
-            </script>
+          </div>
+          <div class="col-12">
+            <a href="/modify" class="btn btn-primary">MODIFY</a>
+            <a href="/delete" class="btn btn-warning">DELETE</a>
+            <a href="/" class="btn btn-secondary">CANCEL</a>
+          </div>
         </div>
-    </body>
+      </div>
+      <script>
+        const tag1 = document.querySelector(".tag1");
+
+        $(function () {
+          for (i = 0; i < alluploads.length; i++) {
+            if (alluploads[i].userId == '"' + session.board.userId + '"') {
+              $(".myMeme").append(
+                // prettier-ignored
+
+                `<div class="swiper-slide"><a href="/upload/upload/` +
+                  alluploads[i].renamed +
+                  `" id="clickedImg" download><img src="/upload/upload/` +
+                  alluploads[i].renamed +
+                  `" alt="" /></a></div>`
+              );
+            }
+          }
+        });
+
+        const swiper = new Swiper(".swiper", {
+          observer: true,
+          observeParents: true, // 이 두줄 있어야지 스와이프 내부 For문 돌아감  %중요
+          slidesPerView: 6,
+          centeredSlides: true,
+        });
+      </script>
+    </div>
+  </body>
 </html>
